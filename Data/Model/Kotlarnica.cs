@@ -19,13 +19,8 @@ namespace TSP2025.Data.Model
         public Kotlarnica()
         {
             Podstanice = new ImprovedBindingList<Podstanica>();
-            Podstanice.BeforeRemove += Podstanice_BeforeRemove;
         }
 
-        private void Podstanice_BeforeRemove(object deletedItem)
-        {
-            (deletedItem as Podstanica).IsDeleted = true;
-        }
         public ImprovedBindingList<Podstanica> Podstanice { get; set; }
         public required int ToplanaId { get => toplanaId; set => toplanaId = value; }
         public string Naziv
@@ -106,11 +101,16 @@ namespace TSP2025.Data.Model
                 {
                     using (insertCommand.Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
                     {
-                        string insertQuery = "Insert into Toplana (Naziv, Napomena) values (@Naziv, @Napomena)";
+                        string insertQuery = "Insert into Kotlarnica (ToplanaId, Naziv, Napomena, Adresa, Telefon, Sef) values (@ToplanaId, @Naziv, @Napomena, @Adresa, @Telefon, @Sef)";
 
                         insertCommand.CommandText = insertQuery;
+
+                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@ToplanaId", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Input, Value = this.ToplanaId });
                         insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Naziv", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Naziv });
                         insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Napomena", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Napomena });
+                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Adresa", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Adresa });
+                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Telefon", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Telefon });
+                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Sef", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Sef });
 
                         insertCommand.Connection.Open();
                         insertCommand.ExecuteNonQuery();
@@ -134,12 +134,15 @@ namespace TSP2025.Data.Model
                 {
                     using (updateCommand.Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
                     {
-                        string updateQuery = "Update Toplana Set Naziv=@Naziv, Napomena=@Napomena Where Id=@id";
+                        string updateQuery = "Update Kotlarnica Set Naziv=@Naziv, Napomena=@Napomena, Adresa=@Adresa, Telefon=@Telefon, Sef=@Sef Where Id=@id";
 
                         updateCommand.CommandText = updateQuery;
                         updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Id", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Input, Value = this.Id });
                         updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Naziv", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Naziv });
                         updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Napomena", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Napomena });
+                        updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Adresa", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Adresa });
+                        updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Telefon", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Telefon });
+                        updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Sef", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Sef });
 
                         updateCommand.Connection.Open();
                         updateCommand.ExecuteNonQuery();
@@ -163,7 +166,7 @@ namespace TSP2025.Data.Model
                 {
                     using (deleteCommand.Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
                     {
-                        string deleteQuery = "Delete From Toplana Where Id=@Id";
+                        string deleteQuery = "Delete From Kotlarnica Where Id=@Id";
 
                         deleteCommand.CommandText = deleteQuery;
                         deleteCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Id", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Input, Value = this.Id });

@@ -132,21 +132,32 @@ namespace TSP2025
         }
         #endregion
 
-
         #region KOTLARNICE
 
         private void btnKotlarniceDodaj_Click(object sender, EventArgs e)
         {
             var novaKotlarnica = new Kotlarnica() { Id = 0, Naziv = "<uneti>", IsChanged = true, Toplana = _BsToplane.Current as Toplana, ToplanaId = (_BsToplane.Current as Toplana).Id };
-            _BsKotlarnice.Add(novaKotlarnica);
             _BsKotlarnice.MoveLast();
+            tbKotlarnicaNaziv.Focus();
+            tbKotlarnicaNaziv.SelectAll();
 
             btnSaveKotlarnice.Visible = true;
             btnUndoKotlarnice.Visible = true;
             btnToplane.Enabled = false;
             btnPodstanice.Enabled = false;
         }
+        private void btnKotlarniceObrisi_Click(object sender, EventArgs e)
+        {
+            if (_BsKotlarnice.Current != null)
+            {
+                _BsKotlarnice.RemoveCurrent();
 
+                btnSaveKotlarnice.Visible = true;
+                btnUndoKotlarnice.Visible = true;
+                btnToplane.Enabled = false;
+                btnPodstanice.Enabled = false;
+            }
+        }
         private void btnUndoKotlarnice_Click(object sender, EventArgs e)
         {
             _DataSource.ReloadDataModel();
@@ -156,21 +167,94 @@ namespace TSP2025
             btnToplane.Enabled = true;
             btnPodstanice.Enabled = true;
         }
-
-        private void btnKotlarniceObrisi_Click(object sender, EventArgs e)
+        private void btnSaveKotlarnice_Click(object sender, EventArgs e)
         {
-            if (_BsToplane.Current != null)
+            // za brisanje
+            var kotlarniceZaBrisanje = _DataSource.SveKotlarnice.Where(t => t.IsDeleted && t.Id > 0).ToList();
+            foreach (var item in kotlarniceZaBrisanje)
             {
-                _BsToplane.RemoveCurrent();
-                
-                btnToplane.Visible = true;
-                btnPodstanice.Visible = true;
-                btnUndoKotlarnice.Visible = false;
-                btnSavePodstanice.Visible = false;
+                try
+                {
+                    item.Delete();
+                }
+                catch (Exception ex)
+                {
+                    break;
+                }
             }
+
+            // za update
+            var kotlarniceZaUpdate = (_BsKotlarnice.List as IList<Kotlarnica>).Where(t => t.IsChanged && t.Id > 0 && !t.IsDeleted).ToList();
+            foreach (var item in kotlarniceZaUpdate)
+            {
+                try
+                {
+                    item.Update();
+                }
+                catch (Exception ex)
+                {
+                    break;
+                }
+            }
+
+            // za create
+            var kotlarniceZaCreate = (_BsKotlarnice.List as IList<Kotlarnica>).Where(k => k.Id == 0 && !k.IsDeleted && k.IsChanged).ToList();
+            foreach (var item in kotlarniceZaCreate)
+            {
+                try
+                {
+                    item.Create();
+                }
+                catch (Exception ex)
+                {
+                    break;
+                }
+            }
+
+            btnSaveKotlarnice.Visible = false;
+            btnUndoKotlarnice.Visible = false;
+            btnToplane.Enabled = true;
+            btnPodstanice.Enabled = true;
         }
+        private void btnToplane_Click(object sender, EventArgs e)
+        {
+            tabMaticniPodaci.SelectedIndex = 0;
+        }
+        private void btnPodstanice_Click(object sender, EventArgs e)
+        {
+            tabMaticniPodaci.SelectedIndex = 2;
+        }
+
         #endregion
 
+
+        #region PODSTANICE
+        private void btnKPodstaniceDodaj_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void btnKPodstaniceObrisi_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void btnUndoPodstanice_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void btnSavePodstanice_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void btnPodstaniceKotlarnice_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void btnIndividualni_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
 
 
         private void _DataSource_ModelChanged(string entity)
@@ -188,8 +272,13 @@ namespace TSP2025
                 btnToplane.Enabled = false;
                 btnPodstanice.Enabled = false;
             }
+            else if (entity == "Podstanice")
+            {
+                btnSaveKotlarnice.Visible = true;
+                btnUndoKotlarnice.Visible = true;
+                btnToplane.Enabled = false;
+                btnPodstanice.Enabled = false;
+            }
         }
-
-
     }
 }

@@ -61,13 +61,8 @@ namespace TSP2025.Data
         public PoslovniSistemDataContext()
         {
             MojeToplane = new ImprovedBindingList<Toplana>();
-            SveToplane.BeforeRemove += MojeToplane_BeforeRemove;
         }
 
-        private void MojeToplane_BeforeRemove(object deletedItem)
-        {
-            (deletedItem as Toplana).IsDeleted = true;
-        }
 
         public void ReloadDataModel()
         {
@@ -107,6 +102,8 @@ namespace TSP2025.Data
                     toplana.ModelChanged += ModelChangedEventHandler;
                     MojeToplane.Add(toplana);
                     SveToplane.Add(toplana);
+                    MojeToplane.BeforeRemove += MojeToplane_BeforeRemove;
+                    SveToplane.BeforeRemove += MojeToplane_BeforeRemove;
                 }
 
                 // KOTLARNICE
@@ -125,6 +122,7 @@ namespace TSP2025.Data
                     };
                     kotlarnica.ModelChanged += ModelChangedEventHandler;
                     SveKotlarnice.Add(kotlarnica);
+                    kotlarnica.Toplana.Kotlarnice.BeforeRemove += Kotlarnice_BeforeRemove;
                 }
 
                 // PODSTANICE
@@ -178,6 +176,15 @@ namespace TSP2025.Data
 
             IsLoading = false;
 
+        }
+
+        private void Kotlarnice_BeforeRemove(object deletedItem)
+        {
+            (deletedItem as Kotlarnica).IsDeleted = true;
+        }
+        private void MojeToplane_BeforeRemove(object deletedItem)
+        {
+            (deletedItem as Toplana).IsDeleted = true;
         }
 
         private void ModelChangedEventHandler(string entity)
