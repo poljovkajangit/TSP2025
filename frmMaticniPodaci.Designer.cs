@@ -98,13 +98,14 @@
             tbKotlarnicaNaziv = new TextBox();
             label3 = new Label();
             tabPage1 = new TabPage();
+            label22 = new Label();
             btnKPodstaniceObrisi = new Button();
             btnKPodstaniceDodaj = new Button();
             label21 = new Label();
             btnUndoPodstanice = new Button();
             btnSavePodstanice = new Button();
             btnPodstaniceKotlarnice = new Button();
-            btnIndividualni = new Button();
+            btnPostaniceIndividualni = new Button();
             btnMernoMestoPodstanica = new Button();
             label17 = new Label();
             textBox5 = new TextBox();
@@ -840,13 +841,14 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(label22);
             tabPage1.Controls.Add(btnKPodstaniceObrisi);
             tabPage1.Controls.Add(btnKPodstaniceDodaj);
             tabPage1.Controls.Add(label21);
             tabPage1.Controls.Add(btnUndoPodstanice);
             tabPage1.Controls.Add(btnSavePodstanice);
             tabPage1.Controls.Add(btnPodstaniceKotlarnice);
-            tabPage1.Controls.Add(btnIndividualni);
+            tabPage1.Controls.Add(btnPostaniceIndividualni);
             tabPage1.Controls.Add(btnMernoMestoPodstanica);
             tabPage1.Controls.Add(label17);
             tabPage1.Controls.Add(textBox5);
@@ -869,6 +871,18 @@
             tabPage1.TabIndex = 2;
             tabPage1.Text = "Podstanice";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.BackColor = Color.LightGray;
+            label22.Font = new Font("Segoe UI Black", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 238);
+            label22.ForeColor = Color.Gray;
+            label22.Location = new Point(752, 1139);
+            label22.Name = "label22";
+            label22.Size = new Size(214, 48);
+            label22.TabIndex = 33;
+            label22.Text = "Podstanice";
             // 
             // btnKPodstaniceObrisi
             // 
@@ -938,16 +952,16 @@
             btnPodstaniceKotlarnice.UseVisualStyleBackColor = true;
             btnPodstaniceKotlarnice.Click += btnPodstaniceKotlarnice_Click;
             // 
-            // btnIndividualni
+            // btnPostaniceIndividualni
             // 
-            btnIndividualni.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 238);
-            btnIndividualni.Location = new Point(2406, 1121);
-            btnIndividualni.Name = "btnIndividualni";
-            btnIndividualni.Size = new Size(350, 73);
-            btnIndividualni.TabIndex = 22;
-            btnIndividualni.Text = "Individualni potrošači >>>";
-            btnIndividualni.UseVisualStyleBackColor = true;
-            btnIndividualni.Click += btnIndividualni_Click;
+            btnPostaniceIndividualni.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 238);
+            btnPostaniceIndividualni.Location = new Point(2406, 1121);
+            btnPostaniceIndividualni.Name = "btnPostaniceIndividualni";
+            btnPostaniceIndividualni.Size = new Size(350, 73);
+            btnPostaniceIndividualni.TabIndex = 22;
+            btnPostaniceIndividualni.Text = "Individualni potrošači >>>";
+            btnPostaniceIndividualni.UseVisualStyleBackColor = true;
+            btnPostaniceIndividualni.Click += btnPostaniceIndividualni_Click;
             // 
             // btnMernoMestoPodstanica
             // 
@@ -1460,7 +1474,7 @@
         private Button btnUndoPodstanice;
         private Button btnSavePodstanice;
         private Button btnPodstaniceKotlarnice;
-        private Button btnIndividualni;
+        private Button btnPostaniceIndividualni;
         private Button btnUndoPotrosaci;
         private Button btnSavePotrosaci;
         private Button button7;
@@ -1505,5 +1519,6 @@
         private Label label21;
         private Button btnKPodstaniceObrisi;
         private Button btnKPodstaniceDodaj;
+        private Label label22;
     }
 }

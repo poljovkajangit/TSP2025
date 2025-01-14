@@ -5,7 +5,7 @@ using TSP2005;
 
 namespace TSP2025.Data.Model
 {
-    public class Podstanica : ModelBase
+    public class Podstanica : ModelBase, IEntity
     {
         private Kotlarnica kotlarnica;
         private string naziv;
@@ -75,8 +75,8 @@ namespace TSP2025.Data.Model
                 }
             }
         }
-        public int KotlarnicaId { get; set; }
-        public required string TABELA_NAPLATNOG_REGISTRA
+        public required int KotlarnicaId { get; set; }
+        public string TABELA_NAPLATNOG_REGISTRA
         {
             get => tABELA_NAPLATNOG_REGISTRA;
             set
@@ -88,7 +88,7 @@ namespace TSP2025.Data.Model
                 }
             }
         }
-        public required string KOLONA_NAPLANTONG_REGISTRA
+        public string KOLONA_NAPLANTONG_REGISTRA
         {
             get => kOLONA_NAPLANTONG_REGISTRA;
             set
@@ -101,7 +101,7 @@ namespace TSP2025.Data.Model
             }
         }
 
-        public required Kotlarnica Kotlarnica
+        public Kotlarnica Kotlarnica
         {
             get => kotlarnica;
             set
@@ -118,7 +118,7 @@ namespace TSP2025.Data.Model
                 {
                     updateCommand.Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString);
                     updateCommand.Connection.Open();
-                    updateCommand.CommandText = "Update PODSTANICA Set Naziv = @Naziv, Adresa = @Adresa, OdgovornoLice = @OdgovornoLice, Napomena = @Napomena, TABELA_NAPLATNOG_REGISTRA = @TNR, KOLONA_NAPLANTONG_REGISTRA = @KNR Where Id = @id";
+                    updateCommand.CommandText = "Update Podstanica Set Naziv = @Naziv, Adresa = @Adresa, OdgovornoLice = @OdgovornoLice, Napomena = @Napomena, TABELA_NAPLATNOG_REGISTRA = @TNR, KOLONA_NAPLANTONG_REGISTRA = @KNR Where Id = @id";
 
                     updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@id", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Input, Value = this.Id });
                     updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Naziv", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Naziv });
@@ -137,6 +137,39 @@ namespace TSP2025.Data.Model
             catch (Exception ex)
             {
 
+            }
+        }
+
+        public void Create()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete()
+        {
+            try
+            {
+                using (var deleteCommand = new SqlCommand())
+                {
+                    using (deleteCommand.Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
+                    {
+                        string deleteQuery = "Delete From Podstanica Where Id=@Id";
+
+                        deleteCommand.CommandText = deleteQuery;
+                        deleteCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Id", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Input, Value = this.Id });
+
+                        deleteCommand.Connection.Open();
+                        deleteCommand.ExecuteNonQuery();
+                        deleteCommand.Connection.Close();
+
+                        this.IsChanged = true;
+                        this.IsDeleted = true;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
     }

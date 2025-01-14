@@ -142,6 +142,7 @@ namespace TSP2025.Data
                     };
                     podstanica.ModelChanged += ModelChangedEventHandler;
                     SvePodstanice.Add(podstanica);
+                    podstanica.Kotlarnica.Podstanice.BeforeRemove += Podstanice_BeforeRemove;
                 }
 
                 // INDIVIDUALNI POTROSACI
@@ -178,14 +179,20 @@ namespace TSP2025.Data
 
         }
 
-        private void Kotlarnice_BeforeRemove(object deletedItem)
+        private void Podstanice_BeforeRemove(object deletedItem)
         {
-            (deletedItem as Kotlarnica).IsDeleted = true;
+            (deletedItem as Podstanica).IsDeleted = true;
         }
+
         private void MojeToplane_BeforeRemove(object deletedItem)
         {
             (deletedItem as Toplana).IsDeleted = true;
         }
+        private void Kotlarnice_BeforeRemove(object deletedItem)
+        {
+            (deletedItem as Kotlarnica).IsDeleted = true;
+        }
+
 
         private void ModelChangedEventHandler(string entity)
         {

@@ -227,33 +227,99 @@ namespace TSP2025
 
         #endregion
 
-
         #region PODSTANICE
         private void btnKPodstaniceDodaj_Click(object sender, EventArgs e)
         {
+            var novaPodstanica = new Podstanica() { Id = 0, KotlarnicaId = (_BsKotlarnice.Current as Kotlarnica).Id, Naziv = "<uneti>" };
+            _BsPodstanice.Add(novaPodstanica);
+            _BsPodstanice.MoveLast();
+            tbPodstanicaNaziv.Focus();
+            tbPodstanicaNaziv.SelectAll();
 
+            btnSavePodstanice.Visible = true;
+            btnUndoPodstanice.Visible = true;
+            btnPodstaniceKotlarnice.Enabled = false;
+            btnPostaniceIndividualni.Enabled = false;
         }
         private void btnKPodstaniceObrisi_Click(object sender, EventArgs e)
         {
+            if (_BsPodstanice.Current != null)
+            {
+                _BsPodstanice.RemoveCurrent();
 
+                btnSavePodstanice.Visible = true;
+                btnUndoPodstanice.Visible = true;
+                btnPodstaniceKotlarnice.Enabled = false;
+                btnPostaniceIndividualni.Enabled = false;
+            }
         }
         private void btnUndoPodstanice_Click(object sender, EventArgs e)
         {
+            _DataSource.ReloadDataModel();
 
+            btnSavePodstanice.Visible = false;
+            btnUndoPodstanice.Visible = false;
+            btnPodstaniceKotlarnice.Enabled = true;
+            btnPostaniceIndividualni.Enabled = true;
         }
         private void btnSavePodstanice_Click(object sender, EventArgs e)
         {
+            // za brisanje
+            var podstaniceZaBrisanje = _DataSource.SvePodstanice.Where(t => t.IsDeleted && t.Id > 0).ToList();
+            foreach (var item in podstaniceZaBrisanje)
+            {
+                try
+                {
+                    item.Delete();
+                }
+                catch (Exception ex)
+                {
+                    break;
+                }
+            }
 
+            // za update
+            var kotlarniceZaUpdate = (_BsPodstanice.List as IList<Podstanica>).Where(t => t.IsChanged && t.Id > 0 && !t.IsDeleted).ToList();
+            foreach (var item in kotlarniceZaUpdate)
+            {
+                try
+                {
+                    item.Update();
+                }
+                catch (Exception ex)
+                {
+                    break;
+                }
+            }
+
+            //// za create
+            //var kotlarniceZaCreate = (_BsKotlarnice.List as IList<Kotlarnica>).Where(k => k.Id == 0 && !k.IsDeleted && k.IsChanged).ToList();
+            //foreach (var item in kotlarniceZaCreate)
+            //{
+            //    try
+            //    {
+            //        item.Create();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        break;
+            //    }
+            //}
+
+            btnSavePodstanice.Visible = false;
+            btnUndoPodstanice.Visible = false;
+            btnPodstaniceKotlarnice.Enabled = true;
+            btnPostaniceIndividualni.Enabled = true;
         }
         private void btnPodstaniceKotlarnice_Click(object sender, EventArgs e)
         {
-
+            tabMaticniPodaci.SelectedIndex = 1;
         }
-        private void btnIndividualni_Click(object sender, EventArgs e)
+
+        private void btnPostaniceIndividualni_Click(object sender, EventArgs e)
         {
-
+            tabMaticniPodaci.SelectedIndex = 3;
         }
-
         #endregion
 
 
@@ -272,12 +338,12 @@ namespace TSP2025
                 btnToplane.Enabled = false;
                 btnPodstanice.Enabled = false;
             }
-            else if (entity == "Podstanice")
+            else if (entity == "Podstanica")
             {
-                btnSaveKotlarnice.Visible = true;
-                btnUndoKotlarnice.Visible = true;
-                btnToplane.Enabled = false;
-                btnPodstanice.Enabled = false;
+                btnSavePodstanice.Visible = true;
+                btnUndoPodstanice.Visible = true;
+                btnPodstaniceKotlarnice.Enabled = false;
+                btnPostaniceIndividualni.Enabled = false;
             }
         }
     }
