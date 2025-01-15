@@ -4,7 +4,7 @@
     <Compile Update="frmDnevniIzveštaj.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="frmDodajMernoMestoZaPodstanicu.cs">
+    <Compile Update="frmDodajMernoMesto.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="frmMaticniPodaci.cs">

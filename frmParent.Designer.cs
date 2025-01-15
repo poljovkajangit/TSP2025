@@ -33,10 +33,6 @@
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             toolStripProgressBar1 = new ToolStripProgressBar();
             menuStrip1 = new MenuStrip();
-            ackcijeToolStripMenuItem = new ToolStripMenuItem();
-            zatvoriToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem5 = new ToolStripSeparator();
-            zatvoriToolStripMenuItem1 = new ToolStripMenuItem();
             mnuOpcije = new ToolStripMenuItem();
             mnuMatičniPodaci = new ToolStripMenuItem();
             toolStripMenuItem2 = new ToolStripMenuItem();
@@ -81,37 +77,12 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(24, 24);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { ackcijeToolStripMenuItem, mnuOpcije, izveštajiToolStripMenuItem, pomoćToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { mnuOpcije, izveštajiToolStripMenuItem, pomoćToolStripMenuItem });
             menuStrip1.Location = new Point(1, 1);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(2156, 33);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
-            // 
-            // ackcijeToolStripMenuItem
-            // 
-            ackcijeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { zatvoriToolStripMenuItem, toolStripMenuItem5, zatvoriToolStripMenuItem1 });
-            ackcijeToolStripMenuItem.Name = "ackcijeToolStripMenuItem";
-            ackcijeToolStripMenuItem.Size = new Size(82, 29);
-            ackcijeToolStripMenuItem.Text = "Ackcije";
-            // 
-            // zatvoriToolStripMenuItem
-            // 
-            zatvoriToolStripMenuItem.Name = "zatvoriToolStripMenuItem";
-            zatvoriToolStripMenuItem.Size = new Size(212, 34);
-            zatvoriToolStripMenuItem.Text = "Podešavanja";
-            // 
-            // toolStripMenuItem5
-            // 
-            toolStripMenuItem5.Name = "toolStripMenuItem5";
-            toolStripMenuItem5.Size = new Size(209, 6);
-            // 
-            // zatvoriToolStripMenuItem1
-            // 
-            zatvoriToolStripMenuItem1.Name = "zatvoriToolStripMenuItem1";
-            zatvoriToolStripMenuItem1.Size = new Size(212, 34);
-            zatvoriToolStripMenuItem1.Text = "Zatvori";
-            zatvoriToolStripMenuItem1.Click += zatvoriToolStripMenuItem1_Click;
             // 
             // mnuOpcije
             // 
@@ -123,14 +94,14 @@
             // mnuMatičniPodaci
             // 
             mnuMatičniPodaci.Name = "mnuMatičniPodaci";
-            mnuMatičniPodaci.Size = new Size(320, 34);
-            mnuMatičniPodaci.Text = "&Uredi podatke o toplani ...";
+            mnuMatičniPodaci.Size = new Size(304, 34);
+            mnuMatičniPodaci.Text = "&Uredi podatke ...";
             mnuMatičniPodaci.Click += mnuMatičniPodaci_Click;
             // 
             // toolStripMenuItem2
             // 
             toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.Size = new Size(320, 34);
+            toolStripMenuItem2.Size = new Size(304, 34);
             toolStripMenuItem2.Text = "Pregled mernih mesta ...";
             toolStripMenuItem2.Click += toolStripMenuItem2_Click;
             // 
@@ -151,31 +122,31 @@
             // poDanimaToolStripMenuItem
             // 
             poDanimaToolStripMenuItem.Name = "poDanimaToolStripMenuItem";
-            poDanimaToolStripMenuItem.Size = new Size(270, 34);
+            poDanimaToolStripMenuItem.Size = new Size(226, 34);
             poDanimaToolStripMenuItem.Text = "Dnevni";
             poDanimaToolStripMenuItem.Click += poDanimaToolStripMenuItem_Click;
             // 
             // poMeseciaToolStripMenuItem
             // 
             poMeseciaToolStripMenuItem.Name = "poMeseciaToolStripMenuItem";
-            poMeseciaToolStripMenuItem.Size = new Size(270, 34);
+            poMeseciaToolStripMenuItem.Size = new Size(226, 34);
             poMeseciaToolStripMenuItem.Text = "Mesečni";
             // 
             // poGoToolStripMenuItem
             // 
             poGoToolStripMenuItem.Name = "poGoToolStripMenuItem";
-            poGoToolStripMenuItem.Size = new Size(270, 34);
+            poGoToolStripMenuItem.Size = new Size(226, 34);
             poGoToolStripMenuItem.Text = "Godišnji";
             // 
             // toolStripMenuItem4
             // 
             toolStripMenuItem4.Name = "toolStripMenuItem4";
-            toolStripMenuItem4.Size = new Size(267, 6);
+            toolStripMenuItem4.Size = new Size(223, 6);
             // 
             // svaOčitavanjaToolStripMenuItem
             // 
             svaOčitavanjaToolStripMenuItem.Name = "svaOčitavanjaToolStripMenuItem";
-            svaOčitavanjaToolStripMenuItem.Size = new Size(270, 34);
+            svaOčitavanjaToolStripMenuItem.Size = new Size(226, 34);
             svaOčitavanjaToolStripMenuItem.Text = "Sva očitavanja";
             // 
             // pomoćToolStripMenuItem
@@ -251,9 +222,5 @@
         private ToolStripMenuItem poGoToolStripMenuItem;
         private ToolStripSeparator toolStripMenuItem4;
         private ToolStripMenuItem svaOčitavanjaToolStripMenuItem;
-        private ToolStripMenuItem ackcijeToolStripMenuItem;
-        private ToolStripMenuItem zatvoriToolStripMenuItem;
-        private ToolStripSeparator toolStripMenuItem5;
-        private ToolStripMenuItem zatvoriToolStripMenuItem1;
     }
 }

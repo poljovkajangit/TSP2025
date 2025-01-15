@@ -20,8 +20,8 @@ namespace TSP2025
 
             _DataSource = new PoslovniSistemDataContext();
 
-            bsGrupaMernihMesta.DataSource = _DataSource.SvaGrupaMernihMesta;
-            bsMernaMesta.DataSource = _DataSource.SvaMernaMesta;
+            bsGrupaMernihMesta.DataSource = _DataSource.SveGrupaMernihMestaSaPocetnimPraznim;
+            //bsMernaMesta.DataSource = _DataSource.SvaMernaMesta;
             bsOcitavanja.DataSource = _DataSource.SvaOcitavanja;
         }
 

@@ -12,29 +12,23 @@ namespace TSP2025
             InitializeComponent();
 
             _DataSource = new PoslovniSistemDataContext();
-
-            bsGrupeMernihMesta.DataSource = _DataSource.SvaGrupaMernihMesta;
+            bsGrupeMernihMesta.DataSource = _DataSource.SveGrupaMernihMestaSaPocetnimPraznim;
+            //if (_DataSource != null)
+            //{
+            //    if (bsGrupeMernihMesta.Current != null && (bsGrupeMernihMesta.Current as GrupaMernihMesta).Id > 0)
+            //    {
+            //        bsMernaMesta.DataSource = _DataSource.SvaMernaMesta.Where(mm => mm.GrupaMernogMestaId == (bsGrupeMernihMesta.Current as GrupaMernihMesta).Id).ToList();
+            //    }
+            //    else
+            //    {
             bsMernaMesta.DataSource = _DataSource.SvaMernaMesta;
+            //    }
+            //}
         }
 
         private void frmMernaMesta_Load(object sender, EventArgs e)
         {
 
-        }
-
-        private void cbGrupeMernihMesta_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbGrupeMernihMesta.SelectedIndex == 0)
-            {
-                bsMernaMesta.DataSource = _DataSource.SvaMernaMesta;
-            }
-            else
-            {
-                if (cbGrupeMernihMesta.SelectedItem as GrupaMernihMesta != null)
-                {
-                    bsMernaMesta.DataSource = _DataSource.SvaMernaMesta.Where(mm => mm.GrupaMernogMestaId == (cbGrupeMernihMesta.SelectedItem as GrupaMernihMesta).Id).ToList();
-                }
-            }
         }
     }
 }

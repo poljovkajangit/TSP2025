@@ -38,29 +38,31 @@
             rbPodstanica = new RadioButton();
             rbIndividualni = new RadioButton();
             cbGrupeMernihMesta = new ComboBox();
+            bsGrupeMernihMesta = new BindingSource(components);
             label4 = new Label();
             pictureBox1 = new PictureBox();
             tbOznakaMernogMesta = new TextBox();
             label3 = new Label();
-            bsGrupeMernihMesta = new BindingSource(components);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            tbId = new TextBox();
             ((System.ComponentModel.ISupportInitialize)bsGrupeMernihMesta).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // btnCancel
             // 
             btnCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnCancel.Location = new Point(155, 477);
+            btnCancel.Location = new Point(155, 461);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(134, 58);
             btnCancel.TabIndex = 0;
             btnCancel.Text = "Odustani";
             btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnOk
             // 
             btnOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnOk.Location = new Point(305, 477);
+            btnOk.Location = new Point(305, 461);
             btnOk.Name = "btnOk";
             btnOk.Size = new Size(134, 58);
             btnOk.TabIndex = 1;
@@ -72,16 +74,15 @@
             // 
             tbOznakaKalorimetra.BackColor = Color.White;
             tbOznakaKalorimetra.BorderStyle = BorderStyle.FixedSingle;
-            tbOznakaKalorimetra.Location = new Point(16, 292);
-            tbOznakaKalorimetra.Multiline = true;
+            tbOznakaKalorimetra.Location = new Point(16, 302);
             tbOznakaKalorimetra.Name = "tbOznakaKalorimetra";
-            tbOznakaKalorimetra.Size = new Size(423, 50);
+            tbOznakaKalorimetra.Size = new Size(423, 31);
             tbOznakaKalorimetra.TabIndex = 2;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(11, 263);
+            label1.Location = new Point(11, 273);
             label1.Name = "label1";
             label1.Size = new Size(169, 25);
             label1.TabIndex = 3;
@@ -90,7 +91,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(11, 173);
+            label2.Location = new Point(11, 210);
             label2.Name = "label2";
             label2.Size = new Size(196, 25);
             label2.TabIndex = 5;
@@ -126,15 +127,19 @@
             cbGrupeMernihMesta.DisplayMember = "Naziv";
             cbGrupeMernihMesta.DropDownStyle = ComboBoxStyle.DropDownList;
             cbGrupeMernihMesta.FormattingEnabled = true;
-            cbGrupeMernihMesta.Location = new Point(16, 391);
+            cbGrupeMernihMesta.Location = new Point(16, 364);
             cbGrupeMernihMesta.Name = "cbGrupeMernihMesta";
             cbGrupeMernihMesta.Size = new Size(423, 33);
             cbGrupeMernihMesta.TabIndex = 10;
             // 
+            // bsGrupeMernihMesta
+            // 
+            bsGrupeMernihMesta.DataMember = "SvaGrupaMernihMesta";
+            // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(11, 363);
+            label4.Location = new Point(11, 336);
             label4.Name = "label4";
             label4.Size = new Size(123, 25);
             label4.TabIndex = 11;
@@ -142,9 +147,8 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(11, 12);
+            pictureBox1.Location = new Point(11, 16);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(131, 132);
             pictureBox1.TabIndex = 12;
@@ -154,7 +158,7 @@
             // 
             tbOznakaMernogMesta.BackColor = Color.White;
             tbOznakaMernogMesta.BorderStyle = BorderStyle.FixedSingle;
-            tbOznakaMernogMesta.Location = new Point(16, 202);
+            tbOznakaMernogMesta.Location = new Point(16, 239);
             tbOznakaMernogMesta.Name = "tbOznakaMernogMesta";
             tbOznakaMernogMesta.Size = new Size(423, 31);
             tbOznakaMernogMesta.TabIndex = 4;
@@ -169,16 +173,23 @@
             label3.TabIndex = 13;
             label3.Text = "Za:";
             // 
-            // bsGrupeMernihMesta
+            // tbId
             // 
-            bsGrupeMernihMesta.DataMember = "SvaGrupaMernihMesta";
+            tbId.BackColor = Color.White;
+            tbId.BorderStyle = BorderStyle.FixedSingle;
+            tbId.Enabled = false;
+            tbId.Location = new Point(359, 16);
+            tbId.Name = "tbId";
+            tbId.Size = new Size(80, 31);
+            tbId.TabIndex = 14;
+            tbId.TextAlign = HorizontalAlignment.Center;
             // 
             // frmDodajMernoMesto
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            CancelButton = btnCancel;
-            ClientSize = new Size(451, 547);
+            ClientSize = new Size(451, 531);
+            Controls.Add(tbId);
             Controls.Add(label3);
             Controls.Add(pictureBox1);
             Controls.Add(label4);
@@ -197,10 +208,9 @@
             MinimizeBox = false;
             Name = "frmDodajMernoMesto";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Dodaj merno mesto";
-            Load += frmDodajMernoMesto_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            Text = "Pridruži merno mesto";
             ((System.ComponentModel.ISupportInitialize)bsGrupeMernihMesta).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -220,5 +230,6 @@
         private TextBox tbOznakaMernogMesta;
         private Label label3;
         private BindingSource bsGrupeMernihMesta;
+        private TextBox tbId;
     }
 }

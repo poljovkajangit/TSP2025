@@ -55,15 +55,17 @@ namespace TSP2025.Data.Model
                 {
                     using (insertCommand.Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
                     {
-                        string insertQuery = "Insert into Toplana (Naziv, Napomena) values (@Naziv, @Napomena)";
+                        string insertQuery = "Insert into Toplana (Naziv, Napomena) output INSERTED.ID Values (@Naziv, @Napomena)";
 
                         insertCommand.CommandText = insertQuery;
                         insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Naziv", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Naziv });
                         insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Napomena", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Napomena });
 
                         insertCommand.Connection.Open();
-                        insertCommand.ExecuteNonQuery();
+                        int modified = (int)insertCommand.ExecuteScalar();
                         insertCommand.Connection.Close();
+
+                        this.Id = modified;
 
                         this.IsChanged = false;
                         this.IsDeleted = false;

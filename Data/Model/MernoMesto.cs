@@ -10,6 +10,13 @@ namespace TSP2025.Data.Model
         private int tip;
         private int? podstanicaId;
         private int? individualniPotrosacId;
+        public string GrupaMernogMestaNaziv
+        {
+            get
+            {
+                return this.GrupaMernogMesta.Naziv;
+            }
+        }
 
         public GrupaMernihMesta GrupaMernogMesta
         {
@@ -83,8 +90,8 @@ namespace TSP2025.Data.Model
                 }
             }
         }
-        public int? IndividualniPotrosacId 
-        { 
+        public int? IndividualniPotrosacId
+        {
             get => individualniPotrosacId;
             set
             {

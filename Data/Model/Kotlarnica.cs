@@ -101,7 +101,7 @@ namespace TSP2025.Data.Model
                 {
                     using (insertCommand.Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
                     {
-                        string insertQuery = "Insert into Kotlarnica (ToplanaId, Naziv, Napomena, Adresa, Telefon, Sef) values (@ToplanaId, @Naziv, @Napomena, @Adresa, @Telefon, @Sef)";
+                        string insertQuery = "Insert into Kotlarnica (ToplanaId, Naziv, Napomena, Adresa, Telefon, Sef) output INSERTED.ID Values (@ToplanaId, @Naziv, @Napomena, @Adresa, @Telefon, @Sef)";
 
                         insertCommand.CommandText = insertQuery;
 
@@ -113,8 +113,10 @@ namespace TSP2025.Data.Model
                         insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Sef", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Sef });
 
                         insertCommand.Connection.Open();
-                        insertCommand.ExecuteNonQuery();
+                        int modified = (int)insertCommand.ExecuteScalar();
                         insertCommand.Connection.Close();
+
+                        this.Id = modified;
 
                         this.IsChanged = false;
                         this.IsDeleted = false;

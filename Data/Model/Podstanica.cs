@@ -132,6 +132,7 @@ namespace TSP2025.Data.Model
                     updateCommand.Connection.Close();
 
                     this.IsChanged = false;
+                    this.IsDeleted = false;
                 }
             }
             catch (Exception ex)
@@ -142,7 +143,39 @@ namespace TSP2025.Data.Model
 
         public void Create()
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var insertCommand = new SqlCommand())
+                {
+                    using (insertCommand.Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
+                    {
+                        string insertQuery = "Insert into Podstanica (Naziv, Adresa, OdgovornoLice, Napomena, KotlarnicaId, TABELA_NAPLATNOG_REGISTRA, KOLONA_NAPLANTONG_REGISTRA) output INSERTED.ID" +
+                                                             " Values (@Naziv, @Adresa, @OdgovornoLice, @Napomena, @KotlarnicaId, @TABELA_NAPLATNOG_REGISTRA, @KOLONA_NAPLANTONG_REGISTRA)";
+                        insertCommand.CommandText = insertQuery;
+
+                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Naziv", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Naziv });
+                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Adresa", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Adresa });
+                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@OdgovornoLice", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.OdgovornoLice });
+                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Napomena", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Napomena });
+                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@KotlarnicaId", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Input, Value = this.KotlarnicaId });
+                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@TABELA_NAPLATNOG_REGISTRA", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.TABELA_NAPLATNOG_REGISTRA });
+                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@KOLONA_NAPLANTONG_REGISTRA", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.KOLONA_NAPLANTONG_REGISTRA });
+
+                        insertCommand.Connection.Open();
+                        int modified = (int)insertCommand.ExecuteScalar();
+                        insertCommand.Connection.Close();
+
+                        this.Id = modified;
+
+                        this.IsChanged = false;
+                        this.IsDeleted = false;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public void Delete()

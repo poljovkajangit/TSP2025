@@ -42,11 +42,6 @@
             _BsToplane = new BindingSource(components);
             _BsPoslovniSistem = new BindingSource(components);
             dgToplane = new DataGridView();
-            nazivDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            napomenaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            idDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            isChangedDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
-            isDeletedDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
             _BsIndividualniPotrosaci = new BindingSource(components);
             _BsPodstanice = new BindingSource(components);
             _BsKotlarnice = new BindingSource(components);
@@ -55,17 +50,6 @@
             nazivDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             cbPodstanice = new ComboBox();
             dgPodstanice = new DataGridView();
-            nazivDataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            adresaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            odgovornoLiceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            napomenaDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            kotlarnicaIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            tABELANAPLATNOGREGISTRADataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            kOLONANAPLANTONGREGISTRADataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            kotlarnicaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            idDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            isChangedDataGridViewCheckBoxColumn1 = new DataGridViewCheckBoxColumn();
-            isDeletedDataGridViewCheckBoxColumn1 = new DataGridViewCheckBoxColumn();
             tabMaticniPodaci = new TabControl();
             tpToplane = new TabPage();
             label18 = new Label();
@@ -120,12 +104,14 @@
             label8 = new Label();
             tbPodstanicaNaziv = new TextBox();
             tabIndividaulniPotrosaci = new TabPage();
+            btnObrisiIndividualni = new Button();
+            btnDodajIndividualni = new Button();
+            label24 = new Label();
+            label23 = new Label();
             btnUndoPotrosaci = new Button();
             btnSavePotrosaci = new Button();
-            button7 = new Button();
-            btnIndividualniPotrosacNovo = new Button();
+            btnIndividualniPodstanice = new Button();
             btnMernoMestoIndividualniPotrosac = new Button();
-            btnIndividualniPotrosacDelete = new Button();
             tbIndividualniPotrosacTelefon = new TextBox();
             label15 = new Label();
             tbIndividualniPotrosacEmail = new TextBox();
@@ -135,15 +121,9 @@
             tbIndividualniPotrosacNaziv = new TextBox();
             label12 = new Label();
             dgIndividualniPotrosaci = new DataGridView();
+            nazivDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            nazivDataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             nazivDataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            adresaDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            emailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            telefonDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            podstanicaIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            podstanicaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            idDataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            isChangedDataGridViewCheckBoxColumn2 = new DataGridViewCheckBoxColumn();
-            isDeletedDataGridViewCheckBoxColumn2 = new DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)_BsToplane).BeginInit();
             ((System.ComponentModel.ISupportInitialize)_BsPoslovniSistem).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgToplane).BeginInit();
@@ -203,7 +183,7 @@
             dgToplane.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgToplane.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgToplane.ColumnHeadersVisible = false;
-            dgToplane.Columns.AddRange(new DataGridViewColumn[] { nazivDataGridViewTextBoxColumn, napomenaDataGridViewTextBoxColumn, idDataGridViewTextBoxColumn, isChangedDataGridViewCheckBoxColumn, isDeletedDataGridViewCheckBoxColumn });
+            dgToplane.Columns.AddRange(new DataGridViewColumn[] { nazivDataGridViewTextBoxColumn });
             dgToplane.DataSource = _BsToplane;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
@@ -233,46 +213,6 @@
             dgToplane.Size = new Size(970, 1090);
             dgToplane.TabIndex = 8;
             // 
-            // nazivDataGridViewTextBoxColumn
-            // 
-            nazivDataGridViewTextBoxColumn.DataPropertyName = "Naziv";
-            nazivDataGridViewTextBoxColumn.HeaderText = "Naziv";
-            nazivDataGridViewTextBoxColumn.MinimumWidth = 8;
-            nazivDataGridViewTextBoxColumn.Name = "nazivDataGridViewTextBoxColumn";
-            nazivDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // napomenaDataGridViewTextBoxColumn
-            // 
-            napomenaDataGridViewTextBoxColumn.DataPropertyName = "Napomena";
-            napomenaDataGridViewTextBoxColumn.HeaderText = "Napomena";
-            napomenaDataGridViewTextBoxColumn.MinimumWidth = 8;
-            napomenaDataGridViewTextBoxColumn.Name = "napomenaDataGridViewTextBoxColumn";
-            napomenaDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            idDataGridViewTextBoxColumn.HeaderText = "Id";
-            idDataGridViewTextBoxColumn.MinimumWidth = 8;
-            idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            idDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // isChangedDataGridViewCheckBoxColumn
-            // 
-            isChangedDataGridViewCheckBoxColumn.DataPropertyName = "IsChanged";
-            isChangedDataGridViewCheckBoxColumn.HeaderText = "IsChanged";
-            isChangedDataGridViewCheckBoxColumn.MinimumWidth = 8;
-            isChangedDataGridViewCheckBoxColumn.Name = "isChangedDataGridViewCheckBoxColumn";
-            isChangedDataGridViewCheckBoxColumn.Width = 150;
-            // 
-            // isDeletedDataGridViewCheckBoxColumn
-            // 
-            isDeletedDataGridViewCheckBoxColumn.DataPropertyName = "IsDeleted";
-            isDeletedDataGridViewCheckBoxColumn.HeaderText = "IsDeleted";
-            isDeletedDataGridViewCheckBoxColumn.MinimumWidth = 8;
-            isDeletedDataGridViewCheckBoxColumn.Name = "isDeletedDataGridViewCheckBoxColumn";
-            isDeletedDataGridViewCheckBoxColumn.Width = 150;
-            // 
             // _BsIndividualniPotrosaci
             // 
             _BsIndividualniPotrosaci.DataMember = "IndividualniPotrosaci";
@@ -295,7 +235,7 @@
             cbKotlarnice.DropDownStyle = ComboBoxStyle.DropDownList;
             cbKotlarnice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 238);
             cbKotlarnice.FormattingEnabled = true;
-            cbKotlarnice.Location = new Point(116, 3);
+            cbKotlarnice.Location = new Point(116, 6);
             cbKotlarnice.Name = "cbKotlarnice";
             cbKotlarnice.Size = new Size(600, 40);
             cbKotlarnice.TabIndex = 1;
@@ -346,9 +286,9 @@
             cbPodstanice.DropDownStyle = ComboBoxStyle.DropDownList;
             cbPodstanice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 238);
             cbPodstanice.FormattingEnabled = true;
-            cbPodstanice.Location = new Point(6, 6);
+            cbPodstanice.Location = new Point(113, 8);
             cbPodstanice.Name = "cbPodstanice";
-            cbPodstanice.Size = new Size(600, 40);
+            cbPodstanice.Size = new Size(592, 40);
             cbPodstanice.TabIndex = 1;
             cbPodstanice.ValueMember = "Id";
             // 
@@ -362,7 +302,7 @@
             dgPodstanice.BackgroundColor = Color.LightGray;
             dgPodstanice.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgPodstanice.ColumnHeadersVisible = false;
-            dgPodstanice.Columns.AddRange(new DataGridViewColumn[] { nazivDataGridViewTextBoxColumn2, adresaDataGridViewTextBoxColumn, odgovornoLiceDataGridViewTextBoxColumn, napomenaDataGridViewTextBoxColumn1, kotlarnicaIdDataGridViewTextBoxColumn, tABELANAPLATNOGREGISTRADataGridViewTextBoxColumn, kOLONANAPLANTONGREGISTRADataGridViewTextBoxColumn, kotlarnicaDataGridViewTextBoxColumn, idDataGridViewTextBoxColumn1, isChangedDataGridViewCheckBoxColumn1, isDeletedDataGridViewCheckBoxColumn1 });
+            dgPodstanice.Columns.AddRange(new DataGridViewColumn[] { nazivDataGridViewTextBoxColumn2 });
             dgPodstanice.DataSource = _BsPodstanice;
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = SystemColors.Window;
@@ -390,94 +330,6 @@
             dgPodstanice.Size = new Size(970, 1078);
             dgPodstanice.TabIndex = 6;
             // 
-            // nazivDataGridViewTextBoxColumn2
-            // 
-            nazivDataGridViewTextBoxColumn2.DataPropertyName = "Naziv";
-            nazivDataGridViewTextBoxColumn2.HeaderText = "Naziv";
-            nazivDataGridViewTextBoxColumn2.MinimumWidth = 8;
-            nazivDataGridViewTextBoxColumn2.Name = "nazivDataGridViewTextBoxColumn2";
-            nazivDataGridViewTextBoxColumn2.Width = 150;
-            // 
-            // adresaDataGridViewTextBoxColumn
-            // 
-            adresaDataGridViewTextBoxColumn.DataPropertyName = "Adresa";
-            adresaDataGridViewTextBoxColumn.HeaderText = "Adresa";
-            adresaDataGridViewTextBoxColumn.MinimumWidth = 8;
-            adresaDataGridViewTextBoxColumn.Name = "adresaDataGridViewTextBoxColumn";
-            adresaDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // odgovornoLiceDataGridViewTextBoxColumn
-            // 
-            odgovornoLiceDataGridViewTextBoxColumn.DataPropertyName = "OdgovornoLice";
-            odgovornoLiceDataGridViewTextBoxColumn.HeaderText = "OdgovornoLice";
-            odgovornoLiceDataGridViewTextBoxColumn.MinimumWidth = 8;
-            odgovornoLiceDataGridViewTextBoxColumn.Name = "odgovornoLiceDataGridViewTextBoxColumn";
-            odgovornoLiceDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // napomenaDataGridViewTextBoxColumn1
-            // 
-            napomenaDataGridViewTextBoxColumn1.DataPropertyName = "Napomena";
-            napomenaDataGridViewTextBoxColumn1.HeaderText = "Napomena";
-            napomenaDataGridViewTextBoxColumn1.MinimumWidth = 8;
-            napomenaDataGridViewTextBoxColumn1.Name = "napomenaDataGridViewTextBoxColumn1";
-            napomenaDataGridViewTextBoxColumn1.Width = 150;
-            // 
-            // kotlarnicaIdDataGridViewTextBoxColumn
-            // 
-            kotlarnicaIdDataGridViewTextBoxColumn.DataPropertyName = "KotlarnicaId";
-            kotlarnicaIdDataGridViewTextBoxColumn.HeaderText = "KotlarnicaId";
-            kotlarnicaIdDataGridViewTextBoxColumn.MinimumWidth = 8;
-            kotlarnicaIdDataGridViewTextBoxColumn.Name = "kotlarnicaIdDataGridViewTextBoxColumn";
-            kotlarnicaIdDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // tABELANAPLATNOGREGISTRADataGridViewTextBoxColumn
-            // 
-            tABELANAPLATNOGREGISTRADataGridViewTextBoxColumn.DataPropertyName = "TABELA_NAPLATNOG_REGISTRA";
-            tABELANAPLATNOGREGISTRADataGridViewTextBoxColumn.HeaderText = "TABELA_NAPLATNOG_REGISTRA";
-            tABELANAPLATNOGREGISTRADataGridViewTextBoxColumn.MinimumWidth = 8;
-            tABELANAPLATNOGREGISTRADataGridViewTextBoxColumn.Name = "tABELANAPLATNOGREGISTRADataGridViewTextBoxColumn";
-            tABELANAPLATNOGREGISTRADataGridViewTextBoxColumn.Width = 150;
-            // 
-            // kOLONANAPLANTONGREGISTRADataGridViewTextBoxColumn
-            // 
-            kOLONANAPLANTONGREGISTRADataGridViewTextBoxColumn.DataPropertyName = "KOLONA_NAPLANTONG_REGISTRA";
-            kOLONANAPLANTONGREGISTRADataGridViewTextBoxColumn.HeaderText = "KOLONA_NAPLANTONG_REGISTRA";
-            kOLONANAPLANTONGREGISTRADataGridViewTextBoxColumn.MinimumWidth = 8;
-            kOLONANAPLANTONGREGISTRADataGridViewTextBoxColumn.Name = "kOLONANAPLANTONGREGISTRADataGridViewTextBoxColumn";
-            kOLONANAPLANTONGREGISTRADataGridViewTextBoxColumn.Width = 150;
-            // 
-            // kotlarnicaDataGridViewTextBoxColumn
-            // 
-            kotlarnicaDataGridViewTextBoxColumn.DataPropertyName = "Kotlarnica";
-            kotlarnicaDataGridViewTextBoxColumn.HeaderText = "Kotlarnica";
-            kotlarnicaDataGridViewTextBoxColumn.MinimumWidth = 8;
-            kotlarnicaDataGridViewTextBoxColumn.Name = "kotlarnicaDataGridViewTextBoxColumn";
-            kotlarnicaDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // idDataGridViewTextBoxColumn1
-            // 
-            idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            idDataGridViewTextBoxColumn1.HeaderText = "Id";
-            idDataGridViewTextBoxColumn1.MinimumWidth = 8;
-            idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
-            idDataGridViewTextBoxColumn1.Width = 150;
-            // 
-            // isChangedDataGridViewCheckBoxColumn1
-            // 
-            isChangedDataGridViewCheckBoxColumn1.DataPropertyName = "IsChanged";
-            isChangedDataGridViewCheckBoxColumn1.HeaderText = "IsChanged";
-            isChangedDataGridViewCheckBoxColumn1.MinimumWidth = 8;
-            isChangedDataGridViewCheckBoxColumn1.Name = "isChangedDataGridViewCheckBoxColumn1";
-            isChangedDataGridViewCheckBoxColumn1.Width = 150;
-            // 
-            // isDeletedDataGridViewCheckBoxColumn1
-            // 
-            isDeletedDataGridViewCheckBoxColumn1.DataPropertyName = "IsDeleted";
-            isDeletedDataGridViewCheckBoxColumn1.HeaderText = "IsDeleted";
-            isDeletedDataGridViewCheckBoxColumn1.MinimumWidth = 8;
-            isDeletedDataGridViewCheckBoxColumn1.Name = "isDeletedDataGridViewCheckBoxColumn1";
-            isDeletedDataGridViewCheckBoxColumn1.Width = 150;
-            // 
             // tabMaticniPodaci
             // 
             tabMaticniPodaci.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -489,8 +341,9 @@
             tabMaticniPodaci.Location = new Point(12, 12);
             tabMaticniPodaci.Name = "tabMaticniPodaci";
             tabMaticniPodaci.SelectedIndex = 0;
-            tabMaticniPodaci.Size = new Size(2770, 1241);
+            tabMaticniPodaci.Size = new Size(2767, 1241);
             tabMaticniPodaci.TabIndex = 8;
+            tabMaticniPodaci.Selecting += tabMaticniPodaci_Selecting;
             // 
             // tpToplane
             // 
@@ -508,7 +361,7 @@
             tpToplane.Location = new Point(4, 34);
             tpToplane.Name = "tpToplane";
             tpToplane.Padding = new Padding(3);
-            tpToplane.Size = new Size(2762, 1203);
+            tpToplane.Size = new Size(2759, 1203);
             tpToplane.TabIndex = 0;
             tpToplane.Text = "Toplane";
             tpToplane.UseVisualStyleBackColor = true;
@@ -647,7 +500,7 @@
             tabPage2.Location = new Point(4, 34);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(2762, 1203);
+            tabPage2.Size = new Size(2759, 1203);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Kotlarnice";
             tabPage2.UseVisualStyleBackColor = true;
@@ -867,7 +720,7 @@
             tabPage1.Location = new Point(4, 34);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(2762, 1203);
+            tabPage1.Size = new Size(2759, 1203);
             tabPage1.TabIndex = 2;
             tabPage1.Text = "Podstanice";
             tabPage1.UseVisualStyleBackColor = true;
@@ -915,10 +768,9 @@
             // 
             // btnUndoPodstanice
             // 
-            btnUndoPodstanice.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnUndoPodstanice.Image = (Image)resources.GetObject("btnUndoPodstanice.Image");
             btnUndoPodstanice.ImageAlign = ContentAlignment.MiddleLeft;
-            btnUndoPodstanice.Location = new Point(778, 49);
+            btnUndoPodstanice.Location = new Point(777, 49);
             btnUndoPodstanice.Name = "btnUndoPodstanice";
             btnUndoPodstanice.Padding = new Padding(20, 0, 0, 0);
             btnUndoPodstanice.Size = new Size(96, 64);
@@ -929,7 +781,6 @@
             // 
             // btnSavePodstanice
             // 
-            btnSavePodstanice.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnSavePodstanice.Image = (Image)resources.GetObject("btnSavePodstanice.Image");
             btnSavePodstanice.ImageAlign = ContentAlignment.MiddleLeft;
             btnSavePodstanice.Location = new Point(880, 49);
@@ -943,8 +794,9 @@
             // 
             // btnPodstaniceKotlarnice
             // 
+            btnPodstaniceKotlarnice.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnPodstaniceKotlarnice.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 238);
-            btnPodstaniceKotlarnice.Location = new Point(2171, 1121);
+            btnPodstaniceKotlarnice.Location = new Point(2168, 1121);
             btnPodstaniceKotlarnice.Name = "btnPodstaniceKotlarnice";
             btnPodstaniceKotlarnice.Size = new Size(229, 73);
             btnPodstaniceKotlarnice.TabIndex = 23;
@@ -954,8 +806,9 @@
             // 
             // btnPostaniceIndividualni
             // 
+            btnPostaniceIndividualni.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnPostaniceIndividualni.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 238);
-            btnPostaniceIndividualni.Location = new Point(2406, 1121);
+            btnPostaniceIndividualni.Location = new Point(2403, 1121);
             btnPostaniceIndividualni.Name = "btnPostaniceIndividualni";
             btnPostaniceIndividualni.Size = new Size(350, 73);
             btnPostaniceIndividualni.TabIndex = 22;
@@ -990,7 +843,7 @@
             textBox5.Location = new Point(1025, 454);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(450, 31);
-            textBox5.TabIndex = 17;
+            textBox5.TabIndex = 5;
             // 
             // label16
             // 
@@ -1009,7 +862,7 @@
             textBox4.Location = new Point(1025, 392);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(450, 31);
-            textBox4.TabIndex = 15;
+            textBox4.TabIndex = 4;
             // 
             // label11
             // 
@@ -1029,7 +882,7 @@
             textBox3.Multiline = true;
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(450, 155);
-            textBox3.TabIndex = 13;
+            textBox3.TabIndex = 6;
             // 
             // label10
             // 
@@ -1048,7 +901,7 @@
             textBox2.Location = new Point(1025, 321);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(450, 31);
-            textBox2.TabIndex = 11;
+            textBox2.TabIndex = 3;
             // 
             // label9
             // 
@@ -1067,7 +920,7 @@
             textBox1.Location = new Point(1025, 259);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(450, 31);
-            textBox1.TabIndex = 9;
+            textBox1.TabIndex = 2;
             // 
             // label8
             // 
@@ -1086,16 +939,18 @@
             tbPodstanicaNaziv.Location = new Point(1025, 197);
             tbPodstanicaNaziv.Name = "tbPodstanicaNaziv";
             tbPodstanicaNaziv.Size = new Size(450, 31);
-            tbPodstanicaNaziv.TabIndex = 7;
+            tbPodstanicaNaziv.TabIndex = 1;
             // 
             // tabIndividaulniPotrosaci
             // 
+            tabIndividaulniPotrosaci.Controls.Add(btnObrisiIndividualni);
+            tabIndividaulniPotrosaci.Controls.Add(btnDodajIndividualni);
+            tabIndividaulniPotrosaci.Controls.Add(label24);
+            tabIndividaulniPotrosaci.Controls.Add(label23);
             tabIndividaulniPotrosaci.Controls.Add(btnUndoPotrosaci);
             tabIndividaulniPotrosaci.Controls.Add(btnSavePotrosaci);
-            tabIndividaulniPotrosaci.Controls.Add(button7);
-            tabIndividaulniPotrosaci.Controls.Add(btnIndividualniPotrosacNovo);
+            tabIndividaulniPotrosaci.Controls.Add(btnIndividualniPodstanice);
             tabIndividaulniPotrosaci.Controls.Add(btnMernoMestoIndividualniPotrosac);
-            tabIndividaulniPotrosaci.Controls.Add(btnIndividualniPotrosacDelete);
             tabIndividaulniPotrosaci.Controls.Add(tbIndividualniPotrosacTelefon);
             tabIndividaulniPotrosaci.Controls.Add(label15);
             tabIndividaulniPotrosaci.Controls.Add(tbIndividualniPotrosacEmail);
@@ -1109,60 +964,95 @@
             tabIndividaulniPotrosaci.Location = new Point(4, 34);
             tabIndividaulniPotrosaci.Name = "tabIndividaulniPotrosaci";
             tabIndividaulniPotrosaci.Padding = new Padding(3);
-            tabIndividaulniPotrosaci.Size = new Size(2762, 1203);
+            tabIndividaulniPotrosaci.Size = new Size(2759, 1203);
             tabIndividaulniPotrosaci.TabIndex = 3;
             tabIndividaulniPotrosaci.Text = "Individualni potrošači";
             tabIndividaulniPotrosaci.UseVisualStyleBackColor = true;
+            // 
+            // btnObrisiIndividualni
+            // 
+            btnObrisiIndividualni.Image = (Image)resources.GetObject("btnObrisiIndividualni.Image");
+            btnObrisiIndividualni.Location = new Point(124, 83);
+            btnObrisiIndividualni.Name = "btnObrisiIndividualni";
+            btnObrisiIndividualni.Size = new Size(112, 64);
+            btnObrisiIndividualni.TabIndex = 36;
+            btnObrisiIndividualni.UseVisualStyleBackColor = true;
+            btnObrisiIndividualni.Click += btnObrisiIndividualni_Click;
+            // 
+            // btnDodajIndividualni
+            // 
+            btnDodajIndividualni.Image = (Image)resources.GetObject("btnDodajIndividualni.Image");
+            btnDodajIndividualni.Location = new Point(6, 83);
+            btnDodajIndividualni.Name = "btnDodajIndividualni";
+            btnDodajIndividualni.Size = new Size(112, 64);
+            btnDodajIndividualni.TabIndex = 35;
+            btnDodajIndividualni.UseVisualStyleBackColor = true;
+            btnDodajIndividualni.Click += btnDodajIndividualni_Click;
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.BackColor = Color.LightGray;
+            label24.Font = new Font("Segoe UI Black", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 238);
+            label24.ForeColor = Color.Gray;
+            label24.Location = new Point(553, 1137);
+            label24.Name = "label24";
+            label24.Size = new Size(412, 48);
+            label24.TabIndex = 34;
+            label24.Text = "Individualni potrošači";
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Location = new Point(6, 17);
+            label23.Name = "label23";
+            label23.Size = new Size(101, 25);
+            label23.TabIndex = 31;
+            label23.Text = "Podstanica:";
             // 
             // btnUndoPotrosaci
             // 
             btnUndoPotrosaci.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnUndoPotrosaci.Image = (Image)resources.GetObject("btnUndoPotrosaci.Image");
             btnUndoPotrosaci.ImageAlign = ContentAlignment.MiddleLeft;
-            btnUndoPotrosaci.Location = new Point(6, 1133);
+            btnUndoPotrosaci.Location = new Point(775, 83);
             btnUndoPotrosaci.Name = "btnUndoPotrosaci";
             btnUndoPotrosaci.Padding = new Padding(20, 0, 0, 0);
-            btnUndoPotrosaci.Size = new Size(256, 64);
+            btnUndoPotrosaci.Size = new Size(96, 64);
             btnUndoPotrosaci.TabIndex = 29;
-            btnUndoPotrosaci.Text = "Poništi izmene";
             btnUndoPotrosaci.UseVisualStyleBackColor = true;
             btnUndoPotrosaci.Visible = false;
+            btnUndoPotrosaci.Click += btnUndoPotrosaci_Click;
             // 
             // btnSavePotrosaci
             // 
             btnSavePotrosaci.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnSavePotrosaci.Image = (Image)resources.GetObject("btnSavePotrosaci.Image");
             btnSavePotrosaci.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSavePotrosaci.Location = new Point(268, 1133);
+            btnSavePotrosaci.Location = new Point(877, 83);
             btnSavePotrosaci.Name = "btnSavePotrosaci";
             btnSavePotrosaci.Padding = new Padding(20, 0, 0, 0);
-            btnSavePotrosaci.Size = new Size(256, 64);
+            btnSavePotrosaci.Size = new Size(96, 64);
             btnSavePotrosaci.TabIndex = 28;
-            btnSavePotrosaci.Text = "Sačuvaj izmene";
             btnSavePotrosaci.UseVisualStyleBackColor = true;
             btnSavePotrosaci.Visible = false;
+            btnSavePotrosaci.Click += btnSavePotrosaci_Click;
             // 
-            // button7
+            // btnIndividualniPodstanice
             // 
-            button7.Location = new Point(2473, 1124);
-            button7.Name = "button7";
-            button7.Size = new Size(229, 73);
-            button7.TabIndex = 27;
-            button7.Text = "<<< Podstanice";
-            button7.UseVisualStyleBackColor = true;
-            // 
-            // btnIndividualniPotrosacNovo
-            // 
-            btnIndividualniPotrosacNovo.Location = new Point(746, 12);
-            btnIndividualniPotrosacNovo.Name = "btnIndividualniPotrosacNovo";
-            btnIndividualniPotrosacNovo.Size = new Size(112, 34);
-            btnIndividualniPotrosacNovo.TabIndex = 21;
-            btnIndividualniPotrosacNovo.Text = "Dodaj";
-            btnIndividualniPotrosacNovo.UseVisualStyleBackColor = true;
+            btnIndividualniPodstanice.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnIndividualniPodstanice.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 238);
+            btnIndividualniPodstanice.Location = new Point(2524, 1124);
+            btnIndividualniPodstanice.Name = "btnIndividualniPodstanice";
+            btnIndividualniPodstanice.Size = new Size(229, 73);
+            btnIndividualniPodstanice.TabIndex = 27;
+            btnIndividualniPodstanice.Text = "<<< Podstanice";
+            btnIndividualniPodstanice.UseVisualStyleBackColor = true;
+            btnIndividualniPodstanice.Click += btnIndividualniPodstanice_Click;
             // 
             // btnMernoMestoIndividualniPotrosac
             // 
-            btnMernoMestoIndividualniPotrosac.Location = new Point(1012, 351);
+            btnMernoMestoIndividualniPotrosac.Location = new Point(982, 1124);
             btnMernoMestoIndividualniPotrosac.Name = "btnMernoMestoIndividualniPotrosac";
             btnMernoMestoIndividualniPotrosac.Size = new Size(340, 70);
             btnMernoMestoIndividualniPotrosac.TabIndex = 20;
@@ -1170,29 +1060,20 @@
             btnMernoMestoIndividualniPotrosac.UseVisualStyleBackColor = true;
             btnMernoMestoIndividualniPotrosac.Click += btnMernoMestoIndividualniPotrosac_Click;
             // 
-            // btnIndividualniPotrosacDelete
-            // 
-            btnIndividualniPotrosacDelete.Location = new Point(864, 12);
-            btnIndividualniPotrosacDelete.Name = "btnIndividualniPotrosacDelete";
-            btnIndividualniPotrosacDelete.Size = new Size(112, 34);
-            btnIndividualniPotrosacDelete.TabIndex = 16;
-            btnIndividualniPotrosacDelete.Text = "Obriši";
-            btnIndividualniPotrosacDelete.UseVisualStyleBackColor = true;
-            // 
             // tbIndividualniPotrosacTelefon
             // 
             tbIndividualniPotrosacTelefon.BackColor = Color.White;
             tbIndividualniPotrosacTelefon.BorderStyle = BorderStyle.FixedSingle;
-            tbIndividualniPotrosacTelefon.DataBindings.Add(new Binding("Text", _BsIndividualniPotrosaci, "Telefon", true));
-            tbIndividualniPotrosacTelefon.Location = new Point(1012, 259);
+            tbIndividualniPotrosacTelefon.DataBindings.Add(new Binding("Text", _BsIndividualniPotrosaci, "Telefon", true, DataSourceUpdateMode.OnPropertyChanged));
+            tbIndividualniPotrosacTelefon.Location = new Point(1012, 367);
             tbIndividualniPotrosacTelefon.Name = "tbIndividualniPotrosacTelefon";
             tbIndividualniPotrosacTelefon.Size = new Size(450, 31);
-            tbIndividualniPotrosacTelefon.TabIndex = 15;
+            tbIndividualniPotrosacTelefon.TabIndex = 4;
             // 
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(1012, 231);
+            label15.Location = new Point(1012, 339);
             label15.Name = "label15";
             label15.Size = new Size(72, 25);
             label15.TabIndex = 14;
@@ -1202,16 +1083,16 @@
             // 
             tbIndividualniPotrosacEmail.BackColor = Color.White;
             tbIndividualniPotrosacEmail.BorderStyle = BorderStyle.FixedSingle;
-            tbIndividualniPotrosacEmail.DataBindings.Add(new Binding("Text", _BsIndividualniPotrosaci, "Email", true));
-            tbIndividualniPotrosacEmail.Location = new Point(1012, 197);
+            tbIndividualniPotrosacEmail.DataBindings.Add(new Binding("Text", _BsIndividualniPotrosaci, "Email", true, DataSourceUpdateMode.OnPropertyChanged));
+            tbIndividualniPotrosacEmail.Location = new Point(1012, 305);
             tbIndividualniPotrosacEmail.Name = "tbIndividualniPotrosacEmail";
             tbIndividualniPotrosacEmail.Size = new Size(450, 31);
-            tbIndividualniPotrosacEmail.TabIndex = 13;
+            tbIndividualniPotrosacEmail.TabIndex = 3;
             // 
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(1012, 169);
+            label14.Location = new Point(1012, 277);
             label14.Name = "label14";
             label14.Size = new Size(58, 25);
             label14.TabIndex = 12;
@@ -1221,16 +1102,16 @@
             // 
             tbIndividualniPotrosacAdresa.BackColor = Color.White;
             tbIndividualniPotrosacAdresa.BorderStyle = BorderStyle.FixedSingle;
-            tbIndividualniPotrosacAdresa.DataBindings.Add(new Binding("Text", _BsIndividualniPotrosaci, "Adresa", true));
-            tbIndividualniPotrosacAdresa.Location = new Point(1012, 135);
+            tbIndividualniPotrosacAdresa.DataBindings.Add(new Binding("Text", _BsIndividualniPotrosaci, "Adresa", true, DataSourceUpdateMode.OnPropertyChanged));
+            tbIndividualniPotrosacAdresa.Location = new Point(1012, 243);
             tbIndividualniPotrosacAdresa.Name = "tbIndividualniPotrosacAdresa";
             tbIndividualniPotrosacAdresa.Size = new Size(450, 31);
-            tbIndividualniPotrosacAdresa.TabIndex = 11;
+            tbIndividualniPotrosacAdresa.TabIndex = 2;
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(1012, 107);
+            label13.Location = new Point(1012, 215);
             label13.Name = "label13";
             label13.Size = new Size(71, 25);
             label13.TabIndex = 10;
@@ -1240,16 +1121,16 @@
             // 
             tbIndividualniPotrosacNaziv.BackColor = Color.White;
             tbIndividualniPotrosacNaziv.BorderStyle = BorderStyle.FixedSingle;
-            tbIndividualniPotrosacNaziv.DataBindings.Add(new Binding("Text", _BsIndividualniPotrosaci, "Naziv", true));
-            tbIndividualniPotrosacNaziv.Location = new Point(1012, 73);
+            tbIndividualniPotrosacNaziv.DataBindings.Add(new Binding("Text", _BsIndividualniPotrosaci, "Naziv", true, DataSourceUpdateMode.OnPropertyChanged));
+            tbIndividualniPotrosacNaziv.Location = new Point(1012, 181);
             tbIndividualniPotrosacNaziv.Name = "tbIndividualniPotrosacNaziv";
             tbIndividualniPotrosacNaziv.Size = new Size(450, 31);
-            tbIndividualniPotrosacNaziv.TabIndex = 9;
+            tbIndividualniPotrosacNaziv.TabIndex = 1;
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(1012, 45);
+            label12.Location = new Point(1012, 153);
             label12.Name = "label12";
             label12.Size = new Size(59, 25);
             label12.TabIndex = 8;
@@ -1262,10 +1143,10 @@
             dgIndividualniPotrosaci.AllowUserToResizeRows = false;
             dgIndividualniPotrosaci.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             dgIndividualniPotrosaci.AutoGenerateColumns = false;
-            dgIndividualniPotrosaci.BackgroundColor = SystemColors.ControlDarkDark;
+            dgIndividualniPotrosaci.BackgroundColor = Color.LightGray;
             dgIndividualniPotrosaci.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgIndividualniPotrosaci.ColumnHeadersVisible = false;
-            dgIndividualniPotrosaci.Columns.AddRange(new DataGridViewColumn[] { nazivDataGridViewTextBoxColumn3, adresaDataGridViewTextBoxColumn1, emailDataGridViewTextBoxColumn, telefonDataGridViewTextBoxColumn, podstanicaIdDataGridViewTextBoxColumn, podstanicaDataGridViewTextBoxColumn, idDataGridViewTextBoxColumn2, isChangedDataGridViewCheckBoxColumn2, isDeletedDataGridViewCheckBoxColumn2 });
+            dgIndividualniPotrosaci.Columns.AddRange(new DataGridViewColumn[] { nazivDataGridViewTextBoxColumn3 });
             dgIndividualniPotrosaci.DataSource = _BsIndividualniPotrosaci;
             dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = SystemColors.Window;
@@ -1276,7 +1157,7 @@
             dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
             dgIndividualniPotrosaci.DefaultCellStyle = dataGridViewCellStyle7;
             dgIndividualniPotrosaci.EditMode = DataGridViewEditMode.EditProgrammatically;
-            dgIndividualniPotrosaci.Location = new Point(6, 52);
+            dgIndividualniPotrosaci.Location = new Point(6, 153);
             dgIndividualniPotrosaci.MultiSelect = false;
             dgIndividualniPotrosaci.Name = "dgIndividualniPotrosaci";
             dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -1290,80 +1171,32 @@
             dgIndividualniPotrosaci.RowHeadersWidth = 32;
             dgIndividualniPotrosaci.ScrollBars = ScrollBars.Vertical;
             dgIndividualniPotrosaci.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgIndividualniPotrosaci.Size = new Size(970, 783);
+            dgIndividualniPotrosaci.Size = new Size(970, 1044);
             dgIndividualniPotrosaci.TabIndex = 7;
+            // 
+            // nazivDataGridViewTextBoxColumn
+            // 
+            nazivDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            nazivDataGridViewTextBoxColumn.DataPropertyName = "Naziv";
+            nazivDataGridViewTextBoxColumn.HeaderText = "Naziv";
+            nazivDataGridViewTextBoxColumn.MinimumWidth = 8;
+            nazivDataGridViewTextBoxColumn.Name = "nazivDataGridViewTextBoxColumn";
+            // 
+            // nazivDataGridViewTextBoxColumn2
+            // 
+            nazivDataGridViewTextBoxColumn2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            nazivDataGridViewTextBoxColumn2.DataPropertyName = "Naziv";
+            nazivDataGridViewTextBoxColumn2.HeaderText = "Naziv";
+            nazivDataGridViewTextBoxColumn2.MinimumWidth = 8;
+            nazivDataGridViewTextBoxColumn2.Name = "nazivDataGridViewTextBoxColumn2";
             // 
             // nazivDataGridViewTextBoxColumn3
             // 
+            nazivDataGridViewTextBoxColumn3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             nazivDataGridViewTextBoxColumn3.DataPropertyName = "Naziv";
             nazivDataGridViewTextBoxColumn3.HeaderText = "Naziv";
             nazivDataGridViewTextBoxColumn3.MinimumWidth = 8;
             nazivDataGridViewTextBoxColumn3.Name = "nazivDataGridViewTextBoxColumn3";
-            nazivDataGridViewTextBoxColumn3.Width = 150;
-            // 
-            // adresaDataGridViewTextBoxColumn1
-            // 
-            adresaDataGridViewTextBoxColumn1.DataPropertyName = "Adresa";
-            adresaDataGridViewTextBoxColumn1.HeaderText = "Adresa";
-            adresaDataGridViewTextBoxColumn1.MinimumWidth = 8;
-            adresaDataGridViewTextBoxColumn1.Name = "adresaDataGridViewTextBoxColumn1";
-            adresaDataGridViewTextBoxColumn1.Width = 150;
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            emailDataGridViewTextBoxColumn.MinimumWidth = 8;
-            emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            emailDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // telefonDataGridViewTextBoxColumn
-            // 
-            telefonDataGridViewTextBoxColumn.DataPropertyName = "Telefon";
-            telefonDataGridViewTextBoxColumn.HeaderText = "Telefon";
-            telefonDataGridViewTextBoxColumn.MinimumWidth = 8;
-            telefonDataGridViewTextBoxColumn.Name = "telefonDataGridViewTextBoxColumn";
-            telefonDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // podstanicaIdDataGridViewTextBoxColumn
-            // 
-            podstanicaIdDataGridViewTextBoxColumn.DataPropertyName = "PodstanicaId";
-            podstanicaIdDataGridViewTextBoxColumn.HeaderText = "PodstanicaId";
-            podstanicaIdDataGridViewTextBoxColumn.MinimumWidth = 8;
-            podstanicaIdDataGridViewTextBoxColumn.Name = "podstanicaIdDataGridViewTextBoxColumn";
-            podstanicaIdDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // podstanicaDataGridViewTextBoxColumn
-            // 
-            podstanicaDataGridViewTextBoxColumn.DataPropertyName = "Podstanica";
-            podstanicaDataGridViewTextBoxColumn.HeaderText = "Podstanica";
-            podstanicaDataGridViewTextBoxColumn.MinimumWidth = 8;
-            podstanicaDataGridViewTextBoxColumn.Name = "podstanicaDataGridViewTextBoxColumn";
-            podstanicaDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // idDataGridViewTextBoxColumn2
-            // 
-            idDataGridViewTextBoxColumn2.DataPropertyName = "Id";
-            idDataGridViewTextBoxColumn2.HeaderText = "Id";
-            idDataGridViewTextBoxColumn2.MinimumWidth = 8;
-            idDataGridViewTextBoxColumn2.Name = "idDataGridViewTextBoxColumn2";
-            idDataGridViewTextBoxColumn2.Width = 150;
-            // 
-            // isChangedDataGridViewCheckBoxColumn2
-            // 
-            isChangedDataGridViewCheckBoxColumn2.DataPropertyName = "IsChanged";
-            isChangedDataGridViewCheckBoxColumn2.HeaderText = "IsChanged";
-            isChangedDataGridViewCheckBoxColumn2.MinimumWidth = 8;
-            isChangedDataGridViewCheckBoxColumn2.Name = "isChangedDataGridViewCheckBoxColumn2";
-            isChangedDataGridViewCheckBoxColumn2.Width = 150;
-            // 
-            // isDeletedDataGridViewCheckBoxColumn2
-            // 
-            isDeletedDataGridViewCheckBoxColumn2.DataPropertyName = "IsDeleted";
-            isDeletedDataGridViewCheckBoxColumn2.HeaderText = "IsDeleted";
-            isDeletedDataGridViewCheckBoxColumn2.MinimumWidth = 8;
-            isDeletedDataGridViewCheckBoxColumn2.Name = "isDeletedDataGridViewCheckBoxColumn2";
-            isDeletedDataGridViewCheckBoxColumn2.Width = 150;
             // 
             // frmMaticniPodaci
             // 
@@ -1372,7 +1205,7 @@
             AutoScroll = true;
             BackColor = SystemColors.Control;
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(2794, 1267);
+            ClientSize = new Size(2791, 1258);
             Controls.Add(tabMaticniPodaci);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -1414,11 +1247,7 @@
         private DataGridView dgKotlarnice;
         private DataGridView dgPodstanice;
         private DataGridViewCheckBoxColumn isDirtyDataGridViewCheckBoxColumn;
-        private DataGridViewTextBoxColumn adresaDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn sefDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn odgovornoLiceDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn tABELANAPLATNOGREGISTRADataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn kOLONANAPLANTONGREGISTRADataGridViewTextBoxColumn;
         private TabControl tabMaticniPodaci;
         private TabPage tpToplane;
         private TabPage tabPage2;
@@ -1461,12 +1290,10 @@
         private TextBox textBox5;
         private Label label16;
         private TextBox textBox4;
-        private Button btnIndividualniPotrosacDelete;
         private Button btnUndoToplane;
         private Button btnMernoMestoPodstanica;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private Button btnMernoMestoIndividualniPotrosac;
-        private Button btnIndividualniPotrosacNovo;
         private Button btnKotlarnice;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private Button btnToplane;
@@ -1477,48 +1304,34 @@
         private Button btnPostaniceIndividualni;
         private Button btnUndoPotrosaci;
         private Button btnSavePotrosaci;
-        private Button button7;
+        private Button btnIndividualniPodstanice;
         private Button btnObrisiToplanu;
         private Button btnDodajToplanu;
         private Label label18;
         private BindingSource _BsPoslovniSistem;
-        private DataGridViewTextBoxColumn nazivDataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn napomenaDataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn poslovniSistemDataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn3;
         private DataGridViewCheckBoxColumn isChangedDataGridViewCheckBoxColumn3;
         private DataGridViewCheckBoxColumn isDeletedDataGridViewCheckBoxColumn3;
-        private DataGridViewTextBoxColumn nazivDataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn napomenaDataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn2;
-        private DataGridViewCheckBoxColumn isChangedDataGridViewCheckBoxColumn2;
-        private DataGridViewCheckBoxColumn isDeletedDataGridViewCheckBoxColumn2;
-        private DataGridViewTextBoxColumn nazivDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private DataGridViewCheckBoxColumn isChangedDataGridViewCheckBoxColumn;
-        private DataGridViewCheckBoxColumn isDeletedDataGridViewCheckBoxColumn;
-        private DataGridViewTextBoxColumn napomenaDataGridViewTextBoxColumn;
         private Button btnKotlarniceObrisi;
         private Button btnKotlarniceDodaj;
         private Button btnUndoKotlarnice;
         private Button btnSaveKotlarnice;
         private Label label19;
         private DataGridViewTextBoxColumn nazivDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn adresaDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn napomenaDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn kotlarnicaIdDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn kotlarnicaDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
-        private DataGridViewCheckBoxColumn isChangedDataGridViewCheckBoxColumn1;
-        private DataGridViewCheckBoxColumn isDeletedDataGridViewCheckBoxColumn1;
-        private DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn telefonDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn podstanicaIdDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn podstanicaDataGridViewTextBoxColumn;
         private Label label20;
         private Label label21;
         private Button btnKPodstaniceObrisi;
         private Button btnKPodstaniceDodaj;
         private Label label22;
+        private Label label23;
+        private Label label24;
+        private Button btnObrisiIndividualni;
+        private Button btnDodajIndividualni;
+        private DataGridViewTextBoxColumn nazivDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nazivDataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn nazivDataGridViewTextBoxColumn3;
     }
 }
