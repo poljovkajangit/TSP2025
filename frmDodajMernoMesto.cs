@@ -15,11 +15,12 @@ namespace TSP2025
 
     public partial class frmDodajMernoMesto : Form
     {
+        private string _oznakaMernogMesta;
         public frmDodajMernoMesto(string oznakaMernogMesta, TipMernogMesta tip, PoslovniSistemDataContext dataSource, int id)
         {
             InitializeComponent();
 
-            tbOznakaMernogMesta.Text = oznakaMernogMesta;
+            tbOznakaMernogMesta.Text = _oznakaMernogMesta = oznakaMernogMesta;
             tbId.Text = id.ToString();
             switch (tip)
             {
@@ -75,18 +76,20 @@ namespace TSP2025
 
                         if (rbPodstanica.Checked)
                         {
-                            FormMessages.ShowConfirm("Uspešno vezano novo merno mesto za podstanicu");
+                            FormMessages.ShowInformation("Uspešno vezano novo merno mesto za podstanicu: " + _oznakaMernogMesta);
                         }
                         else
                         {
-                            FormMessages.ShowConfirm("Uspešno vezano novo merno mesto za individualnog potrošača");
+                            FormMessages.ShowInformation("Uspešno vezano novo merno mesto za individualnog potrošača: " + _oznakaMernogMesta);
                         }
                     }
+
+                    this.Close();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                FormMessages.ShowError("Došlo je do greške prilikom unosa: " + ex.Message);
             }
         }
 

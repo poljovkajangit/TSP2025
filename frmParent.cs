@@ -1,4 +1,6 @@
-﻿namespace TSP2025
+﻿using TSP2025.Utils;
+
+namespace TSP2025
 {
     public partial class frmParent : Form
     {
@@ -7,7 +9,6 @@
         {
             InitializeComponent();
         }
-
         private void frmParent_Shown(object sender, EventArgs e)
         {
             var signInForm = new frmSignIn();
@@ -20,7 +21,6 @@
                 this.Close();
             }
         }
-
         private void mnuMatičniPodaci_Click(object sender, EventArgs e)
         {
             if (_frmMaticniPodaci == null)
@@ -34,7 +34,6 @@
             _frmMaticniPodaci.Activate();
             _frmMaticniPodaci.TopMost = true;
         }
-
         private void zatvoriToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -44,10 +43,22 @@
         {
             (new frmMernaMesta()).Show();
         }
-
         private void poDanimaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             (new frmDnevniIzveštaj()).Show();
+        }
+        private void preuzmiPodatkeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _progressPreuzmi.Value = 0;
+            for (int i = 0; i < 100; i++)
+            {
+                _progressPreuzmi.Value++;
+            }
+            FormMessages.ShowExclamation("... under construction ...");
+        }
+        private void istorijaPreuzimanjaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormMessages.ShowExclamation("... under construction ...");
         }
     }
 }

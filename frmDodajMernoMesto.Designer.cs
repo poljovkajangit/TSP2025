@@ -65,7 +65,7 @@
             btnOk.Location = new Point(305, 461);
             btnOk.Name = "btnOk";
             btnOk.Size = new Size(134, 58);
-            btnOk.TabIndex = 1;
+            btnOk.TabIndex = 4;
             btnOk.Text = "Dodaj";
             btnOk.UseVisualStyleBackColor = true;
             btnOk.Click += btnOk_Click;
@@ -130,11 +130,12 @@
             cbGrupeMernihMesta.Location = new Point(16, 364);
             cbGrupeMernihMesta.Name = "cbGrupeMernihMesta";
             cbGrupeMernihMesta.Size = new Size(423, 33);
-            cbGrupeMernihMesta.TabIndex = 10;
+            cbGrupeMernihMesta.TabIndex = 3;
             // 
             // bsGrupeMernihMesta
             // 
-            bsGrupeMernihMesta.DataMember = "SvaGrupaMernihMesta";
+            bsGrupeMernihMesta.DataMember = "SveGrupaMernihMesta";
+            bsGrupeMernihMesta.DataSource = typeof(Data.PoslovniSistemDataContext);
             // 
             // label4
             // 
@@ -161,7 +162,7 @@
             tbOznakaMernogMesta.Location = new Point(16, 239);
             tbOznakaMernogMesta.Name = "tbOznakaMernogMesta";
             tbOznakaMernogMesta.Size = new Size(423, 31);
-            tbOznakaMernogMesta.TabIndex = 4;
+            tbOznakaMernogMesta.TabIndex = 1;
             // 
             // label3
             // 

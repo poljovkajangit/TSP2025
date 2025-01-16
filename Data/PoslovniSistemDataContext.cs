@@ -37,7 +37,18 @@ namespace TSP2025.Data
                 if (_SveGrupaMernihMesta == null)
                 {
                     UcitajGrupeMernihMesta();
-                    _SveGrupaMernihMesta.Insert(0, new GrupaMernihMesta() { Id = 0, Naziv = "" });
+                    _SveGrupaMernihMesta.Insert(0, new GrupaMernihMesta() { Id = 0, Naziv = "<Sve>" });
+                }
+                return _SveGrupaMernihMesta;
+            }
+        }
+        public List<GrupaMernihMesta> SveGrupaMernihMesta
+        {
+            get
+            {
+                if (_SveGrupaMernihMesta == null)
+                {
+                    UcitajGrupeMernihMesta();
                 }
                 return _SveGrupaMernihMesta;
             }

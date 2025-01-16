@@ -7,9 +7,15 @@
             MessageBox.Show(message, "TSP2025", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public static void ShowConfirm(string message)
+        public static void ShowInformation(string message)
         {
             MessageBox.Show(message, "TSP2025", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        public static void ShowExclamation(string message)
+        {
+            MessageBox.Show(message, "TSP2025", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
     }
 }

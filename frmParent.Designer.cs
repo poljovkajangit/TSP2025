@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmParent));
             sbStatusBar = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
-            toolStripProgressBar1 = new ToolStripProgressBar();
+            _progressPreuzmi = new ToolStripProgressBar();
             menuStrip1 = new MenuStrip();
             mnuOpcije = new ToolStripMenuItem();
             mnuMatičniPodaci = new ToolStripMenuItem();
@@ -40,22 +40,18 @@
             toolStripMenuItem3 = new ToolStripMenuItem();
             poDanimaToolStripMenuItem = new ToolStripMenuItem();
             poMeseciaToolStripMenuItem = new ToolStripMenuItem();
-            poGoToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem4 = new ToolStripSeparator();
-            svaOčitavanjaToolStripMenuItem = new ToolStripMenuItem();
             pomoćToolStripMenuItem = new ToolStripMenuItem();
-            toolStrip1 = new ToolStrip();
-            toolStripButton1 = new ToolStripButton();
+            preuzmiPodatkeToolStripMenuItem = new ToolStripMenuItem();
+            istorijaPreuzimanjaToolStripMenuItem = new ToolStripMenuItem();
             sbStatusBar.SuspendLayout();
             menuStrip1.SuspendLayout();
-            toolStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // sbStatusBar
             // 
             sbStatusBar.GripStyle = ToolStripGripStyle.Visible;
             sbStatusBar.ImageScalingSize = new Size(24, 24);
-            sbStatusBar.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, toolStripProgressBar1 });
+            sbStatusBar.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, _progressPreuzmi });
             sbStatusBar.Location = new Point(1, 1215);
             sbStatusBar.Name = "sbStatusBar";
             sbStatusBar.Size = new Size(2156, 32);
@@ -66,13 +62,13 @@
             // 
             toolStripStatusLabel1.BackColor = Color.Transparent;
             toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            toolStripStatusLabel1.Size = new Size(281, 25);
-            toolStripStatusLabel1.Text = "Anonymus Development (C) 2025";
+            toolStripStatusLabel1.Size = new Size(190, 25);
+            toolStripStatusLabel1.Text = "Development (C) 2025";
             // 
-            // toolStripProgressBar1
+            // _progressPreuzmi
             // 
-            toolStripProgressBar1.Name = "toolStripProgressBar1";
-            toolStripProgressBar1.Size = new Size(200, 24);
+            _progressPreuzmi.Name = "_progressPreuzmi";
+            _progressPreuzmi.Size = new Size(400, 24);
             // 
             // menuStrip1
             // 
@@ -114,7 +110,7 @@
             // 
             // toolStripMenuItem3
             // 
-            toolStripMenuItem3.DropDownItems.AddRange(new ToolStripItem[] { poDanimaToolStripMenuItem, poMeseciaToolStripMenuItem, poGoToolStripMenuItem, toolStripMenuItem4, svaOčitavanjaToolStripMenuItem });
+            toolStripMenuItem3.DropDownItems.AddRange(new ToolStripItem[] { poDanimaToolStripMenuItem, poMeseciaToolStripMenuItem });
             toolStripMenuItem3.Name = "toolStripMenuItem3";
             toolStripMenuItem3.Size = new Size(311, 34);
             toolStripMenuItem3.Text = "Stanje naplatnog registra";
@@ -122,59 +118,36 @@
             // poDanimaToolStripMenuItem
             // 
             poDanimaToolStripMenuItem.Name = "poDanimaToolStripMenuItem";
-            poDanimaToolStripMenuItem.Size = new Size(226, 34);
+            poDanimaToolStripMenuItem.Size = new Size(270, 34);
             poDanimaToolStripMenuItem.Text = "Dnevni";
             poDanimaToolStripMenuItem.Click += poDanimaToolStripMenuItem_Click;
             // 
             // poMeseciaToolStripMenuItem
             // 
             poMeseciaToolStripMenuItem.Name = "poMeseciaToolStripMenuItem";
-            poMeseciaToolStripMenuItem.Size = new Size(226, 34);
+            poMeseciaToolStripMenuItem.Size = new Size(270, 34);
             poMeseciaToolStripMenuItem.Text = "Mesečni";
-            // 
-            // poGoToolStripMenuItem
-            // 
-            poGoToolStripMenuItem.Name = "poGoToolStripMenuItem";
-            poGoToolStripMenuItem.Size = new Size(226, 34);
-            poGoToolStripMenuItem.Text = "Godišnji";
-            // 
-            // toolStripMenuItem4
-            // 
-            toolStripMenuItem4.Name = "toolStripMenuItem4";
-            toolStripMenuItem4.Size = new Size(223, 6);
-            // 
-            // svaOčitavanjaToolStripMenuItem
-            // 
-            svaOčitavanjaToolStripMenuItem.Name = "svaOčitavanjaToolStripMenuItem";
-            svaOčitavanjaToolStripMenuItem.Size = new Size(226, 34);
-            svaOčitavanjaToolStripMenuItem.Text = "Sva očitavanja";
             // 
             // pomoćToolStripMenuItem
             // 
+            pomoćToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { preuzmiPodatkeToolStripMenuItem, istorijaPreuzimanjaToolStripMenuItem });
             pomoćToolStripMenuItem.Name = "pomoćToolStripMenuItem";
-            pomoćToolStripMenuItem.Size = new Size(83, 29);
-            pomoćToolStripMenuItem.Text = "Pomoć";
+            pomoćToolStripMenuItem.Size = new Size(215, 29);
+            pomoćToolStripMenuItem.Text = "Sinhornizacija podataka";
             // 
-            // toolStrip1
+            // preuzmiPodatkeToolStripMenuItem
             // 
-            toolStrip1.AutoSize = false;
-            toolStrip1.ImageScalingSize = new Size(48, 48);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1 });
-            toolStrip1.Location = new Point(1, 34);
-            toolStrip1.Name = "toolStrip1";
-            toolStrip1.RightToLeft = RightToLeft.Yes;
-            toolStrip1.Size = new Size(2156, 90);
-            toolStrip1.TabIndex = 3;
-            toolStrip1.Text = "toolStrip1";
+            preuzmiPodatkeToolStripMenuItem.Name = "preuzmiPodatkeToolStripMenuItem";
+            preuzmiPodatkeToolStripMenuItem.Size = new Size(285, 34);
+            preuzmiPodatkeToolStripMenuItem.Text = "Preuzmi podatke";
+            preuzmiPodatkeToolStripMenuItem.Click += preuzmiPodatkeToolStripMenuItem_Click;
             // 
-            // toolStripButton1
+            // istorijaPreuzimanjaToolStripMenuItem
             // 
-            toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
-            toolStripButton1.ImageScaling = ToolStripItemImageScaling.None;
-            toolStripButton1.ImageTransparentColor = Color.Magenta;
-            toolStripButton1.Name = "toolStripButton1";
-            toolStripButton1.Size = new Size(214, 85);
-            toolStripButton1.Text = "Preuzmi podatke";
+            istorijaPreuzimanjaToolStripMenuItem.Name = "istorijaPreuzimanjaToolStripMenuItem";
+            istorijaPreuzimanjaToolStripMenuItem.Size = new Size(285, 34);
+            istorijaPreuzimanjaToolStripMenuItem.Text = "Istorija preuzimanja ...";
+            istorijaPreuzimanjaToolStripMenuItem.Click += istorijaPreuzimanjaToolStripMenuItem_Click;
             // 
             // frmParent
             // 
@@ -182,7 +155,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlDark;
             ClientSize = new Size(2158, 1248);
-            Controls.Add(toolStrip1);
             Controls.Add(sbStatusBar);
             Controls.Add(menuStrip1);
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -197,8 +169,6 @@
             sbStatusBar.PerformLayout();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            toolStrip1.ResumeLayout(false);
-            toolStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -210,17 +180,14 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem mnuOpcije;
         private ToolStripMenuItem mnuMatičniPodaci;
-        private ToolStripProgressBar toolStripProgressBar1;
+        private ToolStripProgressBar _progressPreuzmi;
         private ToolStripMenuItem toolStripMenuItem2;
         private ToolStripMenuItem izveštajiToolStripMenuItem;
         private ToolStripMenuItem pomoćToolStripMenuItem;
-        private ToolStrip toolStrip1;
-        private ToolStripButton toolStripButton1;
         private ToolStripMenuItem toolStripMenuItem3;
         private ToolStripMenuItem poDanimaToolStripMenuItem;
         private ToolStripMenuItem poMeseciaToolStripMenuItem;
-        private ToolStripMenuItem poGoToolStripMenuItem;
-        private ToolStripSeparator toolStripMenuItem4;
-        private ToolStripMenuItem svaOčitavanjaToolStripMenuItem;
+        private ToolStripMenuItem preuzmiPodatkeToolStripMenuItem;
+        private ToolStripMenuItem istorijaPreuzimanjaToolStripMenuItem;
     }
 }

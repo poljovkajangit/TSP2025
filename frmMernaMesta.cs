@@ -1,5 +1,4 @@
-﻿using System.Data;
-using TSP2025.Data;
+﻿using TSP2025.Data;
 using TSP2025.Data.Model;
 
 namespace TSP2025
@@ -12,23 +11,38 @@ namespace TSP2025
             InitializeComponent();
 
             _DataSource = new PoslovniSistemDataContext();
-            bsGrupeMernihMesta.DataSource = _DataSource.SveGrupaMernihMestaSaPocetnimPraznim;
-            //if (_DataSource != null)
-            //{
-            //    if (bsGrupeMernihMesta.Current != null && (bsGrupeMernihMesta.Current as GrupaMernihMesta).Id > 0)
-            //    {
-            //        bsMernaMesta.DataSource = _DataSource.SvaMernaMesta.Where(mm => mm.GrupaMernogMestaId == (bsGrupeMernihMesta.Current as GrupaMernihMesta).Id).ToList();
-            //    }
-            //    else
-            //    {
             bsMernaMesta.DataSource = _DataSource.SvaMernaMesta;
-            //    }
-            //}
+            bsGrupeMernihMesta.DataSource = _DataSource.SveGrupaMernihMestaSaPocetnimPraznim;
         }
 
-        private void frmMernaMesta_Load(object sender, EventArgs e)
+        private void cbGrupeMernihMesta_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            tbPretraga.Text = "";
+            if (bsGrupeMernihMesta.DataSource != null)
+            {
+                if ((cbGrupeMernihMesta.SelectedItem as GrupaMernihMesta).Id > 0)
+                {
+                    bsMernaMesta.DataSource = _DataSource.SvaMernaMesta.Where(mm => mm.GrupaMernogMestaId == (cbGrupeMernihMesta.SelectedItem as GrupaMernihMesta).Id).ToList();
+                }
+                else
+                {
+                    bsMernaMesta.DataSource = _DataSource.SvaMernaMesta;
+                }
+            }
+        }
 
+        private void btnPretrazi_Click(object sender, EventArgs e)
+        {
+            cbGrupeMernihMesta.SelectedIndex = 0;
+
+            if (!string.IsNullOrWhiteSpace(tbPretraga.Text))
+            {
+                bsMernaMesta.DataSource = _DataSource.SvaMernaMesta.Where(mm => mm.OznakaMernogMesta.Contains(tbPretraga.Text)).ToList();
+            }
+            else
+            {
+                bsMernaMesta.DataSource = _DataSource.SvaMernaMesta;
+            }
         }
     }
 }
