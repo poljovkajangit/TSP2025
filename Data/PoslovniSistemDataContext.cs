@@ -17,9 +17,9 @@ namespace TSP2025.Data
 
         private List<GrupaMernihMesta> _SveGrupaMernihMesta = null;
 
-        private List<MernoMesto> _SvaMernaMesta = null;
+        private ImprovedBindingList<MernoMesto> _SvaMernaMesta = null;
 
-        public List<MernoMesto> SvaMernaMesta
+        public ImprovedBindingList<MernoMesto> SvaMernaMesta
         {
             get
             {
@@ -80,7 +80,7 @@ namespace TSP2025.Data
 
         public void UcitajMernaMesta()
         {
-            _SvaMernaMesta = new List<MernoMesto>();
+            _SvaMernaMesta = new ImprovedBindingList<MernoMesto>();
             using (var ds = new DataSet())
             {
                 using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
@@ -110,19 +110,38 @@ namespace TSP2025.Data
                 }
             }
         }
-        public ImprovedBindingList<Ocitavanje> SvaOcitavanja
+        public IList<Ocitavanje> SvaOcitavanja
         {
             get
             {
-                var svaOcitavanja = new ImprovedBindingList<Ocitavanje>();
-                svaOcitavanja.Add(new Ocitavanje() { Vreme = DateTime.Now.AddDays(0), MernoMesto = "TREND_TSTP1_TP1_1", Vrednost = 100.10M });
-                svaOcitavanja.Add(new Ocitavanje() { Vreme = DateTime.Now.AddDays(1), MernoMesto = "TREND_TSTP1_TP1_1", Vrednost = 200.10M });
-                svaOcitavanja.Add(new Ocitavanje() { Vreme = DateTime.Now.AddDays(2), MernoMesto = "TREND_TSTP1_TP1_1", Vrednost = 300.10M });
-                svaOcitavanja.Add(new Ocitavanje() { Vreme = DateTime.Now.AddDays(3), MernoMesto = "TREND_TSTP1_TP1_2", Vrednost = 300.80M });
-                svaOcitavanja.Add(new Ocitavanje() { Vreme = DateTime.Now.AddDays(4), MernoMesto = "TREND_TSTP1_TP1_1", Vrednost = 400.10M });
-                svaOcitavanja.Add(new Ocitavanje() { Vreme = DateTime.Now.AddDays(5), MernoMesto = "TREND_TSTP1_TP1_1", Vrednost = 400.50M });
-                svaOcitavanja.Add(new Ocitavanje() { Vreme = DateTime.Now.AddDays(6), MernoMesto = "TREND_TSTP1_TP1_1", Vrednost = 600.10M });
-                svaOcitavanja.Add(new Ocitavanje() { Vreme = DateTime.Now.AddDays(7), MernoMesto = "TREND_TSTP1_TP1_1", Vrednost = 900.10M });
+                var svaOcitavanja = new List<Ocitavanje>();
+
+                var dateTime = DateTime.Now.Date;
+                decimal vrednost = 58414M;
+                for (int dan = 0; dan < 90; dan++)
+                {
+                    for (int sat = 0; sat < 24; sat++)
+                    {
+                        dateTime = dateTime.AddHours(1);
+                        svaOcitavanja.Add(new Ocitavanje() { Vreme = dateTime, MernoMestoId = this.SvaMernaMesta[0].Id, MernoMesto = this.SvaMernaMesta[0].OznakaMernogMesta, Vrednost = vrednost++ });
+                        if (this.SvaMernaMesta.Count > 1)
+                        {
+                            svaOcitavanja.Add(new Ocitavanje() { Vreme = dateTime, MernoMestoId = this.SvaMernaMesta[1].Id, MernoMesto = this.SvaMernaMesta[1].OznakaMernogMesta, Vrednost = vrednost++ });
+                        }
+                        if (this.SvaMernaMesta.Count > 2)
+                        {
+                            svaOcitavanja.Add(new Ocitavanje() { Vreme = dateTime, MernoMestoId = this.SvaMernaMesta[2].Id, MernoMesto = this.SvaMernaMesta[2].OznakaMernogMesta, Vrednost = vrednost++ });
+                        }
+                        if (this.SvaMernaMesta.Count > 3)
+                        {
+                            svaOcitavanja.Add(new Ocitavanje() { Vreme = dateTime, MernoMestoId = this.SvaMernaMesta[3].Id, MernoMesto = this.SvaMernaMesta[3].OznakaMernogMesta, Vrednost = vrednost++ });
+                        }
+                        if (this.SvaMernaMesta.Count > 4)
+                        {
+                            svaOcitavanja.Add(new Ocitavanje() { Vreme = dateTime, MernoMestoId = this.SvaMernaMesta[4].Id, MernoMesto = this.SvaMernaMesta[4].OznakaMernogMesta, Vrednost = vrednost++ });
+                        }
+                    }
+                }
                 return svaOcitavanja;
             }
         }

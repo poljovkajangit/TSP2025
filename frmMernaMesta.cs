@@ -1,5 +1,6 @@
 ﻿using TSP2025.Data;
 using TSP2025.Data.Model;
+using TSP2025.Utils;
 
 namespace TSP2025
 {
@@ -43,6 +44,22 @@ namespace TSP2025
             {
                 bsMernaMesta.DataSource = _DataSource.SvaMernaMesta;
             }
+        }
+
+        private void btnDnevniIzvestaj_Click(object sender, EventArgs e)
+        {
+            var mernomesto = bsMernaMesta.Current as MernoMesto;
+            (new frmDnevniIzveštaj(mernomesto)).Show();
+        }
+
+        private void btnMesecniIzvestaj_Click(object sender, EventArgs e)
+        {
+            FormMessages.ShowExclamation("... under construction ...");
+        }
+
+        private void btnGodisnjiIzvestaj_Click(object sender, EventArgs e)
+        {
+            FormMessages.ShowExclamation("... under construction ...");
         }
     }
 }

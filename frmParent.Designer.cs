@@ -127,6 +127,7 @@
             poMeseciaToolStripMenuItem.Name = "poMeseciaToolStripMenuItem";
             poMeseciaToolStripMenuItem.Size = new Size(270, 34);
             poMeseciaToolStripMenuItem.Text = "Mesečni";
+            poMeseciaToolStripMenuItem.Click += poMeseciaToolStripMenuItem_Click;
             // 
             // pomoćToolStripMenuItem
             // 

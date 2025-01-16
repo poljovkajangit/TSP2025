@@ -132,7 +132,7 @@
             label3.Name = "label3";
             label3.Size = new Size(677, 52);
             label3.TabIndex = 7;
-            label3.Text = "2025";
+            label3.Text = "v0.70.2025";
             label3.TextAlign = ContentAlignment.TopRight;
             // 
             // label2

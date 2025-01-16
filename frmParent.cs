@@ -60,5 +60,10 @@ namespace TSP2025
         {
             FormMessages.ShowExclamation("... under construction ...");
         }
+
+        private void poMeseciaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormMessages.ShowExclamation("... under construction ...");
+        }
     }
 }
