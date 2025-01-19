@@ -458,6 +458,7 @@ namespace TSP2025
         {
             if (btnSaveToplane.Visible || btnSaveKotlarnice.Visible || btnSavePodstanice.Visible || btnSavePotrosaci.Visible)
             {
+                FormMessages.ShowExclamation("Saèuvaj ili poništi izmene na formi");
                 e.Cancel = true;
             }
         }

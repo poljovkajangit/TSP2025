@@ -210,7 +210,7 @@
             btnGodisnjiIzvestaj.Name = "btnGodisnjiIzvestaj";
             btnGodisnjiIzvestaj.Size = new Size(260, 64);
             btnGodisnjiIzvestaj.TabIndex = 8;
-            btnGodisnjiIzvestaj.Text = "Godišnji izveštaj ...";
+            btnGodisnjiIzvestaj.Text = "Periodični izveštaj ...";
             btnGodisnjiIzvestaj.UseVisualStyleBackColor = true;
             btnGodisnjiIzvestaj.Click += btnGodisnjiIzvestaj_Click;
             // 
@@ -228,11 +228,10 @@
             Controls.Add(tbPretraga);
             Controls.Add(label1);
             Controls.Add(dgMernaMesta);
-            MaximizeBox = false;
-            MinimizeBox = false;
             Name = "frmMernaMesta";
+            ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Uneta merna mesta";
+            Text = "Merna mesta";
             ((System.ComponentModel.ISupportInitialize)bsGrupeMernihMesta).EndInit();
             ((System.ComponentModel.ISupportInitialize)bsMernaMesta).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgMernaMesta).EndInit();

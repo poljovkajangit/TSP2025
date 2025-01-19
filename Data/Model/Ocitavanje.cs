@@ -13,5 +13,14 @@ namespace TSP2025.Data.Model
         public decimal Vrednost { get; set; }
         public int MernoMestoId { get; set; }
         public string MernoMesto { get; set; }
+        public string VremeFormatirano
+        {
+            get
+            {
+                return Vreme.ToString("dd/MM/yyyy HH:mm");
+            }
+        }
+
+        public decimal Razlika { get; set; }
     }
 }

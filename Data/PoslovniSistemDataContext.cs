@@ -117,28 +117,32 @@ namespace TSP2025.Data
                 var svaOcitavanja = new List<Ocitavanje>();
 
                 var dateTime = DateTime.Now.Date;
-                decimal vrednost = 58414M;
-                for (int dan = 0; dan < 90; dan++)
+                decimal vrednost = 0M;
+                for (int dan = 0; dan < 10; dan++)
                 {
                     for (int sat = 0; sat < 24; sat++)
                     {
-                        dateTime = dateTime.AddHours(1);
-                        svaOcitavanja.Add(new Ocitavanje() { Vreme = dateTime, MernoMestoId = this.SvaMernaMesta[0].Id, MernoMesto = this.SvaMernaMesta[0].OznakaMernogMesta, Vrednost = vrednost++ });
-                        if (this.SvaMernaMesta.Count > 1)
+                        for (int minut = 0; minut < 12; minut++)
                         {
-                            svaOcitavanja.Add(new Ocitavanje() { Vreme = dateTime, MernoMestoId = this.SvaMernaMesta[1].Id, MernoMesto = this.SvaMernaMesta[1].OznakaMernogMesta, Vrednost = vrednost++ });
-                        }
-                        if (this.SvaMernaMesta.Count > 2)
-                        {
-                            svaOcitavanja.Add(new Ocitavanje() { Vreme = dateTime, MernoMestoId = this.SvaMernaMesta[2].Id, MernoMesto = this.SvaMernaMesta[2].OznakaMernogMesta, Vrednost = vrednost++ });
-                        }
-                        if (this.SvaMernaMesta.Count > 3)
-                        {
-                            svaOcitavanja.Add(new Ocitavanje() { Vreme = dateTime, MernoMestoId = this.SvaMernaMesta[3].Id, MernoMesto = this.SvaMernaMesta[3].OznakaMernogMesta, Vrednost = vrednost++ });
-                        }
-                        if (this.SvaMernaMesta.Count > 4)
-                        {
-                            svaOcitavanja.Add(new Ocitavanje() { Vreme = dateTime, MernoMestoId = this.SvaMernaMesta[4].Id, MernoMesto = this.SvaMernaMesta[4].OznakaMernogMesta, Vrednost = vrednost++ });
+                            svaOcitavanja.Add(new Ocitavanje() { Vreme = dateTime, MernoMestoId = this.SvaMernaMesta[0].Id, MernoMesto = this.SvaMernaMesta[0].OznakaMernogMesta, Vrednost = vrednost });
+                            if (this.SvaMernaMesta.Count > 1)
+                            {
+                                svaOcitavanja.Add(new Ocitavanje() { Vreme = dateTime, MernoMestoId = this.SvaMernaMesta[1].Id, MernoMesto = this.SvaMernaMesta[1].OznakaMernogMesta, Vrednost = vrednost });
+                            }
+                            if (this.SvaMernaMesta.Count > 2)
+                            {
+                                svaOcitavanja.Add(new Ocitavanje() { Vreme = dateTime, MernoMestoId = this.SvaMernaMesta[2].Id, MernoMesto = this.SvaMernaMesta[2].OznakaMernogMesta, Vrednost = vrednost });
+                            }
+                            if (this.SvaMernaMesta.Count > 3)
+                            {
+                                svaOcitavanja.Add(new Ocitavanje() { Vreme = dateTime, MernoMestoId = this.SvaMernaMesta[3].Id, MernoMesto = this.SvaMernaMesta[3].OznakaMernogMesta, Vrednost = vrednost });
+                            }
+                            if (this.SvaMernaMesta.Count > 4)
+                            {
+                                svaOcitavanja.Add(new Ocitavanje() { Vreme = dateTime, MernoMestoId = this.SvaMernaMesta[4].Id, MernoMesto = this.SvaMernaMesta[4].OznakaMernogMesta, Vrednost = vrednost });
+                            }
+                            dateTime = dateTime.AddMinutes(5);
+                            vrednost += (new Random()).Next(10);
                         }
                     }
                 }

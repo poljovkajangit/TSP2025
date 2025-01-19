@@ -29,19 +29,20 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMaticniPodaci));
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
             cbToplane = new ComboBox();
             _BsToplane = new BindingSource(components);
             _BsPoslovniSistem = new BindingSource(components);
             dgToplane = new DataGridView();
+            nazivDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             _BsIndividualniPotrosaci = new BindingSource(components);
             _BsPodstanice = new BindingSource(components);
             _BsKotlarnice = new BindingSource(components);
@@ -50,6 +51,7 @@
             nazivDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             cbPodstanice = new ComboBox();
             dgPodstanice = new DataGridView();
+            nazivDataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             tabMaticniPodaci = new TabControl();
             tpToplane = new TabPage();
             label18 = new Label();
@@ -121,8 +123,6 @@
             tbIndividualniPotrosacNaziv = new TextBox();
             label12 = new Label();
             dgIndividualniPotrosaci = new DataGridView();
-            nazivDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            nazivDataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             nazivDataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)_BsToplane).BeginInit();
             ((System.ComponentModel.ISupportInitialize)_BsPoslovniSistem).BeginInit();
@@ -173,45 +173,53 @@
             dgToplane.AutoGenerateColumns = false;
             dgToplane.BackgroundColor = Color.LightGray;
             dgToplane.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Control;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgToplane.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = SystemColors.Control;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Control;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dgToplane.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dgToplane.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgToplane.ColumnHeadersVisible = false;
             dgToplane.Columns.AddRange(new DataGridViewColumn[] { nazivDataGridViewTextBoxColumn });
             dgToplane.DataSource = _BsToplane;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.LightSteelBlue;
-            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgToplane.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = SystemColors.Window;
+            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle10.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = Color.LightSteelBlue;
+            dataGridViewCellStyle10.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.False;
+            dgToplane.DefaultCellStyle = dataGridViewCellStyle10;
             dgToplane.EditMode = DataGridViewEditMode.EditProgrammatically;
             dgToplane.Location = new Point(3, 107);
             dgToplane.MultiSelect = false;
             dgToplane.Name = "dgToplane";
             dgToplane.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.LightSteelBlue;
-            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgToplane.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = SystemColors.Control;
+            dataGridViewCellStyle11.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle11.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = Color.LightSteelBlue;
+            dataGridViewCellStyle11.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
+            dgToplane.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             dgToplane.RowHeadersWidth = 32;
             dgToplane.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgToplane.ScrollBars = ScrollBars.Vertical;
             dgToplane.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgToplane.Size = new Size(970, 1090);
             dgToplane.TabIndex = 8;
+            // 
+            // nazivDataGridViewTextBoxColumn
+            // 
+            nazivDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            nazivDataGridViewTextBoxColumn.DataPropertyName = "Naziv";
+            nazivDataGridViewTextBoxColumn.HeaderText = "Naziv";
+            nazivDataGridViewTextBoxColumn.MinimumWidth = 8;
+            nazivDataGridViewTextBoxColumn.Name = "nazivDataGridViewTextBoxColumn";
             // 
             // _BsIndividualniPotrosaci
             // 
@@ -253,14 +261,14 @@
             dgKotlarnice.ColumnHeadersVisible = false;
             dgKotlarnice.Columns.AddRange(new DataGridViewColumn[] { nazivDataGridViewTextBoxColumn1 });
             dgKotlarnice.DataSource = _BsKotlarnice;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = Color.LightSteelBlue;
-            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgKotlarnice.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = SystemColors.Window;
+            dataGridViewCellStyle12.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle12.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = Color.LightSteelBlue;
+            dataGridViewCellStyle12.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
+            dgKotlarnice.DefaultCellStyle = dataGridViewCellStyle12;
             dgKotlarnice.EditMode = DataGridViewEditMode.EditProgrammatically;
             dgKotlarnice.Location = new Point(6, 135);
             dgKotlarnice.MultiSelect = false;
@@ -304,31 +312,39 @@
             dgPodstanice.ColumnHeadersVisible = false;
             dgPodstanice.Columns.AddRange(new DataGridViewColumn[] { nazivDataGridViewTextBoxColumn2 });
             dgPodstanice.DataSource = _BsPodstanice;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Window;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = Color.LightSteelBlue;
-            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dgPodstanice.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = SystemColors.Window;
+            dataGridViewCellStyle13.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle13.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle13.SelectionBackColor = Color.LightSteelBlue;
+            dataGridViewCellStyle13.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle13.WrapMode = DataGridViewTriState.False;
+            dgPodstanice.DefaultCellStyle = dataGridViewCellStyle13;
             dgPodstanice.EditMode = DataGridViewEditMode.EditProgrammatically;
             dgPodstanice.Location = new Point(6, 119);
             dgPodstanice.MultiSelect = false;
             dgPodstanice.Name = "dgPodstanice";
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Control;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = Color.LightSteelBlue;
-            dataGridViewCellStyle6.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dgPodstanice.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = SystemColors.Control;
+            dataGridViewCellStyle14.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle14.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = Color.LightSteelBlue;
+            dataGridViewCellStyle14.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.True;
+            dgPodstanice.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
             dgPodstanice.RowHeadersWidth = 32;
             dgPodstanice.ScrollBars = ScrollBars.Vertical;
             dgPodstanice.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgPodstanice.Size = new Size(970, 1078);
             dgPodstanice.TabIndex = 6;
+            // 
+            // nazivDataGridViewTextBoxColumn2
+            // 
+            nazivDataGridViewTextBoxColumn2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            nazivDataGridViewTextBoxColumn2.DataPropertyName = "Naziv";
+            nazivDataGridViewTextBoxColumn2.HeaderText = "Naziv";
+            nazivDataGridViewTextBoxColumn2.MinimumWidth = 8;
+            nazivDataGridViewTextBoxColumn2.Name = "nazivDataGridViewTextBoxColumn2";
             // 
             // tabMaticniPodaci
             // 
@@ -1012,7 +1028,6 @@
             // 
             // btnUndoPotrosaci
             // 
-            btnUndoPotrosaci.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnUndoPotrosaci.Image = (Image)resources.GetObject("btnUndoPotrosaci.Image");
             btnUndoPotrosaci.ImageAlign = ContentAlignment.MiddleLeft;
             btnUndoPotrosaci.Location = new Point(775, 83);
@@ -1026,7 +1041,6 @@
             // 
             // btnSavePotrosaci
             // 
-            btnSavePotrosaci.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnSavePotrosaci.Image = (Image)resources.GetObject("btnSavePotrosaci.Image");
             btnSavePotrosaci.ImageAlign = ContentAlignment.MiddleLeft;
             btnSavePotrosaci.Location = new Point(877, 83);
@@ -1148,47 +1162,31 @@
             dgIndividualniPotrosaci.ColumnHeadersVisible = false;
             dgIndividualniPotrosaci.Columns.AddRange(new DataGridViewColumn[] { nazivDataGridViewTextBoxColumn3 });
             dgIndividualniPotrosaci.DataSource = _BsIndividualniPotrosaci;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = SystemColors.Window;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            dataGridViewCellStyle7.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = Color.LightSteelBlue;
-            dataGridViewCellStyle7.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
-            dgIndividualniPotrosaci.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = SystemColors.Window;
+            dataGridViewCellStyle15.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle15.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = Color.LightSteelBlue;
+            dataGridViewCellStyle15.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle15.WrapMode = DataGridViewTriState.False;
+            dgIndividualniPotrosaci.DefaultCellStyle = dataGridViewCellStyle15;
             dgIndividualniPotrosaci.EditMode = DataGridViewEditMode.EditProgrammatically;
             dgIndividualniPotrosaci.Location = new Point(6, 153);
             dgIndividualniPotrosaci.MultiSelect = false;
             dgIndividualniPotrosaci.Name = "dgIndividualniPotrosaci";
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = SystemColors.Control;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = Color.LightSteelBlue;
-            dataGridViewCellStyle8.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dgIndividualniPotrosaci.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = SystemColors.Control;
+            dataGridViewCellStyle16.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle16.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = Color.LightSteelBlue;
+            dataGridViewCellStyle16.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle16.WrapMode = DataGridViewTriState.True;
+            dgIndividualniPotrosaci.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
             dgIndividualniPotrosaci.RowHeadersWidth = 32;
             dgIndividualniPotrosaci.ScrollBars = ScrollBars.Vertical;
             dgIndividualniPotrosaci.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgIndividualniPotrosaci.Size = new Size(970, 1044);
             dgIndividualniPotrosaci.TabIndex = 7;
-            // 
-            // nazivDataGridViewTextBoxColumn
-            // 
-            nazivDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            nazivDataGridViewTextBoxColumn.DataPropertyName = "Naziv";
-            nazivDataGridViewTextBoxColumn.HeaderText = "Naziv";
-            nazivDataGridViewTextBoxColumn.MinimumWidth = 8;
-            nazivDataGridViewTextBoxColumn.Name = "nazivDataGridViewTextBoxColumn";
-            // 
-            // nazivDataGridViewTextBoxColumn2
-            // 
-            nazivDataGridViewTextBoxColumn2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            nazivDataGridViewTextBoxColumn2.DataPropertyName = "Naziv";
-            nazivDataGridViewTextBoxColumn2.HeaderText = "Naziv";
-            nazivDataGridViewTextBoxColumn2.MinimumWidth = 8;
-            nazivDataGridViewTextBoxColumn2.Name = "nazivDataGridViewTextBoxColumn2";
             // 
             // nazivDataGridViewTextBoxColumn3
             // 
@@ -1207,12 +1205,12 @@
             BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(2791, 1258);
             Controls.Add(tabMaticniPodaci);
-            DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MaximizeBox = false;
             Name = "frmMaticniPodaci";
+            ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
+            Text = "Matični podaci";
             FormClosing += frmMaticniPodaci_FormClosing;
             ((System.ComponentModel.ISupportInitialize)_BsToplane).EndInit();
             ((System.ComponentModel.ISupportInitialize)_BsPoslovniSistem).EndInit();

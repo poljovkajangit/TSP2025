@@ -6,10 +6,10 @@ using TSP2025.Utils;
 
 namespace TSP2025
 {
-    public partial class frmDnevniIzveštaj : Form
+    public partial class frmPeriodicniIzveštaj : Form
     {
         PoslovniSistemDataContext _DataSource;
-        public frmDnevniIzveštaj(MernoMesto mernoMesto = null)
+        public frmPeriodicniIzveštaj(MernoMesto mernoMesto = null)
         {
             InitializeComponent();
 
@@ -31,11 +31,57 @@ namespace TSP2025
                     }
                 }
             }
+
+            cbProredi.SelectedIndex = 0;
         }
 
         private void btnPrikazi_Click(object sender, EventArgs e)
         {
-            bsOcitavanja.DataSource = _DataSource.SvaOcitavanja.Where(o => o.MernoMestoId == (bsMernaMesta.Current as MernoMesto).Id && o.Vreme.Date == dtDan.Value.Date).ToList();
+            switch (cbProredi.SelectedIndex)
+            {
+                case 0:
+                    bsOcitavanja.DataSource = _DataSource.SvaOcitavanja.Where(
+                    o =>
+                    o.MernoMestoId == (bsMernaMesta.Current as MernoMesto).Id
+                    &&
+                    o.Vreme >= dtDanOd.Value.Date
+                    &&
+                    o.Vreme < dtDanDo.Value.AddDays(1).Date)
+                    .ToList();
+                    break;
+                case 1:
+                    bsOcitavanja.DataSource = _DataSource.SvaOcitavanja.Where(
+                    o =>
+                    o.Vreme.Minute == 0
+                    &&
+                    o.MernoMestoId == (bsMernaMesta.Current as MernoMesto).Id
+                    &&
+                    o.Vreme >= dtDanOd.Value.Date
+                    &&
+                    o.Vreme < dtDanDo.Value.AddDays(1).Date)
+                    .ToList();
+                    break;
+                case 2:
+                    bsOcitavanja.DataSource = _DataSource.SvaOcitavanja.Where(
+                    o =>
+                    o.Vreme.Date == o.Vreme
+                    &&
+                    o.MernoMestoId == (bsMernaMesta.Current as MernoMesto).Id
+                    &&
+                    o.Vreme >= dtDanOd.Value.Date
+                    &&
+                    o.Vreme < dtDanDo.Value.AddDays(1).Date)
+                    .ToList();
+                    break;
+            }
+
+
+            for (int i = 1; i < bsOcitavanja.Count; i++)
+            {
+                (bsOcitavanja.List as List<Ocitavanje>)[i].Razlika = (bsOcitavanja.List as List<Ocitavanje>)[i].Vrednost - (bsOcitavanja.List as List<Ocitavanje>)[i - 1].Vrednost;
+            }
+
+            lblUkupno.Text = "Ukupno: " + bsOcitavanja.Count;
         }
 
         private void btnExport_Click(object sender, EventArgs e)

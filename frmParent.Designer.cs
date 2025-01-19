@@ -40,6 +40,9 @@
             toolStripMenuItem3 = new ToolStripMenuItem();
             poDanimaToolStripMenuItem = new ToolStripMenuItem();
             poMeseciaToolStripMenuItem = new ToolStripMenuItem();
+            periodičniToolStripMenuItem = new ToolStripMenuItem();
+            izveštajiToolStripMenuItem1 = new ToolStripMenuItem();
+            dnevnaToolStripMenuItem = new ToolStripMenuItem();
             pomoćToolStripMenuItem = new ToolStripMenuItem();
             preuzmiPodatkeToolStripMenuItem = new ToolStripMenuItem();
             istorijaPreuzimanjaToolStripMenuItem = new ToolStripMenuItem();
@@ -72,11 +75,15 @@
             // 
             // menuStrip1
             // 
+            menuStrip1.AutoSize = false;
+            menuStrip1.BackgroundImageLayout = ImageLayout.Center;
             menuStrip1.ImageScalingSize = new Size(24, 24);
             menuStrip1.Items.AddRange(new ToolStripItem[] { mnuOpcije, izveštajiToolStripMenuItem, pomoćToolStripMenuItem });
             menuStrip1.Location = new Point(1, 1);
+            menuStrip1.MinimumSize = new Size(0, 42);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(2156, 33);
+            menuStrip1.Size = new Size(2156, 42);
+            menuStrip1.Stretch = false;
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -84,7 +91,7 @@
             // 
             mnuOpcije.DropDownItems.AddRange(new ToolStripItem[] { mnuMatičniPodaci, toolStripMenuItem2 });
             mnuOpcije.Name = "mnuOpcije";
-            mnuOpcije.Size = new Size(144, 29);
+            mnuOpcije.Size = new Size(144, 38);
             mnuOpcije.Text = "Matični podaci";
             // 
             // mnuMatičniPodaci
@@ -103,14 +110,14 @@
             // 
             // izveštajiToolStripMenuItem
             // 
-            izveštajiToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem3 });
+            izveštajiToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem3, izveštajiToolStripMenuItem1 });
             izveštajiToolStripMenuItem.Name = "izveštajiToolStripMenuItem";
-            izveštajiToolStripMenuItem.Size = new Size(90, 29);
+            izveštajiToolStripMenuItem.Size = new Size(90, 38);
             izveštajiToolStripMenuItem.Text = "Izveštaji";
             // 
             // toolStripMenuItem3
             // 
-            toolStripMenuItem3.DropDownItems.AddRange(new ToolStripItem[] { poDanimaToolStripMenuItem, poMeseciaToolStripMenuItem });
+            toolStripMenuItem3.DropDownItems.AddRange(new ToolStripItem[] { poDanimaToolStripMenuItem, poMeseciaToolStripMenuItem, periodičniToolStripMenuItem });
             toolStripMenuItem3.Name = "toolStripMenuItem3";
             toolStripMenuItem3.Size = new Size(311, 34);
             toolStripMenuItem3.Text = "Stanje naplatnog registra";
@@ -118,22 +125,42 @@
             // poDanimaToolStripMenuItem
             // 
             poDanimaToolStripMenuItem.Name = "poDanimaToolStripMenuItem";
-            poDanimaToolStripMenuItem.Size = new Size(270, 34);
+            poDanimaToolStripMenuItem.Size = new Size(190, 34);
             poDanimaToolStripMenuItem.Text = "Dnevni";
             poDanimaToolStripMenuItem.Click += poDanimaToolStripMenuItem_Click;
             // 
             // poMeseciaToolStripMenuItem
             // 
             poMeseciaToolStripMenuItem.Name = "poMeseciaToolStripMenuItem";
-            poMeseciaToolStripMenuItem.Size = new Size(270, 34);
+            poMeseciaToolStripMenuItem.Size = new Size(190, 34);
             poMeseciaToolStripMenuItem.Text = "Mesečni";
             poMeseciaToolStripMenuItem.Click += poMeseciaToolStripMenuItem_Click;
+            // 
+            // periodičniToolStripMenuItem
+            // 
+            periodičniToolStripMenuItem.Name = "periodičniToolStripMenuItem";
+            periodičniToolStripMenuItem.Size = new Size(190, 34);
+            periodičniToolStripMenuItem.Text = "Periodični";
+            periodičniToolStripMenuItem.Click += periodičniToolStripMenuItem_Click;
+            // 
+            // izveštajiToolStripMenuItem1
+            // 
+            izveštajiToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { dnevnaToolStripMenuItem });
+            izveštajiToolStripMenuItem1.Name = "izveštajiToolStripMenuItem1";
+            izveštajiToolStripMenuItem1.Size = new Size(311, 34);
+            izveštajiToolStripMenuItem1.Text = "Potrošnja";
+            // 
+            // dnevnaToolStripMenuItem
+            // 
+            dnevnaToolStripMenuItem.Name = "dnevnaToolStripMenuItem";
+            dnevnaToolStripMenuItem.Size = new Size(174, 34);
+            dnevnaToolStripMenuItem.Text = "Dnevna";
             // 
             // pomoćToolStripMenuItem
             // 
             pomoćToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { preuzmiPodatkeToolStripMenuItem, istorijaPreuzimanjaToolStripMenuItem });
             pomoćToolStripMenuItem.Name = "pomoćToolStripMenuItem";
-            pomoćToolStripMenuItem.Size = new Size(215, 29);
+            pomoćToolStripMenuItem.Size = new Size(215, 38);
             pomoćToolStripMenuItem.Text = "Sinhornizacija podataka";
             // 
             // preuzmiPodatkeToolStripMenuItem
@@ -190,5 +217,8 @@
         private ToolStripMenuItem poMeseciaToolStripMenuItem;
         private ToolStripMenuItem preuzmiPodatkeToolStripMenuItem;
         private ToolStripMenuItem istorijaPreuzimanjaToolStripMenuItem;
+        private ToolStripMenuItem periodičniToolStripMenuItem;
+        private ToolStripMenuItem izveštajiToolStripMenuItem1;
+        private ToolStripMenuItem dnevnaToolStripMenuItem;
     }
 }

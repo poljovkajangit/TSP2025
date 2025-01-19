@@ -45,7 +45,12 @@ namespace TSP2025
         }
         private void poDanimaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            (new frmDnevniIzveštaj()).Show();
+            var _frmDnevniIzveštaj = new frmDnevniIzveštaj();
+            _frmDnevniIzveštaj.MdiParent = this;
+            _frmDnevniIzveštaj.Show();
+            _frmDnevniIzveštaj.Focus();
+            _frmDnevniIzveštaj.Activate();
+            _frmDnevniIzveštaj.TopMost = true;
         }
         private void preuzmiPodatkeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -64,6 +69,13 @@ namespace TSP2025
         private void poMeseciaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormMessages.ShowExclamation("... under construction ...");
+        }
+
+        private void periodičniToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var _frmPeriodicniIzveštaj = new frmPeriodicniIzveštaj();
+            _frmPeriodicniIzveštaj.MdiParent = this;
+            _frmPeriodicniIzveštaj.Show();
         }
     }
 }

@@ -59,7 +59,8 @@ namespace TSP2025
 
         private void btnGodisnjiIzvestaj_Click(object sender, EventArgs e)
         {
-            FormMessages.ShowExclamation("... under construction ...");
+            var mernomesto = bsMernaMesta.Current as MernoMesto;
+            (new frmPeriodicniIzveštaj(mernomesto)).Show();
         }
     }
 }
