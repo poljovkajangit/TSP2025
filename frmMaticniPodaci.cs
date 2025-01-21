@@ -50,7 +50,7 @@ namespace TSP2025
         #region TOPLANE
         private void btnDodajToplanu_Click(object sender, EventArgs e)
         {
-            var newToplana = new Toplana() { Id = 0, Naziv = "<uneti>", IsChanged = true };
+            var newToplana = new Toplana() { Id = 0, Naziv = "<bavezno polje>", IsChanged = true };
             _BsToplane.Add(newToplana);
             _BsToplane.MoveLast();
             tbToplanaNaziv.Focus();
@@ -129,6 +129,11 @@ namespace TSP2025
         }
         private void btnKotlarnice_Click(object sender, EventArgs e)
         {
+            if (_BsToplane.Current == null)
+            {
+                FormMessages.ShowExclamation("Izaberite toplanu");
+                return;
+            }
             tabMaticniPodaci.SelectedIndex = 1;
         }
         #endregion
@@ -137,7 +142,13 @@ namespace TSP2025
 
         private void btnKotlarniceDodaj_Click(object sender, EventArgs e)
         {
-            var novaKotlarnica = new Kotlarnica() { Id = 0, Naziv = "<uneti>", IsChanged = true, Toplana = _BsToplane.Current as Toplana, ToplanaId = (_BsToplane.Current as Toplana).Id };
+            //var novaKotlarnica = new Kotlarnica() { Id = 0, Naziv = "<bavezno polje>", IsChanged = true, Toplana = _BsToplane.Current as Toplana, ToplanaId = (_BsToplane.Current as Toplana).Id };
+            var novaKotlarnica  = _BsKotlarnice.AddNew() as Kotlarnica  ; //Add(novaKotlarnica);
+            novaKotlarnica.Id = 0;
+            novaKotlarnica.Naziv = "<bavezno polje>";
+            novaKotlarnica.IsChanged = true;
+            //novaKotlarnica.Toplana = _BsToplane.Current as Toplana;
+            novaKotlarnica.ToplanaId = (_BsToplane.Current as Toplana).Id;
             _BsKotlarnice.MoveLast();
             tbKotlarnicaNaziv.Focus();
             tbKotlarnicaNaziv.SelectAll();
@@ -224,6 +235,11 @@ namespace TSP2025
         }
         private void btnPodstanice_Click(object sender, EventArgs e)
         {
+            if (_BsKotlarnice.Current == null)
+            {
+                FormMessages.ShowExclamation("Morate izabrati kotlarnicu");
+                return;
+            }
             tabMaticniPodaci.SelectedIndex = 2;
         }
 
@@ -232,7 +248,7 @@ namespace TSP2025
         #region PODSTANICE
         private void btnKPodstaniceDodaj_Click(object sender, EventArgs e)
         {
-            var novaPodstanica = new Podstanica() { Id = 0, KotlarnicaId = (_BsKotlarnice.Current as Kotlarnica).Id, Naziv = "<uneti>" };
+            var novaPodstanica = new Podstanica() { Id = 0, KotlarnicaId = (_BsKotlarnice.Current as Kotlarnica).Id, Naziv = "<bavezno polje>" };
             _BsPodstanice.Add(novaPodstanica);
             _BsPodstanice.MoveLast();
             tbPodstanicaNaziv.Focus();
@@ -324,6 +340,11 @@ namespace TSP2025
         }
         private void btnPostaniceIndividualni_Click(object sender, EventArgs e)
         {
+            if (_BsPodstanice.Current == null)
+            {
+                FormMessages.ShowExclamation("Morate izabrati podstanicu.");
+                return;
+            }
             tabMaticniPodaci.SelectedIndex = 3;
         }
         #endregion
@@ -331,7 +352,7 @@ namespace TSP2025
         #region Individualni
         private void btnDodajIndividualni_Click(object sender, EventArgs e)
         {
-            var noviIPotrosac = new IndividualniPotrosac() { Naziv = "<obavezno polje>", PodstanicaId = (_BsPodstanice.Current as Podstanica).Id };
+            var noviIPotrosac = new IndividualniPotrosac() { Id = 0, Naziv = "<obavezno polje>", PodstanicaId = (_BsPodstanice.Current as Podstanica).Id };
             _BsIndividualniPotrosaci.Add(noviIPotrosac);
             _BsIndividualniPotrosaci.MoveLast();
             tbIndividualniPotrosacNaziv.Focus();
@@ -459,6 +480,23 @@ namespace TSP2025
             if (btnSaveToplane.Visible || btnSaveKotlarnice.Visible || btnSavePodstanice.Visible || btnSavePotrosaci.Visible)
             {
                 FormMessages.ShowExclamation("Saèuvaj ili poništi izmene na formi");
+                e.Cancel = true;
+            }
+
+            if (e.TabPageIndex > 0 && _BsToplane.Current == null)
+            {
+                e.Cancel = true;
+            }
+            else if (e.TabPageIndex > 1 && _BsKotlarnice.Current == null)
+            {
+                e.Cancel = true;
+            }
+            else if (e.TabPageIndex > 2 && _BsPodstanice.Current == null)
+            {
+                e.Cancel = true;
+            }
+            else if (e.TabPageIndex > 3 && _BsPodstanice.Current == null)
+            {
                 e.Cancel = true;
             }
         }
