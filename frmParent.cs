@@ -4,7 +4,6 @@ namespace TSP2025
 {
     public partial class frmParent : Form
     {
-        frmMaticniPodaci _frmMaticniPodaci;
         public frmParent()
         {
             InitializeComponent();
@@ -23,16 +22,9 @@ namespace TSP2025
         }
         private void mnuMatičniPodaci_Click(object sender, EventArgs e)
         {
-            if (_frmMaticniPodaci == null)
-            {
-                _frmMaticniPodaci = new frmMaticniPodaci();
-                _frmMaticniPodaci.MdiParent = this;
-            }
-
+            var _frmMaticniPodaci = new frmMaticniPodaci();
+            _frmMaticniPodaci.MdiParent = this;
             _frmMaticniPodaci.Show();
-            _frmMaticniPodaci.Focus();
-            _frmMaticniPodaci.Activate();
-            _frmMaticniPodaci.TopMost = true;
         }
         private void zatvoriToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -41,16 +33,9 @@ namespace TSP2025
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            (new frmMernaMesta()).Show();
-        }
-        private void poDanimaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var _frmDnevniIzveštaj = new frmDnevniIzveštaj();
-            _frmDnevniIzveštaj.MdiParent = this;
-            _frmDnevniIzveštaj.Show();
-            _frmDnevniIzveštaj.Focus();
-            _frmDnevniIzveštaj.Activate();
-            _frmDnevniIzveštaj.TopMost = true;
+            var _frmMernaMesta = new frmMernaMesta();
+            _frmMernaMesta.MdiParent = this;
+            _frmMernaMesta.Show();
         }
         private void preuzmiPodatkeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -73,9 +58,23 @@ namespace TSP2025
 
         private void periodičniToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var _frmPeriodicniIzveštaj = new frmPeriodicniIzveštaj();
-            _frmPeriodicniIzveštaj.MdiParent = this;
-            _frmPeriodicniIzveštaj.Show();
+            var frmStanje = new frmStanje();
+            frmStanje.MdiParent = this;
+            frmStanje.Show();
+        }
+
+        private void dnevnaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var _frmPotrosnjaMesecno = new frmPotrosnjaMesecno();
+            _frmPotrosnjaMesecno.MdiParent = this;
+            _frmPotrosnjaMesecno.Show();
+        }
+
+        private void godišnjaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var _frmPotrosnjaGodisnja = new frmPotrosnjaGodisnja();
+            _frmPotrosnjaGodisnja.MdiParent = this;
+            _frmPotrosnjaGodisnja.Show();
         }
     }
 }

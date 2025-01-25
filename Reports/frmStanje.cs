@@ -2,14 +2,15 @@
 using System.Text;
 using TSP2025.Data;
 using TSP2025.Data.Model;
+using TSP2025.Reports;
 using TSP2025.Utils;
 
 namespace TSP2025
 {
-    public partial class frmPeriodicniIzveštaj : Form
+    public partial class frmStanje : Form
     {
         PoslovniSistemDataContext _DataSource;
-        public frmPeriodicniIzveštaj(MernoMesto mernoMesto = null)
+        public frmStanje(MernoMesto mernoMesto = null)
         {
             InitializeComponent();
 
@@ -73,6 +74,36 @@ namespace TSP2025
                     o.Vreme < dtDanDo.Value.AddDays(1).Date)
                     .ToList();
                     break;
+                case 3:
+                    if (cbMesec.SelectedIndex > 0)
+                    {
+                        bsOcitavanja.DataSource = _DataSource.SvaOcitavanja.Where(
+                        o =>
+                        o.Vreme.Date.Day == 1 && o.Vreme.Month == cbMesec.SelectedIndex && o.Vreme.Hour == 0 && o.Vreme.Minute == 0
+                        &&
+                        o.MernoMestoId == (bsMernaMesta.Current as MernoMesto).Id
+                        &&
+                        o.Vreme >= dtDanOd.Value.Date
+                        &&
+                        o.Vreme < dtDanDo.Value.AddDays(1).Date
+                        )
+                        .ToList();
+                    }
+                    else
+                    {
+                        bsOcitavanja.DataSource = _DataSource.SvaOcitavanja.Where(
+                        o =>
+                        o.Vreme.Date.Day == 1 && o.Vreme.Hour == 0 && o.Vreme.Minute == 0
+                        &&
+                        o.MernoMestoId == (bsMernaMesta.Current as MernoMesto).Id
+                        &&
+                        o.Vreme >= dtDanOd.Value.Date
+                        &&
+                        o.Vreme < dtDanDo.Value.AddDays(1).Date
+                        )
+                        .ToList();
+                    }
+                    break;
             }
 
 
@@ -116,6 +147,12 @@ namespace TSP2025
             {
                 FormMessages.ShowError("Došlo je do greške");
             }
+        }
+
+        private void cbGraph_Click(object sender, EventArgs e)
+        {
+            var frmGraph = new frmGraph();
+            frmGraph.Show();
         }
     }
 }

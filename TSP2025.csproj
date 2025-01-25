@@ -33,7 +33,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Update="Reports\frmPeriodicni.cs">
+    <Compile Update="Reports\frmStanje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Reports\Potrosnja\frmPotrosnjaGodisnja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Reports\Potrosnja\frmPotrosnjaMesecno.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

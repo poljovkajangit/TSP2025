@@ -6,10 +6,10 @@ using TSP2025.Utils;
 
 namespace TSP2025
 {
-    public partial class frmDnevniIzveštaj : Form
+    public partial class frmPotrosnjaGodisnja : Form
     {
         PoslovniSistemDataContext _DataSource;
-        public frmDnevniIzveštaj(MernoMesto mernoMesto = null)
+        public frmPotrosnjaGodisnja(MernoMesto mernoMesto = null)
         {
             InitializeComponent();
 
@@ -31,11 +31,30 @@ namespace TSP2025
                     }
                 }
             }
+
+            cbGodina.SelectedIndex = 2;
         }
 
         private void btnPrikazi_Click(object sender, EventArgs e)
         {
-            bsOcitavanja.DataSource = _DataSource.SvaOcitavanja.Where(o => o.MernoMestoId == (bsMernaMesta.Current as MernoMesto).Id && o.Vreme.Date == dtDan.Value.Date).ToList();
+            var godina = new DateTime(Convert.ToInt16(cbGodina.Text), 1, 1);
+            bsOcitavanja.DataSource = _DataSource.SvaOcitavanja.Where(
+                o =>
+                o.Vreme.Year == godina.Year && o.Vreme.Date.Day == 1 && o.Vreme.Date.Hour == 0 && o.Vreme.Minute == 0 && o.Vreme.Second == 0
+                &&
+                o.MernoMestoId == (bsMernaMesta.Current as MernoMesto).Id
+                &&
+                o.Vreme >= godina
+                &&
+                o.Vreme < godina.AddYears(1))
+                .ToList();
+
+            for (int i = 1; i < bsOcitavanja.Count; i++)
+            {
+                (bsOcitavanja.List as List<Ocitavanje>)[i].Razlika = (bsOcitavanja.List as List<Ocitavanje>)[i].Vrednost - (bsOcitavanja.List as List<Ocitavanje>)[i - 1].Vrednost;
+            }
+
+            lblUkupno.Text = "Ukupno: " + bsOcitavanja.Count;
         }
 
         private void btnExport_Click(object sender, EventArgs e)

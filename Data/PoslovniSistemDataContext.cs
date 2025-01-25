@@ -116,13 +116,13 @@ namespace TSP2025.Data
             {
                 var svaOcitavanja = new List<Ocitavanje>();
 
-                var dateTime = DateTime.Now.Date;
+                var dateTime = DateTime.Now.Date.AddYears(-5);
                 decimal vrednost = 0M;
-                for (int dan = 0; dan < 10; dan++)
+                for (int dan = 0; dan < 1780; dan++)
                 {
                     for (int sat = 0; sat < 24; sat++)
                     {
-                        for (int minut = 0; minut < 12; minut++)
+                        for (int minut = 0; minut < 5; minut++)
                         {
                             svaOcitavanja.Add(new Ocitavanje() { Vreme = dateTime, MernoMestoId = this.SvaMernaMesta[0].Id, MernoMesto = this.SvaMernaMesta[0].OznakaMernogMesta, Vrednost = vrednost });
                             if (this.SvaMernaMesta.Count > 1)
@@ -141,7 +141,7 @@ namespace TSP2025.Data
                             {
                                 svaOcitavanja.Add(new Ocitavanje() { Vreme = dateTime, MernoMestoId = this.SvaMernaMesta[4].Id, MernoMesto = this.SvaMernaMesta[4].OznakaMernogMesta, Vrednost = vrednost });
                             }
-                            dateTime = dateTime.AddMinutes(5);
+                            dateTime = dateTime.AddMinutes(15);
                             vrednost += (new Random()).Next(10);
                         }
                     }

@@ -43,8 +43,6 @@
             cbGrupeMernihMesta = new ComboBox();
             label2 = new Label();
             btnPretrazi = new Button();
-            btnDnevniIzvestaj = new Button();
-            btnMesecniIzvestaj = new Button();
             btnGodisnjiIzvestaj = new Button();
             ((System.ComponentModel.ISupportInitialize)bsGrupeMernihMesta).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bsMernaMesta).BeginInit();
@@ -175,42 +173,16 @@
             btnPretrazi.UseVisualStyleBackColor = true;
             btnPretrazi.Click += btnPretrazi_Click;
             // 
-            // btnDnevniIzvestaj
-            // 
-            btnDnevniIzvestaj.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnDnevniIzvestaj.Image = (Image)resources.GetObject("btnDnevniIzvestaj.Image");
-            btnDnevniIzvestaj.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDnevniIzvestaj.Location = new Point(12, 1273);
-            btnDnevniIzvestaj.Name = "btnDnevniIzvestaj";
-            btnDnevniIzvestaj.Size = new Size(260, 64);
-            btnDnevniIzvestaj.TabIndex = 6;
-            btnDnevniIzvestaj.Text = "Dnevni izveštaj ...";
-            btnDnevniIzvestaj.UseVisualStyleBackColor = true;
-            btnDnevniIzvestaj.Click += btnDnevniIzvestaj_Click;
-            // 
-            // btnMesecniIzvestaj
-            // 
-            btnMesecniIzvestaj.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnMesecniIzvestaj.Image = (Image)resources.GetObject("btnMesecniIzvestaj.Image");
-            btnMesecniIzvestaj.ImageAlign = ContentAlignment.MiddleLeft;
-            btnMesecniIzvestaj.Location = new Point(278, 1273);
-            btnMesecniIzvestaj.Name = "btnMesecniIzvestaj";
-            btnMesecniIzvestaj.Size = new Size(260, 64);
-            btnMesecniIzvestaj.TabIndex = 7;
-            btnMesecniIzvestaj.Text = "Mesečni izveštaj ...";
-            btnMesecniIzvestaj.UseVisualStyleBackColor = true;
-            btnMesecniIzvestaj.Click += btnMesecniIzvestaj_Click;
-            // 
             // btnGodisnjiIzvestaj
             // 
             btnGodisnjiIzvestaj.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnGodisnjiIzvestaj.Image = (Image)resources.GetObject("btnGodisnjiIzvestaj.Image");
             btnGodisnjiIzvestaj.ImageAlign = ContentAlignment.MiddleLeft;
-            btnGodisnjiIzvestaj.Location = new Point(544, 1273);
+            btnGodisnjiIzvestaj.Location = new Point(17, 1276);
             btnGodisnjiIzvestaj.Name = "btnGodisnjiIzvestaj";
-            btnGodisnjiIzvestaj.Size = new Size(260, 64);
+            btnGodisnjiIzvestaj.Size = new Size(222, 64);
             btnGodisnjiIzvestaj.TabIndex = 8;
-            btnGodisnjiIzvestaj.Text = "Periodični izveštaj ...";
+            btnGodisnjiIzvestaj.Text = "Stanja ...";
             btnGodisnjiIzvestaj.UseVisualStyleBackColor = true;
             btnGodisnjiIzvestaj.Click += btnGodisnjiIzvestaj_Click;
             // 
@@ -220,8 +192,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1728, 1352);
             Controls.Add(btnGodisnjiIzvestaj);
-            Controls.Add(btnMesecniIzvestaj);
-            Controls.Add(btnDnevniIzvestaj);
             Controls.Add(btnPretrazi);
             Controls.Add(label2);
             Controls.Add(cbGrupeMernihMesta);
@@ -258,8 +228,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private Button btnPretrazi;
-        private Button btnDnevniIzvestaj;
-        private Button btnMesecniIzvestaj;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn grupaMernogMestaNazivDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;

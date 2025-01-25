@@ -45,13 +45,6 @@ namespace TSP2025
                 bsMernaMesta.DataSource = _DataSource.SvaMernaMesta;
             }
         }
-
-        private void btnDnevniIzvestaj_Click(object sender, EventArgs e)
-        {
-            var mernomesto = bsMernaMesta.Current as MernoMesto;
-            (new frmDnevniIzveštaj(mernomesto)).Show();
-        }
-
         private void btnMesecniIzvestaj_Click(object sender, EventArgs e)
         {
             FormMessages.ShowExclamation("... under construction ...");
@@ -60,7 +53,9 @@ namespace TSP2025
         private void btnGodisnjiIzvestaj_Click(object sender, EventArgs e)
         {
             var mernomesto = bsMernaMesta.Current as MernoMesto;
-            (new frmPeriodicniIzveštaj(mernomesto)).Show();
+            var _frmPeriodicniIzveštaj = new frmStanje();
+            _frmPeriodicniIzveštaj.MdiParent = this.ParentForm;
+            _frmPeriodicniIzveštaj.Show();
         }
     }
 }

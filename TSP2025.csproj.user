@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="Reports\frmDnevniIzveštaj.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="frmDodajMernoMesto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -17,6 +14,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="frmSignIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Reports\frmGraph.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

@@ -1,3 +1,4 @@
+using System.Diagnostics.Eventing.Reader;
 using TSP2025.Data;
 using TSP2025.Data.Model;
 using TSP2025.Utils;
@@ -29,8 +30,11 @@ namespace TSP2025
 
         private void frmMaticniPodaci_FormClosing(object sender, FormClosingEventArgs e)
         {
-            e.Cancel = true;
-            this.Hide();
+            if (btnSaveToplane.Visible || btnSaveKotlarnice.Visible || btnSavePodstanice.Visible || btnSavePotrosaci.Visible)
+            {
+                FormMessages.ShowExclamation("Saèuvaj ili poništi izmene na formi");
+                e.Cancel = true;
+            }
         }
 
         private void btnPodstaniceDodajMernoMesto_Click(object sender, EventArgs e)
@@ -81,7 +85,7 @@ namespace TSP2025
         private void btnSaveEnabled_Click(object sender, EventArgs e)
         {
             // za brisanje
-            var toplaneteZaBrisanje = _DataSource.SveToplane.Where(t => t.IsDeleted && t.Id > 0).ToList();
+            var toplaneteZaBrisanje = _DataSource.MojeToplane.Where(t => t.IsDeleted && t.Id > 0).ToList();
             foreach (var item in toplaneteZaBrisanje)
             {
                 try
@@ -115,7 +119,7 @@ namespace TSP2025
                 try
                 {
                     item.Create();
-                    _DataSource.SveToplane.Add(item);
+                    //_DataSource.SveToplane.Add(item);
                 }
                 catch (Exception ex)
                 {
@@ -143,7 +147,7 @@ namespace TSP2025
         private void btnKotlarniceDodaj_Click(object sender, EventArgs e)
         {
             //var novaKotlarnica = new Kotlarnica() { Id = 0, Naziv = "<bavezno polje>", IsChanged = true, Toplana = _BsToplane.Current as Toplana, ToplanaId = (_BsToplane.Current as Toplana).Id };
-            var novaKotlarnica  = _BsKotlarnice.AddNew() as Kotlarnica  ; //Add(novaKotlarnica);
+            var novaKotlarnica = _BsKotlarnice.AddNew() as Kotlarnica; //Add(novaKotlarnica);
             novaKotlarnica.Id = 0;
             novaKotlarnica.Naziv = "<bavezno polje>";
             novaKotlarnica.IsChanged = true;
@@ -498,6 +502,51 @@ namespace TSP2025
             else if (e.TabPageIndex > 3 && _BsPodstanice.Current == null)
             {
                 e.Cancel = true;
+            }
+        }
+        private void _BsToplane_PositionChanged(object sender, EventArgs e)
+        {
+            if (_BsToplane.Position > -1)
+            {
+                gbUnosToplane.Enabled = true;
+            }
+            else
+            {
+                gbUnosToplane.Enabled = false;
+            }
+        }
+        private void _BsKotlarnice_PositionChanged(object sender, EventArgs e)
+        {
+            if (_BsKotlarnice.Position > -1)
+            {
+                gbKotlarnice.Enabled = true;
+            }
+            else
+            {
+                gbKotlarnice.Enabled = false;
+            }
+        }
+        private void _BsPodstanice_PositionChanged(object sender, EventArgs e)
+        {
+            if (_BsPodstanice.Position > -1)
+            {
+                gbUnosPodstanica.Enabled = true;
+            }
+            else
+            {
+                gbUnosPodstanica.Enabled = false;
+            }
+        }
+
+        private void _BsIndividualniPotrosaci_PositionChanged(object sender, EventArgs e)
+        {
+            if (_BsIndividualniPotrosaci.Position > -1)
+            {
+                gUnosbIndividualniPotrosac.Enabled = true;
+            }
+            else
+            {
+                gUnosbIndividualniPotrosac.Enabled = false;
             }
         }
     }
