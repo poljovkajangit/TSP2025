@@ -51,9 +51,10 @@
             // btnCancel
             // 
             btnCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnCancel.Location = new Point(155, 461);
+            btnCancel.Location = new Point(116, 277);
+            btnCancel.Margin = new Padding(2, 2, 2, 2);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(134, 58);
+            btnCancel.Size = new Size(94, 35);
             btnCancel.TabIndex = 0;
             btnCancel.Text = "Odustani";
             btnCancel.UseVisualStyleBackColor = true;
@@ -62,9 +63,10 @@
             // btnOk
             // 
             btnOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnOk.Location = new Point(305, 461);
+            btnOk.Location = new Point(214, 277);
+            btnOk.Margin = new Padding(2, 2, 2, 2);
             btnOk.Name = "btnOk";
-            btnOk.Size = new Size(134, 58);
+            btnOk.Size = new Size(94, 35);
             btnOk.TabIndex = 4;
             btnOk.Text = "Dodaj";
             btnOk.UseVisualStyleBackColor = true;
@@ -74,26 +76,29 @@
             // 
             tbOznakaKalorimetra.BackColor = Color.White;
             tbOznakaKalorimetra.BorderStyle = BorderStyle.FixedSingle;
-            tbOznakaKalorimetra.Location = new Point(16, 302);
+            tbOznakaKalorimetra.Location = new Point(11, 192);
+            tbOznakaKalorimetra.Margin = new Padding(2, 2, 2, 2);
             tbOznakaKalorimetra.Name = "tbOznakaKalorimetra";
-            tbOznakaKalorimetra.Size = new Size(423, 31);
+            tbOznakaKalorimetra.Size = new Size(297, 23);
             tbOznakaKalorimetra.TabIndex = 2;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(11, 273);
+            label1.Location = new Point(14, 172);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(169, 25);
+            label1.Size = new Size(112, 15);
             label1.TabIndex = 3;
             label1.Text = "Oznaka kalorimetar:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(11, 210);
+            label2.Location = new Point(14, 119);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(196, 25);
+            label2.Size = new Size(129, 15);
             label2.TabIndex = 5;
             label2.Text = "Oznaka mernog mesta:";
             // 
@@ -102,9 +107,10 @@
             rbPodstanica.AutoSize = true;
             rbPodstanica.Checked = true;
             rbPodstanica.Enabled = false;
-            rbPodstanica.Location = new Point(166, 53);
+            rbPodstanica.Location = new Point(116, 32);
+            rbPodstanica.Margin = new Padding(2, 2, 2, 2);
             rbPodstanica.Name = "rbPodstanica";
-            rbPodstanica.Size = new Size(123, 29);
+            rbPodstanica.Size = new Size(84, 19);
             rbPodstanica.TabIndex = 8;
             rbPodstanica.TabStop = true;
             rbPodstanica.Text = "Podstanicu";
@@ -114,9 +120,10 @@
             // 
             rbIndividualni.AutoSize = true;
             rbIndividualni.Enabled = false;
-            rbIndividualni.Location = new Point(166, 88);
+            rbIndividualni.Location = new Point(116, 53);
+            rbIndividualni.Margin = new Padding(2, 2, 2, 2);
             rbIndividualni.Name = "rbIndividualni";
-            rbIndividualni.Size = new Size(230, 29);
+            rbIndividualni.Size = new Size(153, 19);
             rbIndividualni.TabIndex = 9;
             rbIndividualni.Text = "Individualnog potrošača";
             rbIndividualni.UseVisualStyleBackColor = true;
@@ -127,9 +134,10 @@
             cbGrupeMernihMesta.DisplayMember = "Naziv";
             cbGrupeMernihMesta.DropDownStyle = ComboBoxStyle.DropDownList;
             cbGrupeMernihMesta.FormattingEnabled = true;
-            cbGrupeMernihMesta.Location = new Point(16, 364);
+            cbGrupeMernihMesta.Location = new Point(11, 244);
+            cbGrupeMernihMesta.Margin = new Padding(2, 2, 2, 2);
             cbGrupeMernihMesta.Name = "cbGrupeMernihMesta";
-            cbGrupeMernihMesta.Size = new Size(423, 33);
+            cbGrupeMernihMesta.Size = new Size(297, 23);
             cbGrupeMernihMesta.TabIndex = 3;
             // 
             // bsGrupeMernihMesta
@@ -140,18 +148,21 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(11, 336);
+            label4.Location = new Point(11, 227);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(123, 25);
+            label4.Size = new Size(81, 15);
             label4.TabIndex = 11;
             label4.Text = "Pripada grupi:";
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(11, 16);
+            pictureBox1.Location = new Point(8, 10);
+            pictureBox1.Margin = new Padding(2, 2, 2, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(131, 132);
+            pictureBox1.Size = new Size(92, 79);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 12;
             pictureBox1.TabStop = false;
             // 
@@ -159,18 +170,20 @@
             // 
             tbOznakaMernogMesta.BackColor = Color.White;
             tbOznakaMernogMesta.BorderStyle = BorderStyle.FixedSingle;
-            tbOznakaMernogMesta.Location = new Point(16, 239);
+            tbOznakaMernogMesta.Location = new Point(11, 139);
+            tbOznakaMernogMesta.Margin = new Padding(2, 2, 2, 2);
             tbOznakaMernogMesta.Name = "tbOznakaMernogMesta";
-            tbOznakaMernogMesta.Size = new Size(423, 31);
+            tbOznakaMernogMesta.Size = new Size(297, 23);
             tbOznakaMernogMesta.TabIndex = 1;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F);
-            label3.Location = new Point(160, 12);
+            label3.Location = new Point(112, 7);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(45, 32);
+            label3.Size = new Size(30, 21);
             label3.TabIndex = 13;
             label3.Text = "Za:";
             // 
@@ -179,17 +192,19 @@
             tbId.BackColor = Color.White;
             tbId.BorderStyle = BorderStyle.FixedSingle;
             tbId.Enabled = false;
-            tbId.Location = new Point(359, 16);
+            tbId.Location = new Point(251, 10);
+            tbId.Margin = new Padding(2, 2, 2, 2);
             tbId.Name = "tbId";
-            tbId.Size = new Size(80, 31);
+            tbId.Size = new Size(57, 23);
             tbId.TabIndex = 14;
             tbId.TextAlign = HorizontalAlignment.Center;
+            tbId.Visible = false;
             // 
             // frmDodajMernoMesto
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(451, 531);
+            ClientSize = new Size(316, 319);
             Controls.Add(tbId);
             Controls.Add(label3);
             Controls.Add(pictureBox1);
@@ -205,6 +220,7 @@
             Controls.Add(btnCancel);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(2, 2, 2, 2);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "frmDodajMernoMesto";

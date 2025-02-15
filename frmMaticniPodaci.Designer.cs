@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle33 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle34 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle35 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle36 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle37 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle38 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMaticniPodaci));
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle39 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle40 = new DataGridViewCellStyle();
             cbToplane = new ComboBox();
             _BsToplane = new BindingSource(components);
             _BsPoslovniSistem = new BindingSource(components);
@@ -156,9 +156,9 @@
             cbToplane.DropDownStyle = ComboBoxStyle.DropDownList;
             cbToplane.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 238);
             cbToplane.FormattingEnabled = true;
-            cbToplane.Location = new Point(92, 9);
+            cbToplane.Location = new Point(91, 10);
             cbToplane.Name = "cbToplane";
-            cbToplane.Size = new Size(600, 40);
+            cbToplane.Size = new Size(598, 40);
             cbToplane.TabIndex = 1;
             cbToplane.ValueMember = "Id";
             // 
@@ -182,44 +182,44 @@
             dgToplane.AutoGenerateColumns = false;
             dgToplane.BackgroundColor = Color.LightGray;
             dgToplane.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Control;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgToplane.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle33.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle33.BackColor = SystemColors.Control;
+            dataGridViewCellStyle33.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle33.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle33.SelectionBackColor = SystemColors.Control;
+            dataGridViewCellStyle33.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle33.WrapMode = DataGridViewTriState.True;
+            dgToplane.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle33;
             dgToplane.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgToplane.ColumnHeadersVisible = false;
             dgToplane.Columns.AddRange(new DataGridViewColumn[] { nazivDataGridViewTextBoxColumn });
             dgToplane.DataSource = _BsToplane;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.LightSteelBlue;
-            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgToplane.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle34.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle34.BackColor = SystemColors.Window;
+            dataGridViewCellStyle34.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle34.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle34.SelectionBackColor = Color.LightSteelBlue;
+            dataGridViewCellStyle34.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle34.WrapMode = DataGridViewTriState.False;
+            dgToplane.DefaultCellStyle = dataGridViewCellStyle34;
             dgToplane.EditMode = DataGridViewEditMode.EditProgrammatically;
-            dgToplane.Location = new Point(3, 125);
+            dgToplane.Location = new Point(3, 167);
             dgToplane.MultiSelect = false;
             dgToplane.Name = "dgToplane";
             dgToplane.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.LightSteelBlue;
-            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgToplane.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle35.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle35.BackColor = SystemColors.Control;
+            dataGridViewCellStyle35.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle35.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle35.SelectionBackColor = Color.LightSteelBlue;
+            dataGridViewCellStyle35.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle35.WrapMode = DataGridViewTriState.True;
+            dgToplane.RowHeadersDefaultCellStyle = dataGridViewCellStyle35;
             dgToplane.RowHeadersWidth = 32;
             dgToplane.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgToplane.ScrollBars = ScrollBars.Vertical;
             dgToplane.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgToplane.Size = new Size(970, 1072);
+            dgToplane.Size = new Size(970, 1035);
             dgToplane.TabIndex = 8;
             // 
             // nazivDataGridViewTextBoxColumn
@@ -255,9 +255,9 @@
             cbKotlarnice.DropDownStyle = ComboBoxStyle.DropDownList;
             cbKotlarnice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 238);
             cbKotlarnice.FormattingEnabled = true;
-            cbKotlarnice.Location = new Point(116, 9);
+            cbKotlarnice.Location = new Point(116, 12);
             cbKotlarnice.Name = "cbKotlarnice";
-            cbKotlarnice.Size = new Size(600, 40);
+            cbKotlarnice.Size = new Size(598, 40);
             cbKotlarnice.TabIndex = 1;
             cbKotlarnice.ValueMember = "Id";
             // 
@@ -273,22 +273,22 @@
             dgKotlarnice.ColumnHeadersVisible = false;
             dgKotlarnice.Columns.AddRange(new DataGridViewColumn[] { nazivDataGridViewTextBoxColumn1 });
             dgKotlarnice.DataSource = _BsKotlarnice;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = Color.LightSteelBlue;
-            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgKotlarnice.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle36.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle36.BackColor = SystemColors.Window;
+            dataGridViewCellStyle36.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle36.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle36.SelectionBackColor = Color.LightSteelBlue;
+            dataGridViewCellStyle36.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle36.WrapMode = DataGridViewTriState.False;
+            dgKotlarnice.DefaultCellStyle = dataGridViewCellStyle36;
             dgKotlarnice.EditMode = DataGridViewEditMode.EditProgrammatically;
-            dgKotlarnice.Location = new Point(6, 125);
+            dgKotlarnice.Location = new Point(6, 183);
             dgKotlarnice.MultiSelect = false;
             dgKotlarnice.Name = "dgKotlarnice";
             dgKotlarnice.RowHeadersWidth = 32;
             dgKotlarnice.ScrollBars = ScrollBars.Vertical;
             dgKotlarnice.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgKotlarnice.Size = new Size(970, 1068);
+            dgKotlarnice.Size = new Size(970, 1018);
             dgKotlarnice.TabIndex = 7;
             // 
             // nazivDataGridViewTextBoxColumn1
@@ -306,9 +306,9 @@
             cbPodstanice.DropDownStyle = ComboBoxStyle.DropDownList;
             cbPodstanice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 238);
             cbPodstanice.FormattingEnabled = true;
-            cbPodstanice.Location = new Point(113, 9);
+            cbPodstanice.Location = new Point(129, 12);
             cbPodstanice.Name = "cbPodstanice";
-            cbPodstanice.Size = new Size(592, 40);
+            cbPodstanice.Size = new Size(598, 40);
             cbPodstanice.TabIndex = 1;
             cbPodstanice.ValueMember = "Id";
             // 
@@ -324,30 +324,30 @@
             dgPodstanice.ColumnHeadersVisible = false;
             dgPodstanice.Columns.AddRange(new DataGridViewColumn[] { nazivDataGridViewTextBoxColumn2 });
             dgPodstanice.DataSource = _BsPodstanice;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Window;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = Color.LightSteelBlue;
-            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dgPodstanice.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle37.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle37.BackColor = SystemColors.Window;
+            dataGridViewCellStyle37.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle37.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle37.SelectionBackColor = Color.LightSteelBlue;
+            dataGridViewCellStyle37.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle37.WrapMode = DataGridViewTriState.False;
+            dgPodstanice.DefaultCellStyle = dataGridViewCellStyle37;
             dgPodstanice.EditMode = DataGridViewEditMode.EditProgrammatically;
-            dgPodstanice.Location = new Point(6, 125);
+            dgPodstanice.Location = new Point(6, 183);
             dgPodstanice.MultiSelect = false;
             dgPodstanice.Name = "dgPodstanice";
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Control;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = Color.LightSteelBlue;
-            dataGridViewCellStyle6.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dgPodstanice.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle38.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle38.BackColor = SystemColors.Control;
+            dataGridViewCellStyle38.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle38.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle38.SelectionBackColor = Color.LightSteelBlue;
+            dataGridViewCellStyle38.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle38.WrapMode = DataGridViewTriState.True;
+            dgPodstanice.RowHeadersDefaultCellStyle = dataGridViewCellStyle38;
             dgPodstanice.RowHeadersWidth = 32;
             dgPodstanice.ScrollBars = ScrollBars.Vertical;
             dgPodstanice.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgPodstanice.Size = new Size(970, 1072);
+            dgPodstanice.Size = new Size(970, 1012);
             dgPodstanice.TabIndex = 6;
             // 
             // nazivDataGridViewTextBoxColumn2
@@ -366,10 +366,10 @@
             tabMaticniPodaci.Controls.Add(tabPage1);
             tabMaticniPodaci.Controls.Add(tabIndividaulniPotrosaci);
             tabMaticniPodaci.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            tabMaticniPodaci.Location = new Point(12, 12);
+            tabMaticniPodaci.Location = new Point(11, 12);
             tabMaticniPodaci.Name = "tabMaticniPodaci";
             tabMaticniPodaci.SelectedIndex = 0;
-            tabMaticniPodaci.Size = new Size(2261, 1241);
+            tabMaticniPodaci.Size = new Size(2059, 1248);
             tabMaticniPodaci.TabIndex = 8;
             tabMaticniPodaci.Selecting += tabMaticniPodaci_Selecting;
             // 
@@ -385,8 +385,8 @@
             tpToplane.Controls.Add(dgToplane);
             tpToplane.Location = new Point(4, 34);
             tpToplane.Name = "tpToplane";
-            tpToplane.Padding = new Padding(3);
-            tpToplane.Size = new Size(2253, 1203);
+            tpToplane.Padding = new Padding(3, 3, 3, 3);
+            tpToplane.Size = new Size(2051, 1210);
             tpToplane.TabIndex = 0;
             tpToplane.Text = "Toplane";
             tpToplane.UseVisualStyleBackColor = true;
@@ -399,9 +399,9 @@
             gbUnosToplane.Controls.Add(label2);
             gbUnosToplane.Controls.Add(tbToplanaNapomena);
             gbUnosToplane.Enabled = false;
-            gbUnosToplane.Location = new Point(979, 125);
+            gbUnosToplane.Location = new Point(979, 167);
             gbUnosToplane.Name = "gbUnosToplane";
-            gbUnosToplane.Size = new Size(639, 1072);
+            gbUnosToplane.Size = new Size(639, 1025);
             gbUnosToplane.TabIndex = 25;
             gbUnosToplane.TabStop = false;
             gbUnosToplane.Text = "Toplana";
@@ -411,7 +411,7 @@
             tbToplanaNaziv.BackColor = Color.White;
             tbToplanaNaziv.BorderStyle = BorderStyle.FixedSingle;
             tbToplanaNaziv.DataBindings.Add(new Binding("Text", _BsToplane, "Naziv", true, DataSourceUpdateMode.OnPropertyChanged));
-            tbToplanaNaziv.Location = new Point(27, 71);
+            tbToplanaNaziv.Location = new Point(27, 87);
             tbToplanaNaziv.Name = "tbToplanaNaziv";
             tbToplanaNaziv.Size = new Size(582, 31);
             tbToplanaNaziv.TabIndex = 1;
@@ -419,7 +419,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(27, 43);
+            label1.Location = new Point(27, 58);
             label1.Name = "label1";
             label1.Size = new Size(59, 25);
             label1.TabIndex = 0;
@@ -428,7 +428,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(27, 105);
+            label2.Location = new Point(27, 128);
             label2.Name = "label2";
             label2.Size = new Size(104, 25);
             label2.TabIndex = 1;
@@ -439,7 +439,7 @@
             tbToplanaNapomena.BackColor = Color.White;
             tbToplanaNapomena.BorderStyle = BorderStyle.FixedSingle;
             tbToplanaNapomena.DataBindings.Add(new Binding("Text", _BsToplane, "Napomena", true, DataSourceUpdateMode.OnPropertyChanged));
-            tbToplanaNapomena.Location = new Point(27, 133);
+            tbToplanaNapomena.Location = new Point(27, 157);
             tbToplanaNapomena.Multiline = true;
             tbToplanaNapomena.Name = "tbToplanaNapomena";
             tbToplanaNapomena.Size = new Size(582, 174);
@@ -451,7 +451,7 @@
             label18.BackColor = Color.LightGray;
             label18.Font = new Font("Segoe UI Black", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 238);
             label18.ForeColor = Color.Gray;
-            label18.Location = new Point(800, 1139);
+            label18.Location = new Point(6, 1144);
             label18.Name = "label18";
             label18.Size = new Size(163, 48);
             label18.TabIndex = 24;
@@ -462,7 +462,7 @@
             btnObrisiToplanu.Image = (Image)resources.GetObject("btnObrisiToplanu.Image");
             btnObrisiToplanu.Location = new Point(124, 55);
             btnObrisiToplanu.Name = "btnObrisiToplanu";
-            btnObrisiToplanu.Size = new Size(112, 64);
+            btnObrisiToplanu.Size = new Size(111, 107);
             btnObrisiToplanu.TabIndex = 23;
             btnObrisiToplanu.UseVisualStyleBackColor = true;
             btnObrisiToplanu.Click += btnObrisiToplanu_Click;
@@ -472,7 +472,7 @@
             btnDodajToplanu.Image = (Image)resources.GetObject("btnDodajToplanu.Image");
             btnDodajToplanu.Location = new Point(6, 55);
             btnDodajToplanu.Name = "btnDodajToplanu";
-            btnDodajToplanu.Size = new Size(112, 64);
+            btnDodajToplanu.Size = new Size(111, 107);
             btnDodajToplanu.TabIndex = 22;
             btnDodajToplanu.UseVisualStyleBackColor = true;
             btnDodajToplanu.Click += btnDodajToplanu_Click;
@@ -480,11 +480,10 @@
             // btnUndoToplane
             // 
             btnUndoToplane.Image = (Image)resources.GetObject("btnUndoToplane.Image");
-            btnUndoToplane.ImageAlign = ContentAlignment.MiddleLeft;
-            btnUndoToplane.Location = new Point(775, 55);
+            btnUndoToplane.Location = new Point(739, 52);
             btnUndoToplane.Name = "btnUndoToplane";
             btnUndoToplane.Padding = new Padding(20, 0, 0, 0);
-            btnUndoToplane.Size = new Size(96, 64);
+            btnUndoToplane.Size = new Size(114, 108);
             btnUndoToplane.TabIndex = 10;
             btnUndoToplane.UseVisualStyleBackColor = true;
             btnUndoToplane.Visible = false;
@@ -493,10 +492,10 @@
             // btnKotlarnice
             // 
             btnKotlarnice.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnKotlarnice.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 238);
-            btnKotlarnice.Location = new Point(2002, 1133);
+            btnKotlarnice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            btnKotlarnice.Location = new Point(1849, 1132);
             btnKotlarnice.Name = "btnKotlarnice";
-            btnKotlarnice.Size = new Size(248, 64);
+            btnKotlarnice.Size = new Size(193, 63);
             btnKotlarnice.TabIndex = 9;
             btnKotlarnice.Text = "Kotlarnice >>>";
             btnKotlarnice.UseVisualStyleBackColor = true;
@@ -506,10 +505,10 @@
             // 
             btnSaveToplane.Image = (Image)resources.GetObject("btnSaveToplane.Image");
             btnSaveToplane.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSaveToplane.Location = new Point(877, 55);
+            btnSaveToplane.Location = new Point(859, 52);
             btnSaveToplane.Name = "btnSaveToplane";
             btnSaveToplane.Padding = new Padding(20, 0, 0, 0);
-            btnSaveToplane.Size = new Size(96, 64);
+            btnSaveToplane.Size = new Size(114, 108);
             btnSaveToplane.TabIndex = 9;
             btnSaveToplane.UseVisualStyleBackColor = true;
             btnSaveToplane.Visible = false;
@@ -530,8 +529,8 @@
             tabPage2.Controls.Add(cbToplane);
             tabPage2.Location = new Point(4, 34);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(2253, 1203);
+            tabPage2.Padding = new Padding(3, 3, 3, 3);
+            tabPage2.Size = new Size(2051, 1210);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Kotlarnice";
             tabPage2.UseVisualStyleBackColor = true;
@@ -550,9 +549,9 @@
             gbKotlarnice.Controls.Add(label7);
             gbKotlarnice.Controls.Add(tbKotlarnicaNapomena);
             gbKotlarnice.Enabled = false;
-            gbKotlarnice.Location = new Point(982, 125);
+            gbKotlarnice.Location = new Point(981, 167);
             gbKotlarnice.Name = "gbKotlarnice";
-            gbKotlarnice.Size = new Size(639, 1067);
+            gbKotlarnice.Size = new Size(639, 1018);
             gbKotlarnice.TabIndex = 30;
             gbKotlarnice.TabStop = false;
             gbKotlarnice.Text = "Kotlarnica";
@@ -579,7 +578,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(35, 109);
+            label4.Location = new Point(34, 117);
             label4.Name = "label4";
             label4.Size = new Size(71, 25);
             label4.TabIndex = 10;
@@ -590,15 +589,15 @@
             tbKotlarnicaAdresa.BackColor = Color.White;
             tbKotlarnicaAdresa.BorderStyle = BorderStyle.FixedSingle;
             tbKotlarnicaAdresa.DataBindings.Add(new Binding("Text", _BsKotlarnice, "Adresa", true, DataSourceUpdateMode.OnPropertyChanged));
-            tbKotlarnicaAdresa.Location = new Point(35, 137);
+            tbKotlarnicaAdresa.Location = new Point(34, 145);
             tbKotlarnicaAdresa.Name = "tbKotlarnicaAdresa";
-            tbKotlarnicaAdresa.Size = new Size(567, 31);
+            tbKotlarnicaAdresa.Size = new Size(568, 31);
             tbKotlarnicaAdresa.TabIndex = 11;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(35, 171);
+            label5.Location = new Point(34, 187);
             label5.Name = "label5";
             label5.Size = new Size(72, 25);
             label5.TabIndex = 12;
@@ -609,7 +608,7 @@
             tbKotlarnicaTelefon.BackColor = Color.White;
             tbKotlarnicaTelefon.BorderStyle = BorderStyle.FixedSingle;
             tbKotlarnicaTelefon.DataBindings.Add(new Binding("Text", _BsKotlarnice, "Telefon", true, DataSourceUpdateMode.OnPropertyChanged));
-            tbKotlarnicaTelefon.Location = new Point(34, 199);
+            tbKotlarnicaTelefon.Location = new Point(34, 213);
             tbKotlarnicaTelefon.Name = "tbKotlarnicaTelefon";
             tbKotlarnicaTelefon.Size = new Size(568, 31);
             tbKotlarnicaTelefon.TabIndex = 13;
@@ -617,7 +616,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(35, 233);
+            label6.Location = new Point(34, 255);
             label6.Name = "label6";
             label6.Size = new Size(140, 25);
             label6.TabIndex = 14;
@@ -628,7 +627,7 @@
             tbKotlarnicaOdgovornoLice.BackColor = Color.White;
             tbKotlarnicaOdgovornoLice.BorderStyle = BorderStyle.FixedSingle;
             tbKotlarnicaOdgovornoLice.DataBindings.Add(new Binding("Text", _BsKotlarnice, "Sef", true, DataSourceUpdateMode.OnPropertyChanged));
-            tbKotlarnicaOdgovornoLice.Location = new Point(34, 261);
+            tbKotlarnicaOdgovornoLice.Location = new Point(34, 283);
             tbKotlarnicaOdgovornoLice.Name = "tbKotlarnicaOdgovornoLice";
             tbKotlarnicaOdgovornoLice.Size = new Size(568, 31);
             tbKotlarnicaOdgovornoLice.TabIndex = 15;
@@ -636,7 +635,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(35, 295);
+            label7.Location = new Point(34, 325);
             label7.Name = "label7";
             label7.Size = new Size(104, 25);
             label7.TabIndex = 16;
@@ -647,7 +646,7 @@
             tbKotlarnicaNapomena.BackColor = Color.White;
             tbKotlarnicaNapomena.BorderStyle = BorderStyle.FixedSingle;
             tbKotlarnicaNapomena.DataBindings.Add(new Binding("Text", _BsKotlarnice, "Napomena", true, DataSourceUpdateMode.OnPropertyChanged));
-            tbKotlarnicaNapomena.Location = new Point(34, 323);
+            tbKotlarnicaNapomena.Location = new Point(34, 353);
             tbKotlarnicaNapomena.Multiline = true;
             tbKotlarnicaNapomena.Name = "tbKotlarnicaNapomena";
             tbKotlarnicaNapomena.Size = new Size(568, 124);
@@ -656,7 +655,7 @@
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new Point(9, 18);
+            label20.Location = new Point(11, 23);
             label20.Name = "label20";
             label20.Size = new Size(77, 25);
             label20.TabIndex = 29;
@@ -668,7 +667,7 @@
             label19.BackColor = Color.LightGray;
             label19.Font = new Font("Segoe UI Black", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 238);
             label19.ForeColor = Color.Gray;
-            label19.Location = new Point(758, 1125);
+            label19.Location = new Point(11, 1137);
             label19.Name = "label19";
             label19.Size = new Size(203, 48);
             label19.TabIndex = 28;
@@ -677,9 +676,9 @@
             // btnKotlarniceObrisi
             // 
             btnKotlarniceObrisi.Image = (Image)resources.GetObject("btnKotlarniceObrisi.Image");
-            btnKotlarniceObrisi.Location = new Point(127, 55);
+            btnKotlarniceObrisi.Location = new Point(126, 72);
             btnKotlarniceObrisi.Name = "btnKotlarniceObrisi";
-            btnKotlarniceObrisi.Size = new Size(112, 64);
+            btnKotlarniceObrisi.Size = new Size(111, 105);
             btnKotlarniceObrisi.TabIndex = 27;
             btnKotlarniceObrisi.UseVisualStyleBackColor = true;
             btnKotlarniceObrisi.Click += btnKotlarniceObrisi_Click;
@@ -687,9 +686,9 @@
             // btnKotlarniceDodaj
             // 
             btnKotlarniceDodaj.Image = (Image)resources.GetObject("btnKotlarniceDodaj.Image");
-            btnKotlarniceDodaj.Location = new Point(9, 55);
+            btnKotlarniceDodaj.Location = new Point(9, 68);
             btnKotlarniceDodaj.Name = "btnKotlarniceDodaj";
-            btnKotlarniceDodaj.Size = new Size(112, 64);
+            btnKotlarniceDodaj.Size = new Size(111, 105);
             btnKotlarniceDodaj.TabIndex = 26;
             btnKotlarniceDodaj.UseVisualStyleBackColor = true;
             btnKotlarniceDodaj.Click += btnKotlarniceDodaj_Click;
@@ -698,10 +697,10 @@
             // 
             btnUndoKotlarnice.Image = (Image)resources.GetObject("btnUndoKotlarnice.Image");
             btnUndoKotlarnice.ImageAlign = ContentAlignment.MiddleLeft;
-            btnUndoKotlarnice.Location = new Point(778, 55);
+            btnUndoKotlarnice.Location = new Point(741, 68);
             btnUndoKotlarnice.Name = "btnUndoKotlarnice";
             btnUndoKotlarnice.Padding = new Padding(20, 0, 0, 0);
-            btnUndoKotlarnice.Size = new Size(96, 64);
+            btnUndoKotlarnice.Size = new Size(114, 108);
             btnUndoKotlarnice.TabIndex = 25;
             btnUndoKotlarnice.UseVisualStyleBackColor = true;
             btnUndoKotlarnice.Visible = false;
@@ -711,10 +710,10 @@
             // 
             btnSaveKotlarnice.Image = (Image)resources.GetObject("btnSaveKotlarnice.Image");
             btnSaveKotlarnice.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSaveKotlarnice.Location = new Point(880, 55);
+            btnSaveKotlarnice.Location = new Point(861, 68);
             btnSaveKotlarnice.Name = "btnSaveKotlarnice";
             btnSaveKotlarnice.Padding = new Padding(20, 0, 0, 0);
-            btnSaveKotlarnice.Size = new Size(96, 64);
+            btnSaveKotlarnice.Size = new Size(114, 108);
             btnSaveKotlarnice.TabIndex = 24;
             btnSaveKotlarnice.UseVisualStyleBackColor = true;
             btnSaveKotlarnice.Visible = false;
@@ -723,10 +722,10 @@
             // btnToplane
             // 
             btnToplane.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnToplane.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 238);
-            btnToplane.Location = new Point(1769, 1118);
+            btnToplane.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            btnToplane.Location = new Point(1849, 1032);
             btnToplane.Name = "btnToplane";
-            btnToplane.Size = new Size(229, 73);
+            btnToplane.Size = new Size(193, 73);
             btnToplane.TabIndex = 19;
             btnToplane.Text = "<<< Toplane";
             btnToplane.UseVisualStyleBackColor = true;
@@ -735,10 +734,10 @@
             // btnPodstanice
             // 
             btnPodstanice.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnPodstanice.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 238);
-            btnPodstanice.Location = new Point(2004, 1118);
+            btnPodstanice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            btnPodstanice.Location = new Point(1849, 1112);
             btnPodstanice.Name = "btnPodstanice";
-            btnPodstanice.Size = new Size(229, 73);
+            btnPodstanice.Size = new Size(193, 73);
             btnPodstanice.TabIndex = 18;
             btnPodstanice.Text = "Podstanice >>>";
             btnPodstanice.UseVisualStyleBackColor = true;
@@ -759,8 +758,8 @@
             tabPage1.Controls.Add(dgPodstanice);
             tabPage1.Location = new Point(4, 34);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(2253, 1203);
+            tabPage1.Padding = new Padding(3, 3, 3, 3);
+            tabPage1.Size = new Size(2051, 1210);
             tabPage1.TabIndex = 2;
             tabPage1.Text = "Podstanice";
             tabPage1.UseVisualStyleBackColor = true;
@@ -782,9 +781,9 @@
             gbUnosPodstanica.Controls.Add(label17);
             gbUnosPodstanica.Controls.Add(textBox5);
             gbUnosPodstanica.Enabled = false;
-            gbUnosPodstanica.Location = new Point(982, 112);
+            gbUnosPodstanica.Location = new Point(981, 183);
             gbUnosPodstanica.Name = "gbUnosPodstanica";
-            gbUnosPodstanica.Size = new Size(639, 1085);
+            gbUnosPodstanica.Size = new Size(639, 1012);
             gbUnosPodstanica.TabIndex = 34;
             gbUnosPodstanica.TabStop = false;
             gbUnosPodstanica.Text = "Podstanica";
@@ -794,7 +793,7 @@
             tbPodstanicaNaziv.BackColor = Color.White;
             tbPodstanicaNaziv.BorderStyle = BorderStyle.FixedSingle;
             tbPodstanicaNaziv.DataBindings.Add(new Binding("Text", _BsPodstanice, "Naziv", true, DataSourceUpdateMode.OnPropertyChanged));
-            tbPodstanicaNaziv.Location = new Point(36, 71);
+            tbPodstanicaNaziv.Location = new Point(36, 75);
             tbPodstanicaNaziv.Name = "tbPodstanicaNaziv";
             tbPodstanicaNaziv.Size = new Size(563, 31);
             tbPodstanicaNaziv.TabIndex = 1;
@@ -802,7 +801,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(36, 43);
+            label8.Location = new Point(40, 43);
             label8.Name = "label8";
             label8.Size = new Size(59, 25);
             label8.TabIndex = 8;
@@ -813,7 +812,7 @@
             textBox1.BackColor = Color.White;
             textBox1.BorderStyle = BorderStyle.FixedSingle;
             textBox1.DataBindings.Add(new Binding("Text", _BsPodstanice, "Adresa", true, DataSourceUpdateMode.OnPropertyChanged));
-            textBox1.Location = new Point(36, 133);
+            textBox1.Location = new Point(36, 150);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(563, 31);
             textBox1.TabIndex = 2;
@@ -821,7 +820,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(36, 105);
+            label9.Location = new Point(40, 118);
             label9.Name = "label9";
             label9.Size = new Size(71, 25);
             label9.TabIndex = 10;
@@ -832,7 +831,7 @@
             textBox2.BackColor = Color.White;
             textBox2.BorderStyle = BorderStyle.FixedSingle;
             textBox2.DataBindings.Add(new Binding("Text", _BsPodstanice, "OdgovornoLice", true, DataSourceUpdateMode.OnPropertyChanged));
-            textBox2.Location = new Point(36, 195);
+            textBox2.Location = new Point(36, 225);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(563, 31);
             textBox2.TabIndex = 3;
@@ -840,7 +839,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(36, 167);
+            label10.Location = new Point(40, 195);
             label10.Name = "label10";
             label10.Size = new Size(140, 25);
             label10.TabIndex = 12;
@@ -851,7 +850,7 @@
             textBox3.BackColor = Color.White;
             textBox3.BorderStyle = BorderStyle.FixedSingle;
             textBox3.DataBindings.Add(new Binding("Text", _BsPodstanice, "Napomena", true, DataSourceUpdateMode.OnPropertyChanged));
-            textBox3.Location = new Point(36, 401);
+            textBox3.Location = new Point(36, 450);
             textBox3.Multiline = true;
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(563, 155);
@@ -860,7 +859,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(36, 373);
+            label11.Location = new Point(40, 418);
             label11.Name = "label11";
             label11.Size = new Size(104, 25);
             label11.TabIndex = 14;
@@ -871,14 +870,14 @@
             textBox4.BackColor = Color.White;
             textBox4.BorderStyle = BorderStyle.FixedSingle;
             textBox4.DataBindings.Add(new Binding("Text", _BsPodstanice, "TABELA_NAPLATNOG_REGISTRA", true, DataSourceUpdateMode.OnPropertyChanged));
-            textBox4.Location = new Point(36, 266);
+            textBox4.Location = new Point(36, 300);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(563, 31);
             textBox4.TabIndex = 4;
             // 
             // btnMernoMestoPodstanica
             // 
-            btnMernoMestoPodstanica.Location = new Point(6, 1009);
+            btnMernoMestoPodstanica.Location = new Point(36, 613);
             btnMernoMestoPodstanica.Name = "btnMernoMestoPodstanica";
             btnMernoMestoPodstanica.Size = new Size(340, 70);
             btnMernoMestoPodstanica.TabIndex = 19;
@@ -889,27 +888,28 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(36, 238);
+            label16.Location = new Point(36, 270);
             label16.Name = "label16";
-            label16.Size = new Size(272, 25);
+            label16.Size = new Size(267, 25);
             label16.TabIndex = 16;
-            label16.Text = "TABELA_NAPLATNOG_REGISTRA:";
+            label16.Text = "SCADA: Naziv tabele podstanice";
+            label16.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(36, 300);
+            label17.Location = new Point(40, 343);
             label17.Name = "label17";
-            label17.Size = new Size(294, 25);
+            label17.Size = new Size(244, 25);
             label17.TabIndex = 18;
-            label17.Text = "KOLONA_NAPLANTONG_REGISTRA:";
+            label17.Text = "SCADA: Naziv kolone u tabeli";
             // 
             // textBox5
             // 
             textBox5.BackColor = Color.White;
             textBox5.BorderStyle = BorderStyle.FixedSingle;
             textBox5.DataBindings.Add(new Binding("Text", _BsPodstanice, "KOLONA_NAPLANTONG_REGISTRA", true, DataSourceUpdateMode.OnPropertyChanged));
-            textBox5.Location = new Point(36, 328);
+            textBox5.Location = new Point(36, 375);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(563, 31);
             textBox5.TabIndex = 5;
@@ -920,7 +920,7 @@
             label22.BackColor = Color.LightGray;
             label22.Font = new Font("Segoe UI Black", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 238);
             label22.ForeColor = Color.Gray;
-            label22.Location = new Point(752, 1139);
+            label22.Location = new Point(11, 1132);
             label22.Name = "label22";
             label22.Size = new Size(214, 48);
             label22.TabIndex = 33;
@@ -929,9 +929,9 @@
             // btnKPodstaniceObrisi
             // 
             btnKPodstaniceObrisi.Image = (Image)resources.GetObject("btnKPodstaniceObrisi.Image");
-            btnKPodstaniceObrisi.Location = new Point(124, 55);
+            btnKPodstaniceObrisi.Location = new Point(124, 67);
             btnKPodstaniceObrisi.Name = "btnKPodstaniceObrisi";
-            btnKPodstaniceObrisi.Size = new Size(112, 64);
+            btnKPodstaniceObrisi.Size = new Size(111, 110);
             btnKPodstaniceObrisi.TabIndex = 32;
             btnKPodstaniceObrisi.UseVisualStyleBackColor = true;
             btnKPodstaniceObrisi.Click += btnKPodstaniceObrisi_Click;
@@ -939,9 +939,9 @@
             // btnKPodstaniceDodaj
             // 
             btnKPodstaniceDodaj.Image = (Image)resources.GetObject("btnKPodstaniceDodaj.Image");
-            btnKPodstaniceDodaj.Location = new Point(6, 55);
+            btnKPodstaniceDodaj.Location = new Point(6, 67);
             btnKPodstaniceDodaj.Name = "btnKPodstaniceDodaj";
-            btnKPodstaniceDodaj.Size = new Size(112, 64);
+            btnKPodstaniceDodaj.Size = new Size(111, 110);
             btnKPodstaniceDodaj.TabIndex = 31;
             btnKPodstaniceDodaj.UseVisualStyleBackColor = true;
             btnKPodstaniceDodaj.Click += btnKPodstaniceDodaj_Click;
@@ -949,7 +949,7 @@
             // label21
             // 
             label21.AutoSize = true;
-            label21.Location = new Point(17, 12);
+            label21.Location = new Point(11, 23);
             label21.Name = "label21";
             label21.Size = new Size(93, 25);
             label21.TabIndex = 30;
@@ -959,10 +959,10 @@
             // 
             btnUndoPodstanice.Image = (Image)resources.GetObject("btnUndoPodstanice.Image");
             btnUndoPodstanice.ImageAlign = ContentAlignment.MiddleLeft;
-            btnUndoPodstanice.Location = new Point(777, 55);
+            btnUndoPodstanice.Location = new Point(741, 55);
             btnUndoPodstanice.Name = "btnUndoPodstanice";
             btnUndoPodstanice.Padding = new Padding(20, 0, 0, 0);
-            btnUndoPodstanice.Size = new Size(96, 64);
+            btnUndoPodstanice.Size = new Size(114, 122);
             btnUndoPodstanice.TabIndex = 25;
             btnUndoPodstanice.UseVisualStyleBackColor = true;
             btnUndoPodstanice.Visible = false;
@@ -972,10 +972,10 @@
             // 
             btnSavePodstanice.Image = (Image)resources.GetObject("btnSavePodstanice.Image");
             btnSavePodstanice.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSavePodstanice.Location = new Point(880, 55);
+            btnSavePodstanice.Location = new Point(861, 55);
             btnSavePodstanice.Name = "btnSavePodstanice";
             btnSavePodstanice.Padding = new Padding(20, 0, 0, 0);
-            btnSavePodstanice.Size = new Size(96, 64);
+            btnSavePodstanice.Size = new Size(114, 122);
             btnSavePodstanice.TabIndex = 24;
             btnSavePodstanice.UseVisualStyleBackColor = true;
             btnSavePodstanice.Visible = false;
@@ -984,10 +984,10 @@
             // btnPodstaniceKotlarnice
             // 
             btnPodstaniceKotlarnice.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnPodstaniceKotlarnice.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 238);
-            btnPodstaniceKotlarnice.Location = new Point(1645, 1121);
+            btnPodstaniceKotlarnice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            btnPodstaniceKotlarnice.Location = new Point(1691, 1027);
             btnPodstaniceKotlarnice.Name = "btnPodstaniceKotlarnice";
-            btnPodstaniceKotlarnice.Size = new Size(229, 73);
+            btnPodstaniceKotlarnice.Size = new Size(350, 73);
             btnPodstaniceKotlarnice.TabIndex = 23;
             btnPodstaniceKotlarnice.Text = "<<< Kotlarnice";
             btnPodstaniceKotlarnice.UseVisualStyleBackColor = true;
@@ -996,8 +996,8 @@
             // btnPostaniceIndividualni
             // 
             btnPostaniceIndividualni.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnPostaniceIndividualni.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 238);
-            btnPostaniceIndividualni.Location = new Point(1880, 1121);
+            btnPostaniceIndividualni.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            btnPostaniceIndividualni.Location = new Point(1691, 1107);
             btnPostaniceIndividualni.Name = "btnPostaniceIndividualni";
             btnPostaniceIndividualni.Size = new Size(350, 73);
             btnPostaniceIndividualni.TabIndex = 22;
@@ -1019,8 +1019,8 @@
             tabIndividaulniPotrosaci.Controls.Add(cbPodstanice);
             tabIndividaulniPotrosaci.Location = new Point(4, 34);
             tabIndividaulniPotrosaci.Name = "tabIndividaulniPotrosaci";
-            tabIndividaulniPotrosaci.Padding = new Padding(3);
-            tabIndividaulniPotrosaci.Size = new Size(2253, 1203);
+            tabIndividaulniPotrosaci.Padding = new Padding(3, 3, 3, 3);
+            tabIndividaulniPotrosaci.Size = new Size(2051, 1210);
             tabIndividaulniPotrosaci.TabIndex = 3;
             tabIndividaulniPotrosaci.Text = "Individualni potrošači";
             tabIndividaulniPotrosaci.UseVisualStyleBackColor = true;
@@ -1038,9 +1038,9 @@
             gUnosbIndividualniPotrosac.Controls.Add(tbIndividualniPotrosacTelefon);
             gUnosbIndividualniPotrosac.Controls.Add(btnMernoMestoIndividualniPotrosac);
             gUnosbIndividualniPotrosac.Enabled = false;
-            gUnosbIndividualniPotrosac.Location = new Point(982, 125);
+            gUnosbIndividualniPotrosac.Location = new Point(981, 183);
             gUnosbIndividualniPotrosac.Name = "gUnosbIndividualniPotrosac";
-            gUnosbIndividualniPotrosac.Size = new Size(639, 1072);
+            gUnosbIndividualniPotrosac.Size = new Size(639, 1012);
             gUnosbIndividualniPotrosac.TabIndex = 37;
             gUnosbIndividualniPotrosac.TabStop = false;
             gUnosbIndividualniPotrosac.Text = "Individualni potrošač";
@@ -1050,7 +1050,7 @@
             tbIndividualniPotrosacNaziv.BackColor = Color.White;
             tbIndividualniPotrosacNaziv.BorderStyle = BorderStyle.FixedSingle;
             tbIndividualniPotrosacNaziv.DataBindings.Add(new Binding("Text", _BsIndividualniPotrosaci, "Naziv", true, DataSourceUpdateMode.OnPropertyChanged));
-            tbIndividualniPotrosacNaziv.Location = new Point(33, 76);
+            tbIndividualniPotrosacNaziv.Location = new Point(33, 77);
             tbIndividualniPotrosacNaziv.Name = "tbIndividualniPotrosacNaziv";
             tbIndividualniPotrosacNaziv.Size = new Size(569, 31);
             tbIndividualniPotrosacNaziv.TabIndex = 1;
@@ -1067,7 +1067,7 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(33, 110);
+            label13.Location = new Point(33, 118);
             label13.Name = "label13";
             label13.Size = new Size(71, 25);
             label13.TabIndex = 10;
@@ -1078,7 +1078,7 @@
             tbIndividualniPotrosacAdresa.BackColor = Color.White;
             tbIndividualniPotrosacAdresa.BorderStyle = BorderStyle.FixedSingle;
             tbIndividualniPotrosacAdresa.DataBindings.Add(new Binding("Text", _BsIndividualniPotrosaci, "Adresa", true, DataSourceUpdateMode.OnPropertyChanged));
-            tbIndividualniPotrosacAdresa.Location = new Point(33, 138);
+            tbIndividualniPotrosacAdresa.Location = new Point(33, 147);
             tbIndividualniPotrosacAdresa.Name = "tbIndividualniPotrosacAdresa";
             tbIndividualniPotrosacAdresa.Size = new Size(569, 31);
             tbIndividualniPotrosacAdresa.TabIndex = 2;
@@ -1086,7 +1086,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(33, 172);
+            label14.Location = new Point(33, 188);
             label14.Name = "label14";
             label14.Size = new Size(58, 25);
             label14.TabIndex = 12;
@@ -1097,7 +1097,7 @@
             tbIndividualniPotrosacEmail.BackColor = Color.White;
             tbIndividualniPotrosacEmail.BorderStyle = BorderStyle.FixedSingle;
             tbIndividualniPotrosacEmail.DataBindings.Add(new Binding("Text", _BsIndividualniPotrosaci, "Email", true, DataSourceUpdateMode.OnPropertyChanged));
-            tbIndividualniPotrosacEmail.Location = new Point(33, 200);
+            tbIndividualniPotrosacEmail.Location = new Point(33, 217);
             tbIndividualniPotrosacEmail.Name = "tbIndividualniPotrosacEmail";
             tbIndividualniPotrosacEmail.Size = new Size(569, 31);
             tbIndividualniPotrosacEmail.TabIndex = 3;
@@ -1105,7 +1105,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(33, 234);
+            label15.Location = new Point(33, 258);
             label15.Name = "label15";
             label15.Size = new Size(72, 25);
             label15.TabIndex = 14;
@@ -1116,14 +1116,14 @@
             tbIndividualniPotrosacTelefon.BackColor = Color.White;
             tbIndividualniPotrosacTelefon.BorderStyle = BorderStyle.FixedSingle;
             tbIndividualniPotrosacTelefon.DataBindings.Add(new Binding("Text", _BsIndividualniPotrosaci, "Telefon", true, DataSourceUpdateMode.OnPropertyChanged));
-            tbIndividualniPotrosacTelefon.Location = new Point(33, 262);
+            tbIndividualniPotrosacTelefon.Location = new Point(33, 287);
             tbIndividualniPotrosacTelefon.Name = "tbIndividualniPotrosacTelefon";
             tbIndividualniPotrosacTelefon.Size = new Size(569, 31);
             tbIndividualniPotrosacTelefon.TabIndex = 4;
             // 
             // btnMernoMestoIndividualniPotrosac
             // 
-            btnMernoMestoIndividualniPotrosac.Location = new Point(6, 962);
+            btnMernoMestoIndividualniPotrosac.Location = new Point(33, 332);
             btnMernoMestoIndividualniPotrosac.Name = "btnMernoMestoIndividualniPotrosac";
             btnMernoMestoIndividualniPotrosac.Size = new Size(340, 70);
             btnMernoMestoIndividualniPotrosac.TabIndex = 20;
@@ -1134,9 +1134,9 @@
             // btnObrisiIndividualni
             // 
             btnObrisiIndividualni.Image = (Image)resources.GetObject("btnObrisiIndividualni.Image");
-            btnObrisiIndividualni.Location = new Point(124, 55);
+            btnObrisiIndividualni.Location = new Point(124, 67);
             btnObrisiIndividualni.Name = "btnObrisiIndividualni";
-            btnObrisiIndividualni.Size = new Size(112, 64);
+            btnObrisiIndividualni.Size = new Size(111, 110);
             btnObrisiIndividualni.TabIndex = 36;
             btnObrisiIndividualni.UseVisualStyleBackColor = true;
             btnObrisiIndividualni.Click += btnObrisiIndividualni_Click;
@@ -1144,9 +1144,9 @@
             // btnDodajIndividualni
             // 
             btnDodajIndividualni.Image = (Image)resources.GetObject("btnDodajIndividualni.Image");
-            btnDodajIndividualni.Location = new Point(6, 55);
+            btnDodajIndividualni.Location = new Point(7, 67);
             btnDodajIndividualni.Name = "btnDodajIndividualni";
-            btnDodajIndividualni.Size = new Size(112, 64);
+            btnDodajIndividualni.Size = new Size(111, 110);
             btnDodajIndividualni.TabIndex = 35;
             btnDodajIndividualni.UseVisualStyleBackColor = true;
             btnDodajIndividualni.Click += btnDodajIndividualni_Click;
@@ -1157,7 +1157,7 @@
             label24.BackColor = Color.LightGray;
             label24.Font = new Font("Segoe UI Black", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 238);
             label24.ForeColor = Color.Gray;
-            label24.Location = new Point(553, 1137);
+            label24.Location = new Point(11, 1135);
             label24.Name = "label24";
             label24.Size = new Size(412, 48);
             label24.TabIndex = 34;
@@ -1166,7 +1166,7 @@
             // label23
             // 
             label23.AutoSize = true;
-            label23.Location = new Point(6, 17);
+            label23.Location = new Point(11, 23);
             label23.Name = "label23";
             label23.Size = new Size(101, 25);
             label23.TabIndex = 31;
@@ -1176,10 +1176,10 @@
             // 
             btnUndoPotrosaci.Image = (Image)resources.GetObject("btnUndoPotrosaci.Image");
             btnUndoPotrosaci.ImageAlign = ContentAlignment.MiddleLeft;
-            btnUndoPotrosaci.Location = new Point(775, 55);
+            btnUndoPotrosaci.Location = new Point(741, 55);
             btnUndoPotrosaci.Name = "btnUndoPotrosaci";
             btnUndoPotrosaci.Padding = new Padding(20, 0, 0, 0);
-            btnUndoPotrosaci.Size = new Size(96, 64);
+            btnUndoPotrosaci.Size = new Size(114, 122);
             btnUndoPotrosaci.TabIndex = 29;
             btnUndoPotrosaci.UseVisualStyleBackColor = true;
             btnUndoPotrosaci.Visible = false;
@@ -1189,10 +1189,10 @@
             // 
             btnSavePotrosaci.Image = (Image)resources.GetObject("btnSavePotrosaci.Image");
             btnSavePotrosaci.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSavePotrosaci.Location = new Point(877, 55);
+            btnSavePotrosaci.Location = new Point(861, 55);
             btnSavePotrosaci.Name = "btnSavePotrosaci";
             btnSavePotrosaci.Padding = new Padding(20, 0, 0, 0);
-            btnSavePotrosaci.Size = new Size(96, 64);
+            btnSavePotrosaci.Size = new Size(114, 122);
             btnSavePotrosaci.TabIndex = 28;
             btnSavePotrosaci.UseVisualStyleBackColor = true;
             btnSavePotrosaci.Visible = false;
@@ -1201,8 +1201,8 @@
             // btnIndividualniPodstanice
             // 
             btnIndividualniPodstanice.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnIndividualniPodstanice.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 238);
-            btnIndividualniPodstanice.Location = new Point(2001, 1124);
+            btnIndividualniPodstanice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            btnIndividualniPodstanice.Location = new Point(1813, 1110);
             btnIndividualniPodstanice.Name = "btnIndividualniPodstanice";
             btnIndividualniPodstanice.Size = new Size(229, 73);
             btnIndividualniPodstanice.TabIndex = 27;
@@ -1222,30 +1222,30 @@
             dgIndividualniPotrosaci.ColumnHeadersVisible = false;
             dgIndividualniPotrosaci.Columns.AddRange(new DataGridViewColumn[] { nazivDataGridViewTextBoxColumn3 });
             dgIndividualniPotrosaci.DataSource = _BsIndividualniPotrosaci;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = SystemColors.Window;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            dataGridViewCellStyle7.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = Color.LightSteelBlue;
-            dataGridViewCellStyle7.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
-            dgIndividualniPotrosaci.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle39.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle39.BackColor = SystemColors.Window;
+            dataGridViewCellStyle39.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle39.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle39.SelectionBackColor = Color.LightSteelBlue;
+            dataGridViewCellStyle39.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle39.WrapMode = DataGridViewTriState.False;
+            dgIndividualniPotrosaci.DefaultCellStyle = dataGridViewCellStyle39;
             dgIndividualniPotrosaci.EditMode = DataGridViewEditMode.EditProgrammatically;
-            dgIndividualniPotrosaci.Location = new Point(6, 125);
+            dgIndividualniPotrosaci.Location = new Point(6, 183);
             dgIndividualniPotrosaci.MultiSelect = false;
             dgIndividualniPotrosaci.Name = "dgIndividualniPotrosaci";
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = SystemColors.Control;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = Color.LightSteelBlue;
-            dataGridViewCellStyle8.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dgIndividualniPotrosaci.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle40.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle40.BackColor = SystemColors.Control;
+            dataGridViewCellStyle40.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle40.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle40.SelectionBackColor = Color.LightSteelBlue;
+            dataGridViewCellStyle40.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle40.WrapMode = DataGridViewTriState.True;
+            dgIndividualniPotrosaci.RowHeadersDefaultCellStyle = dataGridViewCellStyle40;
             dgIndividualniPotrosaci.RowHeadersWidth = 32;
             dgIndividualniPotrosaci.ScrollBars = ScrollBars.Vertical;
             dgIndividualniPotrosaci.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgIndividualniPotrosaci.Size = new Size(970, 1072);
+            dgIndividualniPotrosaci.Size = new Size(970, 1012);
             dgIndividualniPotrosaci.TabIndex = 7;
             // 
             // nazivDataGridViewTextBoxColumn3
@@ -1263,7 +1263,7 @@
             AutoScroll = true;
             BackColor = SystemColors.Control;
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(2285, 1273);
+            ClientSize = new Size(2086, 1278);
             Controls.Add(tabMaticniPodaci);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");

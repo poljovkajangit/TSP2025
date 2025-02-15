@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmStanje));
             dtDanOd = new DateTimePicker();
             dgOcitavanja = new DataGridView();
@@ -68,9 +68,10 @@
             // 
             dtDanOd.CustomFormat = "dd/MM/yyyy";
             dtDanOd.Format = DateTimePickerFormat.Custom;
-            dtDanOd.Location = new Point(12, 48);
+            dtDanOd.Location = new Point(9, 27);
+            dtDanOd.Margin = new Padding(2, 2, 2, 2);
             dtDanOd.Name = "dtDanOd";
-            dtDanOd.Size = new Size(205, 31);
+            dtDanOd.Size = new Size(145, 23);
             dtDanOd.TabIndex = 0;
             // 
             // dgOcitavanja
@@ -81,26 +82,27 @@
             dgOcitavanja.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgOcitavanja.AutoGenerateColumns = false;
             dgOcitavanja.BackgroundColor = Color.LightGray;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = SystemColors.Control;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Control;
-            dataGridViewCellStyle7.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dgOcitavanja.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = SystemColors.Control;
+            dataGridViewCellStyle13.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle13.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = SystemColors.Control;
+            dataGridViewCellStyle13.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle13.WrapMode = DataGridViewTriState.True;
+            dgOcitavanja.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             dgOcitavanja.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgOcitavanja.Columns.AddRange(new DataGridViewColumn[] { vremeDataGridViewTextBoxColumn, Mesec, mernoMestoDataGridViewTextBoxColumn, vrednostDataGridViewTextBoxColumn, Razlika });
             dgOcitavanja.DataSource = bsOcitavanja;
             dgOcitavanja.EditMode = DataGridViewEditMode.EditProgrammatically;
             dgOcitavanja.EnableHeadersVisualStyles = false;
-            dgOcitavanja.Location = new Point(11, 160);
+            dgOcitavanja.Location = new Point(8, 100);
+            dgOcitavanja.Margin = new Padding(2, 2, 2, 2);
             dgOcitavanja.MultiSelect = false;
             dgOcitavanja.Name = "dgOcitavanja";
             dgOcitavanja.RowHeadersWidth = 32;
             dgOcitavanja.ScrollBars = ScrollBars.Vertical;
             dgOcitavanja.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgOcitavanja.Size = new Size(1797, 859);
+            dgOcitavanja.Size = new Size(1258, 511);
             dgOcitavanja.TabIndex = 2;
             // 
             // vremeDataGridViewTextBoxColumn
@@ -132,8 +134,8 @@
             // vrednostDataGridViewTextBoxColumn
             // 
             vrednostDataGridViewTextBoxColumn.DataPropertyName = "Vrednost";
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleRight;
-            vrednostDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleRight;
+            vrednostDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle14;
             vrednostDataGridViewTextBoxColumn.HeaderText = "Stanje";
             vrednostDataGridViewTextBoxColumn.MinimumWidth = 8;
             vrednostDataGridViewTextBoxColumn.Name = "vrednostDataGridViewTextBoxColumn";
@@ -142,8 +144,8 @@
             // Razlika
             // 
             Razlika.DataPropertyName = "Razlika";
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleRight;
-            Razlika.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleRight;
+            Razlika.DefaultCellStyle = dataGridViewCellStyle15;
             Razlika.HeaderText = "Uvećanje";
             Razlika.MinimumWidth = 8;
             Razlika.Name = "Razlika";
@@ -156,9 +158,10 @@
             // 
             // btnPrikazi
             // 
-            btnPrikazi.Location = new Point(906, 118);
+            btnPrikazi.Location = new Point(634, 71);
+            btnPrikazi.Margin = new Padding(2, 2, 2, 2);
             btnPrikazi.Name = "btnPrikazi";
-            btnPrikazi.Size = new Size(147, 36);
+            btnPrikazi.Size = new Size(103, 27);
             btnPrikazi.TabIndex = 3;
             btnPrikazi.Text = "Prikaži";
             btnPrikazi.UseVisualStyleBackColor = true;
@@ -167,9 +170,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 20);
+            label1.Location = new Point(12, 8);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(92, 25);
+            label1.Size = new Size(60, 15);
             label1.TabIndex = 4;
             label1.Text = "Za period:";
             // 
@@ -180,9 +184,10 @@
             cbMernoMesto.DisplayMember = "OznakaMernogMesta";
             cbMernoMesto.DropDownStyle = ComboBoxStyle.DropDownList;
             cbMernoMesto.FormattingEnabled = true;
-            cbMernoMesto.Location = new Point(12, 121);
+            cbMernoMesto.Location = new Point(8, 73);
+            cbMernoMesto.Margin = new Padding(2, 2, 2, 2);
             cbMernoMesto.Name = "cbMernoMesto";
-            cbMernoMesto.Size = new Size(441, 33);
+            cbMernoMesto.Size = new Size(310, 23);
             cbMernoMesto.TabIndex = 7;
             // 
             // bsMernaMesta
@@ -199,9 +204,10 @@
             // 
             btnExport.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnExport.Image = (Image)resources.GetObject("btnExport.Image");
-            btnExport.Location = new Point(1744, 93);
+            btnExport.Location = new Point(1174, 36);
+            btnExport.Margin = new Padding(2, 2, 2, 2);
             btnExport.Name = "btnExport";
-            btnExport.Size = new Size(64, 64);
+            btnExport.Size = new Size(90, 60);
             btnExport.TabIndex = 8;
             btnExport.UseVisualStyleBackColor = true;
             btnExport.Click += btnExport_Click;
@@ -209,9 +215,10 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 93);
+            label2.Location = new Point(12, 55);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(123, 25);
+            label2.Size = new Size(81, 15);
             label2.TabIndex = 9;
             label2.Text = "Merno mesto:";
             // 
@@ -219,17 +226,19 @@
             // 
             dtDanDo.CustomFormat = "dd/MM/yyyy";
             dtDanDo.Format = DateTimePickerFormat.Custom;
-            dtDanDo.Location = new Point(248, 48);
+            dtDanDo.Location = new Point(175, 27);
+            dtDanDo.Margin = new Padding(2, 2, 2, 2);
             dtDanDo.Name = "dtDanDo";
-            dtDanDo.Size = new Size(205, 31);
+            dtDanDo.Size = new Size(143, 23);
             dtDanDo.TabIndex = 10;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(223, 48);
+            label3.Location = new Point(157, 27);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(19, 25);
+            label3.Size = new Size(12, 15);
             label3.TabIndex = 11;
             label3.Text = "-";
             // 
@@ -239,17 +248,19 @@
             cbProredi.DropDownStyle = ComboBoxStyle.DropDownList;
             cbProredi.FormattingEnabled = true;
             cbProredi.Items.AddRange(new object[] { "Sve", "Po satu", "Pa danu", "Po mesecu" });
-            cbProredi.Location = new Point(459, 50);
+            cbProredi.Location = new Point(322, 28);
+            cbProredi.Margin = new Padding(2, 2, 2, 2);
             cbProredi.Name = "cbProredi";
-            cbProredi.Size = new Size(441, 33);
+            cbProredi.Size = new Size(310, 23);
             cbProredi.TabIndex = 12;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(459, 22);
+            label4.Location = new Point(322, 11);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(73, 25);
+            label4.Size = new Size(48, 15);
             label4.TabIndex = 13;
             label4.Text = "Proredi:";
             // 
@@ -257,9 +268,10 @@
             // 
             lblUkupno.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             lblUkupno.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            lblUkupno.Location = new Point(1331, 1022);
+            lblUkupno.Location = new Point(932, 613);
+            lblUkupno.Margin = new Padding(2, 0, 2, 0);
             lblUkupno.Name = "lblUkupno";
-            lblUkupno.Size = new Size(477, 32);
+            lblUkupno.Size = new Size(334, 19);
             lblUkupno.TabIndex = 14;
             lblUkupno.TextAlign = ContentAlignment.TopRight;
             // 
@@ -268,36 +280,40 @@
             cbMesec.DropDownStyle = ComboBoxStyle.DropDownList;
             cbMesec.FormattingEnabled = true;
             cbMesec.Items.AddRange(new object[] { "", "Januar", "Februar", "Mart", "April", "Maj", "Jun", "Jul", "Avgust", "Septembar", "Oktobar", "Novembar", "Decembar" });
-            cbMesec.Location = new Point(459, 121);
+            cbMesec.Location = new Point(321, 73);
+            cbMesec.Margin = new Padding(2, 2, 2, 2);
             cbMesec.Name = "cbMesec";
-            cbMesec.Size = new Size(441, 33);
+            cbMesec.Size = new Size(310, 23);
             cbMesec.TabIndex = 16;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(459, 93);
+            label5.Location = new Point(321, 56);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(66, 25);
+            label5.Size = new Size(44, 15);
             label5.TabIndex = 17;
             label5.Text = "Mesec:";
             // 
             // cbGraph
             // 
             cbGraph.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            cbGraph.Enabled = false;
             cbGraph.Image = (Image)resources.GetObject("cbGraph.Image");
-            cbGraph.Location = new Point(1674, 90);
+            cbGraph.Location = new Point(1080, 36);
+            cbGraph.Margin = new Padding(2, 2, 2, 2);
             cbGraph.Name = "cbGraph";
-            cbGraph.Size = new Size(64, 64);
+            cbGraph.Size = new Size(90, 60);
             cbGraph.TabIndex = 18;
             cbGraph.UseVisualStyleBackColor = true;
             cbGraph.Click += cbGraph_Click;
             // 
             // frmStanje
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1821, 1059);
+            ClientSize = new Size(1275, 635);
             Controls.Add(cbGraph);
             Controls.Add(label5);
             Controls.Add(cbMesec);
@@ -315,6 +331,7 @@
             Controls.Add(dtDanOd);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(2, 2, 2, 2);
             Name = "frmStanje";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;

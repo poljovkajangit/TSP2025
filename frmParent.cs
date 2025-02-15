@@ -76,5 +76,10 @@ namespace TSP2025
             _frmPotrosnjaGodisnja.MdiParent = this;
             _frmPotrosnjaGodisnja.Show();
         }
+
+        private void izlazToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

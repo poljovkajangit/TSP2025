@@ -68,7 +68,7 @@
             dgMernaMesta.BackgroundColor = Color.LightGray;
             dgMernaMesta.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Control;
             dataGridViewCellStyle1.SelectionForeColor = Color.Black;
             dgMernaMesta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
@@ -77,14 +77,15 @@
             dgMernaMesta.DataSource = bsMernaMesta;
             dgMernaMesta.EditMode = DataGridViewEditMode.EditProgrammatically;
             dgMernaMesta.EnableHeadersVisualStyles = false;
-            dgMernaMesta.Location = new Point(12, 71);
+            dgMernaMesta.Location = new Point(8, 43);
+            dgMernaMesta.Margin = new Padding(2, 2, 2, 2);
             dgMernaMesta.MultiSelect = false;
             dgMernaMesta.Name = "dgMernaMesta";
             dgMernaMesta.ReadOnly = true;
             dgMernaMesta.RowHeadersWidth = 32;
             dgMernaMesta.ScrollBars = ScrollBars.Vertical;
             dgMernaMesta.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgMernaMesta.Size = new Size(1704, 1184);
+            dgMernaMesta.Size = new Size(1368, 570);
             dgMernaMesta.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn5
@@ -126,19 +127,21 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 238);
-            label1.Location = new Point(424, 24);
+            label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            label1.Location = new Point(314, 15);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(229, 28);
+            label1.Size = new Size(143, 17);
             label1.TabIndex = 1;
             label1.Text = "Oznaka mernog mesta:";
             // 
             // tbPretraga
             // 
             tbPretraga.BorderStyle = BorderStyle.FixedSingle;
-            tbPretraga.Location = new Point(659, 25);
+            tbPretraga.Location = new Point(461, 12);
+            tbPretraga.Margin = new Padding(2, 2, 2, 2);
             tbPretraga.Name = "tbPretraga";
-            tbPretraga.Size = new Size(327, 31);
+            tbPretraga.Size = new Size(230, 23);
             tbPretraga.TabIndex = 2;
             // 
             // cbGrupeMernihMesta
@@ -147,27 +150,30 @@
             cbGrupeMernihMesta.DisplayMember = "Naziv";
             cbGrupeMernihMesta.DropDownStyle = ComboBoxStyle.DropDownList;
             cbGrupeMernihMesta.FormattingEnabled = true;
-            cbGrupeMernihMesta.Location = new Point(97, 24);
+            cbGrupeMernihMesta.Location = new Point(68, 12);
+            cbGrupeMernihMesta.Margin = new Padding(2, 2, 2, 2);
             cbGrupeMernihMesta.Name = "cbGrupeMernihMesta";
-            cbGrupeMernihMesta.Size = new Size(321, 33);
+            cbGrupeMernihMesta.Size = new Size(226, 23);
             cbGrupeMernihMesta.TabIndex = 3;
             cbGrupeMernihMesta.SelectionChangeCommitted += cbGrupeMernihMesta_SelectionChangeCommitted;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 238);
-            label2.Location = new Point(17, 24);
+            label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            label2.Location = new Point(17, 15);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(74, 28);
+            label2.Size = new Size(47, 17);
             label2.TabIndex = 4;
             label2.Text = "Grupa:";
             // 
             // btnPretrazi
             // 
-            btnPretrazi.Location = new Point(992, 23);
+            btnPretrazi.Location = new Point(695, 13);
+            btnPretrazi.Margin = new Padding(2, 2, 2, 2);
             btnPretrazi.Name = "btnPretrazi";
-            btnPretrazi.Size = new Size(112, 34);
+            btnPretrazi.Size = new Size(78, 26);
             btnPretrazi.TabIndex = 5;
             btnPretrazi.Text = "Pretraži";
             btnPretrazi.UseVisualStyleBackColor = true;
@@ -178,19 +184,20 @@
             btnGodisnjiIzvestaj.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnGodisnjiIzvestaj.Image = (Image)resources.GetObject("btnGodisnjiIzvestaj.Image");
             btnGodisnjiIzvestaj.ImageAlign = ContentAlignment.MiddleLeft;
-            btnGodisnjiIzvestaj.Location = new Point(17, 1276);
+            btnGodisnjiIzvestaj.Location = new Point(7, 617);
+            btnGodisnjiIzvestaj.Margin = new Padding(2, 2, 2, 2);
             btnGodisnjiIzvestaj.Name = "btnGodisnjiIzvestaj";
-            btnGodisnjiIzvestaj.Size = new Size(222, 64);
+            btnGodisnjiIzvestaj.Size = new Size(198, 73);
             btnGodisnjiIzvestaj.TabIndex = 8;
-            btnGodisnjiIzvestaj.Text = "Stanja ...";
+            btnGodisnjiIzvestaj.Text = "Pregled stanja ...";
             btnGodisnjiIzvestaj.UseVisualStyleBackColor = true;
             btnGodisnjiIzvestaj.Click += btnGodisnjiIzvestaj_Click;
             // 
             // frmMernaMesta
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1728, 1352);
+            ClientSize = new Size(1385, 697);
             Controls.Add(btnGodisnjiIzvestaj);
             Controls.Add(btnPretrazi);
             Controls.Add(label2);
@@ -198,6 +205,7 @@
             Controls.Add(tbPretraga);
             Controls.Add(label1);
             Controls.Add(dgMernaMesta);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "frmMernaMesta";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
