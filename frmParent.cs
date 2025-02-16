@@ -63,13 +63,22 @@ namespace TSP2025
             frmStanje.Show();
         }
 
+        private void izlazToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        #region Izvestaji za potrosnju
+        private void trenutniMesecToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
         private void dnevnaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var _frmPotrosnjaMesecno = new frmPotrosnjaMesecno();
             _frmPotrosnjaMesecno.MdiParent = this;
             _frmPotrosnjaMesecno.Show();
         }
-
         private void godišnjaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var _frmPotrosnjaGodisnja = new frmPotrosnjaGodisnja();
@@ -77,9 +86,10 @@ namespace TSP2025
             _frmPotrosnjaGodisnja.Show();
         }
 
-        private void izlazToolStripMenuItem_Click(object sender, EventArgs e)
+        private void periodičnoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Close();
+
         }
+        #endregion
     }
 }

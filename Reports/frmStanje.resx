@@ -129,9 +129,6 @@
   <metadata name="bsMernaMesta.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="bsMernaMesta.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <metadata name="bsGrupaMernihMesta.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>203, 20</value>
   </metadata>
@@ -171,7 +168,7 @@
   <data name="cbGraph.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAARtJREFUaEPtmE1uwkAMhWEVH4NF99VMr0PVY1TKArHkTmy5Br0JfdXkR4oMo3jw
+        EAAACxABrSO9dQAAARtJREFUaEPtmE1uwkAMhWEVH4NF99VMr0PVY1TKArHkTmy5Br0JfdXkR4oMo3jw
         kHTxPsmSNXkQfyyshM2GEEIIIYQ8pAl4k4ifVKnX13NIwFUiMNSvfOBLZxZBItrJIK2+niPlm4BLE3Ea
         +qPOLEK68ShQMsQ0X/rZqlCAAk6WEnjZ1poTkIC9BHyP1bxj152XCvSZ+ltrViDiNvnlUh2G82cEzHkz
         BoGHN871OUrzZihgHKg0b6a2QG7b5PJuqgv0/d22yfVuXiRg7t1QwNm7oYCzd2MRkIhz9yykhqhx7mZW
