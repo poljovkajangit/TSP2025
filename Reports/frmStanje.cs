@@ -151,8 +151,27 @@ namespace TSP2025
 
         private void cbGraph_Click(object sender, EventArgs e)
         {
-            var frmGraph = new frmGraph();
-            frmGraph.Show();
+            var listaRazlika = (bsOcitavanja.List as List<Ocitavanje>).Select(o => (double)o.Razlika).ToList();
+            List<string> listaLabela = null;
+
+            switch (cbProredi.SelectedIndex)
+            {
+                case 0:
+                    listaLabela = (bsOcitavanja.List as List<Ocitavanje>).Select(o => o.VremeFormatirano).ToList();
+                    break;
+                case 1:
+                    listaLabela = (bsOcitavanja.List as List<Ocitavanje>).Select(o => o.VremeFormatirano).ToList();
+                    break;
+                case 2:
+                    listaLabela = (bsOcitavanja.List as List<Ocitavanje>).Select(o => o.VremeFormatirano.Substring(0, 8)).ToList();
+                    break;
+                case 3:
+                    listaLabela = (bsOcitavanja.List as List<Ocitavanje>).Select(o => o.MesecGodina).ToList();
+                    break;
+            }
+
+            var frmGraph = new frmGraph(listaRazlika, listaLabela, (bsMernaMesta.Current as MernoMesto).OznakaMernogMesta);
+            frmGraph.ShowDialog();
         }
     }
 }

@@ -27,29 +27,29 @@ namespace TSP2025.Data.Model
                 switch (Vreme.Month)
                 {
                     case 1:
-                        return "Januar " + Vreme.Year;
+                        return "Jan '" + Vreme.Year.ToString().Substring(2, 2);
                     case 2:
-                        return "Februar " + Vreme.Year;
+                        return "Feb '" + Vreme.Year.ToString().Substring(2, 2);
                     case 3:
-                        return "Mart " + Vreme.Year;
+                        return "Mar '" + Vreme.Year.ToString().Substring(2, 2);
                     case 4:
-                        return "April " + Vreme.Year;
+                        return "Apr '" + Vreme.Year.ToString().Substring(2, 2);
                     case 5:
-                        return "Maj " + Vreme.Year;
+                        return "Maj '" + Vreme.Year.ToString().Substring(2, 2);
                     case 6:
-                        return "Jun " + Vreme.Year;
+                        return "Jun '" + Vreme.Year.ToString().Substring(2, 2);
                     case 7:
-                        return "Jul " + Vreme.Year;
+                        return "Jul '" + Vreme.Year.ToString().Substring(2, 2);
                     case 8:
-                        return "Avgust " + Vreme.Year;
+                        return "Avg '" + Vreme.Year.ToString().Substring(2, 2);
                     case 9:
-                        return "Septembar " + Vreme.Year;
+                        return "Sep '" + Vreme.Year.ToString().Substring(2, 2);
                     case 10:
-                        return "Oktobar " + Vreme.Year;
+                        return "Okt '" + Vreme.Year.ToString().Substring(2, 2);
                     case 11:
-                        return "Novembar " + Vreme.Year;
+                        return "Nov '" + Vreme.Year.ToString().Substring(2, 2);
                     case 12:
-                        return "Decembar " + Vreme.Year;
+                        return "Dec '" + Vreme.Year.ToString().Substring(2, 2);
                     default:
                         return string.Empty;
                 }

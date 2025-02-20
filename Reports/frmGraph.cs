@@ -1,20 +1,57 @@
-﻿using System.Windows.Forms;
+﻿using ScottPlot;
 
 namespace TSP2025.Reports
 {
     public partial class frmGraph : Form
     {
-        public frmGraph()
+        public frmGraph(List<double> values, List<string> labels, string mernoMesto)
         {
             InitializeComponent();
-        }
 
-        private void pictureBox1_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g  = e.Graphics;
-            Pen selPen = new Pen(Color.Blue);
-            g.DrawRectangle(selPen, 100, 100, 500, 500);
+            lblMernoMesto.Text = mernoMesto;
 
+            var ticks = new Tick[values.Count];
+            var positions = new List<double>();
+
+            Tick tick;
+            for (int i = 0; i < values.Count; i++)
+            {
+                tick = new Tick(i, labels[i]);
+                ticks[i] = tick;
+                positions.Add(i);
+            }
+
+
+            var barPlot = formsPlot1.Plot.Add.Bars(positions, values);
+            foreach (var bar in barPlot.Bars)
+            {
+                bar.Label = bar.Value.ToString();
+            }
+
+            barPlot.ValueLabelStyle.Bold = false;
+            barPlot.ValueLabelStyle.FontSize = 16;
+
+
+
+            formsPlot1.Plot.Axes.Bottom.TickGenerator = new ScottPlot.TickGenerators.NumericManual(ticks);
+            formsPlot1.Plot.Axes.Bottom.MajorTickStyle.Length = 0;
+            formsPlot1.Plot.HideGrid();
+
+            // tell the plot to autoscale with no padding beneath the bars
+            formsPlot1.Plot.Axes.Margins(bottom: 0);
+
+            formsPlot1.Plot.Axes.Left.TickLabelStyle.IsVisible = false;
+            formsPlot1.Plot.Axes.Left.MajorTickStyle.Length = 0;
+            formsPlot1.Plot.Axes.Left.MinorTickStyle.Length = 0;
+
+            formsPlot1.Plot.Axes.Bottom.TickLabelStyle.FontSize = 16;
+            formsPlot1.Plot.Axes.Bottom.TickLabelStyle.Bold = false;
+
+            // use a fixed amount of of pixel padding on each side
+           // PixelPadding padding = new(5, 5, 5, 5);
+            //formsPlot1.Plot.Layout.Fixed(padding);
+
+            formsPlot1.Refresh();
         }
     }
 }

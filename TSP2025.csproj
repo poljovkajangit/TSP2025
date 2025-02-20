@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.0" />
+    <PackageReference Include="ScottPlot.WinForms" Version="5.0.54" />
     <!--<PackageReference Include="Microsoft.Office.Interop.Excel" Version="15.0.4795.1001" />-->
   </ItemGroup>
 

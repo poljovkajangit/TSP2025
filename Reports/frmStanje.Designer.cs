@@ -285,7 +285,6 @@
             // cbGraph
             // 
             cbGraph.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            cbGraph.Enabled = false;
             cbGraph.Image = (Image)resources.GetObject("cbGraph.Image");
             cbGraph.Location = new Point(1543, 60);
             cbGraph.Name = "cbGraph";
