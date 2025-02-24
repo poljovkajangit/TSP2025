@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmStanje));
             dtDanOd = new DateTimePicker();
             dgOcitavanja = new DataGridView();
@@ -56,7 +56,7 @@
             lblUkupno = new Label();
             cbMesec = new ComboBox();
             label5 = new Label();
-            cbGraph = new Button();
+            btnShowGraph = new Button();
             ((System.ComponentModel.ISupportInitialize)dgOcitavanja).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bsOcitavanja).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bsMernaMesta).BeginInit();
@@ -81,14 +81,14 @@
             dgOcitavanja.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgOcitavanja.AutoGenerateColumns = false;
             dgOcitavanja.BackgroundColor = Color.LightGray;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Control;
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgOcitavanja.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Control;
+            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgOcitavanja.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgOcitavanja.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgOcitavanja.Columns.AddRange(new DataGridViewColumn[] { vremeDataGridViewTextBoxColumn, Mesec, mernoMestoDataGridViewTextBoxColumn, vrednostDataGridViewTextBoxColumn, Razlika });
             dgOcitavanja.DataSource = bsOcitavanja;
@@ -132,8 +132,8 @@
             // vrednostDataGridViewTextBoxColumn
             // 
             vrednostDataGridViewTextBoxColumn.DataPropertyName = "Vrednost";
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleRight;
-            vrednostDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleRight;
+            vrednostDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
             vrednostDataGridViewTextBoxColumn.HeaderText = "Stanje";
             vrednostDataGridViewTextBoxColumn.MinimumWidth = 8;
             vrednostDataGridViewTextBoxColumn.Name = "vrednostDataGridViewTextBoxColumn";
@@ -142,8 +142,8 @@
             // Razlika
             // 
             Razlika.DataPropertyName = "Razlika";
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight;
-            Razlika.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleRight;
+            Razlika.DefaultCellStyle = dataGridViewCellStyle6;
             Razlika.HeaderText = "Uvećanje";
             Razlika.MinimumWidth = 8;
             Razlika.Name = "Razlika";
@@ -282,23 +282,24 @@
             label5.TabIndex = 17;
             label5.Text = "Mesec:";
             // 
-            // cbGraph
+            // btnShowGraph
             // 
-            cbGraph.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            cbGraph.Image = (Image)resources.GetObject("cbGraph.Image");
-            cbGraph.Location = new Point(1543, 60);
-            cbGraph.Name = "cbGraph";
-            cbGraph.Size = new Size(129, 100);
-            cbGraph.TabIndex = 18;
-            cbGraph.UseVisualStyleBackColor = true;
-            cbGraph.Click += cbGraph_Click;
+            btnShowGraph.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnShowGraph.Enabled = false;
+            btnShowGraph.Image = (Image)resources.GetObject("btnShowGraph.Image");
+            btnShowGraph.Location = new Point(1543, 60);
+            btnShowGraph.Name = "btnShowGraph";
+            btnShowGraph.Size = new Size(129, 100);
+            btnShowGraph.TabIndex = 18;
+            btnShowGraph.UseVisualStyleBackColor = true;
+            btnShowGraph.Click += cbGraph_Click;
             // 
             // frmStanje
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1821, 1058);
-            Controls.Add(cbGraph);
+            Controls.Add(btnShowGraph);
             Controls.Add(label5);
             Controls.Add(cbMesec);
             Controls.Add(lblUkupno);
@@ -352,6 +353,6 @@
         private DataGridViewTextBoxColumn Razlika;
         private ComboBox cbMesec;
         private Label label5;
-        private Button cbGraph;
+        private Button btnShowGraph;
     }
 }

@@ -12,8 +12,6 @@ namespace TSP2025.Data.Model
         private string? adresa;
         private string? odgovornoLice;
         private string? napomena;
-        private string tABELA_NAPLATNOG_REGISTRA;
-        private string kOLONA_NAPLANTONG_REGISTRA;
 
         public ImprovedBindingList<IndividualniPotrosac> IndividualniPotrosaci { get; set; }
 
@@ -76,30 +74,6 @@ namespace TSP2025.Data.Model
             }
         }
         public required int KotlarnicaId { get; set; }
-        public string TABELA_NAPLATNOG_REGISTRA
-        {
-            get => tABELA_NAPLATNOG_REGISTRA;
-            set
-            {
-                if (value != tABELA_NAPLATNOG_REGISTRA)
-                {
-                    tABELA_NAPLATNOG_REGISTRA = value;
-                    IsChanged = PoslovniSistemDataContext.IsLoading ? false : true;
-                }
-            }
-        }
-        public string KOLONA_NAPLANTONG_REGISTRA
-        {
-            get => kOLONA_NAPLANTONG_REGISTRA;
-            set
-            {
-                if (value != kOLONA_NAPLANTONG_REGISTRA)
-                {
-                    kOLONA_NAPLANTONG_REGISTRA = value;
-                    IsChanged = PoslovniSistemDataContext.IsLoading ? false : true;
-                }
-            }
-        }
 
         public Kotlarnica Kotlarnica
         {
@@ -118,15 +92,13 @@ namespace TSP2025.Data.Model
                 {
                     updateCommand.Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString);
                     updateCommand.Connection.Open();
-                    updateCommand.CommandText = "Update Podstanica Set Naziv = @Naziv, Adresa = @Adresa, OdgovornoLice = @OdgovornoLice, Napomena = @Napomena, TABELA_NAPLATNOG_REGISTRA = @TNR, KOLONA_NAPLANTONG_REGISTRA = @KNR Where Id = @id";
+                    updateCommand.CommandText = "Update Podstanica Set Naziv = @Naziv, Adresa = @Adresa, OdgovornoLice = @OdgovornoLice, Napomena = @Napomena Where Id = @id";
 
                     updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@id", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Input, Value = this.Id });
                     updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Naziv", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Naziv });
                     updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Adresa", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Adresa });
                     updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@OdgovornoLice", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.OdgovornoLice });
                     updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Napomena", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Napomena });
-                    updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@TNR", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.TABELA_NAPLATNOG_REGISTRA });
-                    updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@KNR", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.KOLONA_NAPLANTONG_REGISTRA });
 
                     updateCommand.ExecuteNonQuery();
                     updateCommand.Connection.Close();
@@ -149,8 +121,8 @@ namespace TSP2025.Data.Model
                 {
                     using (insertCommand.Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
                     {
-                        string insertQuery = "Insert into Podstanica (Naziv, Adresa, OdgovornoLice, Napomena, KotlarnicaId, TABELA_NAPLATNOG_REGISTRA, KOLONA_NAPLANTONG_REGISTRA) output INSERTED.ID" +
-                                                             " Values (@Naziv, @Adresa, @OdgovornoLice, @Napomena, @KotlarnicaId, @TABELA_NAPLATNOG_REGISTRA, @KOLONA_NAPLANTONG_REGISTRA)";
+                        string insertQuery = "Insert into Podstanica (Naziv, Adresa, OdgovornoLice, Napomena, KotlarnicaId) output INSERTED.ID" +
+                                                             " Values (@Naziv, @Adresa, @OdgovornoLice, @Napomena, @KotlarnicaId)";
                         insertCommand.CommandText = insertQuery;
 
                         insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Naziv", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Naziv });
@@ -158,9 +130,7 @@ namespace TSP2025.Data.Model
                         insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@OdgovornoLice", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.OdgovornoLice });
                         insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Napomena", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Napomena });
                         insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@KotlarnicaId", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Input, Value = this.KotlarnicaId });
-                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@TABELA_NAPLATNOG_REGISTRA", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.TABELA_NAPLATNOG_REGISTRA });
-                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@KOLONA_NAPLANTONG_REGISTRA", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.KOLONA_NAPLANTONG_REGISTRA });
-
+            
                         insertCommand.Connection.Open();
                         int modified = (int)insertCommand.ExecuteScalar();
                         insertCommand.Connection.Close();

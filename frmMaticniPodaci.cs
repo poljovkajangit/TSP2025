@@ -54,7 +54,7 @@ namespace TSP2025
         #region TOPLANE
         private void btnDodajToplanu_Click(object sender, EventArgs e)
         {
-            var newToplana = new Toplana() { Id = 0, Naziv = "<bavezno polje>", IsChanged = true };
+            var newToplana = new Toplana() { Id = 0, Naziv = "<obavezno polje>", IsChanged = true };
             _BsToplane.Add(newToplana);
             _BsToplane.MoveLast();
             tbToplanaNaziv.Focus();
@@ -146,13 +146,8 @@ namespace TSP2025
 
         private void btnKotlarniceDodaj_Click(object sender, EventArgs e)
         {
-            //var novaKotlarnica = new Kotlarnica() { Id = 0, Naziv = "<bavezno polje>", IsChanged = true, Toplana = _BsToplane.Current as Toplana, ToplanaId = (_BsToplane.Current as Toplana).Id };
-            var novaKotlarnica = _BsKotlarnice.AddNew() as Kotlarnica; //Add(novaKotlarnica);
-            novaKotlarnica.Id = 0;
-            novaKotlarnica.Naziv = "<bavezno polje>";
-            novaKotlarnica.IsChanged = true;
-            //novaKotlarnica.Toplana = _BsToplane.Current as Toplana;
-            novaKotlarnica.ToplanaId = (_BsToplane.Current as Toplana).Id;
+            var novaKotlarnica = new Kotlarnica() { Id = 0, Naziv = "<obavezno polje>", IsChanged = true, ToplanaId = (_BsToplane.Current as Toplana).Id, Toplana = (_BsToplane.Current as Toplana) };
+            _BsKotlarnice.Add(novaKotlarnica);
             _BsKotlarnice.MoveLast();
             tbKotlarnicaNaziv.Focus();
             tbKotlarnicaNaziv.SelectAll();
@@ -252,7 +247,7 @@ namespace TSP2025
         #region PODSTANICE
         private void btnKPodstaniceDodaj_Click(object sender, EventArgs e)
         {
-            var novaPodstanica = new Podstanica() { Id = 0, KotlarnicaId = (_BsKotlarnice.Current as Kotlarnica).Id, Naziv = "<bavezno polje>" };
+            var novaPodstanica = new Podstanica() { Id = 0, KotlarnicaId = (_BsKotlarnice.Current as Kotlarnica).Id, Naziv = "<obavezno polje>" };
             _BsPodstanice.Add(novaPodstanica);
             _BsPodstanice.MoveLast();
             tbPodstanicaNaziv.Focus();

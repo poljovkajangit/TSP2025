@@ -113,6 +113,8 @@ namespace TSP2025
             }
 
             lblUkupno.Text = "Ukupno: " + bsOcitavanja.Count;
+
+            btnShowGraph.Enabled = true;
         }
 
         private void btnExport_Click(object sender, EventArgs e)

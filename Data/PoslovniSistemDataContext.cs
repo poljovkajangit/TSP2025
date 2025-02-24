@@ -85,8 +85,8 @@ namespace TSP2025.Data
             {
                 using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
                 {
-                    var cmd = new SqlCommand("Select mm.Id, mm.OznakaKalorimetra, mm.OznakaMernogMesta, mm.Tip, mm.IndividualniPotrosacId, mm.PodstanicaId, g.Naziv, g.Id as GrupaId " +
-                        "from MernoMesto mm join GrupaMernihMesta g on g.Id = mm.GrupaMernihMestaId ", con);
+                    var cmd = new SqlCommand("Select mm.Id, mm.OznakaKalorimetra, mm.OznakaMernogMesta, mm.Tip, mm.PotrosacId, mm.ScadaTabela, mm.ScadaKolona, mm.VremeDodavanja, g.Naziv, g.Id as GrupaId " +
+                        "from MernoMesto mm join GrupaMernihMesta g on g.Id = mm.GrupaMernogMestaId ", con);
 
                     var da = new SqlDataAdapter(cmd);
                     da.Fill(ds);
@@ -97,12 +97,14 @@ namespace TSP2025.Data
                         {
                             Id = (int)mernoMestoRow["Id"],
                             GrupaMernogMesta = new GrupaMernihMesta() { Id = (int)mernoMestoRow["GrupaId"], Naziv = (string)mernoMestoRow["Naziv"] },
-                            IndividualniPotrosacId = mernoMestoRow["IndividualniPotrosacId"] == DBNull.Value ? null : (int)mernoMestoRow["IndividualniPotrosacId"],
                             OznakaKalorimetra = (string)mernoMestoRow["OznakaKalorimetra"],
                             OznakaMernogMesta = (string)mernoMestoRow["OznakaMernogMesta"],
                             Tip = (int)mernoMestoRow["Tip"],
-                            PodstanicaId = mernoMestoRow["PodstanicaId"] == DBNull.Value ? null : (int)mernoMestoRow["PodstanicaId"],
-                            GrupaMernogMestaId = (int)mernoMestoRow["GrupaId"]
+                            PotrosacId = (int)mernoMestoRow["PotrosacId"],
+                            GrupaMernogMestaId = (int)mernoMestoRow["GrupaId"],
+                            VremeDodavanja = (DateTime)mernoMestoRow["VremeDodavanja"],
+                            ScadaKolona = (string)mernoMestoRow["ScadaKolona"],
+                            ScadaTabela = (string)mernoMestoRow["ScadaTabela"],                            
                         };
                         _SvaMernaMesta.Add(mm);
                     }
@@ -239,8 +241,6 @@ namespace TSP2025.Data
                         OdgovornoLice = GetRowData<string>(podstanicaRow, "OdgovornoLice"),
                         KotlarnicaId = GetRowData<int>(podstanicaRow, "KotlarnicaId"),
                         Kotlarnica = SveKotlarnice.Where(k => k.Id == (int)podstanicaRow["KotlarnicaId"]).First(),
-                        KOLONA_NAPLANTONG_REGISTRA = GetRowData<string>(podstanicaRow, "KOLONA_NAPLANTONG_REGISTRA"),
-                        TABELA_NAPLATNOG_REGISTRA = GetRowData<string>(podstanicaRow, "TABELA_NAPLATNOG_REGISTRA"),
                     };
                     podstanica.ModelChanged += ModelChangedEventHandler;
                     SvePodstanice.Add(podstanica);

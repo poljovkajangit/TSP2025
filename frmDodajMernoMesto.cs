@@ -49,25 +49,24 @@ namespace TSP2025
                 {
                     using (insertCommand.Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
                     {
-                        string insertQuery = "Insert into MernoMesto (OznakaMernogMesta, OznakaKalorimetra, IndividualniPotrosacId, PodstanicaId, GrupaMernihMestaId, Tip) " +
-                            " Values (@OznakaMernogMesta, @OznakaKalorimetra, @IndividualniPotrosacId, @PodstanicaId, @GrupaMernihMestaId, @Tip)";
+                        string insertQuery = "Insert into MernoMesto (OznakaMernogMesta, OznakaKalorimetra, PotrosacId, GrupaMernogMestaId, Tip, ScadaTabela, ScadaKolona) " +
+                            " Values (@OznakaMernogMesta, @OznakaKalorimetra, @PotrosacId, @GrupaMernogMestaId, @Tip, @ScadaTabela, @ScadaKolona)";
 
                         insertCommand.CommandText = insertQuery;
 
                         insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@OznakaMernogMesta", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = tbOznakaMernogMesta.Text });
                         insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@OznakaKalorimetra", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = tbOznakaKalorimetra.Text });
-                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@GrupaMernihMestaId", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Input, Value = (bsGrupeMernihMesta.Current as GrupaMernihMesta).Id });
+                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@GrupaMernogMestaId", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Input, Value = (bsGrupeMernihMesta.Current as GrupaMernihMesta).Id });
+                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@ScadaTabela", SqlDbType = SqlDbType.VarChar, Direction = ParameterDirection.Input, Value = tbScadaTabela.Text });
+                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@ScadaKolona", SqlDbType = SqlDbType.VarChar, Direction = ParameterDirection.Input, Value = tbScadaKolona.Text });
+                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@PotrosacId", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Input, Value = tbId.Text });
                         if (rbPodstanica.Checked)
                         {
                             insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Tip", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Input, Value = (int)TipMernogMesta.Podstanica });
-                            insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@PodstanicaId", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Input, Value = tbId.Text });
-                            insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@IndividualniPotrosacId", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Input, Value = DBNull.Value });
                         }
                         else if (rbIndividualni.Checked)
                         {
                             insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Tip", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Input, Value = (int)TipMernogMesta.IndividualniPotrosac });
-                            insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@IndividualniPotrosacId", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Input, Value = tbId.Text });
-                            insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@PodstanicaId", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Input, Value = DBNull.Value });
                         }
 
                         insertCommand.Connection.Open();
@@ -96,6 +95,21 @@ namespace TSP2025
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void frmDodajMernoMesto_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTestConnection_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("<to do>");
         }
     }
 }

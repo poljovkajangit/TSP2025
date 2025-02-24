@@ -8,8 +8,10 @@ namespace TSP2025.Data.Model
         private string oznakaMernogMesta;
         private string oznakaKalorimetra;
         private int tip;
-        private int? podstanicaId;
-        private int? individualniPotrosacId;
+        private string scadaTabela;
+        private string scadaKolona;
+        private DateTime vremeDodavanja;
+        private int potrosacId;
         public string GrupaMernogMestaNaziv
         {
             get
@@ -78,26 +80,50 @@ namespace TSP2025.Data.Model
                 }
             }
         }
-        public int? PodstanicaId
+        public int PotrosacId
         {
-            get => podstanicaId;
+            get => potrosacId;
             set
             {
-                if (value != podstanicaId)
+                if (value != potrosacId)
                 {
-                    podstanicaId = value;
+                    potrosacId = value;
                     IsChanged = PoslovniSistemDataContext.IsLoading ? false : true;
                 }
             }
         }
-        public int? IndividualniPotrosacId
+        public DateTime VremeDodavanja
         {
-            get => individualniPotrosacId;
+            get => vremeDodavanja;
             set
             {
-                if (value != individualniPotrosacId)
+                if (value != vremeDodavanja)
                 {
-                    individualniPotrosacId = value;
+                    vremeDodavanja = value;
+                    IsChanged = PoslovniSistemDataContext.IsLoading ? false : true;
+                }
+            }
+        }
+        public string ScadaTabela
+        {
+            get => scadaTabela;
+            set
+            {
+                if (value != scadaTabela)
+                {
+                    scadaTabela = value;
+                    IsChanged = PoslovniSistemDataContext.IsLoading ? false : true;
+                }
+            }
+        }
+        public string ScadaKolona
+        {
+            get => scadaKolona;
+            set
+            {
+                if (value != scadaKolona)
+                {
+                    scadaKolona = value;
                     IsChanged = PoslovniSistemDataContext.IsLoading ? false : true;
                 }
             }

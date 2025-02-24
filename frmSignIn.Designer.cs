@@ -139,7 +139,7 @@
             label3.Name = "label3";
             label3.Size = new Size(503, 32);
             label3.TabIndex = 7;
-            label3.Text = "v0.72.2025";
+            label3.Text = "v0.73";
             label3.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label2
