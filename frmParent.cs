@@ -106,21 +106,19 @@ namespace TSP2025
         {
             using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString.Replace("TSP2025", "TSP2025SCADA")))
             {
-                var cmd = new SqlCommand("Select COUNT(TP1_1_KUM_PROTOK) From TREND_TSTP1_TP1_1; ", conn);
+                var cmd = new SqlCommand($"Select COUNT({tbSourceColumn.Text}) From {tbSourceTable.Text};", conn);
                 int newProdID;
                 try
                 {
                     conn.Open();
                     newProdID = (Int32)cmd.ExecuteScalar();
+                    MessageBox.Show($"Komanda je uspešno izvršena", "TSP2025", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Došlo je do greške prilikom poveozivanja na bazu: {ex.Message} ", "TSP2025", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
-            MessageBox.Show($"Komanda je uspešno izvršena", "TSP2025", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
         }
         private void bsMernaMesta_CurrentChanged(object sender, EventArgs e)
         {
@@ -129,6 +127,12 @@ namespace TSP2025
                 tbSourceTable.Text = (bsMernaMesta.Current as MernoMesto).ScadaTabela;
                 tbSourceColumn.Text = (bsMernaMesta.Current as MernoMesto).ScadaKolona;
             }
+        }
+
+        private void btnPullMernaMestaRefresh_Click(object sender, EventArgs e)
+        {
+            _DataContext.OcistiMernaMesta();
+            bsMernaMesta.DataSource = _DataContext.SvaMernaMestaSaPocetnimPraznim;
         }
     }
 }

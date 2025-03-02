@@ -44,6 +44,11 @@ namespace TSP2025.Data
             }
         }
 
+        public void OcistiMernaMesta()
+        {
+            _SvaMernaMesta = null;
+        }
+
         public List<GrupaMernihMesta> SveGrupaMernihMestaSaPocetnimPraznim
         {
             get

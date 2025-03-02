@@ -52,8 +52,8 @@
             pomoćToolStripMenuItem = new ToolStripMenuItem();
             preuzmiPodatkeToolStripMenuItem = new ToolStripMenuItem();
             istorijaPreuzimanjaToolStripMenuItem = new ToolStripMenuItem();
-            pictureBox1 = new PictureBox();
             groupBox1 = new GroupBox();
+            btnPullMernaMestaRefresh = new Button();
             tbSourceColumn = new TextBox();
             label4 = new Label();
             tbSourceTable = new TextBox();
@@ -70,7 +70,6 @@
             label7 = new Label();
             sbStatusBar.SuspendLayout();
             menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bsMernaMesta).BeginInit();
             SuspendLayout();
@@ -235,20 +234,10 @@
             istorijaPreuzimanjaToolStripMenuItem.Text = "Istorija preuzimanja ...";
             istorijaPreuzimanjaToolStripMenuItem.Click += istorijaPreuzimanjaToolStripMenuItem_Click;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(19, 57);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(2123, 956);
-            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
-            pictureBox1.TabIndex = 3;
-            pictureBox1.TabStop = false;
-            // 
             // groupBox1
             // 
             groupBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            groupBox1.Controls.Add(btnPullMernaMestaRefresh);
             groupBox1.Controls.Add(tbSourceColumn);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(tbSourceTable);
@@ -267,6 +256,21 @@
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "Pull operacija";
+            // 
+            // btnPullMernaMestaRefresh
+            // 
+            btnPullMernaMestaRefresh.BackColor = Color.Teal;
+            btnPullMernaMestaRefresh.FlatStyle = FlatStyle.Flat;
+            btnPullMernaMestaRefresh.Font = new Font("Perpetua", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnPullMernaMestaRefresh.ForeColor = Color.White;
+            btnPullMernaMestaRefresh.Location = new Point(399, 75);
+            btnPullMernaMestaRefresh.Name = "btnPullMernaMestaRefresh";
+            btnPullMernaMestaRefresh.Size = new Size(90, 41);
+            btnPullMernaMestaRefresh.TabIndex = 10;
+            btnPullMernaMestaRefresh.Text = "Refresh";
+            btnPullMernaMestaRefresh.TextAlign = ContentAlignment.TopCenter;
+            btnPullMernaMestaRefresh.UseVisualStyleBackColor = false;
+            btnPullMernaMestaRefresh.Click += btnPullMernaMestaRefresh_Click;
             // 
             // tbSourceColumn
             // 
@@ -356,7 +360,7 @@
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(6, 76);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(485, 40);
+            comboBox1.Size = new Size(387, 40);
             comboBox1.TabIndex = 1;
             // 
             // bsMernaMesta
@@ -415,14 +419,16 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlDark;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(2159, 1062);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(groupBox1);
-            Controls.Add(pictureBox1);
             Controls.Add(sbStatusBar);
             Controls.Add(menuStrip1);
+            DoubleBuffered = true;
             Icon = (Icon)resources.GetObject("$this.Icon");
             IsMdiContainer = true;
             MainMenuStrip = menuStrip1;
@@ -435,7 +441,6 @@
             sbStatusBar.PerformLayout();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)bsMernaMesta).EndInit();
@@ -467,7 +472,6 @@
         private ToolStripMenuItem oAplikacijiTSP2025ToolStripMenuItem;
         private ToolStripSeparator toolStripMenuItem1;
         private ToolStripMenuItem izlazToolStripMenuItem;
-        private PictureBox pictureBox1;
         private GroupBox groupBox1;
         private Button btnPull;
         private ComboBox comboBox1;
@@ -483,5 +487,6 @@
         private Label label5;
         private Label label6;
         private Label label7;
+        private Button btnPullMernaMestaRefresh;
     }
 }
