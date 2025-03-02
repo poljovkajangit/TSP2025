@@ -30,6 +30,20 @@ namespace TSP2025.Data
                 return _SvaMernaMesta;
             }
         }
+
+        public ImprovedBindingList<MernoMesto> SvaMernaMestaSaPocetnimPraznim
+        {
+            get
+            {
+                if (_SvaMernaMesta == null)
+                {
+                    UcitajMernaMesta();
+                    _SvaMernaMesta.Insert(0, new MernoMesto() { Id = 0, OznakaMernogMesta = "" });
+                }
+                return _SvaMernaMesta;
+            }
+        }
+
         public List<GrupaMernihMesta> SveGrupaMernihMestaSaPocetnimPraznim
         {
             get

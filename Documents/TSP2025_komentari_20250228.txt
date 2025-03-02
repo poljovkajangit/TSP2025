@@ -1,0 +1,48 @@
+
+Komentari Cx20250228 (posle 3 videa od 2.feb 2025)
+
+1.) GUI / HCI Issue
+
+všetke GUI nazivi/termini a slikice, generalno všetko vizuelno čo vidiš je len privremeno po defaulte, 
+ja to tak dodavam/setujem ako sa mi v tom trenutku ćefne, ako som raspoloženi, ako sa mi pači, alebo mne sa čini logično ...
+to nam teraz služi len nech pomohne v razvoji, aj bude zanimljivejši svet :)
+
+ti jedneho dna potom angažuješ GUI dizajnera ktory to všetko nakresli pekne, ako treba
+a lektora, jezikovedca itd. za tekst, nazivi labelov
+
+to je posebna tema, evo guglaj
+human computer interaction (HCI) 
+
+generalno to je tvoj zadatak :)
+
+2.) Constraints Issue
+
+isto tvoj zadatak je nech urobiš spisak všetkich constranitov
+urobiš excel tabelu gde po stavkach napišeš: 
+ čo sa nesmie desit' niako,
+ čo sa može desit', pod tim a tim uslovom
+ čo je obavezno aby sa desilo 
+ itd. všetke meguće a nemoguće pojavi a scenaria, use your imagination :)
+
+npr.
+ - Zabraniti unos Toplane sa isitim nazivom
+ - Onemogućiti unos/izmenu Toplane, sa istim naziv
+ - Omogućiti unos Toplane sa već postojećim nazivom, ali samo utorkom
+ ....
+
+Tu listu normalno robiš tokom času, nemoguće je urobit' naraz, nego ažuriraš vremenom. Kapiraš :)
+
+Tu si rozmysli, či chceš mat' Role (uloge)???
+Na sreću to si nespominal do teraz, ale to ti komplikuje život potom eksponencijalno.
+
+3.) Resolving Bugs Issue
+
+To je isto konstantni proces, pekne je ked' registruješ bug povedat' (to je ono, "good boy" moment :) )
+
+To je isto tvoj zadatak alebo angažuješ QA testera za to.
+
+Ked' budeme robit' Release verziju, potom detalno urobim testing
+
+Npr. Release možeme urobit' ked ty budeš chcet'. U smislu, ked' odlučiš, pod punom krivičnom i materijalnom odgovornošću:
+checem teraz, tento postignuti razvoj, nech postane verzija 0.75 BETA Hollyday Release
+

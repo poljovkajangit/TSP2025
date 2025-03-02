@@ -1,12 +1,22 @@
-﻿using TSP2025.Utils;
+﻿using Microsoft.Data.SqlClient;
+using System.Configuration;
+using System.Data;
+using TSP2025.Data;
+using TSP2025.Data.Model;
+using TSP2025.Utils;
 
 namespace TSP2025
 {
     public partial class frmParent : Form
     {
+        PoslovniSistemDataContext _DataContext;
         public frmParent()
         {
             InitializeComponent();
+
+            _DataContext = new PoslovniSistemDataContext();
+
+            bsMernaMesta.DataSource = _DataContext.SvaMernaMestaSaPocetnimPraznim;
         }
         private void frmParent_Shown(object sender, EventArgs e)
         {
@@ -39,10 +49,10 @@ namespace TSP2025
         }
         private void preuzmiPodatkeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _progressPreuzmi.Value = 0;
+            pgrPull.Value = 0;
             for (int i = 0; i < 100; i++)
             {
-                _progressPreuzmi.Value++;
+                pgrPull.Value++;
             }
             FormMessages.ShowExclamation("... under construction ...");
         }
@@ -91,5 +101,34 @@ namespace TSP2025
 
         }
         #endregion
+
+        private void btnTestConnection_Click(object sender, EventArgs e)
+        {
+            using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString.Replace("TSP2025", "TSP2025SCADA")))
+            {
+                var cmd = new SqlCommand("Select COUNT(TP1_1_KUM_PROTOK) From TREND_TSTP1_TP1_1; ", conn);
+                int newProdID;
+                try
+                {
+                    conn.Open();
+                    newProdID = (Int32)cmd.ExecuteScalar();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Došlo je do greške prilikom poveozivanja na bazu: {ex.Message} ", "TSP2025", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            MessageBox.Show($"Komanda je uspešno izvršena", "TSP2025", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+        private void bsMernaMesta_CurrentChanged(object sender, EventArgs e)
+        {
+            if (bsMernaMesta.Current != null && (bsMernaMesta.Current as MernoMesto) != null)
+            {
+                tbSourceTable.Text = (bsMernaMesta.Current as MernoMesto).ScadaTabela;
+                tbSourceColumn.Text = (bsMernaMesta.Current as MernoMesto).ScadaKolona;
+            }
+        }
     }
 }
