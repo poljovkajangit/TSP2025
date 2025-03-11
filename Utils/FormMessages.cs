@@ -1,4 +1,6 @@
-﻿namespace TSP2025.Utils
+﻿using TSP2025.Data;
+
+namespace TSP2025.Utils
 {
     public class FormMessages
     {
@@ -16,6 +18,19 @@
         {
             MessageBox.Show(message, "TSP2025", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
+
+        public static DataSourceMode AskForDataSource()
+        {
+            switch(MessageBox.Show($"Izaberite izvor podataka:{Environment.NewLine}Yes - RAM{Environment.NewLine}No - TSP2025 baza podataka", "Izvor podataka?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1))
+            {
+
+                case DialogResult.Yes: return DataSourceMode.FromRAM;
+                case DialogResult.No: return DataSourceMode.FromDatabase;
+                default:
+                    return DataSourceMode.None;
+            }
+        }
+
 
     }
 }

@@ -131,7 +131,7 @@
             label3.Name = "label3";
             label3.Size = new Size(719, 52);
             label3.TabIndex = 7;
-            label3.Text = "v0.74";
+            label3.Text = "v0.75";
             label3.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label2
@@ -149,7 +149,7 @@
             // 
             // label1
             // 
-            label1.BackColor = Color.DimGray;
+            label1.BackColor = Color.DarkSlateGray;
             label1.BorderStyle = BorderStyle.FixedSingle;
             label1.Dock = DockStyle.Top;
             label1.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 238);
@@ -164,7 +164,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ControlDarkDark;
+            BackColor = Color.DarkSlateGray;
             ClientSize = new Size(1323, 907);
             Controls.Add(pbPipes);
             Controls.Add(panel1);

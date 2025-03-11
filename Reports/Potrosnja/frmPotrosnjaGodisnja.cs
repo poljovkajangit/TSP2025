@@ -38,7 +38,7 @@ namespace TSP2025
         private void btnPrikazi_Click(object sender, EventArgs e)
         {
             var godina = new DateTime(Convert.ToInt16(cbGodina.Text), 1, 1);
-            bsOcitavanja.DataSource = _DataSource.SvaOcitavanja.Where(
+            bsOcitavanja.DataSource = _DataSource.SvaOcitavanja(DataSourceMode.FromRAM).Where(
                 o =>
                 o.Vreme.Year == godina.Year && o.Vreme.Date.Day == 1 && o.Vreme.Date.Hour == 0 && o.Vreme.Minute == 0 && o.Vreme.Second == 0
                 &&

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using System.Configuration;
 using System.Data;
+using System.Text.RegularExpressions;
 using TSP2025.Data;
 using TSP2025.Data.Model;
 using TSP2025.Utils;
@@ -10,6 +11,14 @@ namespace TSP2025
     public partial class frmParent : Form
     {
         PoslovniSistemDataContext _DataContext;
+
+        private MernoMesto SelectedMernoMesto
+        {
+            get
+            {
+                return (bsMernaMesta.Current as MernoMesto)!;
+            }
+        }
         public frmParent()
         {
             InitializeComponent();
@@ -46,15 +55,6 @@ namespace TSP2025
             var _frmMernaMesta = new frmMernaMesta();
             _frmMernaMesta.MdiParent = this;
             _frmMernaMesta.Show();
-        }
-        private void preuzmiPodatkeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            pgrPull.Value = 0;
-            for (int i = 0; i < 100; i++)
-            {
-                pgrPull.Value++;
-            }
-            FormMessages.ShowExclamation("... under construction ...");
         }
         private void istorijaPreuzimanjaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -104,6 +104,14 @@ namespace TSP2025
 
         private void btnTestConnection_Click(object sender, EventArgs e)
         {
+            tbPullInfo.ForeColor = Color.Green;
+            tbPullInfo.Text = "Provera ...";
+            pbPullProgress.Value = 0;
+            for (int i = 0; i < 100; i++)
+            {
+                pbPullProgress.Value++;
+            }
+
             using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString.Replace("TSP2025", "TSP2025SCADA")))
             {
                 var cmd = new SqlCommand($"Select COUNT({tbSourceColumn.Text}) From {tbSourceTable.Text};", conn);
@@ -112,20 +120,23 @@ namespace TSP2025
                 {
                     conn.Open();
                     newProdID = (Int32)cmd.ExecuteScalar();
-                    MessageBox.Show($"Komanda je uspešno izvršena", "TSP2025", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    tbPullInfo.Text += $"{Environment.NewLine}Pronađeno je {newProdID} unosa";
+                    tbPullInfo.Text += $"{Environment.NewLine}Provera je uspešno izvršena";
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Došlo je do greške prilikom poveozivanja na bazu: {ex.Message} ", "TSP2025", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tbPullInfo.ForeColor = Color.Red;
+                    tbPullInfo.Text += $"{Environment.NewLine}Došlo je do greške prilikom poveozivanja: {ex.Message}";
                 }
             }
+
         }
         private void bsMernaMesta_CurrentChanged(object sender, EventArgs e)
         {
-            if (bsMernaMesta.Current != null && (bsMernaMesta.Current as MernoMesto) != null)
+            if (bsMernaMesta.Current != null && SelectedMernoMesto != null)
             {
-                tbSourceTable.Text = (bsMernaMesta.Current as MernoMesto).ScadaTabela;
-                tbSourceColumn.Text = (bsMernaMesta.Current as MernoMesto).ScadaKolona;
+                tbSourceTable.Text = SelectedMernoMesto.ScadaTabela;
+                tbSourceColumn.Text = SelectedMernoMesto.ScadaKolona;
             }
         }
 
@@ -133,6 +144,45 @@ namespace TSP2025
         {
             _DataContext.OcistiMernaMesta();
             bsMernaMesta.DataSource = _DataContext.SvaMernaMestaSaPocetnimPraznim;
+        }
+
+        private void btnPull_Click(object sender, EventArgs e)
+        {
+            tbPullInfo.ForeColor = Color.Green;
+            tbPullInfo.Text = "Upis ...";
+            pbPullProgress.Value = 0;
+            for (int i = 0; i < 100; i++)
+            {
+                pbPullProgress.Value++;
+            }
+
+            try
+            {
+                using (var insertCommand = new SqlCommand())
+                {
+                    using (insertCommand.Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
+                    {
+                        string insertQuery = @$"Truncate Table TSP2025.dbo.Ocitavanje;Insert Into TSP2025.dbo.Ocitavanje (MernoMestoId, Datum, Vrednost) Select {SelectedMernoMesto.Id}, t1.FLTIME, t1.{SelectedMernoMesto.ScadaKolona} From TSP2025SCADA.dbo.{SelectedMernoMesto.ScadaTabela} t1";
+
+                        insertCommand.CommandText = insertQuery;
+                        insertCommand.Connection.Open();
+                        int affected = (int)insertCommand.ExecuteNonQuery();
+                        insertCommand.Connection.Close();
+
+                        tbPullInfo.Text += $"{Environment.NewLine}Upis ({affected} zapisa) je uspešno izvršen";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                tbPullInfo.ForeColor = Color.Red;
+                tbPullInfo.Text += $"{Environment.NewLine}Došlo je do greške prilikom upida: {ex.Message}";
+            }
+        }
+
+        private void oAplikacijiTSP2025ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormMessages.ShowInformation("TSP2025 Free Trial Version ... under construction ...");
         }
     }
 }

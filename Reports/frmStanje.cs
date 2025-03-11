@@ -10,6 +10,23 @@ namespace TSP2025
     public partial class frmStanje : Form
     {
         PoslovniSistemDataContext _DataSource;
+
+        MernoMesto SelectedMernoMesto
+        {
+            get
+            {
+                return (bsMernaMesta.Current as MernoMesto)!;
+            }
+        }
+
+        List<Ocitavanje> Ocitavanja
+        {
+            get
+            {
+                return (bsOcitavanja.List as List<Ocitavanje>)!;
+            }
+        }
+        
         public frmStanje(MernoMesto mernoMesto = null)
         {
             InitializeComponent();
@@ -38,12 +55,14 @@ namespace TSP2025
 
         private void btnPrikazi_Click(object sender, EventArgs e)
         {
+            var dsMode = FormMessages.AskForDataSource();
+
             switch (cbProredi.SelectedIndex)
             {
                 case 0:
-                    bsOcitavanja.DataSource = _DataSource.SvaOcitavanja.Where(
+                    bsOcitavanja.DataSource = _DataSource.SvaOcitavanja(dsMode).Where(
                     o =>
-                    o.MernoMestoId == (bsMernaMesta.Current as MernoMesto).Id
+                    o.MernoMestoId == SelectedMernoMesto.Id
                     &&
                     o.Vreme >= dtDanOd.Value.Date
                     &&
@@ -51,11 +70,11 @@ namespace TSP2025
                     .ToList();
                     break;
                 case 1:
-                    bsOcitavanja.DataSource = _DataSource.SvaOcitavanja.Where(
+                    bsOcitavanja.DataSource = _DataSource.SvaOcitavanja(dsMode).Where(
                     o =>
                     o.Vreme.Minute == 0
                     &&
-                    o.MernoMestoId == (bsMernaMesta.Current as MernoMesto).Id
+                    o.MernoMestoId == SelectedMernoMesto.Id
                     &&
                     o.Vreme >= dtDanOd.Value.Date
                     &&
@@ -63,11 +82,11 @@ namespace TSP2025
                     .ToList();
                     break;
                 case 2:
-                    bsOcitavanja.DataSource = _DataSource.SvaOcitavanja.Where(
+                    bsOcitavanja.DataSource = _DataSource.SvaOcitavanja(dsMode).Where(
                     o =>
                     o.Vreme.Date == o.Vreme
                     &&
-                    o.MernoMestoId == (bsMernaMesta.Current as MernoMesto).Id
+                    o.MernoMestoId == SelectedMernoMesto.Id
                     &&
                     o.Vreme >= dtDanOd.Value.Date
                     &&
@@ -77,11 +96,11 @@ namespace TSP2025
                 case 3:
                     if (cbMesec.SelectedIndex > 0)
                     {
-                        bsOcitavanja.DataSource = _DataSource.SvaOcitavanja.Where(
+                        bsOcitavanja.DataSource = _DataSource.SvaOcitavanja(dsMode).Where(
                         o =>
                         o.Vreme.Date.Day == 1 && o.Vreme.Month == cbMesec.SelectedIndex && o.Vreme.Hour == 0 && o.Vreme.Minute == 0
                         &&
-                        o.MernoMestoId == (bsMernaMesta.Current as MernoMesto).Id
+                        o.MernoMestoId == SelectedMernoMesto.Id
                         &&
                         o.Vreme >= dtDanOd.Value.Date
                         &&
@@ -91,11 +110,11 @@ namespace TSP2025
                     }
                     else
                     {
-                        bsOcitavanja.DataSource = _DataSource.SvaOcitavanja.Where(
+                        bsOcitavanja.DataSource = _DataSource.SvaOcitavanja(dsMode).Where(
                         o =>
                         o.Vreme.Date.Day == 1 && o.Vreme.Hour == 0 && o.Vreme.Minute == 0
                         &&
-                        o.MernoMestoId == (bsMernaMesta.Current as MernoMesto).Id
+                        o.MernoMestoId == SelectedMernoMesto.Id
                         &&
                         o.Vreme >= dtDanOd.Value.Date
                         &&
@@ -109,7 +128,7 @@ namespace TSP2025
 
             for (int i = 1; i < bsOcitavanja.Count; i++)
             {
-                (bsOcitavanja.List as List<Ocitavanje>)[i].Razlika = (bsOcitavanja.List as List<Ocitavanje>)[i].Vrednost - (bsOcitavanja.List as List<Ocitavanje>)[i - 1].Vrednost;
+                Ocitavanja[i].Razlika = Ocitavanja[i].Vrednost - Ocitavanja[i - 1].Vrednost;
             }
 
             lblUkupno.Text = "Ukupno: " + bsOcitavanja.Count;

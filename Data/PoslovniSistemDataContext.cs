@@ -3,9 +3,16 @@ using System.Configuration;
 using System.Data;
 using TSP2005;
 using TSP2025.Data.Model;
+using TSP2025.Utils;
 
 namespace TSP2025.Data
 {
+    public enum DataSourceMode
+    {
+        FromDatabase,
+        FromRAM,
+        None
+    }
     public class PoslovniSistemDataContext
     {
         public ImprovedBindingList<Toplana> MojeToplane { get; set; }
@@ -123,7 +130,7 @@ namespace TSP2025.Data
                             GrupaMernogMestaId = (int)mernoMestoRow["GrupaId"],
                             VremeDodavanja = (DateTime)mernoMestoRow["VremeDodavanja"],
                             ScadaKolona = (string)mernoMestoRow["ScadaKolona"],
-                            ScadaTabela = (string)mernoMestoRow["ScadaTabela"],                            
+                            ScadaTabela = (string)mernoMestoRow["ScadaTabela"],
                         };
                         _SvaMernaMesta.Add(mm);
                     }
@@ -131,12 +138,20 @@ namespace TSP2025.Data
                 }
             }
         }
-        public IList<Ocitavanje> SvaOcitavanja
+        public ImprovedBindingList<Ocitavanje> Ocitavanja
         {
             get
             {
-                var svaOcitavanja = new List<Ocitavanje>();
+                return new ImprovedBindingList<Ocitavanje>();
+            }
+        }
+        public IList<Ocitavanje> SvaOcitavanja(DataSourceMode sourceMode)
+        {
 
+            var svaOcitavanja = new List<Ocitavanje>();
+
+            if (sourceMode == DataSourceMode.FromRAM)
+            {
                 var dateTime = DateTime.Now.Date.AddYears(-5);
                 decimal vrednost = 0M;
                 for (int dan = 0; dan < 1780; dan++)
@@ -167,8 +182,33 @@ namespace TSP2025.Data
                         }
                     }
                 }
-                return svaOcitavanja;
             }
+            else if (sourceMode == DataSourceMode.FromDatabase)
+            {
+                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
+                {
+                    var command = new SqlCommand("select o.Datum, o.MernoMestoId, o.Vrednost From TSP2025.dbo.Ocitavanje o", connection);
+
+                    try
+                    {
+                        connection.Open();
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            svaOcitavanja.Add(new Ocitavanje() { Vreme = reader.GetDateTime(0), MernoMestoId = reader.GetInt32(1), MernoMesto = this.SvaMernaMesta.First(m => m.Id == reader.GetInt32(1)).OznakaMernogMesta, Vrednost = (decimal)reader.GetDouble(2) });
+                        }
+                        reader.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        FormMessages.ShowError("Greška. " + ex.Message);
+                    }
+
+                }
+            }
+
+            return svaOcitavanja;
+
         }
 
         private T GetRowData<T>(DataRow row, string column)

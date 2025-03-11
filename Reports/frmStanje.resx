@@ -117,17 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="Mesec.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Razlika.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="bsOcitavanja.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>474, 19</value>
-  </metadata>
-  <metadata name="bsMernaMesta.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
   </metadata>
   <metadata name="bsMernaMesta.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -171,7 +162,7 @@
   <data name="btnShowGraph.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAARtJREFUaEPtmE1uwkAMhWEVH4NF99VMr0PVY1TKArHkTmy5Br0JfdXkR4oMo3jw
+        DAAACwwBP0AiyAAAARtJREFUaEPtmE1uwkAMhWEVH4NF99VMr0PVY1TKArHkTmy5Br0JfdXkR4oMo3jw
         kHTxPsmSNXkQfyyshM2GEEIIIYQ8pAl4k4ifVKnX13NIwFUiMNSvfOBLZxZBItrJIK2+niPlm4BLE3Ea
         +qPOLEK68ShQMsQ0X/rZqlCAAk6WEnjZ1poTkIC9BHyP1bxj152XCvSZ+ltrViDiNvnlUh2G82cEzHkz
         BoGHN871OUrzZihgHKg0b6a2QG7b5PJuqgv0/d22yfVuXiRg7t1QwNm7oYCzd2MRkIhz9yykhqhx7mZW

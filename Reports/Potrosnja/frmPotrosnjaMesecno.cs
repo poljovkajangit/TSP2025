@@ -39,7 +39,7 @@ namespace TSP2025
         private void btnPrikazi_Click(object sender, EventArgs e)
         {
             var mesec = new DateTime(Convert.ToInt16(cbGodina.Text), cbMesec.SelectedIndex + 1, 1);
-            bsOcitavanja.DataSource = _DataSource.SvaOcitavanja.Where(
+            bsOcitavanja.DataSource = _DataSource.SvaOcitavanja(DataSourceMode.FromRAM).Where(
                 o =>
                 o.Vreme.Date == o.Vreme
                 &&
