@@ -7,6 +7,9 @@
     <Compile Update="frmMaticniPodaci.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="frmMaticniPodaciTreeEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="frmMernaMesta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -16,7 +19,10 @@
     <Compile Update="frmSignIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Reports\frmGraph.cs">
+    <Compile Update="Reports\frmBarPlotReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Reports\frmScottPloting.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

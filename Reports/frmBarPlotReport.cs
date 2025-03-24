@@ -2,9 +2,9 @@
 
 namespace TSP2025.Reports
 {
-    public partial class frmGraph : Form
+    public partial class frmBarPlotReport : Form
     {
-        public frmGraph(List<double> values, List<string> labels, string mernoMesto)
+        public frmBarPlotReport(List<double> values, List<string> labels, string mernoMesto)
         {
             InitializeComponent();
 

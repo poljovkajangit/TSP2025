@@ -8,7 +8,8 @@ namespace TSP2025
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Application.Run(new frmParent());
+            //Application.Run(new frmParent());
+            Application.Run(new frmScottPloting());
         }
     }
 }

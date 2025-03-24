@@ -191,7 +191,7 @@ namespace TSP2025
                     break;
             }
 
-            var frmGraph = new frmGraph(listaRazlika, listaLabela, (bsMernaMesta.Current as MernoMesto).OznakaMernogMesta);
+            var frmGraph = new frmBarPlotReport(listaRazlika, listaLabela, (bsMernaMesta.Current as MernoMesto).OznakaMernogMesta);
             frmGraph.ShowDialog();
         }
     }
