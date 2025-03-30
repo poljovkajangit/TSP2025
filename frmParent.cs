@@ -42,8 +42,8 @@ namespace TSP2025
         private void mnuMatičniPodaci_Click(object sender, EventArgs e)
         {
             var _frmMaticniPodaci = new frmMaticniPodaci();
-            _frmMaticniPodaci.MdiParent = this;
-            _frmMaticniPodaci.Show();
+            //_frmMaticniPodaci.MdiParent = this;
+            _frmMaticniPodaci.ShowDialog();
         }
         private void zatvoriToolStripMenuItem1_Click(object sender, EventArgs e)
         {

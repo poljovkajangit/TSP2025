@@ -8,17 +8,23 @@ namespace TSP2025.Data.Model
 {
     public class Kotlarnica : ModelBase
     {
-        private Toplana? _Toplana;
+        private Toplana _Toplana;
         private int toplanaId;
         private string naziv = string.Empty;
-        private string? napomena;
-        private string? adresa;
-        private string? telefon;
-        private string? sef;
+        private string napomena = string.Empty;
+        private string adresa = string.Empty;
+        private string telefon = string.Empty;
+        private string sef = string.Empty;
 
         public Kotlarnica()
         {
             Podstanice = new ImprovedBindingList<Podstanica>();
+            Podstanice.BeforeRemove += Podstanice_BeforeRemove;
+        }
+
+        private void Podstanice_BeforeRemove(object deletedItem)
+        {
+            (deletedItem as Podstanica)!.IsDeleted = true;
         }
 
         public ImprovedBindingList<Podstanica> Podstanice { get; set; }
@@ -35,7 +41,7 @@ namespace TSP2025.Data.Model
                 }
             }
         }
-        public string? Napomena
+        public string Napomena
         {
             get => napomena;
             set
@@ -47,7 +53,7 @@ namespace TSP2025.Data.Model
                 }
             }
         }
-        public string? Adresa
+        public string Adresa
         {
             get => adresa;
             set
@@ -59,7 +65,7 @@ namespace TSP2025.Data.Model
                 }
             }
         }
-        public string? Telefon
+        public string Telefon
         {
             get => telefon;
             set
@@ -71,7 +77,7 @@ namespace TSP2025.Data.Model
                 }
             }
         }
-        public string? Sef
+        public string Sef
         {
             get => sef;
             set
@@ -83,9 +89,9 @@ namespace TSP2025.Data.Model
                 }
             }
         }
-        public required Toplana Toplana
+        public Toplana Toplana
         {
-            get => _Toplana;
+            get => _Toplana!;
             set
             {
                 _Toplana = value;
@@ -105,12 +111,12 @@ namespace TSP2025.Data.Model
 
                         insertCommand.CommandText = insertQuery;
 
-                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@ToplanaId", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Input, Value = this.ToplanaId });
-                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Naziv", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Naziv });
-                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Napomena", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Napomena });
-                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Adresa", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Adresa });
-                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Telefon", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Telefon });
-                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Sef", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Sef });
+                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@ToplanaId", DbType = DbType.Int32, Direction = ParameterDirection.Input, Value = this.ToplanaId });
+                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Naziv", DbType = DbType.String, Direction = ParameterDirection.Input, Value = this.Naziv });
+                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Napomena", DbType = DbType.String, Direction = ParameterDirection.Input, Value = this.Napomena });
+                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Adresa", DbType = DbType.String, Direction = ParameterDirection.Input, Value = this.Adresa });
+                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Telefon", DbType = DbType.String, Direction = ParameterDirection.Input, Value = this.Telefon });
+                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Sef", DbType = DbType.String, Direction = ParameterDirection.Input, Value = this.Sef });
 
                         insertCommand.Connection.Open();
                         int modified = (int)insertCommand.ExecuteScalar();

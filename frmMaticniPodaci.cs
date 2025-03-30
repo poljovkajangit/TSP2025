@@ -9,13 +9,6 @@ namespace TSP2025
     {
         private PoslovniSistemDataContext _DataSource;
 
-        private Toplana SelectedToplana
-        {
-            get
-            {
-                return _BsToplane.Current as Toplana;
-            }
-        }
         public frmMaticniPodaci()
         {
             InitializeComponent();
@@ -30,9 +23,9 @@ namespace TSP2025
 
         private void frmMaticniPodaci_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (btnSaveToplane.Visible || btnSaveKotlarnice.Visible || btnSavePodstanice.Visible || btnSavePotrosaci.Visible)
+            if (gbToplane.Enabled || gbKotlarnice.Enabled || gbPodstanice.Enabled || gbIndividualniPotrosaci.Enabled)
             {
-                FormMessages.ShowExclamation("Saèuvaj ili poništi izmene na formi");
+                FormMessages.ShowExclamation("Saèuvaj ili poništi unete izemene.");
                 e.Cancel = true;
             }
         }
@@ -57,47 +50,57 @@ namespace TSP2025
             var newToplana = new Toplana() { Id = 0, Naziv = "<obavezno polje>", IsChanged = true };
             _BsToplane.Add(newToplana);
             _BsToplane.MoveLast();
+
+            dgToplane.Enabled = false;
+            btnKotlarnice.Enabled = false;
+            gbToplane.Enabled = true;
+            btnDodajToplanu.Enabled = false;
+            btnObrisiToplanu.Enabled = false;
             tbToplanaNaziv.Focus();
             tbToplanaNaziv.SelectAll();
-
-            btnSaveToplane.Visible = true;
-            btnUndoToplane.Visible = true;
+        }
+        private void dgToplane_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dgToplane.Enabled = false;
             btnKotlarnice.Enabled = false;
+            gbToplane.Enabled = true;
+            btnDodajToplanu.Enabled = false;
+            btnObrisiToplanu.Enabled = false;
+            tbToplanaNaziv.Focus();
+            tbToplanaNaziv.SelectAll();
         }
         private void btnObrisiToplanu_Click(object sender, EventArgs e)
         {
             if (_BsToplane.Current != null)
             {
                 _BsToplane.RemoveCurrent();
-                btnSaveToplane.Visible = true;
-                btnUndoToplane.Visible = true;
-                btnKotlarnice.Enabled = false;
+
+                // za brisanje
+                var toplaneteZaBrisanje = _DataSource.MojeToplane.Where(t => t.IsDeleted && t.Id > 0).ToList();
+                foreach (var item in toplaneteZaBrisanje)
+                {
+                    try
+                    {
+                        item.Delete();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw;
+                    }
+                }
             }
         }
         private void btnUndoIzmena_Click(object sender, EventArgs e)
         {
-            _DataSource.ReloadDataModel();
-
-            btnSaveToplane.Visible = false;
-            btnUndoToplane.Visible = false;
+            _BsToplane.RemoveCurrent();
+            dgToplane.Enabled = true;
             btnKotlarnice.Enabled = true;
+            gbToplane.Enabled = false;
+            btnDodajToplanu.Enabled = true;
+            btnObrisiToplanu.Enabled = true;
         }
         private void btnSaveEnabled_Click(object sender, EventArgs e)
         {
-            // za brisanje
-            var toplaneteZaBrisanje = _DataSource.MojeToplane.Where(t => t.IsDeleted && t.Id > 0).ToList();
-            foreach (var item in toplaneteZaBrisanje)
-            {
-                try
-                {
-                    item.Delete();
-                }
-                catch (Exception ex)
-                {
-                    break;
-                }
-            }
-
             // za update
             var toplaneteZaUpdate = (_BsToplane.List as IList<Toplana>).Where(t => t.IsChanged && t.Id > 0 && !t.IsDeleted).ToList();
             foreach (var item in toplaneteZaUpdate)
@@ -108,7 +111,7 @@ namespace TSP2025
                 }
                 catch (Exception ex)
                 {
-                    break;
+                    throw;
                 }
             }
 
@@ -123,13 +126,15 @@ namespace TSP2025
                 }
                 catch (Exception ex)
                 {
-                    break;
+                    throw;
                 }
             }
 
-            btnSaveToplane.Visible = false;
-            btnUndoToplane.Visible = false;
+            dgToplane.Enabled = true;
             btnKotlarnice.Enabled = true;
+            gbToplane.Enabled = false;
+            btnDodajToplanu.Enabled = true;
+            btnObrisiToplanu.Enabled = true;
         }
         private void btnKotlarnice_Click(object sender, EventArgs e)
         {
@@ -146,56 +151,65 @@ namespace TSP2025
 
         private void btnKotlarniceDodaj_Click(object sender, EventArgs e)
         {
-            var novaKotlarnica = new Kotlarnica() { Id = 0, Naziv = "<obavezno polje>", IsChanged = true, ToplanaId = (_BsToplane.Current as Toplana).Id, Toplana = (_BsToplane.Current as Toplana) };
-            _BsKotlarnice.Add(novaKotlarnica);
+            var novaKotlarnica = new Kotlarnica() { Id = 0, Naziv = "<obavezno polje>", IsChanged = true, ToplanaId = (_BsToplane.Current as Toplana)!.Id, Toplana = (_BsToplane.Current as Toplana)! };
+            _DataSource.SveKotlarnice.Add(novaKotlarnica);
+            //(_BsToplane.Current as Toplana)!.Kotlarnice.Add(novaKotlarnica);
+            //_BsKotlarnice.Add(novaKotlarnica);
             _BsKotlarnice.MoveLast();
-            tbKotlarnicaNaziv.Focus();
-            tbKotlarnicaNaziv.SelectAll();
-
-            btnSaveKotlarnice.Visible = true;
-            btnUndoKotlarnice.Visible = true;
+            dgKotlarnice.Enabled = false;
             btnToplane.Enabled = false;
             btnPodstanice.Enabled = false;
+            gbKotlarnice.Enabled = true;
+            btnKotlarniceDodaj.Enabled = false;
+            btnKotlarniceObrisi.Enabled = false;
+            tbKotlarnicaNaziv.Focus();
+            tbKotlarnicaNaziv.SelectAll();
         }
         private void btnKotlarniceObrisi_Click(object sender, EventArgs e)
         {
             if (_BsKotlarnice.Current != null)
             {
                 _BsKotlarnice.RemoveCurrent();
-
-                btnSaveKotlarnice.Visible = true;
-                btnUndoKotlarnice.Visible = true;
-                btnToplane.Enabled = false;
-                btnPodstanice.Enabled = false;
+                // za brisanje
+                var kotlarniceZaBrisanje = _DataSource.SveKotlarnice.Where(t => t.IsDeleted && t.Id > 0).ToList();
+                foreach (var item in kotlarniceZaBrisanje)
+                {
+                    try
+                    {
+                        item.Delete();
+                    }
+                    catch (Exception ex)
+                    {
+                        break;
+                    }
+                }
             }
+        }
+        private void dgKotlarnice_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgKotlarnice.Enabled = false;
+            gbKotlarnice.Enabled = true;
+            btnKotlarniceDodaj.Enabled = false;
+            btnKotlarniceObrisi.Enabled = false;
+            btnToplane.Enabled = false;
+            btnPodstanice.Enabled = false;
+            tbKotlarnicaNaziv.Focus();
+            tbKotlarnicaNaziv.SelectAll();
         }
         private void btnUndoKotlarnice_Click(object sender, EventArgs e)
         {
-            _DataSource.ReloadDataModel();
-
-            btnSaveKotlarnice.Visible = false;
-            btnUndoKotlarnice.Visible = false;
+            _BsKotlarnice.RemoveCurrent();
+            dgKotlarnice.Enabled = true;
             btnToplane.Enabled = true;
             btnPodstanice.Enabled = true;
+            gbKotlarnice.Enabled = false;
+            btnKotlarniceDodaj.Enabled = true;
+            btnKotlarniceObrisi.Enabled = true;
         }
         private void btnSaveKotlarnice_Click(object sender, EventArgs e)
         {
-            // za brisanje
-            var kotlarniceZaBrisanje = _DataSource.SveKotlarnice.Where(t => t.IsDeleted && t.Id > 0).ToList();
-            foreach (var item in kotlarniceZaBrisanje)
-            {
-                try
-                {
-                    item.Delete();
-                }
-                catch (Exception ex)
-                {
-                    break;
-                }
-            }
-
             // za update
-            var kotlarniceZaUpdate = (_BsKotlarnice.List as IList<Kotlarnica>).Where(t => t.IsChanged && t.Id > 0 && !t.IsDeleted).ToList();
+            var kotlarniceZaUpdate = (_BsKotlarnice.List as IList<Kotlarnica>)!.Where(t => t.IsChanged && t.Id > 0 && !t.IsDeleted).ToList();
             foreach (var item in kotlarniceZaUpdate)
             {
                 try
@@ -204,12 +218,12 @@ namespace TSP2025
                 }
                 catch (Exception ex)
                 {
-                    break;
+                    throw;
                 }
             }
 
             // za create
-            var kotlarniceZaCreate = (_BsKotlarnice.List as IList<Kotlarnica>).Where(k => k.Id == 0 && !k.IsDeleted && k.IsChanged).ToList();
+            var kotlarniceZaCreate = (_BsKotlarnice.List as IList<Kotlarnica>)!.Where(k => k.Id == 0 && !k.IsDeleted && k.IsChanged).ToList();
             foreach (var item in kotlarniceZaCreate)
             {
                 try
@@ -219,14 +233,16 @@ namespace TSP2025
                 }
                 catch (Exception ex)
                 {
-                    break;
+                    throw;
                 }
             }
 
-            btnSaveKotlarnice.Visible = false;
-            btnUndoKotlarnice.Visible = false;
+            dgKotlarnice.Enabled = true;
             btnToplane.Enabled = true;
             btnPodstanice.Enabled = true;
+            gbKotlarnice.Enabled = false;
+            btnKotlarniceDodaj.Enabled = true;
+            btnKotlarniceObrisi.Enabled = true;
         }
         private void btnToplane_Click(object sender, EventArgs e)
         {
@@ -476,9 +492,9 @@ namespace TSP2025
 
         private void tabMaticniPodaci_Selecting(object sender, TabControlCancelEventArgs e)
         {
-            if (btnSaveToplane.Visible || btnSaveKotlarnice.Visible || btnSavePodstanice.Visible || btnSavePotrosaci.Visible)
+            if (gbToplane.Enabled || gbKotlarnice.Enabled || gbPodstanice.Enabled || gbIndividualniPotrosaci.Enabled)
             {
-                FormMessages.ShowExclamation("Saèuvaj ili poništi izmene na formi");
+                FormMessages.ShowExclamation("Saèuvaj ili poništi unete izemene.");
                 e.Cancel = true;
             }
 
@@ -497,51 +513,6 @@ namespace TSP2025
             else if (e.TabPageIndex > 3 && _BsPodstanice.Current == null)
             {
                 e.Cancel = true;
-            }
-        }
-        private void _BsToplane_PositionChanged(object sender, EventArgs e)
-        {
-            if (_BsToplane.Position > -1)
-            {
-                gbUnosToplane.Enabled = true;
-            }
-            else
-            {
-                gbUnosToplane.Enabled = false;
-            }
-        }
-        private void _BsKotlarnice_PositionChanged(object sender, EventArgs e)
-        {
-            if (_BsKotlarnice.Position > -1)
-            {
-                gbKotlarnice.Enabled = true;
-            }
-            else
-            {
-                gbKotlarnice.Enabled = false;
-            }
-        }
-        private void _BsPodstanice_PositionChanged(object sender, EventArgs e)
-        {
-            if (_BsPodstanice.Position > -1)
-            {
-                gbUnosPodstanica.Enabled = true;
-            }
-            else
-            {
-                gbUnosPodstanica.Enabled = false;
-            }
-        }
-
-        private void _BsIndividualniPotrosaci_PositionChanged(object sender, EventArgs e)
-        {
-            if (_BsIndividualniPotrosaci.Position > -1)
-            {
-                gUnosbIndividualniPotrosac.Enabled = true;
-            }
-            else
-            {
-                gUnosbIndividualniPotrosac.Enabled = false;
             }
         }
     }

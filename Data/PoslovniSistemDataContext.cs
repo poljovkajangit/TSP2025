@@ -16,11 +16,14 @@ namespace TSP2025.Data
     public class PoslovniSistemDataContext
     {
         public ImprovedBindingList<Toplana> MojeToplane { get; set; }
-        public static bool IsLoading { get; set; } = false;
         public ImprovedBindingList<Toplana> SveToplane { get; set; } = new ImprovedBindingList<Toplana>();
         public ImprovedBindingList<Kotlarnica> SveKotlarnice { get; set; } = new ImprovedBindingList<Kotlarnica>();
         public ImprovedBindingList<Podstanica> SvePodstanice { get; set; } = new ImprovedBindingList<Podstanica>();
         public ImprovedBindingList<IndividualniPotrosac> SviIndividualniPotrosaci { get; set; } = new ImprovedBindingList<IndividualniPotrosac>();
+
+
+
+        public static bool IsLoading { get; set; } = false;
 
         private List<GrupaMernihMesta> _SveGrupaMernihMesta = null;
 
@@ -349,7 +352,6 @@ namespace TSP2025.Data
         {
             (deletedItem as Kotlarnica).IsDeleted = true;
         }
-
 
         private void ModelChangedEventHandler(string entity)
         {
