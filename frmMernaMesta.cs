@@ -52,10 +52,20 @@ namespace TSP2025
 
         private void btnGodisnjiIzvestaj_Click(object sender, EventArgs e)
         {
-            var mernomesto = bsMernaMesta.Current as MernoMesto;
-            var _frmPeriodicniIzveštaj = new frmStanje();
-            _frmPeriodicniIzveštaj.MdiParent = this.ParentForm;
-            _frmPeriodicniIzveštaj.Show();
+
+        }
+
+        private void dgMernaMesta_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
+                e.RowIndex >= 0)
+            {
+                var mernomesto = bsMernaMesta.Current as MernoMesto;
+                var _frmPeriodicniIzveštaj = new frmStanje(mernomesto);
+                _frmPeriodicniIzveštaj.ShowDialog();
+            }
         }
     }
 }

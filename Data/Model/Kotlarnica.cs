@@ -1,12 +1,11 @@
 ﻿using Microsoft.Data.SqlClient;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using TSP2005;
 
 namespace TSP2025.Data.Model
 {
-    public class Kotlarnica : ModelBase
+    public class Kotlarnica : ModelBase, IEntity
     {
         private Toplana _Toplana;
         private int toplanaId;

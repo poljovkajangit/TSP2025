@@ -30,7 +30,6 @@
         {
             components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMernaMesta));
             bsGrupeMernihMesta = new BindingSource(components);
             bsMernaMesta = new BindingSource(components);
             dgMernaMesta = new DataGridView();
@@ -38,12 +37,12 @@
             grupaMernogMestaNazivDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
+            colStanje = new DataGridViewButtonColumn();
             label1 = new Label();
             tbPretraga = new TextBox();
             cbGrupeMernihMesta = new ComboBox();
             label2 = new Label();
             btnPretrazi = new Button();
-            btnGodisnjiIzvestaj = new Button();
             ((System.ComponentModel.ISupportInitialize)bsGrupeMernihMesta).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bsMernaMesta).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgMernaMesta).BeginInit();
@@ -68,25 +67,25 @@
             dgMernaMesta.BackgroundColor = Color.LightGray;
             dgMernaMesta.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Control;
             dataGridViewCellStyle1.SelectionForeColor = Color.Black;
             dgMernaMesta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgMernaMesta.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgMernaMesta.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn5, grupaMernogMestaNazivDataGridViewTextBoxColumn, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7 });
+            dgMernaMesta.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn5, grupaMernogMestaNazivDataGridViewTextBoxColumn, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, colStanje });
             dgMernaMesta.DataSource = bsMernaMesta;
             dgMernaMesta.EditMode = DataGridViewEditMode.EditProgrammatically;
             dgMernaMesta.EnableHeadersVisualStyles = false;
-            dgMernaMesta.Location = new Point(8, 43);
-            dgMernaMesta.Margin = new Padding(2, 2, 2, 2);
+            dgMernaMesta.Location = new Point(11, 72);
             dgMernaMesta.MultiSelect = false;
             dgMernaMesta.Name = "dgMernaMesta";
             dgMernaMesta.ReadOnly = true;
             dgMernaMesta.RowHeadersWidth = 32;
             dgMernaMesta.ScrollBars = ScrollBars.Vertical;
             dgMernaMesta.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgMernaMesta.Size = new Size(1368, 570);
+            dgMernaMesta.Size = new Size(1473, 601);
             dgMernaMesta.TabIndex = 0;
+            dgMernaMesta.CellContentClick += dgMernaMesta_CellContentClick;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -117,31 +116,38 @@
             // 
             // dataGridViewTextBoxColumn7
             // 
-            dataGridViewTextBoxColumn7.DataPropertyName = "Tip";
+            dataGridViewTextBoxColumn7.DataPropertyName = "TipMernoMesta";
             dataGridViewTextBoxColumn7.HeaderText = "Tip";
             dataGridViewTextBoxColumn7.MinimumWidth = 8;
             dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             dataGridViewTextBoxColumn7.ReadOnly = true;
-            dataGridViewTextBoxColumn7.Width = 300;
+            dataGridViewTextBoxColumn7.Width = 320;
+            // 
+            // colStanje
+            // 
+            colStanje.HeaderText = "";
+            colStanje.MinimumWidth = 8;
+            colStanje.Name = "colStanje";
+            colStanje.ReadOnly = true;
+            colStanje.Text = "Stanje";
+            colStanje.UseColumnTextForButtonValue = true;
+            colStanje.Width = 150;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            label1.Location = new Point(314, 15);
-            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Location = new Point(424, 25);
             label1.Name = "label1";
-            label1.Size = new Size(143, 17);
+            label1.Size = new Size(196, 25);
             label1.TabIndex = 1;
             label1.Text = "Oznaka mernog mesta:";
             // 
             // tbPretraga
             // 
             tbPretraga.BorderStyle = BorderStyle.FixedSingle;
-            tbPretraga.Location = new Point(461, 12);
-            tbPretraga.Margin = new Padding(2, 2, 2, 2);
+            tbPretraga.Location = new Point(626, 23);
             tbPretraga.Name = "tbPretraga";
-            tbPretraga.Size = new Size(230, 23);
+            tbPretraga.Size = new Size(328, 31);
             tbPretraga.TabIndex = 2;
             // 
             // cbGrupeMernihMesta
@@ -150,62 +156,45 @@
             cbGrupeMernihMesta.DisplayMember = "Naziv";
             cbGrupeMernihMesta.DropDownStyle = ComboBoxStyle.DropDownList;
             cbGrupeMernihMesta.FormattingEnabled = true;
-            cbGrupeMernihMesta.Location = new Point(68, 12);
-            cbGrupeMernihMesta.Margin = new Padding(2, 2, 2, 2);
+            cbGrupeMernihMesta.Location = new Point(97, 20);
             cbGrupeMernihMesta.Name = "cbGrupeMernihMesta";
-            cbGrupeMernihMesta.Size = new Size(226, 23);
+            cbGrupeMernihMesta.Size = new Size(321, 33);
             cbGrupeMernihMesta.TabIndex = 3;
             cbGrupeMernihMesta.SelectionChangeCommitted += cbGrupeMernihMesta_SelectionChangeCommitted;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            label2.Location = new Point(17, 15);
-            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Location = new Point(24, 25);
             label2.Name = "label2";
-            label2.Size = new Size(47, 17);
+            label2.Size = new Size(64, 25);
             label2.TabIndex = 4;
             label2.Text = "Grupa:";
             // 
             // btnPretrazi
             // 
-            btnPretrazi.Location = new Point(695, 13);
-            btnPretrazi.Margin = new Padding(2, 2, 2, 2);
+            btnPretrazi.Location = new Point(960, 16);
             btnPretrazi.Name = "btnPretrazi";
-            btnPretrazi.Size = new Size(78, 26);
+            btnPretrazi.Size = new Size(111, 43);
             btnPretrazi.TabIndex = 5;
             btnPretrazi.Text = "Pretraži";
             btnPretrazi.UseVisualStyleBackColor = true;
             btnPretrazi.Click += btnPretrazi_Click;
             // 
-            // btnGodisnjiIzvestaj
-            // 
-            btnGodisnjiIzvestaj.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnGodisnjiIzvestaj.Image = (Image)resources.GetObject("btnGodisnjiIzvestaj.Image");
-            btnGodisnjiIzvestaj.ImageAlign = ContentAlignment.MiddleLeft;
-            btnGodisnjiIzvestaj.Location = new Point(7, 617);
-            btnGodisnjiIzvestaj.Margin = new Padding(2, 2, 2, 2);
-            btnGodisnjiIzvestaj.Name = "btnGodisnjiIzvestaj";
-            btnGodisnjiIzvestaj.Size = new Size(198, 73);
-            btnGodisnjiIzvestaj.TabIndex = 8;
-            btnGodisnjiIzvestaj.Text = "Pregled stanja ...";
-            btnGodisnjiIzvestaj.UseVisualStyleBackColor = true;
-            btnGodisnjiIzvestaj.Click += btnGodisnjiIzvestaj_Click;
-            // 
             // frmMernaMesta
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1385, 697);
-            Controls.Add(btnGodisnjiIzvestaj);
+            ClientSize = new Size(1498, 685);
             Controls.Add(btnPretrazi);
             Controls.Add(label2);
             Controls.Add(cbGrupeMernihMesta);
             Controls.Add(tbPretraga);
             Controls.Add(label1);
             Controls.Add(dgMernaMesta);
-            Margin = new Padding(2, 2, 2, 2);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "frmMernaMesta";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
@@ -240,6 +229,6 @@
         private DataGridViewTextBoxColumn grupaMernogMestaNazivDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private Button btnGodisnjiIzvestaj;
+        private DataGridViewButtonColumn colStanje;
     }
 }

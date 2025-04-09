@@ -26,7 +26,9 @@ namespace TSP2025
                 return (bsOcitavanja.List as List<Ocitavanje>)!;
             }
         }
-        
+
+        private frmStanje() { }
+
         public frmStanje(MernoMesto mernoMesto = null)
         {
             InitializeComponent();
@@ -55,6 +57,11 @@ namespace TSP2025
 
         private void btnPrikazi_Click(object sender, EventArgs e)
         {
+            if(SelectedMernoMesto == null || SelectedMernoMesto.Id == 0)
+            {
+               return;
+            }
+
             var dsMode = FormMessages.AskForDataSource();
 
             switch (cbProredi.SelectedIndex)

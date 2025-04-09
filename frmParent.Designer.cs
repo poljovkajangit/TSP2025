@@ -47,6 +47,7 @@
             preuzmiPodatkeToolStripMenuItem = new ToolStripMenuItem();
             istorijaPreuzimanjaToolStripMenuItem = new ToolStripMenuItem();
             gbPullOperacija = new GroupBox();
+            btnPullOperacijaToggleView = new Button();
             tbPullInfo = new TextBox();
             pbPullProgress = new ProgressBar();
             btnPullMernaMestaRefresh = new Button();
@@ -195,8 +196,9 @@
             // 
             // gbPullOperacija
             // 
-            gbPullOperacija.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            gbPullOperacija.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             gbPullOperacija.BackColor = Color.Gainsboro;
+            gbPullOperacija.Controls.Add(btnPullOperacijaToggleView);
             gbPullOperacija.Controls.Add(tbPullInfo);
             gbPullOperacija.Controls.Add(pbPullProgress);
             gbPullOperacija.Controls.Add(btnPullMernaMestaRefresh);
@@ -212,14 +214,27 @@
             gbPullOperacija.Controls.Add(btnPull);
             gbPullOperacija.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 238);
             gbPullOperacija.ForeColor = Color.Black;
-            gbPullOperacija.Location = new Point(4, 365);
+            gbPullOperacija.Location = new Point(1158, 28);
             gbPullOperacija.Margin = new Padding(2);
             gbPullOperacija.Name = "gbPullOperacija";
             gbPullOperacija.Padding = new Padding(2);
-            gbPullOperacija.Size = new Size(348, 243);
+            gbPullOperacija.Size = new Size(348, 30);
             gbPullOperacija.TabIndex = 4;
             gbPullOperacija.TabStop = false;
-            gbPullOperacija.Text = "Pull operacija";
+            gbPullOperacija.Text = "Pull operacija (SCADA to TSP2025)";
+            // 
+            // btnPullOperacijaToggleView
+            // 
+            btnPullOperacijaToggleView.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnPullOperacijaToggleView.FlatStyle = FlatStyle.Flat;
+            btnPullOperacijaToggleView.Location = new Point(290, 3);
+            btnPullOperacijaToggleView.Margin = new Padding(2);
+            btnPullOperacijaToggleView.Name = "btnPullOperacijaToggleView";
+            btnPullOperacijaToggleView.Size = new Size(54, 23);
+            btnPullOperacijaToggleView.TabIndex = 11;
+            btnPullOperacijaToggleView.Text = "Prikaži";
+            btnPullOperacijaToggleView.UseVisualStyleBackColor = true;
+            btnPullOperacijaToggleView.Click += btnPullOperacijaToggleView_Click;
             // 
             // tbPullInfo
             // 
@@ -266,6 +281,7 @@
             tbSourceColumn.Location = new Point(102, 131);
             tbSourceColumn.Margin = new Padding(2);
             tbSourceColumn.Name = "tbSourceColumn";
+            tbSourceColumn.ReadOnly = true;
             tbSourceColumn.Size = new Size(242, 23);
             tbSourceColumn.TabIndex = 9;
             tbSourceColumn.Text = "TP1_1_KUM_SNAGA";
@@ -289,6 +305,7 @@
             tbSourceTable.Location = new Point(102, 104);
             tbSourceTable.Margin = new Padding(2);
             tbSourceTable.Name = "tbSourceTable";
+            tbSourceTable.ReadOnly = true;
             tbSourceTable.Size = new Size(242, 23);
             tbSourceTable.TabIndex = 7;
             tbSourceTable.Text = "TREND_TSTP1_TP1_1";
@@ -327,6 +344,7 @@
             tbSourceDatabase.Location = new Point(102, 77);
             tbSourceDatabase.Margin = new Padding(2);
             tbSourceDatabase.Name = "tbSourceDatabase";
+            tbSourceDatabase.ReadOnly = true;
             tbSourceDatabase.Size = new Size(241, 23);
             tbSourceDatabase.TabIndex = 4;
             tbSourceDatabase.Text = "TSP2025SCADA";
@@ -351,9 +369,9 @@
             label1.Location = new Point(4, 29);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(81, 15);
+            label1.Size = new Size(97, 15);
             label1.TabIndex = 2;
-            label1.Text = "Merno mesto:";
+            label1.Text = "Za merno mesto:";
             // 
             // comboBox1
             // 
@@ -393,19 +411,20 @@
             // 
             label5.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 22F);
-            label5.Location = new Point(1158, 566);
+            label5.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            label5.Location = new Point(1239, 568);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(327, 41);
+            label5.Size = new Size(260, 32);
             label5.TabIndex = 6;
             label5.Text = "... under construction ...";
             // 
             // label6
             // 
+            label6.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 22F);
-            label6.Location = new Point(17, 37);
+            label6.Location = new Point(8, 517);
             label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
             label6.Size = new Size(130, 41);
@@ -414,10 +433,10 @@
             // 
             // label7
             // 
-            label7.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label7.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            label7.Location = new Point(1298, 37);
+            label7.Location = new Point(8, 568);
             label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
             label7.Size = new Size(187, 32);
@@ -495,5 +514,6 @@
         private Button btnPullMernaMestaRefresh;
         private ProgressBar pbPullProgress;
         private TextBox tbPullInfo;
+        private Button btnPullOperacijaToggleView;
     }
 }

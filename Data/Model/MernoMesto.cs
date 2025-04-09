@@ -80,6 +80,24 @@ namespace TSP2025.Data.Model
                 }
             }
         }
+        public string TipMernoMesta
+        {
+            get
+            {
+                if(tip == 1)
+                {
+                    return "Podstanica";
+                }
+                else if (tip == 2)
+                {
+                    return "Individualni potrošač";
+                }
+                else
+                {
+                    return "Neodređeno";
+                }
+            }
+        }
         public int PotrosacId
         {
             get => potrosacId;

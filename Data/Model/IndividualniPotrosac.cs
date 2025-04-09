@@ -7,11 +7,24 @@ namespace TSP2025.Data.Model
     public class IndividualniPotrosac : ModelBase, IEntity
     {
         private Podstanica? podstanica;
-        private string naziv;
-        private string? adresa;
-        private string? email;
-        private string? telefon;
+        private string sifraKorisnika = string.Empty;
+        private string naziv = string.Empty;
+        private string adresa = string.Empty;
+        private string email = string.Empty;
+        private string telefon = string.Empty;
 
+        public required string SifraKorisnika
+        {
+            get => sifraKorisnika;
+            set
+            {
+                if (value != sifraKorisnika)
+                {
+                    sifraKorisnika = value;
+                    IsChanged = PoslovniSistemDataContext.IsLoading ? false : true;
+                }
+            }
+        }
         public required string Naziv
         {
             get => naziv;
@@ -80,10 +93,11 @@ namespace TSP2025.Data.Model
                 {
                     using (insertCommand.Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
                     {
-                        string insertQuery = "Insert into IndividualniPotrosac (Naziv, Adresa, Email, Telefon, PodstanicaId) output INSERTED.ID " +
-                                                             " Values (@Naziv, @Adresa, @Email, @Telefon, @PodstanicaId)";
+                        string insertQuery = "Insert into IndividualniPotrosac (SifraKorisnika, Naziv, Adresa, Email, Telefon, PodstanicaId) output INSERTED.ID " +
+                                                             " Values (@SifraKorisnika, @Naziv, @Adresa, @Email, @Telefon, @PodstanicaId)";
                         insertCommand.CommandText = insertQuery;
 
+                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@SifraKorisnika", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.SifraKorisnika });
                         insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Naziv", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Naziv });
                         insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Adresa", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Adresa });
                         insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Email", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Email });
@@ -144,9 +158,10 @@ namespace TSP2025.Data.Model
                 {
                     updateCommand.Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString);
                     updateCommand.Connection.Open();
-                    updateCommand.CommandText = "Update IndividualniPotrosac Set Naziv = @Naziv, Adresa = @Adresa, Email = @Email, Telefon = @Telefon Where Id = @id";
+                    updateCommand.CommandText = "Update IndividualniPotrosac Set SifraKorisnika = @SifraKorisnika, Naziv = @Naziv, Adresa = @Adresa, Email = @Email, Telefon = @Telefon Where Id = @id";
 
                     updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@id", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Input, Value = this.Id });
+                    updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@SifraKorisnika", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.SifraKorisnika });
                     updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Naziv", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Naziv });
                     updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Adresa", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Adresa });
                     updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Email", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Email });
@@ -159,7 +174,7 @@ namespace TSP2025.Data.Model
                     this.IsDeleted = false;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw;
             }

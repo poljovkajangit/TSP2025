@@ -184,5 +184,19 @@ namespace TSP2025
         {
             FormMessages.ShowInformation("TSP2025 Free Trial Version ... under construction ...");
         }
+
+        private void btnPullOperacijaToggleView_Click(object sender, EventArgs e)
+        {
+            if(btnPullOperacijaToggleView.Text == "Prikaži")
+            {
+                gbPullOperacija.Height = 405;
+                btnPullOperacijaToggleView.Text = "Sakrij";
+            }
+            else
+            {
+                gbPullOperacija.Height = 50;
+                btnPullOperacijaToggleView.Text = "Prikaži";
+            }
+        }
     }
 }

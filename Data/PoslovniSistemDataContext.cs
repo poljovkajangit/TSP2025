@@ -48,7 +48,7 @@ namespace TSP2025.Data
                 if (_SvaMernaMesta == null)
                 {
                     UcitajMernaMesta();
-                    _SvaMernaMesta.Insert(0, new MernoMesto() { Id = 0, OznakaMernogMesta = "" });
+                    _SvaMernaMesta.Insert(0, new MernoMesto() { Id = 0, OznakaMernogMesta = "", ImaMernoMesto = false });
                 }
                 return _SvaMernaMesta;
             }
@@ -66,7 +66,7 @@ namespace TSP2025.Data
                 if (_SveGrupaMernihMesta == null)
                 {
                     UcitajGrupeMernihMesta();
-                    _SveGrupaMernihMesta.Insert(0, new GrupaMernihMesta() { Id = 0, Naziv = "<Sve>" });
+                    _SveGrupaMernihMesta.Insert(0, new GrupaMernihMesta() { Id = 0, Naziv = "<Sve>", ImaMernoMesto = false });
                 }
                 return _SveGrupaMernihMesta;
             }
@@ -100,6 +100,7 @@ namespace TSP2025.Data
                         {
                             Id = (int)gMernoMestoRow["Id"],
                             Naziv = (string)gMernoMestoRow["Naziv"],
+                            ImaMernoMesto = false,
                         };
                         _SveGrupaMernihMesta.Add(gmm);
                     }
@@ -125,7 +126,7 @@ namespace TSP2025.Data
                         MernoMesto mm = new()
                         {
                             Id = (int)mernoMestoRow["Id"],
-                            GrupaMernogMesta = new GrupaMernihMesta() { Id = (int)mernoMestoRow["GrupaId"], Naziv = (string)mernoMestoRow["Naziv"] },
+                            GrupaMernogMesta = new GrupaMernihMesta() { Id = (int)mernoMestoRow["GrupaId"], Naziv = (string)mernoMestoRow["Naziv"], ImaMernoMesto = false },
                             OznakaKalorimetra = (string)mernoMestoRow["OznakaKalorimetra"],
                             OznakaMernogMesta = (string)mernoMestoRow["OznakaMernogMesta"],
                             Tip = (int)mernoMestoRow["Tip"],
@@ -134,6 +135,7 @@ namespace TSP2025.Data
                             VremeDodavanja = (DateTime)mernoMestoRow["VremeDodavanja"],
                             ScadaKolona = (string)mernoMestoRow["ScadaKolona"],
                             ScadaTabela = (string)mernoMestoRow["ScadaTabela"],
+                            ImaMernoMesto = false,
                         };
                         _SvaMernaMesta.Add(mm);
                     }
@@ -249,8 +251,8 @@ namespace TSP2025.Data
                     var cmd = new SqlCommand(
                         @"  Select * from Toplana;
                             Select * from Kotlarnica;
-                            Select * from Podstanica;
-                            Select * from IndividualniPotrosac;
+                            Select p.*, (Select count(Id) From MernoMesto mm Where mm.Tip = 1 and mm.PotrosacId = p.Id) As Mm from Podstanica p;
+                            Select ip.*, (Select count(Id) From MernoMesto mm Where mm.Tip = 2 and mm.PotrosacId = ip.Id) As Mm from IndividualniPotrosac ip;
                             Select * from GrupaMernihMesta", con);
                     var da = new SqlDataAdapter(cmd);
                     da.Fill(ds);
@@ -263,11 +265,12 @@ namespace TSP2025.Data
                     {
                         Id = (int)toplanaRow["Id"],
                         Naziv = (string)toplanaRow["Naziv"],
-                        Napomena = (string)toplanaRow["Napomena"]
+                        Napomena = (string)toplanaRow["Napomena"],
+                        ImaMernoMesto = false
                     };
-                    toplana.ModelChanged += ModelChangedEventHandler;
                     MojeToplane.Add(toplana);
                     SveToplane.Add(toplana);
+                    toplana.ModelChanged += ModelChangedEventHandler;
                     MojeToplane.BeforeRemove += MojeToplane_BeforeRemove;
                     SveToplane.BeforeRemove += MojeToplane_BeforeRemove;
                 }
@@ -281,14 +284,16 @@ namespace TSP2025.Data
                         Naziv = GetRowData<string>(kotlarnicaRow, "Naziv"),
                         Napomena = GetRowData<string>(kotlarnicaRow, "Napomena"),
                         ToplanaId = GetRowData<int>(kotlarnicaRow, "ToplanaId"),
-                        Toplana = SveToplane.Where(t => t.Id == (int)kotlarnicaRow["ToplanaId"]).First(),
                         Adresa = GetRowData<string>(kotlarnicaRow, "Adresa"),
                         Sef = GetRowData<string>(kotlarnicaRow, "Sef"),
                         Telefon = GetRowData<string>(kotlarnicaRow, "Telefon"),
+                        Toplana = SveToplane.Where(t => t.Id == (int)kotlarnicaRow["ToplanaId"]).First(),
+                        ImaMernoMesto = false
                     };
-                    kotlarnica.ModelChanged += ModelChangedEventHandler;
                     SveKotlarnice.Add(kotlarnica);
+                    kotlarnica.ModelChanged += ModelChangedEventHandler;
                     kotlarnica.Toplana.Kotlarnice.BeforeRemove += Kotlarnice_BeforeRemove;
+
                 }
 
                 // PODSTANICE
@@ -303,10 +308,10 @@ namespace TSP2025.Data
                         OdgovornoLice = GetRowData<string>(podstanicaRow, "OdgovornoLice"),
                         KotlarnicaId = GetRowData<int>(podstanicaRow, "KotlarnicaId"),
                         Kotlarnica = SveKotlarnice.Where(k => k.Id == (int)podstanicaRow["KotlarnicaId"]).First(),
+                        ImaMernoMesto = GetRowData<int>(podstanicaRow, "Mm") == 0 ? false : true,
                     };
-                    podstanica.ModelChanged += ModelChangedEventHandler;
                     SvePodstanice.Add(podstanica);
-                    SvePodstanice.BeforeRemove += Podstanice_BeforeRemove;
+                    podstanica.ModelChanged += ModelChangedEventHandler;
                     podstanica.Kotlarnica.Podstanice.BeforeRemove += Podstanice_BeforeRemove;
                 }
 
@@ -316,16 +321,18 @@ namespace TSP2025.Data
                     IndividualniPotrosac individualniPotrosac = new()
                     {
                         Id = GetRowData<int>(individualniPotrosacRow, "Id"),
+                        SifraKorisnika = GetRowData<string>(individualniPotrosacRow, "SifraKorisnika"),
                         Naziv = GetRowData<string>(individualniPotrosacRow, "Naziv"),
                         Email = GetRowData<string>(individualniPotrosacRow, "Email"),
                         Adresa = GetRowData<string>(individualniPotrosacRow, "Adresa"),
                         Telefon = GetRowData<string>(individualniPotrosacRow, "Telefon"),
                         PodstanicaId = GetRowData<int>(individualniPotrosacRow, "PodstanicaId"),
                         Podstanica = SvePodstanice.Where(k => k.Id == (int)individualniPotrosacRow["PodstanicaId"]).First(),
+                        ImaMernoMesto = GetRowData<int>(individualniPotrosacRow, "Mm") == 0 ? false : true,
                     };
-                    individualniPotrosac.ModelChanged += ModelChangedEventHandler;
-                    SviIndividualniPotrosaci.BeforeRemove += SviIndividualniPotrosaci_BeforeRemove;
                     SviIndividualniPotrosaci.Add(individualniPotrosac);
+                    individualniPotrosac.ModelChanged += ModelChangedEventHandler;
+                    individualniPotrosac.Podstanica.IndividualniPotrosaci.BeforeRemove += SviIndividualniPotrosaci_BeforeRemove;
                 }
             }
             #endregion

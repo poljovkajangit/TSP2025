@@ -9,9 +9,9 @@ namespace TSP2025.Data.Model
     {
         private Kotlarnica kotlarnica;
         private string naziv;
-        private string? adresa;
-        private string? odgovornoLice;
-        private string? napomena;
+        private string adresa = string.Empty;
+        private string odgovornoLice = string.Empty;
+        private string napomena = string.Empty;
 
         public ImprovedBindingList<IndividualniPotrosac> IndividualniPotrosaci { get; set; }
 
@@ -95,10 +95,10 @@ namespace TSP2025.Data.Model
                     updateCommand.CommandText = "Update Podstanica Set Naziv = @Naziv, Adresa = @Adresa, OdgovornoLice = @OdgovornoLice, Napomena = @Napomena Where Id = @id";
 
                     updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@id", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Input, Value = this.Id });
-                    updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Naziv", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Naziv });
-                    updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Adresa", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Adresa });
-                    updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@OdgovornoLice", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.OdgovornoLice });
-                    updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Napomena", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Napomena });
+                    updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Naziv", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = (this.Naziv == null) ? DBNull.Value : this.Naziv });
+                    updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Adresa", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = (this.Adresa == null) ? DBNull.Value : this.Adresa, IsNullable = true });
+                    updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@OdgovornoLice", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = (this.OdgovornoLice == null) ? DBNull.Value : this.OdgovornoLice, IsNullable = true });
+                    updateCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Napomena", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Napomena, IsNullable = true });
 
                     updateCommand.ExecuteNonQuery();
                     updateCommand.Connection.Close();
@@ -121,16 +121,15 @@ namespace TSP2025.Data.Model
                 {
                     using (insertCommand.Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
                     {
-                        string insertQuery = "Insert into Podstanica (Naziv, Adresa, OdgovornoLice, Napomena, KotlarnicaId) output INSERTED.ID" +
-                                                             " Values (@Naziv, @Adresa, @OdgovornoLice, @Napomena, @KotlarnicaId)";
+                        string insertQuery = "Insert into Podstanica (Naziv, Adresa, OdgovornoLice, Napomena, KotlarnicaId) output INSERTED.ID Values (@Naziv, @Adresa, @OdgovornoLice, @Napomena, @KotlarnicaId)";
                         insertCommand.CommandText = insertQuery;
 
                         insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Naziv", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Naziv });
-                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Adresa", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Adresa });
-                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@OdgovornoLice", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.OdgovornoLice });
-                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Napomena", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = this.Napomena });
+                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Adresa", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = (this.Adresa == null) ? DBNull.Value : this.Adresa, IsNullable = true });
+                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@OdgovornoLice", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = (this.Adresa == null) ? DBNull.Value : this.OdgovornoLice, IsNullable = true });
+                        insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Napomena", SqlDbType = SqlDbType.NText, Direction = ParameterDirection.Input, Value = (this.Adresa == null) ? DBNull.Value : this.Napomena, IsNullable = true });
                         insertCommand.Parameters.Add(new SqlParameter() { ParameterName = "@KotlarnicaId", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Input, Value = this.KotlarnicaId });
-            
+
                         insertCommand.Connection.Open();
                         int modified = (int)insertCommand.ExecuteScalar();
                         insertCommand.Connection.Close();
