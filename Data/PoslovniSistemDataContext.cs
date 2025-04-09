@@ -192,7 +192,7 @@ namespace TSP2025.Data
             {
                 using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
                 {
-                    var command = new SqlCommand("select o.Datum, o.MernoMestoId, o.Vrednost From TSP2025.dbo.Ocitavanje o", connection);
+                    var command = new SqlCommand("select o.Datum, o.MernoMestoId, o.Vrednost From TSP2025.dbo.Ocitavanje o Order By o.Datum", connection);
 
                     try
                     {

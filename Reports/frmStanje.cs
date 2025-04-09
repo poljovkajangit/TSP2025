@@ -1,9 +1,13 @@
-﻿using System.Data;
+﻿using ScottPlot;
+using ScottPlot.Colormaps;
+using ScottPlot.Plottables;
+using System.Data;
 using System.Text;
 using TSP2025.Data;
 using TSP2025.Data.Model;
 using TSP2025.Reports;
 using TSP2025.Utils;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TSP2025
 {
@@ -57,9 +61,9 @@ namespace TSP2025
 
         private void btnPrikazi_Click(object sender, EventArgs e)
         {
-            if(SelectedMernoMesto == null || SelectedMernoMesto.Id == 0)
+            if (SelectedMernoMesto == null || SelectedMernoMesto.Id == 0)
             {
-               return;
+                return;
             }
 
             var dsMode = FormMessages.AskForDataSource();
@@ -132,7 +136,6 @@ namespace TSP2025
                     break;
             }
 
-
             for (int i = 1; i < bsOcitavanja.Count; i++)
             {
                 Ocitavanja[i].Razlika = Ocitavanja[i].Vrednost - Ocitavanja[i - 1].Vrednost;
@@ -141,6 +144,44 @@ namespace TSP2025
             lblUkupno.Text = "Ukupno: " + bsOcitavanja.Count;
 
             btnShowGraph.Enabled = true;
+
+            pltStanje.Plot.Clear();
+            // plot data using DateTime values on the horizontal axis
+            DateTime[] xs = [.. (bsOcitavanja.DataSource as IList<Ocitavanje>)!.Select(o => o.Vreme)];
+            double[] ys = [.. (bsOcitavanja.DataSource as IList<Ocitavanje>)!.Select(o => (double)o.Vrednost)];
+            //double[] razlika = [.. (bsOcitavanja.DataSource as IList<Ocitavanje>)!.Select(o => (double)o.Razlika)];
+            var mainScatter = pltStanje.Plot.Add.Scatter(xs, ys);
+            //double[] ys0 = Generate.Consecutive(xs.Length, ys[0], 0);
+            //var projScatter = pltStanje.Plot.Add.Scatter(xs, ys0);
+
+
+            //var errorbars = pltStanje.Plot.Add.ErrorBar(xs, ys, razlika);
+            //errorbars.Color = scatter.Color;
+
+            //var fill = pltStanje.Plot.Add.FillY(mainScatter, projScatter);
+            //fill.FillColor = Colors.Blue.WithAlpha(100);
+            //fill.LineColor = Colors.Blue;
+            //fill.MarkerColor = Colors.Blue;
+            //fill.LineWidth = 2;
+
+            // setup the bottom axis to use DateTime ticks
+            var axis = pltStanje.Plot.Axes.DateTimeTicksBottom();
+            // create a custom formatter to return a string with
+            // date only when zoomed out and time only when zoomed in
+            static string CustomFormatter(DateTime dt)
+            {
+                bool isMidnight = dt is { Hour: 0, Minute: 0, Second: 0 };
+                return isMidnight
+                    ? DateOnly.FromDateTime(dt).ToString()//$"{dt:MMM} '{dt:yyyy}" 
+                    : TimeOnly.FromDateTime(dt).ToString();
+            }
+            // apply our custom tick formatter
+            var tickGen = (ScottPlot.TickGenerators.DateTimeAutomatic)axis.TickGenerator;
+            tickGen.LabelFormatter = CustomFormatter;
+
+
+            pltStanje.Refresh();
+
         }
 
         private void btnExport_Click(object sender, EventArgs e)
