@@ -21,7 +21,7 @@ namespace TSP2025.Utils
 
         public static DataSourceMode AskForDataSource()
         {
-            switch(MessageBox.Show($"Izaberite izvor podataka:{Environment.NewLine}Yes - RAM{Environment.NewLine}No - TSP2025 baza podataka", "Izvor podataka?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1))
+            switch(MessageBox.Show($"Izaberite izvor podataka:{Environment.NewLine}{Environment.NewLine}Yes - Nasumične vrednosti{Environment.NewLine}No - TSP2025 baza podataka", "Izvor podataka?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1))
             {
 
                 case DialogResult.Yes: return DataSourceMode.FromRAM;
@@ -30,7 +30,5 @@ namespace TSP2025.Utils
                     return DataSourceMode.None;
             }
         }
-
-
     }
 }

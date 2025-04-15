@@ -58,12 +58,7 @@ namespace TSP2025
         }
         private void istorijaPreuzimanjaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormMessages.ShowExclamation("... under construction ...");
-        }
-
-        private void poMeseciaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormMessages.ShowExclamation("... under construction ...");
+            new frmScadaPrenos().ShowDialog();
         }
 
         private void periodičniToolStripMenuItem_Click(object sender, EventArgs e)
@@ -77,30 +72,6 @@ namespace TSP2025
         {
             Close();
         }
-
-        #region Izvestaji za potrosnju
-        private void trenutniMesecToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void dnevnaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var _frmPotrosnjaMesecno = new frmPotrosnjaMesecno();
-            _frmPotrosnjaMesecno.MdiParent = this;
-            _frmPotrosnjaMesecno.Show();
-        }
-        private void godišnjaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var _frmPotrosnjaGodisnja = new frmPotrosnjaGodisnja();
-            _frmPotrosnjaGodisnja.MdiParent = this;
-            _frmPotrosnjaGodisnja.Show();
-        }
-
-        private void periodičnoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-        #endregion
 
         private void btnTestConnection_Click(object sender, EventArgs e)
         {
@@ -162,21 +133,48 @@ namespace TSP2025
                 {
                     using (insertCommand.Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
                     {
-                        string insertQuery = @$"Truncate Table TSP2025.dbo.Ocitavanje;Insert Into TSP2025.dbo.Ocitavanje (MernoMestoId, Datum, Vrednost) Select {SelectedMernoMesto.Id}, t1.FLTIME, t1.{SelectedMernoMesto.ScadaKolona} From TSP2025SCADA.dbo.{SelectedMernoMesto.ScadaTabela} t1";
+                        string insertQuery = @$"
+                                Truncate Table TSP2025.dbo.Ocitavanje;
+                                Insert Into TSP2025.dbo.Ocitavanje (MernoMestoId, Datum, Vrednost) 
+                                Select {SelectedMernoMesto.Id}, t1.FLTIME, t1.{SelectedMernoMesto.ScadaKolona} From TSP2025SCADA.dbo.{SelectedMernoMesto.ScadaTabela} t1";
 
                         insertCommand.CommandText = insertQuery;
                         insertCommand.Connection.Open();
                         int affected = (int)insertCommand.ExecuteNonQuery();
                         insertCommand.Connection.Close();
 
-                        tbPullInfo.Text += $"{Environment.NewLine}Upis ({affected} zapisa) je uspešno izvršen";
+                        tbPullInfo.Text += $"{Environment.NewLine}Scada prenos ({affected} zapisa) je uspešno izvršen";
+
+                        insertQuery = @$"
+                                Insert Into PullHistory (MernoMestoId, PrenetoZapisa, Status, Poruka) 
+                                Values ({SelectedMernoMesto.Id}, {affected}, 1, '{tbPullInfo.Text}')";
+
+                        insertCommand.CommandText = insertQuery;
+                        insertCommand.Connection.Open();
+                        insertCommand.ExecuteNonQuery();
+                        insertCommand.Connection.Close();
                     }
                 }
             }
             catch (Exception ex)
             {
                 tbPullInfo.ForeColor = Color.Red;
-                tbPullInfo.Text += $"{Environment.NewLine}Došlo je do greške prilikom upida: {ex.Message}";
+                tbPullInfo.Text += $"{Environment.NewLine}Došlo je do greške prilikom prenosa: {ex.Message}";
+
+                var errorInsert = @$"
+                                Insert Into PullHistory (MernoMestoId, PrenetoZapisa, Status, Poruka) 
+                                Values ({SelectedMernoMesto.Id}, 0, 0, '{tbPullInfo.Text.Replace("'", "")}')";
+
+                using (var insertCommand = new SqlCommand())
+                {
+                    using (insertCommand.Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
+                    {
+                        insertCommand.CommandText = errorInsert;
+                        insertCommand.Connection.Open();
+                        insertCommand.ExecuteNonQuery();
+                        insertCommand.Connection.Close();
+                    }
+                }
             }
         }
 
@@ -187,16 +185,45 @@ namespace TSP2025
 
         private void btnPullOperacijaToggleView_Click(object sender, EventArgs e)
         {
-            if(btnPullOperacijaToggleView.Text == "Prikaži")
+            if (btnPullOperacijaToggleView.Text == "Prikaži")
             {
                 gbPullOperacija.Height = 405;
                 btnPullOperacijaToggleView.Text = "Sakrij";
             }
             else
             {
-                gbPullOperacija.Height = 50;
+                gbPullOperacija.Height = 30;
                 btnPullOperacijaToggleView.Text = "Prikaži";
             }
+        }
+
+        private void mnuMesecnaPotrosnja_Click(object sender, EventArgs e)
+        {
+            var frmMesecnaPotrosnja = new frmMesecnaPotrosnja();
+            frmMesecnaPotrosnja.ShowDialog();
+        }
+
+        private void preuzmiPodatkeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gbPullOperacija.Height = 405;
+            btnPullOperacijaToggleView.Text = "Sakrij";
+        }
+
+        private void godišnjaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frmGodisnja = new frmGodisnjaPotrosnja();
+            frmGodisnja.ShowDialog();
+        }
+
+        private void btnDashboard_Click(object sender, EventArgs e)
+        {
+            var frmDashBoard = new frmDashBoard();
+            frmDashBoard.MdiParent = this;
+            frmDashBoard.Left = 10;
+            frmDashBoard.Top = 10;
+            btnDashboard.Visible = false;
+            frmDashBoard.FormClosed += (s, args) => { btnDashboard.Visible = true; };
+            frmDashBoard.Show();
         }
     }
 }

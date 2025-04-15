@@ -30,19 +30,20 @@
         {
             components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             bsGrupeMernihMesta = new BindingSource(components);
             bsMernaMesta = new BindingSource(components);
             dgMernaMesta = new DataGridView();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            grupaMernogMestaNazivDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
-            colStanje = new DataGridViewButtonColumn();
             label1 = new Label();
             tbPretraga = new TextBox();
             cbGrupeMernihMesta = new ComboBox();
             label2 = new Label();
             btnPretrazi = new Button();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            grupaMernogMestaNazivDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
+            colStanje = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)bsGrupeMernihMesta).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bsMernaMesta).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgMernaMesta).BeginInit();
@@ -74,24 +75,87 @@
             dgMernaMesta.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgMernaMesta.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn5, grupaMernogMestaNazivDataGridViewTextBoxColumn, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, colStanje });
             dgMernaMesta.DataSource = bsMernaMesta;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgMernaMesta.DefaultCellStyle = dataGridViewCellStyle2;
             dgMernaMesta.EditMode = DataGridViewEditMode.EditProgrammatically;
             dgMernaMesta.EnableHeadersVisualStyles = false;
-            dgMernaMesta.Location = new Point(11, 72);
+            dgMernaMesta.Location = new Point(8, 43);
+            dgMernaMesta.Margin = new Padding(2);
             dgMernaMesta.MultiSelect = false;
             dgMernaMesta.Name = "dgMernaMesta";
             dgMernaMesta.ReadOnly = true;
+            dgMernaMesta.RowHeadersVisible = false;
             dgMernaMesta.RowHeadersWidth = 32;
             dgMernaMesta.ScrollBars = ScrollBars.Vertical;
-            dgMernaMesta.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgMernaMesta.Size = new Size(1473, 601);
+            dgMernaMesta.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            dgMernaMesta.Size = new Size(1285, 521);
             dgMernaMesta.TabIndex = 0;
             dgMernaMesta.CellContentClick += dgMernaMesta_CellContentClick;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(300, 16);
+            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(129, 15);
+            label1.TabIndex = 1;
+            label1.Text = "Oznaka mernog mesta:";
+            // 
+            // tbPretraga
+            // 
+            tbPretraga.BorderStyle = BorderStyle.FixedSingle;
+            tbPretraga.Location = new Point(433, 12);
+            tbPretraga.Margin = new Padding(2);
+            tbPretraga.Name = "tbPretraga";
+            tbPretraga.Size = new Size(230, 23);
+            tbPretraga.TabIndex = 2;
+            // 
+            // cbGrupeMernihMesta
+            // 
+            cbGrupeMernihMesta.DataSource = bsGrupeMernihMesta;
+            cbGrupeMernihMesta.DisplayMember = "Naziv";
+            cbGrupeMernihMesta.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbGrupeMernihMesta.FormattingEnabled = true;
+            cbGrupeMernihMesta.Location = new Point(68, 12);
+            cbGrupeMernihMesta.Margin = new Padding(2);
+            cbGrupeMernihMesta.Name = "cbGrupeMernihMesta";
+            cbGrupeMernihMesta.Size = new Size(226, 23);
+            cbGrupeMernihMesta.TabIndex = 3;
+            cbGrupeMernihMesta.SelectionChangeCommitted += cbGrupeMernihMesta_SelectionChangeCommitted;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(22, 16);
+            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(42, 15);
+            label2.TabIndex = 4;
+            label2.Text = "Grupa:";
+            // 
+            // btnPretrazi
+            // 
+            btnPretrazi.Location = new Point(667, 11);
+            btnPretrazi.Margin = new Padding(2);
+            btnPretrazi.Name = "btnPretrazi";
+            btnPretrazi.Size = new Size(78, 26);
+            btnPretrazi.TabIndex = 5;
+            btnPretrazi.Text = "Pretraži";
+            btnPretrazi.UseVisualStyleBackColor = true;
+            btnPretrazi.Click += btnPretrazi_Click;
             // 
             // dataGridViewTextBoxColumn5
             // 
             dataGridViewTextBoxColumn5.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn5.DataPropertyName = "OznakaMernogMesta";
-            dataGridViewTextBoxColumn5.HeaderText = "Oznaka mernog mesta";
+            dataGridViewTextBoxColumn5.HeaderText = "Merno mesto";
             dataGridViewTextBoxColumn5.MinimumWidth = 8;
             dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             dataGridViewTextBoxColumn5.ReadOnly = true;
@@ -129,70 +193,22 @@
             colStanje.MinimumWidth = 8;
             colStanje.Name = "colStanje";
             colStanje.ReadOnly = true;
-            colStanje.Text = "Stanje";
+            colStanje.Text = "Stanje ...";
             colStanje.UseColumnTextForButtonValue = true;
             colStanje.Width = 150;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(424, 25);
-            label1.Name = "label1";
-            label1.Size = new Size(196, 25);
-            label1.TabIndex = 1;
-            label1.Text = "Oznaka mernog mesta:";
-            // 
-            // tbPretraga
-            // 
-            tbPretraga.BorderStyle = BorderStyle.FixedSingle;
-            tbPretraga.Location = new Point(626, 23);
-            tbPretraga.Name = "tbPretraga";
-            tbPretraga.Size = new Size(328, 31);
-            tbPretraga.TabIndex = 2;
-            // 
-            // cbGrupeMernihMesta
-            // 
-            cbGrupeMernihMesta.DataSource = bsGrupeMernihMesta;
-            cbGrupeMernihMesta.DisplayMember = "Naziv";
-            cbGrupeMernihMesta.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbGrupeMernihMesta.FormattingEnabled = true;
-            cbGrupeMernihMesta.Location = new Point(97, 20);
-            cbGrupeMernihMesta.Name = "cbGrupeMernihMesta";
-            cbGrupeMernihMesta.Size = new Size(321, 33);
-            cbGrupeMernihMesta.TabIndex = 3;
-            cbGrupeMernihMesta.SelectionChangeCommitted += cbGrupeMernihMesta_SelectionChangeCommitted;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(24, 25);
-            label2.Name = "label2";
-            label2.Size = new Size(64, 25);
-            label2.TabIndex = 4;
-            label2.Text = "Grupa:";
-            // 
-            // btnPretrazi
-            // 
-            btnPretrazi.Location = new Point(960, 16);
-            btnPretrazi.Name = "btnPretrazi";
-            btnPretrazi.Size = new Size(111, 43);
-            btnPretrazi.TabIndex = 5;
-            btnPretrazi.Text = "Pretraži";
-            btnPretrazi.UseVisualStyleBackColor = true;
-            btnPretrazi.Click += btnPretrazi_Click;
-            // 
             // frmMernaMesta
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1498, 685);
+            ClientSize = new Size(1303, 571);
             Controls.Add(btnPretrazi);
             Controls.Add(label2);
             Controls.Add(cbGrupeMernihMesta);
             Controls.Add(tbPretraga);
             Controls.Add(label1);
             Controls.Add(dgMernaMesta);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(2);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "frmMernaMesta";

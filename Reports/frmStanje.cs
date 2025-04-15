@@ -182,6 +182,9 @@ namespace TSP2025
 
             pltStanje.Refresh();
 
+            pbGraph.Visible = false;
+            pltStanje.Visible = true;
+
         }
 
         private void btnExport_Click(object sender, EventArgs e)

@@ -43,6 +43,10 @@
             izveštajiToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem3 = new ToolStripMenuItem();
             periodičniToolStripMenuItem = new ToolStripMenuItem();
+            potrošnjaToolStripMenuItem = new ToolStripMenuItem();
+            dnevnaToolStripMenuItem = new ToolStripMenuItem();
+            mnuMesecnaPotrosnja = new ToolStripMenuItem();
+            godišnjaToolStripMenuItem = new ToolStripMenuItem();
             pomoćToolStripMenuItem = new ToolStripMenuItem();
             preuzmiPodatkeToolStripMenuItem = new ToolStripMenuItem();
             istorijaPreuzimanjaToolStripMenuItem = new ToolStripMenuItem();
@@ -55,7 +59,6 @@
             label4 = new Label();
             tbSourceTable = new TextBox();
             label3 = new Label();
-            btnCheck = new Button();
             tbSourceDatabase = new TextBox();
             label2 = new Label();
             label1 = new Label();
@@ -65,6 +68,7 @@
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
+            btnDashboard = new Button();
             sbStatusBar.SuspendLayout();
             menuStrip1.SuspendLayout();
             gbPullOperacija.SuspendLayout();
@@ -115,19 +119,19 @@
             // oAplikacijiTSP2025ToolStripMenuItem
             // 
             oAplikacijiTSP2025ToolStripMenuItem.Name = "oAplikacijiTSP2025ToolStripMenuItem";
-            oAplikacijiTSP2025ToolStripMenuItem.Size = new Size(191, 22);
-            oAplikacijiTSP2025ToolStripMenuItem.Text = "O aplikaciji TSP2025 ...";
+            oAplikacijiTSP2025ToolStripMenuItem.Size = new Size(179, 22);
+            oAplikacijiTSP2025ToolStripMenuItem.Text = "O aplikaciji TSP2025";
             oAplikacijiTSP2025ToolStripMenuItem.Click += oAplikacijiTSP2025ToolStripMenuItem_Click;
             // 
             // toolStripMenuItem1
             // 
             toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(188, 6);
+            toolStripMenuItem1.Size = new Size(176, 6);
             // 
             // izlazToolStripMenuItem
             // 
             izlazToolStripMenuItem.Name = "izlazToolStripMenuItem";
-            izlazToolStripMenuItem.Size = new Size(191, 22);
+            izlazToolStripMenuItem.Size = new Size(179, 22);
             izlazToolStripMenuItem.Text = "Izlaz";
             izlazToolStripMenuItem.Click += izlazToolStripMenuItem_Click;
             // 
@@ -140,21 +144,23 @@
             // 
             // mnuMatičniPodaci
             // 
+            mnuMatičniPodaci.Image = (Image)resources.GetObject("mnuMatičniPodaci.Image");
             mnuMatičniPodaci.Name = "mnuMatičniPodaci";
-            mnuMatičniPodaci.Size = new Size(206, 22);
-            mnuMatičniPodaci.Text = "&Uredi matične podatke ...";
+            mnuMatičniPodaci.Size = new Size(153, 22);
+            mnuMatičniPodaci.Text = "&Matični podaci";
             mnuMatičniPodaci.Click += mnuMatičniPodaci_Click;
             // 
             // toolStripMenuItem2
             // 
+            toolStripMenuItem2.Image = (Image)resources.GetObject("toolStripMenuItem2.Image");
             toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.Size = new Size(206, 22);
-            toolStripMenuItem2.Text = "Merna mesta ...";
+            toolStripMenuItem2.Size = new Size(153, 22);
+            toolStripMenuItem2.Text = "M&erna mesta";
             toolStripMenuItem2.Click += toolStripMenuItem2_Click;
             // 
             // izveštajiToolStripMenuItem
             // 
-            izveštajiToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem3 });
+            izveštajiToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem3, potrošnjaToolStripMenuItem });
             izveštajiToolStripMenuItem.Name = "izveštajiToolStripMenuItem";
             izveštajiToolStripMenuItem.Size = new Size(60, 23);
             izveštajiToolStripMenuItem.Text = "Izveštaji";
@@ -162,9 +168,10 @@
             // toolStripMenuItem3
             // 
             toolStripMenuItem3.DropDownItems.AddRange(new ToolStripItem[] { periodičniToolStripMenuItem });
+            toolStripMenuItem3.Image = (Image)resources.GetObject("toolStripMenuItem3.Image");
             toolStripMenuItem3.Name = "toolStripMenuItem3";
-            toolStripMenuItem3.Size = new Size(205, 22);
-            toolStripMenuItem3.Text = "Stanje naplatnog registra";
+            toolStripMenuItem3.Size = new Size(124, 22);
+            toolStripMenuItem3.Text = "Stanje";
             // 
             // periodičniToolStripMenuItem
             // 
@@ -173,19 +180,48 @@
             periodičniToolStripMenuItem.Text = "Periodični";
             periodičniToolStripMenuItem.Click += periodičniToolStripMenuItem_Click;
             // 
+            // potrošnjaToolStripMenuItem
+            // 
+            potrošnjaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { dnevnaToolStripMenuItem, mnuMesecnaPotrosnja, godišnjaToolStripMenuItem });
+            potrošnjaToolStripMenuItem.Image = (Image)resources.GetObject("potrošnjaToolStripMenuItem.Image");
+            potrošnjaToolStripMenuItem.Name = "potrošnjaToolStripMenuItem";
+            potrošnjaToolStripMenuItem.Size = new Size(124, 22);
+            potrošnjaToolStripMenuItem.Text = "Potrošnja";
+            // 
+            // dnevnaToolStripMenuItem
+            // 
+            dnevnaToolStripMenuItem.Name = "dnevnaToolStripMenuItem";
+            dnevnaToolStripMenuItem.Size = new Size(121, 22);
+            dnevnaToolStripMenuItem.Text = "Dnevna";
+            // 
+            // mnuMesecnaPotrosnja
+            // 
+            mnuMesecnaPotrosnja.Name = "mnuMesecnaPotrosnja";
+            mnuMesecnaPotrosnja.Size = new Size(121, 22);
+            mnuMesecnaPotrosnja.Text = "Mesečna";
+            mnuMesecnaPotrosnja.Click += mnuMesecnaPotrosnja_Click;
+            // 
+            // godišnjaToolStripMenuItem
+            // 
+            godišnjaToolStripMenuItem.Name = "godišnjaToolStripMenuItem";
+            godišnjaToolStripMenuItem.Size = new Size(121, 22);
+            godišnjaToolStripMenuItem.Text = "Godišnja";
+            godišnjaToolStripMenuItem.Click += godišnjaToolStripMenuItem_Click;
+            // 
             // pomoćToolStripMenuItem
             // 
             pomoćToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { preuzmiPodatkeToolStripMenuItem, istorijaPreuzimanjaToolStripMenuItem });
             pomoćToolStripMenuItem.Name = "pomoćToolStripMenuItem";
-            pomoćToolStripMenuItem.Size = new Size(144, 23);
-            pomoćToolStripMenuItem.Text = "Sinhornizacija podataka";
-            pomoćToolStripMenuItem.Visible = false;
+            pomoćToolStripMenuItem.Size = new Size(96, 23);
+            pomoćToolStripMenuItem.Text = "SCADA prenos";
             // 
             // preuzmiPodatkeToolStripMenuItem
             // 
+            preuzmiPodatkeToolStripMenuItem.Image = (Image)resources.GetObject("preuzmiPodatkeToolStripMenuItem.Image");
             preuzmiPodatkeToolStripMenuItem.Name = "preuzmiPodatkeToolStripMenuItem";
             preuzmiPodatkeToolStripMenuItem.Size = new Size(189, 22);
             preuzmiPodatkeToolStripMenuItem.Text = "Preuzmi podatke";
+            preuzmiPodatkeToolStripMenuItem.Click += preuzmiPodatkeToolStripMenuItem_Click;
             // 
             // istorijaPreuzimanjaToolStripMenuItem
             // 
@@ -197,7 +233,7 @@
             // gbPullOperacija
             // 
             gbPullOperacija.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            gbPullOperacija.BackColor = Color.Gainsboro;
+            gbPullOperacija.BackColor = Color.WhiteSmoke;
             gbPullOperacija.Controls.Add(btnPullOperacijaToggleView);
             gbPullOperacija.Controls.Add(tbPullInfo);
             gbPullOperacija.Controls.Add(pbPullProgress);
@@ -206,7 +242,6 @@
             gbPullOperacija.Controls.Add(label4);
             gbPullOperacija.Controls.Add(tbSourceTable);
             gbPullOperacija.Controls.Add(label3);
-            gbPullOperacija.Controls.Add(btnCheck);
             gbPullOperacija.Controls.Add(tbSourceDatabase);
             gbPullOperacija.Controls.Add(label2);
             gbPullOperacija.Controls.Add(label1);
@@ -221,7 +256,7 @@
             gbPullOperacija.Size = new Size(348, 30);
             gbPullOperacija.TabIndex = 4;
             gbPullOperacija.TabStop = false;
-            gbPullOperacija.Text = "Pull operacija (SCADA to TSP2025)";
+            gbPullOperacija.Text = "Prenos SCADA podataka";
             // 
             // btnPullOperacijaToggleView
             // 
@@ -247,20 +282,20 @@
             tbPullInfo.Name = "tbPullInfo";
             tbPullInfo.ReadOnly = true;
             tbPullInfo.ScrollBars = ScrollBars.Vertical;
-            tbPullInfo.Size = new Size(244, 79);
+            tbPullInfo.Size = new Size(292, 79);
             tbPullInfo.TabIndex = 12;
             // 
             // pbPullProgress
             // 
-            pbPullProgress.Location = new Point(252, 227);
+            pbPullProgress.Location = new Point(4, 239);
             pbPullProgress.Margin = new Padding(2);
             pbPullProgress.Name = "pbPullProgress";
-            pbPullProgress.Size = new Size(91, 11);
+            pbPullProgress.Size = new Size(337, 11);
             pbPullProgress.TabIndex = 11;
             // 
             // btnPullMernaMestaRefresh
             // 
-            btnPullMernaMestaRefresh.BackColor = Color.Teal;
+            btnPullMernaMestaRefresh.BackColor = SystemColors.Control;
             btnPullMernaMestaRefresh.BackgroundImage = (Image)resources.GetObject("btnPullMernaMestaRefresh.BackgroundImage");
             btnPullMernaMestaRefresh.BackgroundImageLayout = ImageLayout.Stretch;
             btnPullMernaMestaRefresh.FlatStyle = FlatStyle.Flat;
@@ -322,21 +357,6 @@
             label3.TabIndex = 6;
             label3.Text = "Source tabela:";
             // 
-            // btnCheck
-            // 
-            btnCheck.BackColor = Color.Teal;
-            btnCheck.FlatStyle = FlatStyle.Flat;
-            btnCheck.Font = new Font("Perpetua", 18F, FontStyle.Regular, GraphicsUnit.Point, 200);
-            btnCheck.ForeColor = Color.White;
-            btnCheck.Location = new Point(252, 187);
-            btnCheck.Margin = new Padding(2);
-            btnCheck.Name = "btnCheck";
-            btnCheck.Size = new Size(43, 37);
-            btnCheck.TabIndex = 5;
-            btnCheck.Text = "?";
-            btnCheck.UseVisualStyleBackColor = false;
-            btnCheck.Click += btnTestConnection_Click;
-            // 
             // tbSourceDatabase
             // 
             tbSourceDatabase.BorderStyle = BorderStyle.FixedSingle;
@@ -393,13 +413,12 @@
             // 
             // btnPull
             // 
-            btnPull.BackColor = Color.Teal;
+            btnPull.BackColor = SystemColors.Control;
             btnPull.BackgroundImage = (Image)resources.GetObject("btnPull.BackgroundImage");
             btnPull.BackgroundImageLayout = ImageLayout.Stretch;
-            btnPull.FlatStyle = FlatStyle.Flat;
             btnPull.Font = new Font("Perpetua", 12F, FontStyle.Regular, GraphicsUnit.Point, 200);
             btnPull.ForeColor = Color.White;
-            btnPull.Location = new Point(300, 187);
+            btnPull.Location = new Point(300, 199);
             btnPull.Margin = new Padding(2);
             btnPull.Name = "btnPull";
             btnPull.Size = new Size(43, 37);
@@ -412,7 +431,7 @@
             label5.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            label5.Location = new Point(1239, 568);
+            label5.Location = new Point(1227, 575);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
             label5.Size = new Size(260, 32);
@@ -443,14 +462,25 @@
             label7.TabIndex = 9;
             label7.Text = "free trial version";
             // 
+            // btnDashboard
+            // 
+            btnDashboard.BackgroundImage = (Image)resources.GetObject("btnDashboard.BackgroundImage");
+            btnDashboard.BackgroundImageLayout = ImageLayout.Zoom;
+            btnDashboard.Location = new Point(4, 29);
+            btnDashboard.Name = "btnDashboard";
+            btnDashboard.Size = new Size(64, 64);
+            btnDashboard.TabIndex = 11;
+            btnDashboard.UseVisualStyleBackColor = true;
+            btnDashboard.Click += btnDashboard_Click;
+            // 
             // frmParent
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ControlDark;
-            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackColor = SystemColors.Control;
             BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(1511, 637);
+            Controls.Add(btnDashboard);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -502,7 +532,6 @@
         private Label label1;
         private Label label2;
         private TextBox tbSourceDatabase;
-        private Button btnCheck;
         private TextBox tbSourceColumn;
         private Label label4;
         private TextBox tbSourceTable;
@@ -515,5 +544,10 @@
         private ProgressBar pbPullProgress;
         private TextBox tbPullInfo;
         private Button btnPullOperacijaToggleView;
+        private ToolStripMenuItem potrošnjaToolStripMenuItem;
+        private ToolStripMenuItem mnuMesecnaPotrosnja;
+        private ToolStripMenuItem dnevnaToolStripMenuItem;
+        private ToolStripMenuItem godišnjaToolStripMenuItem;
+        private Button btnDashboard;
     }
 }

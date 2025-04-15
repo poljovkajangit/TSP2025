@@ -21,7 +21,41 @@ namespace TSP2025.Data
         public ImprovedBindingList<Podstanica> SvePodstanice { get; set; } = new ImprovedBindingList<Podstanica>();
         public ImprovedBindingList<IndividualniPotrosac> SviIndividualniPotrosaci { get; set; } = new ImprovedBindingList<IndividualniPotrosac>();
 
-
+        public static List<PullHistory> PullHistory
+        {
+            get
+            {
+                var pullHistory = new List<PullHistory>();
+                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
+                {
+                    var command = new SqlCommand("Select ph.Id, ph.Vreme, ph.MernoMestoId, ph.PrenetoZapisa, ph.Status, ph.Poruka, mm.OznakaMernogMesta from PullHistory ph join MernoMesto mm on ph.MernoMestoId = mm.Id Order By ph.Vreme desc", connection);
+                    try
+                    {
+                        connection.Open();
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            pullHistory.Add(new PullHistory()
+                            {
+                                Id = reader.GetInt32(0),
+                                Vreme = reader.GetDateTime(1),
+                                MernoMestoId = reader.GetInt32(2),
+                                PrenetoZapisa = reader.GetInt32(3),
+                                Status = reader.GetInt32(4),
+                                Poruka = reader.GetString(5),
+                                MernoMesto = reader.GetString(6),
+                            });
+                        }
+                        reader.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        FormMessages.ShowError("Greška. " + ex.Message);
+                    }
+                }
+                return pullHistory;
+            }
+        }
 
         public static bool IsLoading { get; set; } = false;
 

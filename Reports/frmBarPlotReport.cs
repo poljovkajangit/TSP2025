@@ -1,4 +1,6 @@
 ﻿using ScottPlot;
+using ScottPlot.WinForms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TSP2025.Reports
 {
@@ -47,9 +49,7 @@ namespace TSP2025.Reports
             formsPlot1.Plot.Axes.Bottom.TickLabelStyle.FontSize = 16;
             formsPlot1.Plot.Axes.Bottom.TickLabelStyle.Bold = false;
 
-            // use a fixed amount of of pixel padding on each side
-           // PixelPadding padding = new(5, 5, 5, 5);
-            //formsPlot1.Plot.Layout.Fixed(padding);
+
 
             formsPlot1.Refresh();
         }
