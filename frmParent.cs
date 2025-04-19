@@ -215,15 +215,31 @@ namespace TSP2025
             frmGodisnja.ShowDialog();
         }
 
+        private frmDashBoard _frmDashBoard = null;
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            var frmDashBoard = new frmDashBoard();
-            frmDashBoard.MdiParent = this;
-            frmDashBoard.Left = 10;
-            frmDashBoard.Top = 10;
-            btnDashboard.Visible = false;
-            frmDashBoard.FormClosed += (s, args) => { btnDashboard.Visible = true; };
-            frmDashBoard.Show();
+            if (_frmDashBoard == null)
+            {
+                _frmDashBoard = new frmDashBoard();
+                _frmDashBoard.MdiParent = this;
+                _frmDashBoard.Left = 10;
+                _frmDashBoard.Top = 10;
+                btnDashboard.Visible = false;
+                _frmDashBoard.FormClosing += (s, args) => { btnDashboard.Visible = true; };
+                _frmDashBoard.Show();
+            }
+            else
+            {
+                btnDashboard.Visible = false;
+                _frmDashBoard.Show();
+                _frmDashBoard.BringToFront();
+            }
+        }
+
+        private void dnevnaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frmDnevna = new frmDnevnaPotrosnja();
+            frmDnevna.ShowDialog();
         }
     }
 }

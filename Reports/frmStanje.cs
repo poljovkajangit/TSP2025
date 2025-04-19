@@ -1,13 +1,8 @@
-﻿using ScottPlot;
-using ScottPlot.Colormaps;
-using ScottPlot.Plottables;
-using System.Data;
+﻿using System.Data;
 using System.Text;
 using TSP2025.Data;
 using TSP2025.Data.Model;
-using TSP2025.Reports;
 using TSP2025.Utils;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TSP2025
 {
@@ -46,7 +41,7 @@ namespace TSP2025
             {
                 foreach (var item in bsMernaMesta.List)
                 {
-                    if ((item as MernoMesto).Id == mernoMesto.Id)
+                    if ((item as MernoMesto)!.Id == mernoMesto.Id)
                     {
                         int foundIndex = bsMernaMesta.IndexOf(item);
                         cbMernoMesto.SelectedIndex = foundIndex;
@@ -75,9 +70,9 @@ namespace TSP2025
                     o =>
                     o.MernoMestoId == SelectedMernoMesto.Id
                     &&
-                    o.Vreme >= dtDanOd.Value.Date
+                    o.Vreme >= dtDanOd.SelectedDate.Date
                     &&
-                    o.Vreme < dtDanDo.Value.AddDays(1).Date)
+                    o.Vreme < dtDanDo.SelectedDate.AddDays(1).Date)
                     .ToList();
                     break;
                 case 1:
@@ -87,9 +82,9 @@ namespace TSP2025
                     &&
                     o.MernoMestoId == SelectedMernoMesto.Id
                     &&
-                    o.Vreme >= dtDanOd.Value.Date
+                    o.Vreme >= dtDanOd.SelectedDate.Date
                     &&
-                    o.Vreme < dtDanDo.Value.AddDays(1).Date)
+                    o.Vreme < dtDanDo.SelectedDate.AddDays(1).Date)
                     .ToList();
                     break;
                 case 2:
@@ -99,40 +94,45 @@ namespace TSP2025
                     &&
                     o.MernoMestoId == SelectedMernoMesto.Id
                     &&
-                    o.Vreme >= dtDanOd.Value.Date
+                    o.Vreme >= dtDanOd.SelectedDate.Date
                     &&
-                    o.Vreme < dtDanDo.Value.AddDays(1).Date)
+                    o.Vreme < dtDanDo.SelectedDate.AddDays(1).Date)
                     .ToList();
                     break;
                 case 3:
-                    if (cbMesec.SelectedIndex > 0)
-                    {
-                        bsOcitavanja.DataSource = _DataSource.SvaOcitavanja(dsMode).Where(
-                        o =>
-                        o.Vreme.Date.Day == 1 && o.Vreme.Month == cbMesec.SelectedIndex && o.Vreme.Hour == 0 && o.Vreme.Minute == 0
-                        &&
-                        o.MernoMestoId == SelectedMernoMesto.Id
-                        &&
-                        o.Vreme >= dtDanOd.Value.Date
-                        &&
-                        o.Vreme < dtDanDo.Value.AddDays(1).Date
-                        )
-                        .ToList();
-                    }
-                    else
-                    {
-                        bsOcitavanja.DataSource = _DataSource.SvaOcitavanja(dsMode).Where(
-                        o =>
-                        o.Vreme.Date.Day == 1 && o.Vreme.Hour == 0 && o.Vreme.Minute == 0
-                        &&
-                        o.MernoMestoId == SelectedMernoMesto.Id
-                        &&
-                        o.Vreme >= dtDanOd.Value.Date
-                        &&
-                        o.Vreme < dtDanDo.Value.AddDays(1).Date
-                        )
-                        .ToList();
-                    }
+                    //if (cbMesec.SelectedIndex > 0)
+                    //{
+                    //    bsOcitavanja.DataSource = _DataSource.SvaOcitavanja(dsMode).Where(
+                    //    o =>
+                    //    o.Vreme.Date.Day == 1 && o.Vreme.Month == cbMesec.SelectedIndex && o.Vreme.Hour == 0 && o.Vreme.Minute == 0
+                    //    &&
+                    //    o.MernoMestoId == SelectedMernoMesto.Id
+                    //    &&
+                    //    o.Vreme >= dtDanOd.SelectedDate!.Value.Date
+                    //    &&
+                    //    o.Vreme < dtDanDo.SelectedDate!.Value.AddDays(1).Date
+                    //    )
+                    //    .ToList();
+                    //}
+                    //else
+                    //{
+                    bsOcitavanja.DataSource = _DataSource.SvaOcitavanja(dsMode).Where(
+                    o =>
+                    o.Vreme.Date.Day == 1 && o.Vreme.Hour == 0 && o.Vreme.Minute == 0
+                    &&
+                    o.MernoMestoId == SelectedMernoMesto.Id
+                    &&
+                    o.Vreme >= dtDanOd.SelectedDate.Date
+                    &&
+                    o.Vreme < dtDanDo.SelectedDate.AddDays(1).Date
+                    )
+                    .ToList();
+                    //}
+                    break;
+                case 4:
+                case 5:
+                    FormMessages.ShowInformation("... under construction ...");
+                    return;
                     break;
             }
 
@@ -142,8 +142,6 @@ namespace TSP2025
             }
 
             lblUkupno.Text = "Ukupno: " + bsOcitavanja.Count;
-
-            btnShowGraph.Enabled = true;
 
             pltStanje.Plot.Clear();
             // plot data using DateTime values on the horizontal axis
@@ -219,31 +217,6 @@ namespace TSP2025
             {
                 FormMessages.ShowError("Došlo je do greške");
             }
-        }
-
-        private void cbGraph_Click(object sender, EventArgs e)
-        {
-            var listaRazlika = (bsOcitavanja.List as List<Ocitavanje>).Select(o => (double)o.Razlika).ToList();
-            List<string> listaLabela = null;
-
-            switch (cbProredi.SelectedIndex)
-            {
-                case 0:
-                    listaLabela = (bsOcitavanja.List as List<Ocitavanje>).Select(o => o.VremeFormatirano).ToList();
-                    break;
-                case 1:
-                    listaLabela = (bsOcitavanja.List as List<Ocitavanje>).Select(o => o.VremeFormatirano).ToList();
-                    break;
-                case 2:
-                    listaLabela = (bsOcitavanja.List as List<Ocitavanje>).Select(o => o.VremeFormatirano.Substring(0, 8)).ToList();
-                    break;
-                case 3:
-                    listaLabela = (bsOcitavanja.List as List<Ocitavanje>).Select(o => o.MesecGodina).ToList();
-                    break;
-            }
-
-            var frmGraph = new frmBarPlotReport(listaRazlika, listaLabela, (bsMernaMesta.Current as MernoMesto).OznakaMernogMesta);
-            frmGraph.ShowDialog();
         }
     }
 }

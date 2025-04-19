@@ -103,7 +103,7 @@ namespace TSP2025
                 bars.Bars[i].Label = ocitavanja[i].Razlika.ToString();
             }
             bars.ValueLabelStyle.Bold = true;
-            bars.ValueLabelStyle.FontSize = 22;
+            bars.ValueLabelStyle.FontSize = 18;
 
             pltPotrosnjaMesecena.Plot.HideGrid();
             pltPotrosnjaMesecena.Plot.Axes.Margins(bottom: 0);

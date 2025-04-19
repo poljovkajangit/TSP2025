@@ -37,6 +37,9 @@
     <Compile Update="Reports\frmGodisnjaPotrosnja.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Reports\frmDnevnaPotrosnja.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Reports\frmMesecnaPotrosnja.cs">
       <SubType>Form</SubType>
     </Compile>

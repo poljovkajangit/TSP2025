@@ -6,7 +6,7 @@ using TSP2025.Utils;
 
 namespace TSP2025
 {
-    public partial class frmMesecnaPotrosnja : Form
+    public partial class frmDnevnaPotrosnja : Form
     {
         PoslovniSistemDataContext _DataSource;
 
@@ -17,9 +17,9 @@ namespace TSP2025
                 return (bsMernaMesta.Current as MernoMesto)!;
             }
         }
-        private frmMesecnaPotrosnja() { }
+        private frmDnevnaPotrosnja() { }
 
-        public frmMesecnaPotrosnja(MernoMesto mernoMesto = null)
+        public frmDnevnaPotrosnja(MernoMesto mernoMesto = null)
         {
             InitializeComponent();
 
@@ -40,33 +40,31 @@ namespace TSP2025
                     }
                 }
             }
-
-            cbMesec.SelectedIndex = DateTime.Now.Month - 1;
-            cbGodina.SelectedItem = cbGodina.Items.Cast<object>().FirstOrDefault(x => x.ToString() == DateTime.Now.Year.ToString());
         }
 
         private void btnPrikazi_Click(object sender, EventArgs e)
         {
-            if (SelectedMernoMesto == null || SelectedMernoMesto.Id == 0 || cbMesec.SelectedIndex < 0 || cbGodina.SelectedIndex < 0)
+            if (SelectedMernoMesto == null || SelectedMernoMesto.Id == 0)
             {
-                FormMessages.ShowError("Izaberite merno mesto, mesec i godinu.");
+                FormMessages.ShowError("Izaberite merno mesto.");
                 return;
             }
 
             var dsMode = FormMessages.AskForDataSource();
 
-            var fromDate = new DateTime(Convert.ToInt32(cbGodina.SelectedItem), cbMesec.SelectedIndex + 1, 1).AddDays(-1);
-            var toDate = fromDate.AddDays(1).AddMonths(1);
+            var fromDate = dtDan.SelectedDate.Date.AddHours(-1);
+            var toDate = fromDate.AddDays(1).AddHours(1);
 
             var ocitavanja = _DataSource.SvaOcitavanja(dsMode).Where(
-             o =>
-             o.Vreme.Date == o.Vreme
-             &&
-             o.MernoMestoId == SelectedMernoMesto.Id
-             &&
-             o.Vreme >= fromDate
-             &&
-             o.Vreme < toDate)
+            o =>
+                o.Vreme.Minute == 0 && o.Vreme.Second == 0
+                &&
+                o.MernoMestoId == SelectedMernoMesto.Id
+                &&
+                o.Vreme >= fromDate
+                &&
+                o.Vreme < toDate
+             )
              .ToList();
 
             for (int i = 1; i < ocitavanja.Count; i++)
@@ -89,7 +87,7 @@ namespace TSP2025
             var positions = new List<double>();
             var ticks = new Tick[ocitavanja.Count];
             double[] values = [.. ocitavanja.Select(o => (double)o.Razlika)];
-            List<string> labels = [.. ocitavanja.Select(o => o.Vreme.ToString("dd"))];
+            List<string> labels = [.. ocitavanja.Select(o => o.Vreme.ToString("HH") + "h")];
             Tick tick;
             for (int i = 0; i < ocitavanja.Count; i++)
             {
@@ -100,7 +98,7 @@ namespace TSP2025
 
             var bars = pltPotrosnjaMesecena.Plot.Add.Bars(positions, values);
 
-            bars.LegendText = cbMesec.SelectedItem + " " + cbGodina.SelectedItem;
+            bars.LegendText = dtDan.SelectedDate.ToString("dd/MM/yyyy");
             pltPotrosnjaMesecena.Plot.ShowLegend(Alignment.UpperLeft);
 
             for (int i = 0; i < bars.Bars.Count; i++)

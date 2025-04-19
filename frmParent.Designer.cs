@@ -80,10 +80,9 @@
             sbStatusBar.GripStyle = ToolStripGripStyle.Visible;
             sbStatusBar.ImageScalingSize = new Size(24, 24);
             sbStatusBar.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1 });
-            sbStatusBar.Location = new Point(1, 614);
+            sbStatusBar.Location = new Point(1, 1028);
             sbStatusBar.Name = "sbStatusBar";
-            sbStatusBar.Padding = new Padding(1, 0, 10, 0);
-            sbStatusBar.Size = new Size(1509, 22);
+            sbStatusBar.Size = new Size(2157, 32);
             sbStatusBar.TabIndex = 0;
             sbStatusBar.Text = "statusStrip1";
             // 
@@ -91,7 +90,7 @@
             // 
             toolStripStatusLabel1.BackColor = Color.Transparent;
             toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            toolStripStatusLabel1.Size = new Size(156, 17);
+            toolStripStatusLabel1.Size = new Size(238, 25);
             toolStripStatusLabel1.Text = "Development Force (C) 2025";
             // 
             // menuStrip1
@@ -100,11 +99,10 @@
             menuStrip1.BackgroundImageLayout = ImageLayout.Center;
             menuStrip1.ImageScalingSize = new Size(24, 24);
             menuStrip1.Items.AddRange(new ToolStripItem[] { toplanaToolStripMenuItem, mnuOpcije, izveštajiToolStripMenuItem, pomoćToolStripMenuItem });
-            menuStrip1.Location = new Point(1, 1);
-            menuStrip1.MinimumSize = new Size(0, 25);
+            menuStrip1.Location = new Point(1, 2);
+            menuStrip1.MinimumSize = new Size(0, 42);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(4, 1, 0, 1);
-            menuStrip1.Size = new Size(1509, 25);
+            menuStrip1.Size = new Size(2157, 42);
             menuStrip1.Stretch = false;
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
@@ -113,25 +111,25 @@
             // 
             toplanaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { oAplikacijiTSP2025ToolStripMenuItem, toolStripMenuItem1, izlazToolStripMenuItem });
             toplanaToolStripMenuItem.Name = "toplanaToolStripMenuItem";
-            toplanaToolStripMenuItem.Size = new Size(61, 23);
+            toplanaToolStripMenuItem.Size = new Size(89, 38);
             toplanaToolStripMenuItem.Text = "Toplana";
             // 
             // oAplikacijiTSP2025ToolStripMenuItem
             // 
             oAplikacijiTSP2025ToolStripMenuItem.Name = "oAplikacijiTSP2025ToolStripMenuItem";
-            oAplikacijiTSP2025ToolStripMenuItem.Size = new Size(179, 22);
+            oAplikacijiTSP2025ToolStripMenuItem.Size = new Size(273, 34);
             oAplikacijiTSP2025ToolStripMenuItem.Text = "O aplikaciji TSP2025";
             oAplikacijiTSP2025ToolStripMenuItem.Click += oAplikacijiTSP2025ToolStripMenuItem_Click;
             // 
             // toolStripMenuItem1
             // 
             toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(176, 6);
+            toolStripMenuItem1.Size = new Size(270, 6);
             // 
             // izlazToolStripMenuItem
             // 
             izlazToolStripMenuItem.Name = "izlazToolStripMenuItem";
-            izlazToolStripMenuItem.Size = new Size(179, 22);
+            izlazToolStripMenuItem.Size = new Size(273, 34);
             izlazToolStripMenuItem.Text = "Izlaz";
             izlazToolStripMenuItem.Click += izlazToolStripMenuItem_Click;
             // 
@@ -139,14 +137,14 @@
             // 
             mnuOpcije.DropDownItems.AddRange(new ToolStripItem[] { mnuMatičniPodaci, toolStripMenuItem2 });
             mnuOpcije.Name = "mnuOpcije";
-            mnuOpcije.Size = new Size(55, 23);
+            mnuOpcije.Size = new Size(80, 38);
             mnuOpcije.Text = "Podaci";
             // 
             // mnuMatičniPodaci
             // 
             mnuMatičniPodaci.Image = (Image)resources.GetObject("mnuMatičniPodaci.Image");
             mnuMatičniPodaci.Name = "mnuMatičniPodaci";
-            mnuMatičniPodaci.Size = new Size(153, 22);
+            mnuMatičniPodaci.Size = new Size(230, 34);
             mnuMatičniPodaci.Text = "&Matični podaci";
             mnuMatičniPodaci.Click += mnuMatičniPodaci_Click;
             // 
@@ -154,7 +152,7 @@
             // 
             toolStripMenuItem2.Image = (Image)resources.GetObject("toolStripMenuItem2.Image");
             toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.Size = new Size(153, 22);
+            toolStripMenuItem2.Size = new Size(230, 34);
             toolStripMenuItem2.Text = "M&erna mesta";
             toolStripMenuItem2.Click += toolStripMenuItem2_Click;
             // 
@@ -162,7 +160,7 @@
             // 
             izveštajiToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem3, potrošnjaToolStripMenuItem });
             izveštajiToolStripMenuItem.Name = "izveštajiToolStripMenuItem";
-            izveštajiToolStripMenuItem.Size = new Size(60, 23);
+            izveštajiToolStripMenuItem.Size = new Size(90, 38);
             izveštajiToolStripMenuItem.Text = "Izveštaji";
             // 
             // toolStripMenuItem3
@@ -170,13 +168,13 @@
             toolStripMenuItem3.DropDownItems.AddRange(new ToolStripItem[] { periodičniToolStripMenuItem });
             toolStripMenuItem3.Image = (Image)resources.GetObject("toolStripMenuItem3.Image");
             toolStripMenuItem3.Name = "toolStripMenuItem3";
-            toolStripMenuItem3.Size = new Size(124, 22);
+            toolStripMenuItem3.Size = new Size(270, 34);
             toolStripMenuItem3.Text = "Stanje";
             // 
             // periodičniToolStripMenuItem
             // 
             periodičniToolStripMenuItem.Name = "periodičniToolStripMenuItem";
-            periodičniToolStripMenuItem.Size = new Size(127, 22);
+            periodičniToolStripMenuItem.Size = new Size(190, 34);
             periodičniToolStripMenuItem.Text = "Periodični";
             periodičniToolStripMenuItem.Click += periodičniToolStripMenuItem_Click;
             // 
@@ -185,26 +183,27 @@
             potrošnjaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { dnevnaToolStripMenuItem, mnuMesecnaPotrosnja, godišnjaToolStripMenuItem });
             potrošnjaToolStripMenuItem.Image = (Image)resources.GetObject("potrošnjaToolStripMenuItem.Image");
             potrošnjaToolStripMenuItem.Name = "potrošnjaToolStripMenuItem";
-            potrošnjaToolStripMenuItem.Size = new Size(124, 22);
+            potrošnjaToolStripMenuItem.Size = new Size(270, 34);
             potrošnjaToolStripMenuItem.Text = "Potrošnja";
             // 
             // dnevnaToolStripMenuItem
             // 
             dnevnaToolStripMenuItem.Name = "dnevnaToolStripMenuItem";
-            dnevnaToolStripMenuItem.Size = new Size(121, 22);
+            dnevnaToolStripMenuItem.Size = new Size(270, 34);
             dnevnaToolStripMenuItem.Text = "Dnevna";
+            dnevnaToolStripMenuItem.Click += dnevnaToolStripMenuItem_Click;
             // 
             // mnuMesecnaPotrosnja
             // 
             mnuMesecnaPotrosnja.Name = "mnuMesecnaPotrosnja";
-            mnuMesecnaPotrosnja.Size = new Size(121, 22);
+            mnuMesecnaPotrosnja.Size = new Size(270, 34);
             mnuMesecnaPotrosnja.Text = "Mesečna";
             mnuMesecnaPotrosnja.Click += mnuMesecnaPotrosnja_Click;
             // 
             // godišnjaToolStripMenuItem
             // 
             godišnjaToolStripMenuItem.Name = "godišnjaToolStripMenuItem";
-            godišnjaToolStripMenuItem.Size = new Size(121, 22);
+            godišnjaToolStripMenuItem.Size = new Size(270, 34);
             godišnjaToolStripMenuItem.Text = "Godišnja";
             godišnjaToolStripMenuItem.Click += godišnjaToolStripMenuItem_Click;
             // 
@@ -212,21 +211,21 @@
             // 
             pomoćToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { preuzmiPodatkeToolStripMenuItem, istorijaPreuzimanjaToolStripMenuItem });
             pomoćToolStripMenuItem.Name = "pomoćToolStripMenuItem";
-            pomoćToolStripMenuItem.Size = new Size(96, 23);
+            pomoćToolStripMenuItem.Size = new Size(146, 38);
             pomoćToolStripMenuItem.Text = "SCADA prenos";
             // 
             // preuzmiPodatkeToolStripMenuItem
             // 
             preuzmiPodatkeToolStripMenuItem.Image = (Image)resources.GetObject("preuzmiPodatkeToolStripMenuItem.Image");
             preuzmiPodatkeToolStripMenuItem.Name = "preuzmiPodatkeToolStripMenuItem";
-            preuzmiPodatkeToolStripMenuItem.Size = new Size(189, 22);
+            preuzmiPodatkeToolStripMenuItem.Size = new Size(285, 34);
             preuzmiPodatkeToolStripMenuItem.Text = "Preuzmi podatke";
             preuzmiPodatkeToolStripMenuItem.Click += preuzmiPodatkeToolStripMenuItem_Click;
             // 
             // istorijaPreuzimanjaToolStripMenuItem
             // 
             istorijaPreuzimanjaToolStripMenuItem.Name = "istorijaPreuzimanjaToolStripMenuItem";
-            istorijaPreuzimanjaToolStripMenuItem.Size = new Size(189, 22);
+            istorijaPreuzimanjaToolStripMenuItem.Size = new Size(285, 34);
             istorijaPreuzimanjaToolStripMenuItem.Text = "Istorija preuzimanja ...";
             istorijaPreuzimanjaToolStripMenuItem.Click += istorijaPreuzimanjaToolStripMenuItem_Click;
             // 
@@ -249,11 +248,9 @@
             gbPullOperacija.Controls.Add(btnPull);
             gbPullOperacija.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 238);
             gbPullOperacija.ForeColor = Color.Black;
-            gbPullOperacija.Location = new Point(1158, 28);
-            gbPullOperacija.Margin = new Padding(2);
+            gbPullOperacija.Location = new Point(1654, 47);
             gbPullOperacija.Name = "gbPullOperacija";
-            gbPullOperacija.Padding = new Padding(2);
-            gbPullOperacija.Size = new Size(348, 30);
+            gbPullOperacija.Size = new Size(497, 50);
             gbPullOperacija.TabIndex = 4;
             gbPullOperacija.TabStop = false;
             gbPullOperacija.Text = "Prenos SCADA podataka";
@@ -262,10 +259,9 @@
             // 
             btnPullOperacijaToggleView.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnPullOperacijaToggleView.FlatStyle = FlatStyle.Flat;
-            btnPullOperacijaToggleView.Location = new Point(290, 3);
-            btnPullOperacijaToggleView.Margin = new Padding(2);
+            btnPullOperacijaToggleView.Location = new Point(414, 5);
             btnPullOperacijaToggleView.Name = "btnPullOperacijaToggleView";
-            btnPullOperacijaToggleView.Size = new Size(54, 23);
+            btnPullOperacijaToggleView.Size = new Size(77, 38);
             btnPullOperacijaToggleView.TabIndex = 11;
             btnPullOperacijaToggleView.Text = "Prikaži";
             btnPullOperacijaToggleView.UseVisualStyleBackColor = true;
@@ -276,21 +272,19 @@
             tbPullInfo.BackColor = Color.White;
             tbPullInfo.BorderStyle = BorderStyle.FixedSingle;
             tbPullInfo.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 238);
-            tbPullInfo.Location = new Point(4, 158);
-            tbPullInfo.Margin = new Padding(2);
+            tbPullInfo.Location = new Point(6, 263);
             tbPullInfo.Multiline = true;
             tbPullInfo.Name = "tbPullInfo";
             tbPullInfo.ReadOnly = true;
             tbPullInfo.ScrollBars = ScrollBars.Vertical;
-            tbPullInfo.Size = new Size(292, 79);
+            tbPullInfo.Size = new Size(416, 130);
             tbPullInfo.TabIndex = 12;
             // 
             // pbPullProgress
             // 
-            pbPullProgress.Location = new Point(4, 239);
-            pbPullProgress.Margin = new Padding(2);
+            pbPullProgress.Location = new Point(6, 398);
             pbPullProgress.Name = "pbPullProgress";
-            pbPullProgress.Size = new Size(337, 11);
+            pbPullProgress.Size = new Size(481, 18);
             pbPullProgress.TabIndex = 11;
             // 
             // btnPullMernaMestaRefresh
@@ -301,10 +295,9 @@
             btnPullMernaMestaRefresh.FlatStyle = FlatStyle.Flat;
             btnPullMernaMestaRefresh.Font = new Font("Perpetua", 12F, FontStyle.Regular, GraphicsUnit.Point, 200);
             btnPullMernaMestaRefresh.ForeColor = Color.White;
-            btnPullMernaMestaRefresh.Location = new Point(309, 43);
-            btnPullMernaMestaRefresh.Margin = new Padding(2);
+            btnPullMernaMestaRefresh.Location = new Point(441, 72);
             btnPullMernaMestaRefresh.Name = "btnPullMernaMestaRefresh";
-            btnPullMernaMestaRefresh.Size = new Size(32, 29);
+            btnPullMernaMestaRefresh.Size = new Size(46, 48);
             btnPullMernaMestaRefresh.TabIndex = 10;
             btnPullMernaMestaRefresh.UseVisualStyleBackColor = false;
             btnPullMernaMestaRefresh.Click += btnPullMernaMestaRefresh_Click;
@@ -313,11 +306,10 @@
             // 
             tbSourceColumn.BorderStyle = BorderStyle.FixedSingle;
             tbSourceColumn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 238);
-            tbSourceColumn.Location = new Point(102, 131);
-            tbSourceColumn.Margin = new Padding(2);
+            tbSourceColumn.Location = new Point(146, 218);
             tbSourceColumn.Name = "tbSourceColumn";
             tbSourceColumn.ReadOnly = true;
-            tbSourceColumn.Size = new Size(242, 23);
+            tbSourceColumn.Size = new Size(345, 31);
             tbSourceColumn.TabIndex = 9;
             tbSourceColumn.Text = "TP1_1_KUM_SNAGA";
             // 
@@ -326,10 +318,9 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(4, 133);
-            label4.Margin = new Padding(2, 0, 2, 0);
+            label4.Location = new Point(6, 222);
             label4.Name = "label4";
-            label4.Size = new Size(86, 15);
+            label4.Size = new Size(134, 25);
             label4.TabIndex = 8;
             label4.Text = "Source kolona:";
             // 
@@ -337,11 +328,10 @@
             // 
             tbSourceTable.BorderStyle = BorderStyle.FixedSingle;
             tbSourceTable.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 238);
-            tbSourceTable.Location = new Point(102, 104);
-            tbSourceTable.Margin = new Padding(2);
+            tbSourceTable.Location = new Point(146, 173);
             tbSourceTable.Name = "tbSourceTable";
             tbSourceTable.ReadOnly = true;
-            tbSourceTable.Size = new Size(242, 23);
+            tbSourceTable.Size = new Size(345, 31);
             tbSourceTable.TabIndex = 7;
             tbSourceTable.Text = "TREND_TSTP1_TP1_1";
             // 
@@ -350,10 +340,9 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(4, 106);
-            label3.Margin = new Padding(2, 0, 2, 0);
+            label3.Location = new Point(6, 177);
             label3.Name = "label3";
-            label3.Size = new Size(82, 15);
+            label3.Size = new Size(129, 25);
             label3.TabIndex = 6;
             label3.Text = "Source tabela:";
             // 
@@ -361,11 +350,10 @@
             // 
             tbSourceDatabase.BorderStyle = BorderStyle.FixedSingle;
             tbSourceDatabase.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            tbSourceDatabase.Location = new Point(102, 77);
-            tbSourceDatabase.Margin = new Padding(2);
+            tbSourceDatabase.Location = new Point(146, 128);
             tbSourceDatabase.Name = "tbSourceDatabase";
             tbSourceDatabase.ReadOnly = true;
-            tbSourceDatabase.Size = new Size(241, 23);
+            tbSourceDatabase.Size = new Size(343, 31);
             tbSourceDatabase.TabIndex = 4;
             tbSourceDatabase.Text = "TSP2025SCADA";
             // 
@@ -374,10 +362,9 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(4, 79);
-            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Location = new Point(6, 132);
             label2.Name = "label2";
-            label2.Size = new Size(75, 15);
+            label2.Size = new Size(115, 25);
             label2.TabIndex = 3;
             label2.Text = "Source baza:";
             // 
@@ -386,10 +373,9 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(4, 29);
-            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Location = new Point(6, 48);
             label1.Name = "label1";
-            label1.Size = new Size(97, 15);
+            label1.Size = new Size(153, 25);
             label1.TabIndex = 2;
             label1.Text = "Za merno mesto:";
             // 
@@ -400,10 +386,9 @@
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(4, 46);
-            comboBox1.Margin = new Padding(2);
+            comboBox1.Location = new Point(6, 77);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(304, 23);
+            comboBox1.Size = new Size(433, 33);
             comboBox1.TabIndex = 1;
             // 
             // bsMernaMesta
@@ -418,10 +403,9 @@
             btnPull.BackgroundImageLayout = ImageLayout.Stretch;
             btnPull.Font = new Font("Perpetua", 12F, FontStyle.Regular, GraphicsUnit.Point, 200);
             btnPull.ForeColor = Color.White;
-            btnPull.Location = new Point(300, 199);
-            btnPull.Margin = new Padding(2);
+            btnPull.Location = new Point(429, 332);
             btnPull.Name = "btnPull";
-            btnPull.Size = new Size(43, 37);
+            btnPull.Size = new Size(61, 62);
             btnPull.TabIndex = 0;
             btnPull.UseVisualStyleBackColor = false;
             btnPull.Click += btnPull_Click;
@@ -431,10 +415,9 @@
             label5.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            label5.Location = new Point(1227, 575);
-            label5.Margin = new Padding(2, 0, 2, 0);
+            label5.Location = new Point(1753, 958);
             label5.Name = "label5";
-            label5.Size = new Size(260, 32);
+            label5.Size = new Size(388, 48);
             label5.TabIndex = 6;
             label5.Text = "... under construction ...";
             // 
@@ -443,10 +426,9 @@
             label6.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 22F);
-            label6.Location = new Point(8, 517);
-            label6.Margin = new Padding(2, 0, 2, 0);
+            label6.Location = new Point(11, 862);
             label6.Name = "label6";
-            label6.Size = new Size(130, 41);
+            label6.Size = new Size(191, 60);
             label6.TabIndex = 8;
             label6.Text = "TSP2025";
             // 
@@ -455,10 +437,9 @@
             label7.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            label7.Location = new Point(8, 568);
-            label7.Margin = new Padding(2, 0, 2, 0);
+            label7.Location = new Point(11, 947);
             label7.Name = "label7";
-            label7.Size = new Size(187, 32);
+            label7.Size = new Size(277, 48);
             label7.TabIndex = 9;
             label7.Text = "free trial version";
             // 
@@ -466,20 +447,21 @@
             // 
             btnDashboard.BackgroundImage = (Image)resources.GetObject("btnDashboard.BackgroundImage");
             btnDashboard.BackgroundImageLayout = ImageLayout.Zoom;
-            btnDashboard.Location = new Point(4, 29);
+            btnDashboard.Location = new Point(6, 48);
+            btnDashboard.Margin = new Padding(4, 5, 4, 5);
             btnDashboard.Name = "btnDashboard";
-            btnDashboard.Size = new Size(64, 64);
+            btnDashboard.Size = new Size(91, 107);
             btnDashboard.TabIndex = 11;
             btnDashboard.UseVisualStyleBackColor = true;
             btnDashboard.Click += btnDashboard_Click;
             // 
             // frmParent
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             BackgroundImageLayout = ImageLayout.Center;
-            ClientSize = new Size(1511, 637);
+            ClientSize = new Size(2159, 1062);
             Controls.Add(btnDashboard);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -491,9 +473,8 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             IsMdiContainer = true;
             MainMenuStrip = menuStrip1;
-            Margin = new Padding(2);
             Name = "frmParent";
-            Padding = new Padding(1);
+            Padding = new Padding(1, 2, 1, 2);
             Text = "TSP2025 - u razvoju ...";
             WindowState = FormWindowState.Maximized;
             Shown += frmParent_Shown;
