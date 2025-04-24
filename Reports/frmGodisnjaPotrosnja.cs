@@ -8,7 +8,7 @@ namespace TSP2025
 {
     public partial class frmGodisnjaPotrosnja : Form
     {
-        PoslovniSistemDataContext _DataSource;
+        TSP2025DataContext _DataSource;
 
         private string[] meseci = { "Januar", "Februar", "Mart", "April", "Maj", "Jun", "Jul", "Avgust", "Septembar", "Oktobar", "Novembar", "Decembar" };
 
@@ -25,7 +25,7 @@ namespace TSP2025
         {
             InitializeComponent();
 
-            _DataSource = new PoslovniSistemDataContext();
+            _DataSource = new TSP2025DataContext();
 
             bsMernaMesta.DataSource = _DataSource.SvaMernaMesta;
 

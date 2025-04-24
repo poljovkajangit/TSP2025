@@ -7,7 +7,7 @@ namespace TSP2025
 {
     public partial class frmMaticniPodaci : Form
     {
-        private PoslovniSistemDataContext _DataSource;
+        private TSP2025DataContext _DataSource;
 
         private IManager _ToplanaManager;
         private IManager _KotlarnicaManager;
@@ -17,7 +17,7 @@ namespace TSP2025
         {
             InitializeComponent();
 
-            _DataSource = new PoslovniSistemDataContext();
+            _DataSource = new TSP2025DataContext();
             _DataSource.ReloadDataModel();
 
             _BsToplane.DataSource = _DataSource.SveToplane;

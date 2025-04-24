@@ -10,7 +10,7 @@ namespace TSP2025
 {
     public partial class frmParent : Form
     {
-        PoslovniSistemDataContext _DataContext;
+        TSP2025DataContext _DataContext;
 
         private MernoMesto SelectedMernoMesto
         {
@@ -23,7 +23,7 @@ namespace TSP2025
         {
             InitializeComponent();
 
-            _DataContext = new PoslovniSistemDataContext();
+            _DataContext = new TSP2025DataContext();
 
             bsMernaMesta.DataSource = _DataContext.SvaMernaMestaSaPocetnimPraznim;
         }

@@ -1,6 +1,6 @@
 ﻿namespace TSP2025.Common
 {
-    public static class TSPHelp
+    public static class TSP2025Helper
     {
         public static string EnvironmentNewLines(int count)
         {

@@ -33,7 +33,7 @@ namespace TSP2025.Data.Model
                 if (value != naziv)
                 {
                     naziv = value;
-                    IsChanged = PoslovniSistemDataContext.IsLoading ? false : true;
+                    IsChanged = TSP2025DataContext.IsLoading ? false : true;
                 }
             }
         }
@@ -45,7 +45,7 @@ namespace TSP2025.Data.Model
                 if (value != adresa)
                 {
                     adresa = value;
-                    IsChanged = PoslovniSistemDataContext.IsLoading ? false : true;
+                    IsChanged = TSP2025DataContext.IsLoading ? false : true;
                 }
             }
         }
@@ -57,7 +57,7 @@ namespace TSP2025.Data.Model
                 if (value != odgovornoLice)
                 {
                     odgovornoLice = value;
-                    IsChanged = PoslovniSistemDataContext.IsLoading ? false : true;
+                    IsChanged = TSP2025DataContext.IsLoading ? false : true;
                 }
             }
         }
@@ -69,7 +69,7 @@ namespace TSP2025.Data.Model
                 if (value != napomena)
                 {
                     napomena = value;
-                    IsChanged = PoslovniSistemDataContext.IsLoading ? false : true;
+                    IsChanged = TSP2025DataContext.IsLoading ? false : true;
                 }
             }
         }

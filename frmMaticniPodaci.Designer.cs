@@ -167,7 +167,7 @@
             // 
             // _BsPoslovniSistem
             // 
-            _BsPoslovniSistem.DataSource = typeof(Data.PoslovniSistemDataContext);
+            _BsPoslovniSistem.DataSource = typeof(Data.TSP2025DataContext);
             // 
             // dgToplane
             // 

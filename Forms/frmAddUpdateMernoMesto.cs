@@ -21,7 +21,7 @@ namespace TSP2025
         private Button _btnParentDodajMernoMesto;
         private FormMode _mode;
         private MernoMesto _mernoMesto;
-        public frmAddUpdateMernoMesto(string oznakaMernogMesta, TipMernogMesta tip, PoslovniSistemDataContext dataSource, IEntity potrosac, Button parentDodajButton)
+        public frmAddUpdateMernoMesto(string oznakaMernogMesta, TipMernogMesta tip, TSP2025DataContext dataSource, IEntity potrosac, Button parentDodajButton)
         {
             InitializeComponent();
             bsGrupeMernihMesta.DataSource = dataSource;
@@ -44,7 +44,7 @@ namespace TSP2025
             }
         }
 
-        public frmAddUpdateMernoMesto(MernoMesto mernoMesto, PoslovniSistemDataContext dataSource)
+        public frmAddUpdateMernoMesto(MernoMesto mernoMesto, TSP2025DataContext dataSource)
         {
             InitializeComponent();
             bsGrupeMernihMesta.DataSource = dataSource;
@@ -143,7 +143,7 @@ namespace TSP2025
             }
             catch (Exception ex)
             {
-                FormMessages.ShowError("Došlo je do greške prilikom unosa/izmene: " + TSPHelp.EnvironmentNewLines(2) + ex.Message);
+                FormMessages.ShowError("Došlo je do greške prilikom unosa/izmene: " + TSP2025Helper.EnvironmentNewLines(2) + ex.Message);
             }
         }
 
@@ -175,7 +175,7 @@ namespace TSP2025
             }
             catch (Exception ex)
             {
-                FormMessages.ShowError("Provera nije uspela, proverite nazive SCADA tabela i kolona." + TSPHelp.EnvironmentNewLines(2) + ex.Message);
+                FormMessages.ShowError("Provera nije uspela, proverite nazive SCADA tabela i kolona." + TSP2025Helper.EnvironmentNewLines(2) + ex.Message);
             }
         }
     }

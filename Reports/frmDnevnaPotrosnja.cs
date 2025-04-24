@@ -8,7 +8,7 @@ namespace TSP2025
 {
     public partial class frmDnevnaPotrosnja : Form
     {
-        PoslovniSistemDataContext _DataSource;
+        TSP2025DataContext _DataSource;
 
         MernoMesto SelectedMernoMesto
         {
@@ -23,7 +23,7 @@ namespace TSP2025
         {
             InitializeComponent();
 
-            _DataSource = new PoslovniSistemDataContext();
+            _DataSource = new TSP2025DataContext();
 
             bsMernaMesta.DataSource = _DataSource.SvaMernaMesta;
 

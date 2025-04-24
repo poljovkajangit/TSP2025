@@ -30,7 +30,7 @@ namespace TSP2025.Data.Model
                 if (value != grupaMernogMesta)
                 {
                     grupaMernogMesta = value;
-                    IsChanged = PoslovniSistemDataContext.IsLoading ? false : true;
+                    IsChanged = TSP2025DataContext.IsLoading ? false : true;
                     OnPropertyChanged(nameof(GrupaMernogMestaNaziv));
                 }
             }
@@ -43,7 +43,7 @@ namespace TSP2025.Data.Model
                 if (value != grupaMernogMestaId)
                 {
                     grupaMernogMestaId = value;
-                    IsChanged = PoslovniSistemDataContext.IsLoading ? false : true;
+                    IsChanged = TSP2025DataContext.IsLoading ? false : true;
                 }
             }
         }
@@ -55,7 +55,7 @@ namespace TSP2025.Data.Model
                 if (value != oznakaMernogMesta)
                 {
                     oznakaMernogMesta = value;
-                    IsChanged = PoslovniSistemDataContext.IsLoading ? false : true;
+                    IsChanged = TSP2025DataContext.IsLoading ? false : true;
                 }
             }
         }
@@ -67,7 +67,7 @@ namespace TSP2025.Data.Model
                 if (value != oznakaKalorimetra)
                 {
                     oznakaKalorimetra = value;
-                    IsChanged = PoslovniSistemDataContext.IsLoading ? false : true;
+                    IsChanged = TSP2025DataContext.IsLoading ? false : true;
                 }
             }
         }
@@ -79,7 +79,7 @@ namespace TSP2025.Data.Model
                 if (value != tip)
                 {
                     tip = value;
-                    IsChanged = PoslovniSistemDataContext.IsLoading ? false : true;
+                    IsChanged = TSP2025DataContext.IsLoading ? false : true;
                 }
             }
         }
@@ -109,7 +109,7 @@ namespace TSP2025.Data.Model
                 if (value != potrosacId)
                 {
                     potrosacId = value;
-                    IsChanged = PoslovniSistemDataContext.IsLoading ? false : true;
+                    IsChanged = TSP2025DataContext.IsLoading ? false : true;
                 }
             }
         }
@@ -121,7 +121,7 @@ namespace TSP2025.Data.Model
                 if (value != vremeDodavanja)
                 {
                     vremeDodavanja = value;
-                    IsChanged = PoslovniSistemDataContext.IsLoading ? false : true;
+                    IsChanged = TSP2025DataContext.IsLoading ? false : true;
                 }
             }
         }
@@ -133,7 +133,7 @@ namespace TSP2025.Data.Model
                 if (value != scadaTabela)
                 {
                     scadaTabela = value;
-                    IsChanged = PoslovniSistemDataContext.IsLoading ? false : true;
+                    IsChanged = TSP2025DataContext.IsLoading ? false : true;
                 }
             }
         }
@@ -145,7 +145,7 @@ namespace TSP2025.Data.Model
                 if (value != scadaKolona)
                 {
                     scadaKolona = value;
-                    IsChanged = PoslovniSistemDataContext.IsLoading ? false : true;
+                    IsChanged = TSP2025DataContext.IsLoading ? false : true;
                 }
             }
         }

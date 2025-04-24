@@ -6,12 +6,12 @@ namespace TSP2025
 {
     public partial class frmMernaMesta : Form
     {
-        private PoslovniSistemDataContext _DataSource;
+        private TSP2025DataContext _DataSource;
         public frmMernaMesta()
         {
             InitializeComponent();
 
-            _DataSource = new PoslovniSistemDataContext();
+            _DataSource = new TSP2025DataContext();
             bsMernaMesta.DataSource = _DataSource.SvaMernaMesta;
             bsGrupeMernihMesta.DataSource = _DataSource.SveGrupeMernihMestaSaPocetnimSve;
         }
@@ -82,10 +82,33 @@ namespace TSP2025
             if (mernomesto != null)
             {
                 var mernoMestoEditFrm = new frmAddUpdateMernoMesto(mernomesto, _DataSource);
-                if(mernoMestoEditFrm.ShowDialog() == DialogResult.OK)
+                if (mernoMestoEditFrm.ShowDialog() == DialogResult.OK)
                 {
 
                 }
+            }
+        }
+
+        private void obrišiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (bsMernaMesta.Current == null)
+            {
+                FormMessages.ShowError("Merno mesto nije selektovano.");
+                return;
+            }
+
+            try
+            {
+                if (FormMessages.AreYouSure() == DialogResult.Yes)
+                {
+                    _DataSource.DeleteMernoMesto(bsMernaMesta.Current as MernoMesto);
+                    bsMernaMesta.RemoveCurrent();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                FormMessages.ShowError("Greška prilikom brisanja mernog mesta." + Common.TSP2025Helper.EnvironmentNewLines(2) + ex.Message);
             }
         }
     }

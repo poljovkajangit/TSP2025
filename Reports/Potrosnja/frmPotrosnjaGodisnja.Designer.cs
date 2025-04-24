@@ -114,7 +114,7 @@
             // bsOcitavanja
             // 
             bsOcitavanja.DataMember = "SvaOcitavanja";
-            bsOcitavanja.DataSource = typeof(Data.PoslovniSistemDataContext);
+            bsOcitavanja.DataSource = typeof(Data.TSP2025DataContext);
             // 
             // label1
             // 
@@ -140,12 +140,12 @@
             // bsMernaMesta
             // 
             bsMernaMesta.DataMember = "SvaMernaMesta";
-            bsMernaMesta.DataSource = typeof(Data.PoslovniSistemDataContext);
+            bsMernaMesta.DataSource = typeof(Data.TSP2025DataContext);
             // 
             // bsGrupaMernihMesta
             // 
             bsGrupaMernihMesta.DataMember = "SveGrupeMernihMestaSaPocetnimSve";
-            bsGrupaMernihMesta.DataSource = typeof(Data.PoslovniSistemDataContext);
+            bsGrupaMernihMesta.DataSource = typeof(Data.TSP2025DataContext);
             // 
             // btnExport
             // 

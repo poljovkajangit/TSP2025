@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace TSP2005
+namespace TSP2025.Common
 {
     public class PropertyComparer<T> : IComparer<T>
     {
@@ -11,25 +11,25 @@ namespace TSP2005
         // Methods
         public PropertyComparer(PropertyDescriptor property, ListSortDirection direction)
         {
-            this._property = property;
-            this._direction = direction;
+            _property = property;
+            _direction = direction;
         }
 
         public int Compare(T xWord, T yWord)
         {
-            object propertyValue = this.GetPropertyValue(xWord, this._property.Name);
-            object yValue = this.GetPropertyValue(yWord, this._property.Name);
-            if (this._direction == ListSortDirection.Ascending)
+            object propertyValue = GetPropertyValue(xWord, _property.Name);
+            object yValue = GetPropertyValue(yWord, _property.Name);
+            if (_direction == ListSortDirection.Ascending)
             {
-                return this.CompareAscending(propertyValue, yValue);
+                return CompareAscending(propertyValue, yValue);
             }
-            return this.CompareDescending(propertyValue, yValue);
+            return CompareDescending(propertyValue, yValue);
         }
 
         private int CompareAscending(object xValue, object yValue)
         {
             int num;
-            if ((xValue == null) && (yValue == null))
+            if (xValue == null && yValue == null)
             {
                 return 0;
             }
@@ -58,7 +58,7 @@ namespace TSP2005
 
         private int CompareDescending(object xValue, object yValue)
         {
-            return (this.CompareAscending(xValue, yValue) * -1);
+            return CompareAscending(xValue, yValue) * -1;
         }
 
         public bool Equals(T xWord, T yWord)

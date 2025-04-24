@@ -18,7 +18,7 @@ namespace TSP2025.Managers
         private TextBox _FirstInputTextBox;
         private ComboBox _ParentChoice;
         private BindingSource _BindingSource;
-        private PoslovniSistemDataContext _DataSource;
+        private TSP2025DataContext _DataSource;
         private TabControl _MainTabControl;
         private Button _AddMernoMestoButton;
 
@@ -52,7 +52,7 @@ namespace TSP2025.Managers
             TextBox firstInputTextBox,
             ComboBox parentChoice,
             BindingSource bindingSource,
-            PoslovniSistemDataContext dataSource,
+            TSP2025DataContext dataSource,
             TabControl mainTabControl,
             Button addMernoMestoButton)
         {

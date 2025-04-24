@@ -60,12 +60,12 @@
             // bsGrupeMernihMesta
             // 
             bsGrupeMernihMesta.DataMember = "SveGrupeMernihMestaSaPocetnimSve";
-            bsGrupeMernihMesta.DataSource = typeof(Data.PoslovniSistemDataContext);
+            bsGrupeMernihMesta.DataSource = typeof(Data.TSP2025DataContext);
             // 
             // bsMernaMesta
             // 
             bsMernaMesta.DataMember = "SvaMernaMesta";
-            bsMernaMesta.DataSource = typeof(Data.PoslovniSistemDataContext);
+            bsMernaMesta.DataSource = typeof(Data.TSP2025DataContext);
             // 
             // dgMernaMesta
             // 
@@ -162,13 +162,13 @@
             cmMernoMestoGridMenu.ImageScalingSize = new Size(24, 24);
             cmMernoMestoGridMenu.Items.AddRange(new ToolStripItem[] { izmeniToolStripMenuItem, obrišiToolStripMenuItem });
             cmMernoMestoGridMenu.Name = "cmMernoMestoGridMenu";
-            cmMernoMestoGridMenu.Size = new Size(118, 64);
+            cmMernoMestoGridMenu.Size = new Size(189, 86);
             // 
             // izmeniToolStripMenuItem
             // 
             izmeniToolStripMenuItem.Image = (Image)resources.GetObject("izmeniToolStripMenuItem.Image");
             izmeniToolStripMenuItem.Name = "izmeniToolStripMenuItem";
-            izmeniToolStripMenuItem.Size = new Size(117, 30);
+            izmeniToolStripMenuItem.Size = new Size(188, 30);
             izmeniToolStripMenuItem.Text = "Izmeni";
             izmeniToolStripMenuItem.Click += izmeniToolStripMenuItem_Click;
             // 
@@ -176,8 +176,9 @@
             // 
             obrišiToolStripMenuItem.Image = (Image)resources.GetObject("obrišiToolStripMenuItem.Image");
             obrišiToolStripMenuItem.Name = "obrišiToolStripMenuItem";
-            obrišiToolStripMenuItem.Size = new Size(117, 30);
+            obrišiToolStripMenuItem.Size = new Size(188, 30);
             obrišiToolStripMenuItem.Text = "Obriši";
+            obrišiToolStripMenuItem.Click += obrišiToolStripMenuItem_Click;
             // 
             // label1
             // 

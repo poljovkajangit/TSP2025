@@ -8,12 +8,12 @@ namespace TSP2025
 {
     public partial class frmPotrosnjaMesecno : Form
     {
-        PoslovniSistemDataContext _DataSource;
+        TSP2025DataContext _DataSource;
         public frmPotrosnjaMesecno(MernoMesto mernoMesto = null)
         {
             InitializeComponent();
 
-            _DataSource = new PoslovniSistemDataContext();
+            _DataSource = new TSP2025DataContext();
 
             bsGrupaMernihMesta.DataSource = _DataSource.SveGrupeMernihMestaSaPocetnimSve;
             bsMernaMesta.DataSource = _DataSource.SvaMernaMesta;

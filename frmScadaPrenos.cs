@@ -8,7 +8,7 @@ namespace TSP2025
         {
             InitializeComponent();
 
-            bsScadaPrenosIstorija.DataSource = PoslovniSistemDataContext.PullHistory;
+            bsScadaPrenosIstorija.DataSource = TSP2025DataContext.PullHistory;
         }
     }
 }

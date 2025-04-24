@@ -75,7 +75,7 @@
             // bsMernaMesta
             // 
             bsMernaMesta.DataMember = "SvaMernaMesta";
-            bsMernaMesta.DataSource = typeof(Data.PoslovniSistemDataContext);
+            bsMernaMesta.DataSource = typeof(Data.TSP2025DataContext);
             // 
             // label2
             // 

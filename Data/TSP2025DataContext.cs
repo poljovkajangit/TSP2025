@@ -13,7 +13,7 @@ namespace TSP2025.Data
         FromRAM,
         None
     }
-    public class PoslovniSistemDataContext
+    public class TSP2025DataContext
     {
         private List<GrupaMernihMesta> _Sve_GrupaMernihMesta = null;
         private List<GrupaMernihMesta> _Sve_GrupaMernihMestaSaPocetnimSve = null;
@@ -187,7 +187,7 @@ namespace TSP2025.Data
             return svaOcitavanja;
 
         }
-        public PoslovniSistemDataContext()
+        public TSP2025DataContext()
         {
             MojeToplane = new ImprovedBindingList<Toplana>();
         }
@@ -297,6 +297,17 @@ namespace TSP2025.Data
 
             IsLoading = false;
 
+        }
+        public void DeleteMernoMesto(MernoMesto mernoMesto)
+        {
+            try
+            {
+                DB.MernoMesto.Delete(mernoMesto.Id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
         private void SviIndividualniPotrosaci_BeforeRemove(object deletedItem)
         {
