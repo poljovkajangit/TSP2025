@@ -172,13 +172,13 @@ namespace TSP2025
         private void btnPodstaniceDodajMernoMesto_Click(object sender, EventArgs e)
         {
             //za podstanicu tip = 1
-            var formaZaDodavanje = new frmDodajMernoMesto(tbPodstanicaNaziv.Text, TipMernogMesta.Podstanica, _DataSource, _BsPodstanice.Current as Podstanica, btnPodstanicaMernoMesto);
+            var formaZaDodavanje = new frmAddUpdateMernoMesto(tbPodstanicaNaziv.Text, TipMernogMesta.Podstanica, _DataSource, _BsPodstanice.Current as Podstanica, btnPodstanicaMernoMesto);
             formaZaDodavanje.ShowDialog();
         }
         private void btnIndividualniPotrosacMernoMesto_Click(object sender, EventArgs e)
         {
             //za individualnog tip = 2
-            var formaZaDodavanje = new frmDodajMernoMesto(tbIndividualniPotrosacNaziv.Text, TipMernogMesta.IndividualniPotrosac, _DataSource, _BsIndividualniPotrosaci.Current as IndividualniPotrosac, btnIndividualniPotrosacMernoMesto);
+            var formaZaDodavanje = new frmAddUpdateMernoMesto(tbIndividualniPotrosacNaziv.Text, TipMernogMesta.IndividualniPotrosac, _DataSource, _BsIndividualniPotrosaci.Current as IndividualniPotrosac, btnIndividualniPotrosacMernoMesto);
             formaZaDodavanje.ShowDialog();
         }
         private void tabMaticniPodaci_Selecting(object sender, TabControlCancelEventArgs e)

@@ -1,8 +1,10 @@
 ﻿namespace TSP2025.Common
 {
-    public enum Regime : int
+    public enum FormMode : int
     {
-        AddUpdate = 0,
+        AddOrUpdate = 0,
         Preview = 1,
+        Add = 2,
+        Update= 3,
     }
 }

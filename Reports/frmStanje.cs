@@ -34,7 +34,7 @@ namespace TSP2025
 
             _DataSource = new PoslovniSistemDataContext();
 
-            bsGrupaMernihMesta.DataSource = _DataSource.SveGrupaMernihMestaSaPocetnimPraznim;
+            bsGrupaMernihMesta.DataSource = _DataSource.SveGrupeMernihMestaSaPocetnimSve;
             bsMernaMesta.DataSource = _DataSource.SvaMernaMesta;
 
             if (mernoMesto != null)

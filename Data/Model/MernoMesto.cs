@@ -1,4 +1,6 @@
 ﻿
+using System.ComponentModel;
+
 namespace TSP2025.Data.Model
 {
     public class MernoMesto : ModelBase
@@ -29,6 +31,7 @@ namespace TSP2025.Data.Model
                 {
                     grupaMernogMesta = value;
                     IsChanged = PoslovniSistemDataContext.IsLoading ? false : true;
+                    OnPropertyChanged(nameof(GrupaMernogMestaNaziv));
                 }
             }
         }
@@ -84,7 +87,7 @@ namespace TSP2025.Data.Model
         {
             get
             {
-                if(tip == 1)
+                if (tip == 1)
                 {
                     return "Podstanica";
                 }

@@ -4,7 +4,7 @@
     <Compile Update="frmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="frmDodajMernoMesto.cs">
+    <Compile Update="Forms\frmAddUpdateMernoMesto.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="frmMaticniPodaci.cs">
@@ -13,7 +13,7 @@
     <Compile Update="frmMaticniPodaciTreeEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="frmMernaMesta.cs">
+    <Compile Update="Forms\frmMernaMesta.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="frmParent.cs">

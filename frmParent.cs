@@ -187,12 +187,12 @@ namespace TSP2025
         {
             if (btnPullOperacijaToggleView.Text == "Prikaži")
             {
-                gbPullOperacija.Height = 405;
+                gbPullOperacija.Height = 540;
                 btnPullOperacijaToggleView.Text = "Sakrij";
             }
             else
             {
-                gbPullOperacija.Height = 30;
+                gbPullOperacija.Height = 75;
                 btnPullOperacijaToggleView.Text = "Prikaži";
             }
         }
@@ -205,7 +205,7 @@ namespace TSP2025
 
         private void preuzmiPodatkeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            gbPullOperacija.Height = 405;
+            gbPullOperacija.Height = 540;
             btnPullOperacijaToggleView.Text = "Sakrij";
         }
 

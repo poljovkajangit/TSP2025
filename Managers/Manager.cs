@@ -88,11 +88,11 @@ namespace TSP2025.Managers
         {
             _BindingSource.Add(newEntity);
             _BindingSource.MoveLast();
-            SetControlsToRegime(Regime.AddUpdate, _AddButton, _RemoveButton, _SaveButton, _CancelButton, _NextTabButton, _PrevTabButton, _GridView, _GroupBoxWithInputControls, _FirstInputTextBox, _ParentChoice);
+            SetControlsToRegime(FormMode.AddOrUpdate, _AddButton, _RemoveButton, _SaveButton, _CancelButton, _NextTabButton, _PrevTabButton, _GridView, _GroupBoxWithInputControls, _FirstInputTextBox, _ParentChoice);
         }
         public void Edit()
         {
-            SetControlsToRegime(Regime.AddUpdate, _AddButton, _RemoveButton, _SaveButton, _CancelButton, _NextTabButton, _PrevTabButton, _GridView, _GroupBoxWithInputControls, _FirstInputTextBox, _ParentChoice);
+            SetControlsToRegime(FormMode.AddOrUpdate, _AddButton, _RemoveButton, _SaveButton, _CancelButton, _NextTabButton, _PrevTabButton, _GridView, _GroupBoxWithInputControls, _FirstInputTextBox, _ParentChoice);
         }
         public void Remove()
         {
@@ -118,7 +118,7 @@ namespace TSP2025.Managers
             {
                 _BindingSource.RemoveCurrent();
             }
-            SetControlsToRegime(Regime.Preview, _AddButton, _RemoveButton, _SaveButton, _CancelButton, _NextTabButton, _PrevTabButton, _GridView, _GroupBoxWithInputControls, _FirstInputTextBox, _ParentChoice);
+            SetControlsToRegime(FormMode.Preview, _AddButton, _RemoveButton, _SaveButton, _CancelButton, _NextTabButton, _PrevTabButton, _GridView, _GroupBoxWithInputControls, _FirstInputTextBox, _ParentChoice);
             _BindingSource.MoveFirst();
         }
         public void Next()
@@ -168,10 +168,10 @@ namespace TSP2025.Managers
                     throw;
                 }
             }
-            SetControlsToRegime(Regime.Preview, _AddButton, _RemoveButton, _SaveButton, _CancelButton, _NextTabButton, _PrevTabButton, _GridView, _GroupBoxWithInputControls, _FirstInputTextBox, _ParentChoice);
+            SetControlsToRegime(FormMode.Preview, _AddButton, _RemoveButton, _SaveButton, _CancelButton, _NextTabButton, _PrevTabButton, _GridView, _GroupBoxWithInputControls, _FirstInputTextBox, _ParentChoice);
         }
         private void SetControlsToRegime(
-            Regime regime,
+            FormMode regime,
             Button addButton,
             Button removeButton,
             Button saveButton,
@@ -183,7 +183,7 @@ namespace TSP2025.Managers
             TextBox firstInputTextBox,
             ComboBox parentChoice)
         {
-            if (regime == Regime.Preview)
+            if (regime == FormMode.Preview)
             {
                 addButton.Enabled = true;
                 removeButton.Enabled = true;
@@ -204,7 +204,7 @@ namespace TSP2025.Managers
                     nextTabButton.Enabled = true;
                 }
             }
-            else if (regime == Regime.AddUpdate)
+            else if (regime == FormMode.AddOrUpdate)
             {
                 addButton.Enabled = false;
                 removeButton.Enabled = false;

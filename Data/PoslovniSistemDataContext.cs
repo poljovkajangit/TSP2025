@@ -15,12 +15,17 @@ namespace TSP2025.Data
     }
     public class PoslovniSistemDataContext
     {
+        private List<GrupaMernihMesta> _Sve_GrupaMernihMesta = null;
+        private List<GrupaMernihMesta> _Sve_GrupaMernihMestaSaPocetnimSve = null;
+        private ImprovedBindingList<MernoMesto> _SvaMernaMesta = null;
+
+        public event ModelChangedEventHandler ModelChanged;
+
         public ImprovedBindingList<Toplana> MojeToplane { get; set; }
         public ImprovedBindingList<Toplana> SveToplane { get; set; } = new ImprovedBindingList<Toplana>();
         public ImprovedBindingList<Kotlarnica> SveKotlarnice { get; set; } = new ImprovedBindingList<Kotlarnica>();
         public ImprovedBindingList<Podstanica> SvePodstanice { get; set; } = new ImprovedBindingList<Podstanica>();
         public ImprovedBindingList<IndividualniPotrosac> SviIndividualniPotrosaci { get; set; } = new ImprovedBindingList<IndividualniPotrosac>();
-
         public static List<PullHistory> PullHistory
         {
             get
@@ -56,13 +61,7 @@ namespace TSP2025.Data
                 return pullHistory;
             }
         }
-
         public static bool IsLoading { get; set; } = false;
-
-        private List<GrupaMernihMesta> _SveGrupaMernihMesta = null;
-
-        private ImprovedBindingList<MernoMesto> _SvaMernaMesta = null;
-
         public ImprovedBindingList<MernoMesto> SvaMernaMesta
         {
             get
@@ -74,7 +73,6 @@ namespace TSP2025.Data
                 return _SvaMernaMesta;
             }
         }
-
         public ImprovedBindingList<MernoMesto> SvaMernaMestaSaPocetnimPraznim
         {
             get
@@ -87,96 +85,36 @@ namespace TSP2025.Data
                 return _SvaMernaMesta;
             }
         }
-
         public void OcistiMernaMesta()
         {
             _SvaMernaMesta = null;
         }
-
-        public List<GrupaMernihMesta> SveGrupaMernihMestaSaPocetnimPraznim
+        public List<GrupaMernihMesta> SveGrupeMernihMestaSaPocetnimSve
         {
             get
             {
-                if (_SveGrupaMernihMesta == null)
+                if (_Sve_GrupaMernihMestaSaPocetnimSve == null)
                 {
-                    UcitajGrupeMernihMesta();
-                    _SveGrupaMernihMesta.Insert(0, new GrupaMernihMesta() { Id = 0, Naziv = "<Sve>", ImaMernoMesto = false });
+                    _Sve_GrupaMernihMestaSaPocetnimSve = UcitajGrupeMernihMesta();
+                    _Sve_GrupaMernihMestaSaPocetnimSve.Insert(0, new GrupaMernihMesta() { Id = 0, Naziv = "<Sve>", ImaMernoMesto = false });
                 }
-                return _SveGrupaMernihMesta;
+                return _Sve_GrupaMernihMestaSaPocetnimSve;
             }
         }
-        public List<GrupaMernihMesta> SveGrupaMernihMesta
+        public List<GrupaMernihMesta> SveGrupeMernihMesta
         {
             get
             {
-                if (_SveGrupaMernihMesta == null)
+                if (_Sve_GrupaMernihMesta == null)
                 {
-                    UcitajGrupeMernihMesta();
+                    _Sve_GrupaMernihMesta = UcitajGrupeMernihMesta();
                 }
-                return _SveGrupaMernihMesta;
+                return _Sve_GrupaMernihMesta;
             }
         }
-        public void UcitajGrupeMernihMesta()
-        {
-            _SveGrupaMernihMesta = new List<GrupaMernihMesta>();
-            using (var ds = new DataSet())
-            {
-                using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
-                {
-                    var cmd = new SqlCommand("Select * From GrupaMernihMesta", con);
-
-                    var da = new SqlDataAdapter(cmd);
-                    da.Fill(ds);
-
-                    foreach (DataRow gMernoMestoRow in ds.Tables[0].Rows)
-                    {
-                        GrupaMernihMesta gmm = new()
-                        {
-                            Id = (int)gMernoMestoRow["Id"],
-                            Naziv = (string)gMernoMestoRow["Naziv"],
-                            ImaMernoMesto = false,
-                        };
-                        _SveGrupaMernihMesta.Add(gmm);
-                    }
-                }
-            }
-        }
-
-        public void UcitajMernaMesta()
-        {
-            _SvaMernaMesta = new ImprovedBindingList<MernoMesto>();
-            using (var ds = new DataSet())
-            {
-                using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
-                {
-                    var cmd = new SqlCommand("Select mm.Id, mm.OznakaKalorimetra, mm.OznakaMernogMesta, mm.Tip, mm.PotrosacId, mm.ScadaTabela, mm.ScadaKolona, mm.VremeDodavanja, g.Naziv, g.Id as GrupaId " +
-                        "from MernoMesto mm join GrupaMernihMesta g on g.Id = mm.GrupaMernogMestaId ", con);
-
-                    var da = new SqlDataAdapter(cmd);
-                    da.Fill(ds);
-
-                    foreach (DataRow mernoMestoRow in ds.Tables[0].Rows)
-                    {
-                        MernoMesto mm = new()
-                        {
-                            Id = (int)mernoMestoRow["Id"],
-                            GrupaMernogMesta = new GrupaMernihMesta() { Id = (int)mernoMestoRow["GrupaId"], Naziv = (string)mernoMestoRow["Naziv"], ImaMernoMesto = false },
-                            OznakaKalorimetra = (string)mernoMestoRow["OznakaKalorimetra"],
-                            OznakaMernogMesta = (string)mernoMestoRow["OznakaMernogMesta"],
-                            Tip = (int)mernoMestoRow["Tip"],
-                            PotrosacId = (int)mernoMestoRow["PotrosacId"],
-                            GrupaMernogMestaId = (int)mernoMestoRow["GrupaId"],
-                            VremeDodavanja = (DateTime)mernoMestoRow["VremeDodavanja"],
-                            ScadaKolona = (string)mernoMestoRow["ScadaKolona"],
-                            ScadaTabela = (string)mernoMestoRow["ScadaTabela"],
-                            ImaMernoMesto = false,
-                        };
-                        _SvaMernaMesta.Add(mm);
-                    }
-
-                }
-            }
-        }
+        /// <summary>
+        /// Dummy property to simulate data binding
+        /// </summary>
         public ImprovedBindingList<Ocitavanje> Ocitavanja
         {
             get
@@ -249,24 +187,10 @@ namespace TSP2025.Data
             return svaOcitavanja;
 
         }
-
-        private T GetRowData<T>(DataRow row, string column)
-        {
-            if (row[column] == DBNull.Value)
-            {
-                return default;
-            }
-            else
-            {
-                return (T)row[column];
-            }
-        }
         public PoslovniSistemDataContext()
         {
             MojeToplane = new ImprovedBindingList<Toplana>();
         }
-
-
         public void ReloadDataModel()
         {
             SveToplane.Clear();
@@ -374,17 +298,14 @@ namespace TSP2025.Data
             IsLoading = false;
 
         }
-
         private void SviIndividualniPotrosaci_BeforeRemove(object deletedItem)
         {
             (deletedItem as IndividualniPotrosac).IsDeleted = true;
         }
-
         private void Podstanice_BeforeRemove(object deletedItem)
         {
             (deletedItem as Podstanica).IsDeleted = true;
         }
-
         private void MojeToplane_BeforeRemove(object deletedItem)
         {
             (deletedItem as Toplana).IsDeleted = true;
@@ -393,14 +314,81 @@ namespace TSP2025.Data
         {
             (deletedItem as Kotlarnica).IsDeleted = true;
         }
-
         private void ModelChangedEventHandler(string entity)
         {
             ModelChanged?.Invoke(entity);
         }
+        private T GetRowData<T>(DataRow row, string column)
+        {
+            if (row[column] == DBNull.Value)
+            {
+                return default;
+            }
+            else
+            {
+                return (T)row[column];
+            }
+        }
+        private List<GrupaMernihMesta> UcitajGrupeMernihMesta()
+        {
+            var retList = new List<GrupaMernihMesta>();
+            using (var ds = new DataSet())
+            {
+                using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
+                {
+                    var cmd = new SqlCommand("Select * From GrupaMernihMesta", con);
 
-        public event ModelChangedEventHandler ModelChanged;
+                    var da = new SqlDataAdapter(cmd);
+                    da.Fill(ds);
 
+                    foreach (DataRow gMernoMestoRow in ds.Tables[0].Rows)
+                    {
+                        GrupaMernihMesta gmm = new()
+                        {
+                            Id = (int)gMernoMestoRow["Id"],
+                            Naziv = (string)gMernoMestoRow["Naziv"],
+                            ImaMernoMesto = false,
+                        };
+                        retList.Add(gmm);
+                    }
+                }
+            }
+            return retList;
+        }
+        private void UcitajMernaMesta()
+        {
+            _SvaMernaMesta = new ImprovedBindingList<MernoMesto>();
+            using (var ds = new DataSet())
+            {
+                using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
+                {
+                    var cmd = new SqlCommand("Select mm.Id, mm.OznakaKalorimetra, mm.OznakaMernogMesta, mm.Tip, mm.PotrosacId, mm.ScadaTabela, mm.ScadaKolona, mm.VremeDodavanja, g.Naziv, g.Id as GrupaId " +
+                        "from MernoMesto mm join GrupaMernihMesta g on g.Id = mm.GrupaMernogMestaId ", con);
 
+                    var da = new SqlDataAdapter(cmd);
+                    da.Fill(ds);
+
+                    foreach (DataRow mernoMestoRow in ds.Tables[0].Rows)
+                    {
+                        MernoMesto mm = new()
+                        {
+                            Id = (int)mernoMestoRow["Id"],
+                            GrupaMernogMesta = new GrupaMernihMesta() { Id = (int)mernoMestoRow["GrupaId"], Naziv = (string)mernoMestoRow["Naziv"], ImaMernoMesto = false },
+                            OznakaKalorimetra = (string)mernoMestoRow["OznakaKalorimetra"],
+                            OznakaMernogMesta = (string)mernoMestoRow["OznakaMernogMesta"],
+                            Tip = (int)mernoMestoRow["Tip"],
+                            PotrosacId = (int)mernoMestoRow["PotrosacId"],
+                            GrupaMernogMestaId = (int)mernoMestoRow["GrupaId"],
+                            VremeDodavanja = (DateTime)mernoMestoRow["VremeDodavanja"],
+                            ScadaKolona = (string)mernoMestoRow["ScadaKolona"],
+                            ScadaTabela = (string)mernoMestoRow["ScadaTabela"],
+                            ImaMernoMesto = false,
+                        };
+                        _SvaMernaMesta.Add(mm);
+                    }
+
+                }
+            }
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace TSP2025
 
             _DataSource = new PoslovniSistemDataContext();
             bsMernaMesta.DataSource = _DataSource.SvaMernaMesta;
-            bsGrupeMernihMesta.DataSource = _DataSource.SveGrupaMernihMestaSaPocetnimPraznim;
+            bsGrupeMernihMesta.DataSource = _DataSource.SveGrupeMernihMestaSaPocetnimSve;
         }
 
         private void cbGrupeMernihMesta_SelectionChangeCommitted(object sender, EventArgs e)
@@ -50,21 +50,42 @@ namespace TSP2025
             FormMessages.ShowExclamation("... under construction ...");
         }
 
-        private void btnGodisnjiIzvestaj_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void dgMernaMesta_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;
 
-            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
-                e.RowIndex >= 0)
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
                 var mernomesto = bsMernaMesta.Current as MernoMesto;
-                var _frmPeriodicniIzveštaj = new frmStanje(mernomesto);
+                var _frmPeriodicniIzveštaj = new frmStanje(mernomesto!);
                 _frmPeriodicniIzveštaj.ShowDialog();
+            }
+        }
+
+        private void dgMernaMesta_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                int rowSelected = e.RowIndex;
+                if (e.RowIndex != -1)
+                {
+                    dgMernaMesta.ClearSelection();
+                    dgMernaMesta.Rows[rowSelected].Selected = true;
+                    bsMernaMesta.Position = rowSelected;
+                }
+            }
+        }
+
+        private void izmeniToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var mernomesto = bsMernaMesta.Current as MernoMesto;
+            if (mernomesto != null)
+            {
+                var mernoMestoEditFrm = new frmAddUpdateMernoMesto(mernomesto, _DataSource);
+                if(mernoMestoEditFrm.ShowDialog() == DialogResult.OK)
+                {
+
+                }
             }
         }
     }

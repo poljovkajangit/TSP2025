@@ -14,6 +14,11 @@ namespace TSP2025.Data.Model
         private bool isDeleted = false;
         private int id = 0;
         private bool imaMernoMesto = false;
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }   
         public int Id
         {
             get

@@ -146,7 +146,7 @@
             // 
             // bsGrupaMernihMesta
             // 
-            bsGrupaMernihMesta.DataMember = "SveGrupaMernihMestaSaPocetnimPraznim";
+            bsGrupaMernihMesta.DataMember = "SveGrupeMernihMestaSaPocetnimSve";
             bsGrupaMernihMesta.DataSource = typeof(Data.PoslovniSistemDataContext);
             // 
             // btnExport
