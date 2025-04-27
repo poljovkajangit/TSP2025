@@ -90,14 +90,15 @@
             dgOcitavanja.Dock = DockStyle.Top;
             dgOcitavanja.EditMode = DataGridViewEditMode.EditProgrammatically;
             dgOcitavanja.EnableHeadersVisualStyles = false;
-            dgOcitavanja.Location = new Point(0, 87);
+            dgOcitavanja.Location = new Point(0, 54);
+            dgOcitavanja.Margin = new Padding(2);
             dgOcitavanja.MultiSelect = false;
             dgOcitavanja.Name = "dgOcitavanja";
             dgOcitavanja.RowHeadersVisible = false;
             dgOcitavanja.RowHeadersWidth = 32;
             dgOcitavanja.ScrollBars = ScrollBars.Vertical;
             dgOcitavanja.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgOcitavanja.Size = new Size(2167, 335);
+            dgOcitavanja.Size = new Size(1517, 201);
             dgOcitavanja.TabIndex = 2;
             // 
             // vremeFormatiranoDataGridViewTextBoxColumn
@@ -153,9 +154,10 @@
             // 
             // btnPrikazi
             // 
-            btnPrikazi.Location = new Point(1419, 21);
+            btnPrikazi.Location = new Point(1014, 13);
+            btnPrikazi.Margin = new Padding(2);
             btnPrikazi.Name = "btnPrikazi";
-            btnPrikazi.Size = new Size(130, 45);
+            btnPrikazi.Size = new Size(91, 27);
             btnPrikazi.TabIndex = 3;
             btnPrikazi.Text = "Prikaži";
             btnPrikazi.UseVisualStyleBackColor = true;
@@ -168,9 +170,10 @@
             cbMernoMesto.DisplayMember = "OznakaMernogMesta";
             cbMernoMesto.DropDownStyle = ComboBoxStyle.DropDownList;
             cbMernoMesto.FormattingEnabled = true;
-            cbMernoMesto.Location = new Point(760, 26);
+            cbMernoMesto.Location = new Point(532, 16);
+            cbMernoMesto.Margin = new Padding(2);
             cbMernoMesto.Name = "cbMernoMesto";
-            cbMernoMesto.Size = new Size(253, 33);
+            cbMernoMesto.Size = new Size(178, 23);
             cbMernoMesto.TabIndex = 7;
             // 
             // bsMernaMesta
@@ -187,9 +190,10 @@
             // 
             btnExport.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnExport.Image = (Image)resources.GetObject("btnExport.Image");
-            btnExport.Location = new Point(2089, 12);
+            btnExport.Location = new Point(1461, 7);
+            btnExport.Margin = new Padding(2);
             btnExport.Name = "btnExport";
-            btnExport.Size = new Size(64, 63);
+            btnExport.Size = new Size(45, 38);
             btnExport.TabIndex = 8;
             btnExport.UseVisualStyleBackColor = true;
             btnExport.Click += btnExport_Click;
@@ -197,18 +201,20 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(631, 30);
+            label2.Location = new Point(442, 18);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(123, 25);
+            label2.Size = new Size(81, 15);
             label2.TabIndex = 9;
             label2.Text = "Merno mesto:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(346, 30);
+            label3.Location = new Point(242, 18);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(19, 25);
+            label3.Size = new Size(12, 15);
             label3.TabIndex = 11;
             label3.Text = "-";
             // 
@@ -218,19 +224,21 @@
             cbProredi.DropDownStyle = ComboBoxStyle.DropDownList;
             cbProredi.FormattingEnabled = true;
             cbProredi.Items.AddRange(new object[] { "dd/mm/yy hh:mm", "dd/mm/yy hh:00", "dd/mm/yy 00:00", "01/mm/yy 00:00", "-01/01/yy 00:00", "-dd/mm/yy hh:00..15..30..45" });
-            cbProredi.Location = new Point(1164, 26);
+            cbProredi.Location = new Point(834, 15);
+            cbProredi.Margin = new Padding(2);
             cbProredi.Name = "cbProredi";
-            cbProredi.Size = new Size(249, 33);
+            cbProredi.Size = new Size(176, 23);
             cbProredi.TabIndex = 12;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(1019, 29);
+            label4.Location = new Point(714, 18);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(139, 25);
+            label4.Size = new Size(112, 15);
             label4.TabIndex = 13;
-            label4.Text = "Format datuma:";
+            label4.Text = "Datum/Vreme filter:";
             // 
             // pltStanje
             // 
@@ -238,10 +246,9 @@
             pltStanje.DisplayScale = 1.5F;
             pltStanje.Dock = DockStyle.Fill;
             pltStanje.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            pltStanje.Location = new Point(0, 422);
-            pltStanje.Margin = new Padding(4, 5, 4, 5);
+            pltStanje.Location = new Point(0, 255);
             pltStanje.Name = "pltStanje";
-            pltStanje.Size = new Size(2167, 706);
+            pltStanje.Size = new Size(1517, 413);
             pltStanje.TabIndex = 19;
             pltStanje.Visible = false;
             // 
@@ -250,17 +257,18 @@
             statusStrip1.GripStyle = ToolStripGripStyle.Visible;
             statusStrip1.ImageScalingSize = new Size(24, 24);
             statusStrip1.Items.AddRange(new ToolStripItem[] { lblUkupno });
-            statusStrip1.Location = new Point(0, 1128);
+            statusStrip1.Location = new Point(0, 668);
             statusStrip1.Name = "statusStrip1";
+            statusStrip1.Padding = new Padding(10, 0, 1, 0);
             statusStrip1.RightToLeft = RightToLeft.Yes;
-            statusStrip1.Size = new Size(2167, 22);
+            statusStrip1.Size = new Size(1517, 22);
             statusStrip1.TabIndex = 20;
             statusStrip1.Text = "statusStrip1";
             // 
             // lblUkupno
             // 
             lblUkupno.Name = "lblUkupno";
-            lblUkupno.Size = new Size(0, 15);
+            lblUkupno.Size = new Size(0, 17);
             // 
             // panel1
             // 
@@ -277,35 +285,39 @@
             panel1.Controls.Add(label3);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(2167, 87);
+            panel1.Size = new Size(1517, 54);
             panel1.TabIndex = 21;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 29);
+            label1.Location = new Point(8, 17);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(66, 25);
+            label1.Size = new Size(44, 15);
             label1.TabIndex = 21;
             label1.Text = "Period:";
             // 
             // dtDanDo
             // 
             dtDanDo.BorderStyle = BorderStyle.FixedSingle;
-            dtDanDo.Location = new Point(371, 21);
+            dtDanDo.Location = new Point(260, 13);
+            dtDanDo.Margin = new Padding(1);
             dtDanDo.Name = "dtDanDo";
             dtDanDo.SelectedDate = new DateTime(2025, 4, 19, 0, 0, 0, 0);
-            dtDanDo.Size = new Size(254, 41);
+            dtDanDo.Size = new Size(178, 25);
             dtDanDo.TabIndex = 20;
             // 
             // dtDanOd
             // 
             dtDanOd.BorderStyle = BorderStyle.FixedSingle;
-            dtDanOd.Location = new Point(85, 21);
+            dtDanOd.Location = new Point(60, 13);
+            dtDanOd.Margin = new Padding(1);
             dtDanOd.Name = "dtDanOd";
             dtDanOd.SelectedDate = new DateTime(2025, 4, 19, 0, 0, 0, 0);
-            dtDanOd.Size = new Size(254, 41);
+            dtDanOd.Size = new Size(178, 25);
             dtDanOd.TabIndex = 19;
             // 
             // pbGraph
@@ -314,23 +326,25 @@
             pbGraph.BackgroundImageLayout = ImageLayout.Zoom;
             pbGraph.Dock = DockStyle.Fill;
             pbGraph.InitialImage = null;
-            pbGraph.Location = new Point(0, 422);
+            pbGraph.Location = new Point(0, 255);
+            pbGraph.Margin = new Padding(2);
             pbGraph.Name = "pbGraph";
-            pbGraph.Size = new Size(2167, 706);
+            pbGraph.Size = new Size(1517, 413);
             pbGraph.TabIndex = 22;
             pbGraph.TabStop = false;
             // 
             // frmStanje
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2167, 1150);
+            ClientSize = new Size(1517, 690);
             Controls.Add(pbGraph);
             Controls.Add(pltStanje);
             Controls.Add(statusStrip1);
             Controls.Add(dgOcitavanja);
             Controls.Add(panel1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(2);
             Name = "frmStanje";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Izveštaj o stanju";

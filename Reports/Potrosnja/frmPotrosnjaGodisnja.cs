@@ -2,6 +2,7 @@
 using System.Text;
 using TSP2025.Data;
 using TSP2025.Data.Model;
+using TSP2025.Forms;
 using TSP2025.Utils;
 
 namespace TSP2025
@@ -38,7 +39,9 @@ namespace TSP2025
         private void btnPrikazi_Click(object sender, EventArgs e)
         {
             var godina = new DateTime(Convert.ToInt16(cbGodina.Text), 1, 1);
-            bsOcitavanja.DataSource = _DataSource.SvaOcitavanja(DataSourceMode.FromRAM).Where(
+            var frmDataSource = new frmDataSourceForReports();
+            frmDataSource.ShowDialog();            
+            bsOcitavanja.DataSource = _DataSource.SvaOcitavanja(frmDataSource.DataSourceMode, frmDataSource.Godina, frmDataSource.KorakMinutama).Where(
                 o =>
                 o.Vreme.Year == godina.Year && o.Vreme.Date.Day == 1 && o.Vreme.Date.Hour == 0 && o.Vreme.Minute == 0 && o.Vreme.Second == 0
                 &&

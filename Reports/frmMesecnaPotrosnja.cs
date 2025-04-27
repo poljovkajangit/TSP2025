@@ -2,6 +2,7 @@
 using System.Data;
 using TSP2025.Data;
 using TSP2025.Data.Model;
+using TSP2025.Forms;
 using TSP2025.Utils;
 
 namespace TSP2025
@@ -53,12 +54,12 @@ namespace TSP2025
                 return;
             }
 
-            var dsMode = FormMessages.AskForDataSource();
-
             var fromDate = new DateTime(Convert.ToInt32(cbGodina.SelectedItem), cbMesec.SelectedIndex + 1, 1).AddDays(-1);
             var toDate = fromDate.AddDays(1).AddMonths(1);
 
-            var ocitavanja = _DataSource.SvaOcitavanja(dsMode).Where(
+            var frmDataSource = new frmDataSourceForReports();
+            frmDataSource.ShowDialog();
+            var ocitavanja = _DataSource.SvaOcitavanja(frmDataSource.DataSourceMode, frmDataSource.Godina, frmDataSource.KorakMinutama).Where(
              o =>
              o.Vreme.Date == o.Vreme
              &&

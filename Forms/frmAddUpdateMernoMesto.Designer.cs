@@ -298,7 +298,7 @@ namespace TSP2025
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.LemonChiffon;
+            BackColor = Color.Gold;
             ClientSize = new Size(311, 444);
             Controls.Add(tbIdMernogMesta);
             Controls.Add(label3);

@@ -2,6 +2,7 @@
 using System.Text;
 using TSP2025.Data;
 using TSP2025.Data.Model;
+using TSP2025.Forms;
 using TSP2025.Utils;
 
 namespace TSP2025
@@ -61,12 +62,13 @@ namespace TSP2025
                 return;
             }
 
-            var dsMode = FormMessages.AskForDataSource();
+            var frmDataSource = new frmDataSourceForReports();
+            frmDataSource.ShowDialog();
 
             switch (cbProredi.SelectedIndex)
             {
                 case 0:
-                    bsOcitavanja.DataSource = _DataSource.SvaOcitavanja(dsMode).Where(
+                    bsOcitavanja.DataSource = _DataSource.SvaOcitavanja(frmDataSource.DataSourceMode, frmDataSource.Godina, frmDataSource.KorakMinutama).Where(
                     o =>
                     o.MernoMestoId == SelectedMernoMesto.Id
                     &&
@@ -76,7 +78,7 @@ namespace TSP2025
                     .ToList();
                     break;
                 case 1:
-                    bsOcitavanja.DataSource = _DataSource.SvaOcitavanja(dsMode).Where(
+                    bsOcitavanja.DataSource = _DataSource.SvaOcitavanja(frmDataSource.DataSourceMode, frmDataSource.Godina, frmDataSource.KorakMinutama).Where(
                     o =>
                     o.Vreme.Minute == 0
                     &&
@@ -88,7 +90,7 @@ namespace TSP2025
                     .ToList();
                     break;
                 case 2:
-                    bsOcitavanja.DataSource = _DataSource.SvaOcitavanja(dsMode).Where(
+                    bsOcitavanja.DataSource = _DataSource.SvaOcitavanja(frmDataSource.DataSourceMode, frmDataSource.Godina, frmDataSource.KorakMinutama).Where(
                     o =>
                     o.Vreme.Date == o.Vreme
                     &&
@@ -116,7 +118,7 @@ namespace TSP2025
                     //}
                     //else
                     //{
-                    bsOcitavanja.DataSource = _DataSource.SvaOcitavanja(dsMode).Where(
+                    bsOcitavanja.DataSource = _DataSource.SvaOcitavanja(frmDataSource.DataSourceMode, frmDataSource.Godina, frmDataSource.KorakMinutama).Where(
                     o =>
                     o.Vreme.Date.Day == 1 && o.Vreme.Hour == 0 && o.Vreme.Minute == 0
                     &&

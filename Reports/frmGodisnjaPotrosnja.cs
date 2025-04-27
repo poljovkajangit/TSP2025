@@ -2,6 +2,7 @@
 using System.Data;
 using TSP2025.Data;
 using TSP2025.Data.Model;
+using TSP2025.Forms;
 using TSP2025.Utils;
 
 namespace TSP2025
@@ -48,12 +49,13 @@ namespace TSP2025
 
         private void btnPrikazi_Click(object sender, EventArgs e)
         {
-            var dsMode = FormMessages.AskForDataSource();
 
             var fromDate = new DateTime(Convert.ToInt32(cbGodina.SelectedItem), 1, 1).AddMonths(-1);
             var toDate = fromDate.AddMonths(13);
 
-            var ocitavanja = _DataSource.SvaOcitavanja(dsMode).Where(
+            var frmDataSource = new frmDataSourceForReports();
+            frmDataSource.ShowDialog();
+            var ocitavanja = _DataSource.SvaOcitavanja(frmDataSource.DataSourceMode, frmDataSource.Godina, frmDataSource.KorakMinutama).Where(
              o =>
                  o.Vreme.Date.Day == 1 && o.Vreme.Hour == 0 && o.Vreme.Minute == 0
                  &&
