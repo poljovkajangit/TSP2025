@@ -84,7 +84,7 @@ namespace TSP2025
                 var mernoMestoEditFrm = new frmAddUpdateMernoMesto(mernomesto, _DataSource);
                 if (mernoMestoEditFrm.ShowDialog() == DialogResult.OK)
                 {
-
+                    dgMernaMesta.Refresh();
                 }
             }
         }

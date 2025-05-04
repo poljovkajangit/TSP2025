@@ -119,6 +119,9 @@ namespace TSP2025
 
         private void btnPull_Click(object sender, EventArgs e)
         {
+
+            //ScadaService.Instance.Start(tbPullInfo);
+
             tbPullInfo.ForeColor = Color.Green;
             tbPullInfo.Text = "Upis ...";
             pbPullProgress.Value = 0;
@@ -187,7 +190,7 @@ namespace TSP2025
         {
             if (btnPullOperacijaToggleView.Text == "Prikaži")
             {
-                gbPullOperacija.Height = 540;
+                gbPullOperacija.Height = 700;
                 btnPullOperacijaToggleView.Text = "Sakrij";
             }
             else
@@ -205,7 +208,7 @@ namespace TSP2025
 
         private void preuzmiPodatkeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            gbPullOperacija.Height = 540;
+            gbPullOperacija.Height = 700;
             btnPullOperacijaToggleView.Text = "Sakrij";
         }
 

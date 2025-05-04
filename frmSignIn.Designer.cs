@@ -58,7 +58,7 @@
             // 
             tbUsername.BorderStyle = BorderStyle.FixedSingle;
             tbUsername.Location = new Point(74, 211);
-            tbUsername.Margin = new Padding(2, 2, 2, 2);
+            tbUsername.Margin = new Padding(2);
             tbUsername.Name = "tbUsername";
             tbUsername.Size = new Size(253, 23);
             tbUsername.TabIndex = 0;
@@ -67,7 +67,7 @@
             // 
             tbPassword.BorderStyle = BorderStyle.FixedSingle;
             tbPassword.Location = new Point(74, 286);
-            tbPassword.Margin = new Padding(2, 2, 2, 2);
+            tbPassword.Margin = new Padding(2);
             tbPassword.Name = "tbPassword";
             tbPassword.Size = new Size(253, 23);
             tbPassword.TabIndex = 1;
@@ -90,7 +90,7 @@
             btnOk.DialogResult = DialogResult.OK;
             btnOk.FlatStyle = FlatStyle.Flat;
             btnOk.Location = new Point(370, 487);
-            btnOk.Margin = new Padding(2, 2, 2, 2);
+            btnOk.Margin = new Padding(2);
             btnOk.Name = "btnOk";
             btnOk.Size = new Size(130, 46);
             btnOk.TabIndex = 2;
@@ -103,7 +103,7 @@
             pbPipes.BorderStyle = BorderStyle.Fixed3D;
             pbPipes.Image = (Image)resources.GetObject("pbPipes.Image");
             pbPipes.Location = new Point(0, 0);
-            pbPipes.Margin = new Padding(2, 2, 2, 2);
+            pbPipes.Margin = new Padding(2);
             pbPipes.Name = "pbPipes";
             pbPipes.Size = new Size(402, 545);
             pbPipes.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -122,7 +122,7 @@
             panel1.Controls.Add(tbPassword);
             panel1.Controls.Add(tbUsername);
             panel1.Location = new Point(415, 0);
-            panel1.Margin = new Padding(2, 2, 2, 2);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
             panel1.Size = new Size(503, 536);
             panel1.TabIndex = 4;
@@ -139,7 +139,7 @@
             label3.Name = "label3";
             label3.Size = new Size(503, 32);
             label3.TabIndex = 7;
-            label3.Text = "v0.895";
+            label3.Text = "v0.897";
             label3.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label2
@@ -180,7 +180,7 @@
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "frmSignIn";

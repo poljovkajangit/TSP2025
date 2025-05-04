@@ -130,13 +130,16 @@ namespace TSP2025
                         }
                     }
 
-                    _mernoMesto.OznakaKalorimetra = tbOznakaKalorimetra.Text;
-                    _mernoMesto.OznakaMernogMesta = tbOznakaMernogMesta.Text;
-                    _mernoMesto.ScadaTabela = tbScadaTabela.Text;
-                    _mernoMesto.ScadaKolona = tbScadaKolona.Text;
-                    _mernoMesto.GrupaMernogMestaId = (bsGrupeMernihMesta.Current as GrupaMernihMesta)!.Id;
-                    _mernoMesto.GrupaMernogMesta = (bsGrupeMernihMesta.Current as GrupaMernihMesta)!;
-                    _mernoMesto.GrupaMernogMestaId = (bsGrupeMernihMesta.Current as GrupaMernihMesta)!.Id;
+                    if (_mode == FormMode.Update)
+                    {
+                        _mernoMesto.OznakaKalorimetra = tbOznakaKalorimetra.Text;
+                        _mernoMesto.OznakaMernogMesta = tbOznakaMernogMesta.Text;
+                        _mernoMesto.ScadaTabela = tbScadaTabela.Text;
+                        _mernoMesto.ScadaKolona = tbScadaKolona.Text;
+                        _mernoMesto.GrupaMernogMestaId = (bsGrupeMernihMesta.Current as GrupaMernihMesta)!.Id;
+                        _mernoMesto.GrupaMernogMesta = (bsGrupeMernihMesta.Current as GrupaMernihMesta)!;
+                        _mernoMesto.GrupaMernogMestaId = (bsGrupeMernihMesta.Current as GrupaMernihMesta)!.Id;
+                    }
 
                     this.Close();
                 }

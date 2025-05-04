@@ -33,19 +33,23 @@
             // 
             // formsPlot1
             // 
+            formsPlot1.BackColor = Color.Black;
             formsPlot1.DisplayScale = 1.5F;
             formsPlot1.Dock = DockStyle.Fill;
+            formsPlot1.ForeColor = SystemColors.WindowText;
             formsPlot1.Location = new Point(0, 0);
+            formsPlot1.Margin = new Padding(2);
             formsPlot1.Name = "formsPlot1";
-            formsPlot1.Size = new Size(2788, 1590);
+            formsPlot1.Size = new Size(1952, 853);
             formsPlot1.TabIndex = 0;
             // 
             // frmScottPloting
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2788, 1590);
+            ClientSize = new Size(1952, 853);
             Controls.Add(formsPlot1);
+            Margin = new Padding(2);
             Name = "frmScottPloting";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmScottPloting";
