@@ -18,6 +18,13 @@ namespace TSP2025.Data
         private List<GrupaMernihMesta> _Sve_GrupaMernihMesta = null;
         private List<GrupaMernihMesta> _Sve_GrupaMernihMestaSaPocetnimSve = null;
         private ImprovedBindingList<MernoMesto> _SvaMernaMesta = null;
+        private ImprovedBindingList<MernoMesto> _SvaMernaMestaSaPocetnimPraznim = null;
+
+        public void ClearSvaMernaMesta()
+        {
+            _SvaMernaMesta = null;
+            _SvaMernaMestaSaPocetnimPraznim = null;
+        }
 
         public event ModelChangedEventHandler ModelChanged;
 
@@ -70,24 +77,20 @@ namespace TSP2025.Data
                 {
                     UcitajMernaMesta();
                 }
-                return _SvaMernaMesta;
+                return _SvaMernaMesta!;
             }
         }
         public ImprovedBindingList<MernoMesto> SvaMernaMestaSaPocetnimPraznim
         {
             get
             {
-                if (_SvaMernaMesta == null)
+                if (_SvaMernaMestaSaPocetnimPraznim == null)
                 {
                     UcitajMernaMesta();
-                    _SvaMernaMesta.Insert(0, new MernoMesto() { Id = 0, OznakaMernogMesta = "", ImaMernoMesto = false });
+                    _SvaMernaMestaSaPocetnimPraznim!.Insert(0, new MernoMesto() { Id = 0, OznakaMernogMesta = "", ImaMernoMesto = false });
                 }
-                return _SvaMernaMesta;
+                return _SvaMernaMestaSaPocetnimPraznim;
             }
-        }
-        public void OcistiMernaMesta()
-        {
-            _SvaMernaMesta = null;
         }
         public List<GrupaMernihMesta> SveGrupeMernihMestaSaPocetnimSve
         {
@@ -284,7 +287,7 @@ namespace TSP2025.Data
         {
             try
             {
-                DB.MernoMesto.Delete(mernoMesto.Id);
+                DB.MernoMestoDB.Delete(mernoMesto.Id);
             }
             catch (Exception)
             {
@@ -351,6 +354,7 @@ namespace TSP2025.Data
         private void UcitajMernaMesta()
         {
             _SvaMernaMesta = new ImprovedBindingList<MernoMesto>();
+            _SvaMernaMestaSaPocetnimPraznim = new ImprovedBindingList<MernoMesto>();
             using (var ds = new DataSet())
             {
                 using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
@@ -378,6 +382,7 @@ namespace TSP2025.Data
                             ImaMernoMesto = false,
                         };
                         _SvaMernaMesta.Add(mm);
+                        _SvaMernaMestaSaPocetnimPraznim.Add(mm);
                     }
 
                 }

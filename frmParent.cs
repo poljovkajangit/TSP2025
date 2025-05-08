@@ -1,9 +1,11 @@
 ﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Text.RegularExpressions;
 using TSP2025.Data;
 using TSP2025.Data.Model;
+using TSP2025.DB;
 using TSP2025.Utils;
 
 namespace TSP2025
@@ -12,13 +14,6 @@ namespace TSP2025
     {
         TSP2025DataContext _DataContext;
 
-        private MernoMesto SelectedMernoMesto
-        {
-            get
-            {
-                return (bsMernaMesta.Current as MernoMesto)!;
-            }
-        }
         public frmParent()
         {
             InitializeComponent();
@@ -72,112 +67,45 @@ namespace TSP2025
         {
             Close();
         }
-
-        private void btnTestConnection_Click(object sender, EventArgs e)
-        {
-            tbPullInfo.ForeColor = Color.Green;
-            tbPullInfo.Text = "Provera ...";
-            pbPullProgress.Value = 0;
-            for (int i = 0; i < 100; i++)
-            {
-                pbPullProgress.Value++;
-            }
-
-            using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString.Replace("TSP2025", "TSP2025SCADA")))
-            {
-                var cmd = new SqlCommand($"Select COUNT({tbSourceColumn.Text}) From {tbSourceTable.Text};", conn);
-                int newProdID;
-                try
-                {
-                    conn.Open();
-                    newProdID = (Int32)cmd.ExecuteScalar();
-                    tbPullInfo.Text += $"{Environment.NewLine}Pronađeno je {newProdID} unosa";
-                    tbPullInfo.Text += $"{Environment.NewLine}Provera je uspešno izvršena";
-                }
-                catch (Exception ex)
-                {
-                    tbPullInfo.ForeColor = Color.Red;
-                    tbPullInfo.Text += $"{Environment.NewLine}Došlo je do greške prilikom poveozivanja: {ex.Message}";
-                }
-            }
-
-        }
-        private void bsMernaMesta_CurrentChanged(object sender, EventArgs e)
-        {
-            if (bsMernaMesta.Current != null && SelectedMernoMesto != null)
-            {
-                tbSourceTable.Text = SelectedMernoMesto.ScadaTabela;
-                tbSourceColumn.Text = SelectedMernoMesto.ScadaKolona;
-            }
-        }
-
-        private void btnPullMernaMestaRefresh_Click(object sender, EventArgs e)
-        {
-            _DataContext.OcistiMernaMesta();
-            bsMernaMesta.DataSource = _DataContext.SvaMernaMestaSaPocetnimPraznim;
-        }
-
         private void btnPull_Click(object sender, EventArgs e)
         {
-
-            //ScadaService.Instance.Start(tbPullInfo);
-
-            tbPullInfo.ForeColor = Color.Green;
-            tbPullInfo.Text = "Upis ...";
-            pbPullProgress.Value = 0;
-            for (int i = 0; i < 100; i++)
+            if (btnPull.Text == "Pokreni prenos")
             {
-                pbPullProgress.Value++;
+                btnPull.Text = "Zaustavi prenos";
+                ScadaService.Instance.ScadaMessage += Instance_ScadaMessage;
+                _DataContext.ClearSvaMernaMesta();
+                ScadaService.Instance.Start(_DataContext.SvaMernaMesta.ToList());
             }
-
-            try
+            else
             {
-                using (var insertCommand = new SqlCommand())
-                {
-                    using (insertCommand.Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
-                    {
-                        string insertQuery = @$"
-                                Truncate Table TSP2025.dbo.Ocitavanje;
-                                Insert Into TSP2025.dbo.Ocitavanje (MernoMestoId, Datum, Vrednost) 
-                                Select {SelectedMernoMesto.Id}, t1.FLTIME, t1.{SelectedMernoMesto.ScadaKolona} From TSP2025SCADA.dbo.{SelectedMernoMesto.ScadaTabela} t1";
-
-                        insertCommand.CommandText = insertQuery;
-                        insertCommand.Connection.Open();
-                        int affected = (int)insertCommand.ExecuteNonQuery();
-                        insertCommand.Connection.Close();
-
-                        tbPullInfo.Text += $"{Environment.NewLine}Scada prenos ({affected} zapisa) je uspešno izvršen";
-
-                        insertQuery = @$"
-                                Insert Into PullHistory (MernoMestoId, PrenetoZapisa, Status, Poruka) 
-                                Values ({SelectedMernoMesto.Id}, {affected}, 1, '{tbPullInfo.Text}')";
-
-                        insertCommand.CommandText = insertQuery;
-                        insertCommand.Connection.Open();
-                        insertCommand.ExecuteNonQuery();
-                        insertCommand.Connection.Close();
-                    }
-                }
+                btnPull.Text = "Pokreni prenos";
+                ScadaService.Instance.Stop();
+                ScadaService.Instance.ScadaMessage -= Instance_ScadaMessage;
             }
-            catch (Exception ex)
+        }
+
+        private void Instance_ScadaMessage(object sender, ScadaService.ScadaMessageEventArgs e)
+        {
+            AppendPullTextSafe(e.Message, e.MessageType);
+        }
+
+        private void AppendPullTextSafe(string text, ScadaMessageType messageType)
+        {
+            // Check if the call is not the on UI thread
+            if (tbPullInfo.InvokeRequired)
             {
-                tbPullInfo.ForeColor = Color.Red;
-                tbPullInfo.Text += $"{Environment.NewLine}Došlo je do greške prilikom prenosa: {ex.Message}";
-
-                var errorInsert = @$"
-                                Insert Into PullHistory (MernoMestoId, PrenetoZapisa, Status, Poruka) 
-                                Values ({SelectedMernoMesto.Id}, 0, 0, '{tbPullInfo.Text.Replace("'", "")}')";
-
-                using (var insertCommand = new SqlCommand())
+                Action safeWrite = delegate
                 {
-                    using (insertCommand.Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
-                    {
-                        insertCommand.CommandText = errorInsert;
-                        insertCommand.Connection.Open();
-                        insertCommand.ExecuteNonQuery();
-                        insertCommand.Connection.Close();
-                    }
-                }
+                    AppendPullTextSafe(text, messageType);
+                };
+                // Executes the safeWrite delegate on the UI thread which owns the tbPullInfo control (underlying window handle)
+                tbPullInfo.Invoke(safeWrite);
+            }
+            else
+            {
+                tbPullInfo.Text += Environment.NewLine + text;
+                tbPullInfo.SelectionStart = tbPullInfo.TextLength;
+                tbPullInfo.ScrollToCaret();
             }
         }
 
@@ -186,30 +114,10 @@ namespace TSP2025
             FormMessages.ShowInformation("TSP2025 Free Trial Version ... under construction ...");
         }
 
-        private void btnPullOperacijaToggleView_Click(object sender, EventArgs e)
-        {
-            if (btnPullOperacijaToggleView.Text == "Prikaži")
-            {
-                gbPullOperacija.Height = 700;
-                btnPullOperacijaToggleView.Text = "Sakrij";
-            }
-            else
-            {
-                gbPullOperacija.Height = 75;
-                btnPullOperacijaToggleView.Text = "Prikaži";
-            }
-        }
-
         private void mnuMesecnaPotrosnja_Click(object sender, EventArgs e)
         {
             var frmMesecnaPotrosnja = new frmMesecnaPotrosnja();
             frmMesecnaPotrosnja.ShowDialog();
-        }
-
-        private void preuzmiPodatkeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            gbPullOperacija.Height = 700;
-            btnPullOperacijaToggleView.Text = "Sakrij";
         }
 
         private void godišnjaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -243,6 +151,17 @@ namespace TSP2025
         {
             var frmDnevna = new frmDnevnaPotrosnja();
             frmDnevna.ShowDialog();
+        }
+
+        private void btnClearAllPull_Click(object sender, EventArgs e)
+        {
+            tbPullInfo.Text = "Svi preneti SCADA podaci obriani.";
+
+            btnPull.Text = "Pokreni prenos";
+            ScadaService.Instance.Stop();
+            ScadaService.Instance.ScadaMessage -= Instance_ScadaMessage; 
+            
+            ScadaDb.ClearAllScadaPull();
         }
     }
 }

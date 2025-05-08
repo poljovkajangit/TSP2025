@@ -4,6 +4,9 @@
     <Compile Update="Forms\frmDataSource.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\frmScadaPullZaMernoMesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="frmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
