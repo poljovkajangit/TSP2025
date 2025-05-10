@@ -46,21 +46,20 @@
             label1.Dock = DockStyle.Top;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
             label1.Location = new Point(0, 0);
-            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(663, 55);
+            label1.Size = new Size(464, 33);
             label1.TabIndex = 0;
             label1.Text = "Dashboard - under construction";
+            label1.TextAlign = ContentAlignment.TopCenter;
             // 
             // lblVreme
             // 
             lblVreme.BackColor = Color.White;
             lblVreme.Dock = DockStyle.Bottom;
             lblVreme.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            lblVreme.Location = new Point(0, 680);
-            lblVreme.Margin = new Padding(4, 0, 4, 0);
+            lblVreme.Location = new Point(0, 408);
             lblVreme.Name = "lblVreme";
-            lblVreme.Size = new Size(663, 55);
+            lblVreme.Size = new Size(464, 33);
             lblVreme.TabIndex = 1;
             lblVreme.Text = "HH:mm:ss";
             // 
@@ -74,64 +73,71 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            label2.ForeColor = Color.Blue;
-            label2.Location = new Point(12, 85);
+            label2.ForeColor = Color.Black;
+            label2.Location = new Point(8, 41);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(562, 48);
+            label2.Size = new Size(152, 32);
             label2.TabIndex = 2;
-            label2.Text = "Kritični indikator #1 .................. 99%";
+            label2.Text = "Snaga: 100W";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            label3.ForeColor = Color.Red;
-            label3.Location = new Point(12, 133);
+            label3.ForeColor = Color.Black;
+            label3.Location = new Point(8, 83);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(541, 48);
+            label3.Size = new Size(259, 32);
             label3.TabIndex = 3;
-            label3.Text = "Kritični indikator #2 ............. 101%";
+            label3.Text = "Pritisak u kotlu: 1000Pa";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            label4.ForeColor = Color.Green;
-            label4.Location = new Point(12, 181);
+            label4.ForeColor = Color.Black;
+            label4.Location = new Point(8, 122);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(522, 48);
+            label4.Size = new Size(260, 32);
             label4.TabIndex = 4;
-            label4.Text = "Kritični indikator #2 ............. 30%";
+            label4.Text = "Temperatura kotla: 30C";
             // 
             // lblUkupnoOčitavanja
             // 
-            lblUkupnoOčitavanja.AutoSize = true;
+            lblUkupnoOčitavanja.BackColor = Color.White;
+            lblUkupnoOčitavanja.BorderStyle = BorderStyle.FixedSingle;
             lblUkupnoOčitavanja.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
             lblUkupnoOčitavanja.ForeColor = Color.Green;
-            lblUkupnoOčitavanja.Location = new Point(12, 616);
+            lblUkupnoOčitavanja.Location = new Point(8, 321);
+            lblUkupnoOčitavanja.Margin = new Padding(2, 0, 2, 0);
             lblUkupnoOčitavanja.Name = "lblUkupnoOčitavanja";
-            lblUkupnoOčitavanja.Size = new Size(322, 48);
+            lblUkupnoOčitavanja.Size = new Size(344, 38);
             lblUkupnoOčitavanja.TabIndex = 5;
-            lblUkupnoOčitavanja.Text = "Ukupno očitavanja:";
+            lblUkupnoOčitavanja.Text = "Neki kritični rastući broj:";
             // 
             // lblBrojOcitavanja
             // 
-            lblBrojOcitavanja.AutoSize = true;
+            lblBrojOcitavanja.BorderStyle = BorderStyle.FixedSingle;
             lblBrojOcitavanja.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point, 238);
             lblBrojOcitavanja.ForeColor = Color.Green;
-            lblBrojOcitavanja.Location = new Point(330, 578);
+            lblBrojOcitavanja.Location = new Point(359, 321);
+            lblBrojOcitavanja.Margin = new Padding(2, 0, 2, 0);
             lblBrojOcitavanja.Name = "lblBrojOcitavanja";
-            lblBrojOcitavanja.Size = new Size(79, 96);
+            lblBrojOcitavanja.Size = new Size(94, 78);
             lblBrojOcitavanja.TabIndex = 6;
             lblBrojOcitavanja.Text = "1";
+            lblBrojOcitavanja.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // frmDashBoard
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Center;
-            ClientSize = new Size(663, 735);
+            ClientSize = new Size(464, 441);
             Controls.Add(lblBrojOcitavanja);
             Controls.Add(lblUkupnoOčitavanja);
             Controls.Add(label4);
@@ -141,7 +147,6 @@
             Controls.Add(label1);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Margin = new Padding(4, 5, 4, 5);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "frmDashBoard";

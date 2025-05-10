@@ -51,7 +51,7 @@ namespace TSP2025.UserControls
             SelectedDate = new DateTime(Int32.Parse(cbYear.Text), cbMonth.SelectedIndex + 1, cbDay.SelectedIndex + 1);
         }
 
-        private DateTime _Date = DateTime.Now;
+        private DateTime _Date = DateTime.Now.Date;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 

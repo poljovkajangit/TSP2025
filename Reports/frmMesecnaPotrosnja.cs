@@ -2,6 +2,7 @@
 using System.Data;
 using TSP2025.Data;
 using TSP2025.Data.Model;
+using TSP2025.DB;
 using TSP2025.Forms;
 using TSP2025.Utils;
 
@@ -59,7 +60,10 @@ namespace TSP2025
 
             var frmDataSource = new frmDataSourceForReports();
             frmDataSource.ShowDialog();
-            var ocitavanja = _DataSource.SvaOcitavanja(frmDataSource.DataSourceMode, frmDataSource.Godina, frmDataSource.KorakMinutama).Where(
+
+            var pristunaOcitavanja = OcitavanjaDB.GetSvaOcitavanja(frmDataSource.DataSourceMode, frmDataSource.Godina, frmDataSource.KorakMinutama, _DataSource.SvaMernaMesta);
+
+            var ocitavanja = pristunaOcitavanja.Where(
              o =>
              o.Vreme.Date == o.Vreme
              &&

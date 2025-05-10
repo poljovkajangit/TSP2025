@@ -31,14 +31,12 @@
             components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmStanje));
             dgOcitavanja = new DataGridView();
             vremeFormatiranoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             mernoMestoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             mesecGodinaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             vrednostDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            razlikaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             bsOcitavanja = new BindingSource(components);
             btnPrikazi = new Button();
             cbMernoMesto = new ComboBox();
@@ -85,7 +83,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgOcitavanja.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgOcitavanja.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgOcitavanja.Columns.AddRange(new DataGridViewColumn[] { vremeFormatiranoDataGridViewTextBoxColumn, mernoMestoDataGridViewTextBoxColumn, mesecGodinaDataGridViewTextBoxColumn, vrednostDataGridViewTextBoxColumn, razlikaDataGridViewTextBoxColumn });
+            dgOcitavanja.Columns.AddRange(new DataGridViewColumn[] { vremeFormatiranoDataGridViewTextBoxColumn, mernoMestoDataGridViewTextBoxColumn, mesecGodinaDataGridViewTextBoxColumn, vrednostDataGridViewTextBoxColumn });
             dgOcitavanja.DataSource = bsOcitavanja;
             dgOcitavanja.Dock = DockStyle.Top;
             dgOcitavanja.EditMode = DataGridViewEditMode.EditProgrammatically;
@@ -137,16 +135,6 @@
             vrednostDataGridViewTextBoxColumn.Name = "vrednostDataGridViewTextBoxColumn";
             vrednostDataGridViewTextBoxColumn.Width = 150;
             // 
-            // razlikaDataGridViewTextBoxColumn
-            // 
-            razlikaDataGridViewTextBoxColumn.DataPropertyName = "Razlika";
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight;
-            razlikaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            razlikaDataGridViewTextBoxColumn.HeaderText = "Potrošnja";
-            razlikaDataGridViewTextBoxColumn.MinimumWidth = 8;
-            razlikaDataGridViewTextBoxColumn.Name = "razlikaDataGridViewTextBoxColumn";
-            razlikaDataGridViewTextBoxColumn.Width = 150;
-            // 
             // bsOcitavanja
             // 
             bsOcitavanja.DataMember = "Ocitavanja";
@@ -154,7 +142,7 @@
             // 
             // btnPrikazi
             // 
-            btnPrikazi.Location = new Point(1014, 13);
+            btnPrikazi.Location = new Point(1127, 12);
             btnPrikazi.Margin = new Padding(2);
             btnPrikazi.Name = "btnPrikazi";
             btnPrikazi.Size = new Size(91, 27);
@@ -223,22 +211,22 @@
             cbProredi.BackColor = Color.White;
             cbProredi.DropDownStyle = ComboBoxStyle.DropDownList;
             cbProredi.FormattingEnabled = true;
-            cbProredi.Items.AddRange(new object[] { "dd/mm/yy hh:mm", "dd/mm/yy hh:00", "dd/mm/yy 00:00", "01/mm/yy 00:00", "-01/01/yy 00:00", "-dd/mm/yy hh:00..15..30..45" });
-            cbProredi.Location = new Point(834, 15);
+            cbProredi.Items.AddRange(new object[] { "Prikaži sve", "Prikaži samo za pun sat", "Prikaži samo stanje u 00:00h za svaki dan", "Prikaži samo stanje u 00:00h za početni dan u mesecu" });
+            cbProredi.Location = new Point(799, 14);
             cbProredi.Margin = new Padding(2);
             cbProredi.Name = "cbProredi";
-            cbProredi.Size = new Size(176, 23);
+            cbProredi.Size = new Size(323, 23);
             cbProredi.TabIndex = 12;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(714, 18);
+            label4.Location = new Point(716, 19);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(112, 15);
+            label4.Size = new Size(79, 15);
             label4.TabIndex = 13;
-            label4.Text = "Datum/Vreme filter:";
+            label4.Text = "Dodatni filter:";
             // 
             // pltStanje
             // 
@@ -306,7 +294,7 @@
             dtDanDo.Location = new Point(260, 13);
             dtDanDo.Margin = new Padding(1);
             dtDanDo.Name = "dtDanDo";
-            dtDanDo.SelectedDate = new DateTime(2025, 4, 19, 0, 0, 0, 0);
+            dtDanDo.SelectedDate = new DateTime(2025, 5, 10, 0, 0, 0, 0);
             dtDanDo.Size = new Size(178, 25);
             dtDanDo.TabIndex = 20;
             // 
@@ -316,7 +304,7 @@
             dtDanOd.Location = new Point(60, 13);
             dtDanOd.Margin = new Padding(1);
             dtDanOd.Name = "dtDanOd";
-            dtDanOd.SelectedDate = new DateTime(2025, 4, 19, 0, 0, 0, 0);
+            dtDanOd.SelectedDate = new DateTime(2025, 5, 10, 0, 0, 0, 0);
             dtDanOd.Size = new Size(178, 25);
             dtDanOd.TabIndex = 19;
             // 
@@ -375,11 +363,6 @@
         private Label label3;
         private ComboBox cbProredi;
         private Label label4;
-        private DataGridViewTextBoxColumn vremeFormatiranoDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn mernoMestoDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn mesecGodinaDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn vrednostDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn razlikaDataGridViewTextBoxColumn;
         private ScottPlot.WinForms.FormsPlot pltStanje;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel lblUkupno;
@@ -388,5 +371,9 @@
         private UserControls.SmartDateUC dtDanOd;
         private UserControls.SmartDateUC dtDanDo;
         private Label label1;
+        private DataGridViewTextBoxColumn vremeFormatiranoDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn mernoMestoDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn mesecGodinaDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn vrednostDataGridViewTextBoxColumn;
     }
 }

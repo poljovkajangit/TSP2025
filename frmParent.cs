@@ -67,20 +67,37 @@ namespace TSP2025
         {
             Close();
         }
+
+        private void ZaustaviPullProces()
+        {
+            ScadaService.Instance.Stop();
+            ScadaService.Instance.ScadaMessage -= Instance_ScadaMessage;
+
+            btnPull.Text = "Pokreni prenos";
+            lblPullStatus.Text = "ZAUSTAVLJEN";
+            lblPullStatus.BackColor = Color.Gainsboro;
+        }
+
+        private void PokreniPullProces()
+        {
+            _DataContext.ClearSvaMernaMesta();
+            ScadaService.Instance.ScadaMessage += Instance_ScadaMessage;
+            ScadaService.Instance.Start(_DataContext.SvaMernaMesta.ToList());
+
+            btnPull.Text = "Zaustavi prenos";
+            lblPullStatus.Text = "POKRENUT";
+            lblPullStatus.BackColor = Color.LightGreen;
+        }
+
         private void btnPull_Click(object sender, EventArgs e)
         {
             if (btnPull.Text == "Pokreni prenos")
             {
-                btnPull.Text = "Zaustavi prenos";
-                ScadaService.Instance.ScadaMessage += Instance_ScadaMessage;
-                _DataContext.ClearSvaMernaMesta();
-                ScadaService.Instance.Start(_DataContext.SvaMernaMesta.ToList());
+                PokreniPullProces();
             }
             else
             {
-                btnPull.Text = "Pokreni prenos";
-                ScadaService.Instance.Stop();
-                ScadaService.Instance.ScadaMessage -= Instance_ScadaMessage;
+                ZaustaviPullProces();
             }
         }
 
@@ -155,13 +172,9 @@ namespace TSP2025
 
         private void btnClearAllPull_Click(object sender, EventArgs e)
         {
-            tbPullInfo.Text = "Svi preneti SCADA podaci obriani.";
-
-            btnPull.Text = "Pokreni prenos";
-            ScadaService.Instance.Stop();
-            ScadaService.Instance.ScadaMessage -= Instance_ScadaMessage; 
-            
+            ZaustaviPullProces();
             ScadaDb.ClearAllScadaPull();
+            tbPullInfo.Text = "Svi preneti SCADA podaci obrisani.";
         }
     }
 }
