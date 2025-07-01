@@ -1,6 +1,6 @@
 ﻿namespace TSP2025
 {
-    partial class frmScadaPrenos
+    partial class frmScadaPrenosIstorija
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmScadaPrenos));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmScadaPrenosIstorija));
             bsScadaPrenosIstorija = new BindingSource(components);
             dgScadaPrenosIstorija = new DataGridView();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
@@ -38,6 +38,7 @@
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            btnObrisiSvePreneto = new Button();
             ((System.ComponentModel.ISupportInitialize)bsScadaPrenosIstorija).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgScadaPrenosIstorija).BeginInit();
             SuspendLayout();
@@ -64,7 +65,6 @@
             dgScadaPrenosIstorija.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgScadaPrenosIstorija.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5 });
             dgScadaPrenosIstorija.DataSource = bsScadaPrenosIstorija;
-            dgScadaPrenosIstorija.Dock = DockStyle.Fill;
             dgScadaPrenosIstorija.EditMode = DataGridViewEditMode.EditProgrammatically;
             dgScadaPrenosIstorija.EnableHeadersVisualStyles = false;
             dgScadaPrenosIstorija.Location = new Point(0, 0);
@@ -77,7 +77,7 @@
             dgScadaPrenosIstorija.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.Black;
             dgScadaPrenosIstorija.ScrollBars = ScrollBars.Vertical;
             dgScadaPrenosIstorija.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgScadaPrenosIstorija.Size = new Size(1122, 579);
+            dgScadaPrenosIstorija.Size = new Size(1121, 539);
             dgScadaPrenosIstorija.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn1
@@ -120,11 +120,22 @@
             dataGridViewTextBoxColumn5.MinimumWidth = 8;
             dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             // 
+            // btnObrisiSvePreneto
+            // 
+            btnObrisiSvePreneto.Location = new Point(4, 544);
+            btnObrisiSvePreneto.Name = "btnObrisiSvePreneto";
+            btnObrisiSvePreneto.Size = new Size(180, 32);
+            btnObrisiSvePreneto.TabIndex = 1;
+            btnObrisiSvePreneto.Text = "Obriši sve prenete podatke";
+            btnObrisiSvePreneto.UseVisualStyleBackColor = true;
+            btnObrisiSvePreneto.Click += btnObrisiSvePreneto_Click;
+            // 
             // frmScadaPrenos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1122, 579);
+            Controls.Add(btnObrisiSvePreneto);
             Controls.Add(dgScadaPrenosIstorija);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(2);
@@ -152,5 +163,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private Button btnObrisiSvePreneto;
     }
 }

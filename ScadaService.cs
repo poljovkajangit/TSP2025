@@ -60,7 +60,7 @@ namespace TSP2025
         public void Stop()
         {
             // Stop the SCADA service
-            ScadaMessage?.Invoke(this, new ScadaMessageEventArgs(Environment.NewLine + "Scada service stoped." + Environment.NewLine, ScadaMessageType.Info));
+            ScadaMessage?.Invoke(this, new ScadaMessageEventArgs(Environment.NewLine + "SCADA servis zaustavljen." + Environment.NewLine, ScadaMessageType.Info));
             if (_timer != null)
             {
                 _timer.Stop();
@@ -75,9 +75,9 @@ namespace TSP2025
         {
             // Initialize the SCADA service
             _svaMernaMesta = svaMernaMesta;
-            ScadaMessage?.Invoke(this, new ScadaMessageEventArgs($"SCADA service started at {DateTime.Now:dd/MM/yy HH:mm:ss}", ScadaMessageType.Info));
-            ScadaMessage?.Invoke(this, new ScadaMessageEventArgs($"Checking DB connection.... PASSED", ScadaMessageType.Exclamation));
-            ScadaMessage?.Invoke(this, new ScadaMessageEventArgs($"Pull interval set to {_pullInterval}ms", ScadaMessageType.Info));
+            ScadaMessage?.Invoke(this, new ScadaMessageEventArgs($"SCADA service pokrenut u: {DateTime.Now:dd/MM/yy HH:mm:ss}", ScadaMessageType.Info));
+            ScadaMessage?.Invoke(this, new ScadaMessageEventArgs($"Provera DB konekcije .... PROŠLO", ScadaMessageType.Exclamation));
+            ScadaMessage?.Invoke(this, new ScadaMessageEventArgs($"Pull interval podešen na: {_pullInterval}ms", ScadaMessageType.Info));
 
             _timer = new System.Timers.Timer();
             _timer.Interval = _pullInterval;

@@ -52,7 +52,6 @@
             istorijaPreuzimanjaToolStripMenuItem = new ToolStripMenuItem();
             gbPullOperacija = new GroupBox();
             lblPullStatus = new Label();
-            btnClearAllPull = new Button();
             tbPullInfo = new TextBox();
             btnPull = new Button();
             bsMernaMesta = new BindingSource(components);
@@ -226,7 +225,6 @@
             gbPullOperacija.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             gbPullOperacija.BackColor = Color.WhiteSmoke;
             gbPullOperacija.Controls.Add(lblPullStatus);
-            gbPullOperacija.Controls.Add(btnClearAllPull);
             gbPullOperacija.Controls.Add(tbPullInfo);
             gbPullOperacija.Controls.Add(btnPull);
             gbPullOperacija.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
@@ -251,25 +249,6 @@
             lblPullStatus.Text = "ZAUSTAVLJEN";
             lblPullStatus.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // btnClearAllPull
-            // 
-            btnClearAllPull.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnClearAllPull.BackColor = SystemColors.Control;
-            btnClearAllPull.BackgroundImageLayout = ImageLayout.Center;
-            btnClearAllPull.FlatAppearance.BorderColor = Color.Black;
-            btnClearAllPull.FlatStyle = FlatStyle.Flat;
-            btnClearAllPull.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            btnClearAllPull.ForeColor = Color.Black;
-            btnClearAllPull.ImageAlign = ContentAlignment.MiddleRight;
-            btnClearAllPull.Location = new Point(7, 778);
-            btnClearAllPull.Margin = new Padding(2);
-            btnClearAllPull.Name = "btnClearAllPull";
-            btnClearAllPull.Size = new Size(142, 28);
-            btnClearAllPull.TabIndex = 13;
-            btnClearAllPull.Text = "Obriši postojeće u DB";
-            btnClearAllPull.UseVisualStyleBackColor = false;
-            btnClearAllPull.Click += btnClearAllPull_Click;
-            // 
             // tbPullInfo
             // 
             tbPullInfo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -282,7 +261,7 @@
             tbPullInfo.Name = "tbPullInfo";
             tbPullInfo.ReadOnly = true;
             tbPullInfo.ScrollBars = ScrollBars.Vertical;
-            tbPullInfo.Size = new Size(328, 718);
+            tbPullInfo.Size = new Size(328, 750);
             tbPullInfo.TabIndex = 12;
             // 
             // btnPull
@@ -404,7 +383,6 @@
         private ToolStripMenuItem dnevnaToolStripMenuItem;
         private ToolStripMenuItem godišnjaToolStripMenuItem;
         private System.Windows.Forms.Timer tm;
-        private Button btnClearAllPull;
         private Label lblPullStatus;
         private UserControls.SmartDateUC dtOdDatuma;
         private Button btnDashboard;

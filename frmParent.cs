@@ -53,7 +53,7 @@ namespace TSP2025
         }
         private void istorijaPreuzimanjaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new frmScadaPrenos().ShowDialog();
+            new frmScadaPrenosIstorija().ShowDialog();
         }
 
         private void periodičniToolStripMenuItem_Click(object sender, EventArgs e)
@@ -85,13 +85,13 @@ namespace TSP2025
             ScadaService.Instance.Start(_DataContext.SvaMernaMesta.ToList());
 
             btnPull.Text = "Zaustavi prenos";
-            lblPullStatus.Text = "POKRENUT";
+            lblPullStatus.Text = "U toku ...";
             lblPullStatus.BackColor = Color.LightGreen;
         }
 
         private void btnPull_Click(object sender, EventArgs e)
         {
-            if (btnPull.Text == "Pokreni prenos")
+            if (lblPullStatus.Text == "ZAUSTAVLJEN")
             {
                 PokreniPullProces(5000, DateTime.MinValue);
             }
@@ -172,9 +172,7 @@ namespace TSP2025
 
         private void btnClearAllPull_Click(object sender, EventArgs e)
         {
-            ZaustaviPullProces();
-            ScadaDBService.ClearAllScadaPull();
-            tbPullInfo.Text = "Svi preneti SCADA podaci obrisani.";
+
         }
     }
 }
