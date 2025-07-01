@@ -9,10 +9,10 @@ namespace TSP2025
     {
         private TSP2025DataContext _DataSource;
 
-        private IManager _ToplanaManager;
-        private IManager _KotlarnicaManager;
-        private IManager _PodstanicaManager;
-        private IManager _IndividualniManager;
+        private IMaticniPodaciFormManager _ToplanaManager;
+        private IMaticniPodaciFormManager _KotlarnicaManager;
+        private IMaticniPodaciFormManager _PodstanicaManager;
+        private IMaticniPodaciFormManager _IndividualniManager;
         public frmMaticniPodaci()
         {
             InitializeComponent();
@@ -22,10 +22,10 @@ namespace TSP2025
 
             _BsToplane.DataSource = _DataSource.SveToplane;
 
-            _ToplanaManager = new Manager<Toplana>(btnDodajToplanu, btnObrisiToplanu, btnSaveToplane, btnUndoToplane, btnKotlarnice, null, dgToplane, gbToplane, tbToplanaNaziv, null, _BsToplane, _DataSource, tabMaticniPodaci, null);
-            _KotlarnicaManager = new Manager<Kotlarnica>(btnKotlarniceDodaj, btnKotlarniceObrisi, btnSaveKotlarnice, btnUndoKotlarnice, btnToplane, btnPodstanice, dgKotlarnice, gbKotlarnice, tbKotlarnicaNaziv, cbToplane, _BsKotlarnice, _DataSource, tabMaticniPodaci, null);
-            _PodstanicaManager = new Manager<Podstanica>(btnPodstaniceDodaj, btnPodstaniceObrisi, btnSavePodstanice, btnUndoPodstanice, btnPostaniceIndividualni, btnPodstaniceKotlarnice, dgPodstanice, gbPodstanice, tbPodstanicaNaziv, cbKotlarnice, _BsPodstanice, _DataSource, tabMaticniPodaci, btnPodstanicaMernoMesto);
-            _IndividualniManager = new Manager<IndividualniPotrosac>(btnDodajIndividualni, btnObrisiIndividualni, btnSavePotrosaci, btnUndoPotrosaci, null, btnIndividualniPodstanice, dgIndividualniPotrosaci, gbIndividualniPotrosaci, tbIndividualniPotrosacSifraKorisnika, cbPodstanice, _BsIndividualniPotrosaci, _DataSource, tabMaticniPodaci, btnIndividualniPotrosacMernoMesto);
+            _ToplanaManager = new MaticniPodaciFormManagerManager<Toplana>(btnDodajToplanu, btnObrisiToplanu, btnSaveToplane, btnUndoToplane, btnKotlarnice, null, dgToplane, gbToplane, tbToplanaNaziv, null, _BsToplane, _DataSource, tabMaticniPodaci, null);
+            _KotlarnicaManager = new MaticniPodaciFormManagerManager<Kotlarnica>(btnKotlarniceDodaj, btnKotlarniceObrisi, btnSaveKotlarnice, btnUndoKotlarnice, btnToplane, btnPodstanice, dgKotlarnice, gbKotlarnice, tbKotlarnicaNaziv, cbToplane, _BsKotlarnice, _DataSource, tabMaticniPodaci, btnKotlarnicaMernoMesto);
+            _PodstanicaManager = new MaticniPodaciFormManagerManager<Podstanica>(btnPodstaniceDodaj, btnPodstaniceObrisi, btnSavePodstanice, btnUndoPodstanice, btnPostaniceIndividualni, btnPodstaniceKotlarnice, dgPodstanice, gbPodstanice, tbPodstanicaNaziv, cbKotlarnice, _BsPodstanice, _DataSource, tabMaticniPodaci, btnPodstanicaMernoMesto);
+            _IndividualniManager = new MaticniPodaciFormManagerManager<IndividualniPotrosac>(btnDodajIndividualni, btnObrisiIndividualni, btnSavePotrosaci, btnUndoPotrosaci, null, btnIndividualniPodstanice, dgIndividualniPotrosaci, gbIndividualniPotrosaci, tbIndividualniPotrosacSifraKorisnika, cbPodstanice, _BsIndividualniPotrosaci, _DataSource, tabMaticniPodaci, btnIndividualniPotrosacMernoMesto);
         }
 
         #region Toplane
@@ -169,16 +169,23 @@ namespace TSP2025
                 e.Cancel = true;
             }
         }
-        private void btnPodstaniceDodajMernoMesto_Click(object sender, EventArgs e)
+
+        private void btnKotlarnicaMernoMesto_Click(object sender, EventArgs e)
         {
             //za podstanicu tip = 1
-            var formaZaDodavanje = new frmAddUpdateMernoMesto(tbPodstanicaNaziv.Text, TipMernogMesta.Podstanica, _DataSource, _BsPodstanice.Current as Podstanica, btnPodstanicaMernoMesto);
+            var formaZaDodavanje = new frmAddUpdateMernoMesto(tbKotlarnicaNaziv.Text, TipMernogMesta.Kotlarnica, _DataSource, _BsKotlarnice.Current as Kotlarnica, btnKotlarnicaMernoMesto);
+            formaZaDodavanje.ShowDialog();
+        }
+        private void btnPodstaniceDodajMernoMesto_Click(object sender, EventArgs e)
+        {
+            //za podstanicu tip = 2
+            var formaZaDodavanje = new frmAddUpdateMernoMesto(tbKotlarnicaNaziv.Text+" => " +tbPodstanicaNaziv.Text, TipMernogMesta.Podstanica, _DataSource, _BsPodstanice.Current as Podstanica, btnPodstanicaMernoMesto);
             formaZaDodavanje.ShowDialog();
         }
         private void btnIndividualniPotrosacMernoMesto_Click(object sender, EventArgs e)
         {
-            //za individualnog tip = 2
-            var formaZaDodavanje = new frmAddUpdateMernoMesto(tbIndividualniPotrosacNaziv.Text, TipMernogMesta.IndividualniPotrosac, _DataSource, _BsIndividualniPotrosaci.Current as IndividualniPotrosac, btnIndividualniPotrosacMernoMesto);
+            //za individualnog tip = 3
+            var formaZaDodavanje = new frmAddUpdateMernoMesto(tbKotlarnicaNaziv.Text + " => " + tbPodstanicaNaziv.Text + "=> " + tbIndividualniPotrosacNaziv.Text, TipMernogMesta.IndividualniPotrosac, _DataSource, _BsIndividualniPotrosaci.Current as IndividualniPotrosac, btnIndividualniPotrosacMernoMesto);
             formaZaDodavanje.ShowDialog();
         }
         private void tabMaticniPodaci_Selecting(object sender, TabControlCancelEventArgs e)
@@ -206,7 +213,5 @@ namespace TSP2025
                 e.Cancel = true;
             }
         }
-
-
     }
 }

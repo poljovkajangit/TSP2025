@@ -48,8 +48,8 @@ namespace TSP2025
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             var _frmMernaMesta = new frmMernaMesta();
-            _frmMernaMesta.MdiParent = this;
-            _frmMernaMesta.Show();
+            //_frmMernaMesta.MdiParent = this;
+            _frmMernaMesta.ShowDialog();
         }
         private void istorijaPreuzimanjaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -59,8 +59,8 @@ namespace TSP2025
         private void periodičniToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frmStanje = new frmStanje();
-            frmStanje.MdiParent = this;
-            frmStanje.Show();
+            //frmStanje.MdiParent = this;
+            frmStanje.ShowDialog();
         }
 
         private void izlazToolStripMenuItem_Click(object sender, EventArgs e)
@@ -78,7 +78,7 @@ namespace TSP2025
             lblPullStatus.BackColor = Color.Gainsboro;
         }
 
-        private void PokreniPullProces()
+        private void PokreniPullProces(int interval, DateTime starDate)
         {
             _DataContext.ClearSvaMernaMesta();
             ScadaService.Instance.ScadaMessage += Instance_ScadaMessage;
@@ -93,7 +93,7 @@ namespace TSP2025
         {
             if (btnPull.Text == "Pokreni prenos")
             {
-                PokreniPullProces();
+                PokreniPullProces(5000, DateTime.MinValue);
             }
             else
             {
@@ -173,7 +173,7 @@ namespace TSP2025
         private void btnClearAllPull_Click(object sender, EventArgs e)
         {
             ZaustaviPullProces();
-            ScadaDb.ClearAllScadaPull();
+            ScadaDBService.ClearAllScadaPull();
             tbPullInfo.Text = "Svi preneti SCADA podaci obrisani.";
         }
     }

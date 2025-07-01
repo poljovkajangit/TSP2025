@@ -64,6 +64,9 @@ namespace TSP2025.UserControls
                 {
                     _Date = value;
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedDate)));
+                    cbYear.Text = _Date.Year.ToString();
+                    cbMonth.SelectedIndex = _Date.Month - 1;
+                    cbDay.SelectedIndex = _Date.Day - 1;
                 }
             }
         }

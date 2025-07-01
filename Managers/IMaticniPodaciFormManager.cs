@@ -2,7 +2,7 @@
 
 namespace TSP2025.Managers
 {
-    public interface IManager
+    public interface IMaticniPodaciFormManager
     {
         void Add(IEntity newEntity);
         void Edit();

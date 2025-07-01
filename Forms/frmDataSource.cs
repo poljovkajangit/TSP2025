@@ -7,24 +7,7 @@ namespace TSP2025.Forms
         public frmDataSourceForReports()
         {
             InitializeComponent();
-            cbGodina.SelectedIndex = 0;
-            cbKorakMinuti.SelectedIndex = 0;
         }
-        public int Godina
-        {
-            get
-            {
-                return int.Parse(cbGodina.Text);
-            }            
-        }
-        public int KorakMinutama
-        {
-            get
-            {
-                return int.Parse(cbKorakMinuti.Text);
-            }
-        }
-
         public DataSourceMode DataSourceMode
         {
             get
@@ -38,6 +21,11 @@ namespace TSP2025.Forms
                     return DataSourceMode.FromRAM;
                 }
             }
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,5 +1,7 @@
-﻿using TSP2025.Data;
+﻿using TSP2005;
+using TSP2025.Data;
 using TSP2025.Data.Model;
+using TSP2025.DB;
 using TSP2025.Utils;
 
 namespace TSP2025
@@ -12,22 +14,25 @@ namespace TSP2025
             InitializeComponent();
 
             _DataSource = new TSP2025DataContext();
-            bsMernaMesta.DataSource = _DataSource.SvaMernaMesta;
+            _SvaMernaMestaInBindingList = ImprovedBindingListFactory<MernoMesto>.Create(MernoMestoDBService.GetAll().ToList<MernoMesto>());
+            bsMernaMesta.DataSource = _SvaMernaMestaInBindingList;
             bsGrupeMernihMesta.DataSource = _DataSource.SveGrupeMernihMestaSaPocetnimSve;
         }
 
+
+        private ImprovedBindingList<MernoMesto> _SvaMernaMestaInBindingList;
         private void cbGrupeMernihMesta_SelectionChangeCommitted(object sender, EventArgs e)
         {
             tbPretraga.Text = "";
             if (bsGrupeMernihMesta.DataSource != null)
             {
-                if ((cbGrupeMernihMesta.SelectedItem as GrupaMernihMesta).Id > 0)
+                if ((cbGrupeMernihMesta.SelectedItem as GrupaMernihMesta)!.Id > 0)
                 {
-                    bsMernaMesta.DataSource = _DataSource.SvaMernaMesta.Where(mm => mm.GrupaMernogMestaId == (cbGrupeMernihMesta.SelectedItem as GrupaMernihMesta).Id).ToList();
+                    bsMernaMesta.DataSource = ImprovedBindingListFactory<MernoMesto>.Create([.. _SvaMernaMestaInBindingList.Where(mm => mm.GrupaMernogMestaId == (cbGrupeMernihMesta.SelectedItem as GrupaMernihMesta)!.Id)]);
                 }
                 else
                 {
-                    bsMernaMesta.DataSource = _DataSource.SvaMernaMesta;
+                    bsMernaMesta.DataSource = _SvaMernaMestaInBindingList;
                 }
             }
         }
@@ -36,13 +41,13 @@ namespace TSP2025
         {
             cbGrupeMernihMesta.SelectedIndex = 0;
 
-            if (!string.IsNullOrWhiteSpace(tbPretraga.Text))
+            if (!string.IsNullOrWhiteSpace(tbPretraga.Text.Trim()))
             {
-                bsMernaMesta.DataSource = _DataSource.SvaMernaMesta.Where(mm => mm.OznakaMernogMesta.Contains(tbPretraga.Text)).ToList();
+                bsMernaMesta.DataSource = ImprovedBindingListFactory<MernoMesto>.Create([.. MernoMestoDBService.GetAllByOznakaMernogMesta(tbPretraga.Text.Trim())]);
             }
             else
             {
-                bsMernaMesta.DataSource = _DataSource.SvaMernaMesta;
+                bsMernaMesta.DataSource = _SvaMernaMestaInBindingList;
             }
         }
         private void btnMesecniIzvestaj_Click(object sender, EventArgs e)
@@ -110,6 +115,13 @@ namespace TSP2025
 
                 FormMessages.ShowError("Greška prilikom brisanja mernog mesta." + Common.TSP2025Helper.EnvironmentNewLines(2) + ex.Message);
             }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            cbGrupeMernihMesta.SelectedIndex = 0;
+            tbPretraga.Text = "";
+            bsMernaMesta.DataSource = _SvaMernaMestaInBindingList;
         }
     }
 }

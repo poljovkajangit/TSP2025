@@ -5,7 +5,7 @@ using TSP2025.Utils;
 
 namespace TSP2025.Managers
 {
-    public class Manager<T> : IManager where T : IEntity
+    public class MaticniPodaciFormManagerManager<T> : IMaticniPodaciFormManager where T : IEntity
     {
         private Button _AddButton;
         private Button _RemoveButton;
@@ -38,9 +38,9 @@ namespace TSP2025.Managers
             }
         }
 
-        private Manager() { }
+        private MaticniPodaciFormManagerManager() { }
 
-        public Manager(
+        public MaticniPodaciFormManagerManager(
             Button addButton,
             Button removeButton,
             Button saveButton,
@@ -70,7 +70,8 @@ namespace TSP2025.Managers
             _DataSource = dataSource;
             _MainTabControl = mainTabControl;
             _AddMernoMestoButton = addMernoMestoButton;
-            _BindingSource.CurrentChanged += _BindingSource_CurrentChanged;            
+            _BindingSource.CurrentChanged += _BindingSource_CurrentChanged;
+            _BindingSource_CurrentChanged(null, EventArgs.Empty);
         }
 
         private void _BindingSource_CurrentChanged(object? sender, EventArgs e)

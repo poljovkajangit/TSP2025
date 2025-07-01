@@ -1,5 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ScottPlot.Plottables;
+using ScottPlot;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using TSP2025.Data;
 using TSP2025.Data.Model;
@@ -12,14 +15,6 @@ namespace TSP2025
     public partial class frmStanje : Form
     {
         TSP2025DataContext _DataSource;
-
-        MernoMesto SelectedMernoMesto
-        {
-            get
-            {
-                return (bsMernaMesta.Current as MernoMesto)!;
-            }
-        }
 
         List<Ocitavanje> Ocitavanja
         {
@@ -36,45 +31,27 @@ namespace TSP2025
             InitializeComponent();
 
             _DataSource = new TSP2025DataContext();
-
-            bsGrupaMernihMesta.DataSource = _DataSource.SveGrupeMernihMestaSaPocetnimSve;
-            bsMernaMesta.DataSource = _DataSource.SvaMernaMesta;
-
+            dtDanOd.SelectedDate = new DateTime(2025, 5, 1);
+            _SelectedMernoMesto = mernoMesto;
             if (mernoMesto != null)
             {
-                foreach (var item in bsMernaMesta.List)
-                {
-                    if ((item as MernoMesto)!.Id == mernoMesto.Id)
-                    {
-                        int foundIndex = bsMernaMesta.IndexOf(item);
-                        cbMernoMesto.SelectedIndex = foundIndex;
-                        bsMernaMesta.Position = foundIndex;
-                        break;
-                    }
-                }
+                lblMernoMesto.Text = _SelectedMernoMesto.OznakaMernogMesta;
             }
-
-            cbProredi.SelectedIndex = 0;
         }
 
         private void btnPrikazi_Click(object sender, EventArgs e)
         {
-            if (SelectedMernoMesto == null || SelectedMernoMesto.Id == 0)
-            {
-                return;
-            }
-
             var frmDataSource = new frmDataSourceForReports();
             frmDataSource.ShowDialog();
 
-            var pristunaOcitavanja = OcitavanjaDB.GetSvaOcitavanja(frmDataSource.DataSourceMode, frmDataSource.Godina, frmDataSource.KorakMinutama, _DataSource.SvaMernaMesta);
+            var pristunaOcitavanja = OcitavanjaDBService.GetSvaOcitavanja(frmDataSource.DataSourceMode, 3, 15, _DataSource.SvaMernaMesta);
 
             switch (cbProredi.SelectedIndex)
             {
                 case 0:
                     bsOcitavanja.DataSource = pristunaOcitavanja.Where(
                     o =>
-                    o.MernoMestoId == SelectedMernoMesto.Id
+                    o.MernoMestoId == _SelectedMernoMesto.Id
                     &&
                     o.Vreme >= dtDanOd.SelectedDate.Date
                     &&
@@ -86,7 +63,7 @@ namespace TSP2025
                     o =>
                     o.Vreme.Minute == 0
                     &&
-                    o.MernoMestoId == SelectedMernoMesto.Id
+                    o.MernoMestoId == _SelectedMernoMesto.Id
                     &&
                     o.Vreme >= dtDanOd.SelectedDate.Date
                     &&
@@ -98,7 +75,7 @@ namespace TSP2025
                     o =>
                     o.Vreme.Date == o.Vreme
                     &&
-                    o.MernoMestoId == SelectedMernoMesto.Id
+                    o.MernoMestoId == _SelectedMernoMesto.Id
                     &&
                     o.Vreme >= dtDanOd.SelectedDate.Date
                     &&
@@ -106,39 +83,18 @@ namespace TSP2025
                     .ToList();
                     break;
                 case 3:
-                    //if (cbMesec.SelectedIndex > 0)
-                    //{
-                    //    bsOcitavanja.DataSource = _DataSource.SvaOcitavanja(dsMode).Where(
-                    //    o =>
-                    //    o.Vreme.Date.Day == 1 && o.Vreme.Month == cbMesec.SelectedIndex && o.Vreme.Hour == 0 && o.Vreme.Minute == 0
-                    //    &&
-                    //    o.MernoMestoId == SelectedMernoMesto.Id
-                    //    &&
-                    //    o.Vreme >= dtDanOd.SelectedDate!.Value.Date
-                    //    &&
-                    //    o.Vreme < dtDanDo.SelectedDate!.Value.AddDays(1).Date
-                    //    )
-                    //    .ToList();
-                    //}
-                    //else
-                    //{
                     bsOcitavanja.DataSource = pristunaOcitavanja.Where(
                     o =>
                     o.Vreme.Date.Day == 1 && o.Vreme.Hour == 0 && o.Vreme.Minute == 0
                     &&
-                    o.MernoMestoId == SelectedMernoMesto.Id
+                    o.MernoMestoId == _SelectedMernoMesto.Id
                     &&
                     o.Vreme >= dtDanOd.SelectedDate.Date
                     &&
                     o.Vreme < dtDanDo.SelectedDate.AddDays(1).Date
                     )
                     .ToList();
-                    //}
                     break;
-                case 4:
-                case 5:
-                    FormMessages.ShowInformation("... under construction ...");
-                    return;
             }
 
             for (int i = 1; i < bsOcitavanja.Count; i++)
@@ -149,45 +105,42 @@ namespace TSP2025
             lblUkupno.Text = "Ukupno: " + bsOcitavanja.Count;
 
             pltStanje.Plot.Clear();
+
             // plot data using DateTime values on the horizontal axis
             DateTime[] xs = [.. (bsOcitavanja.DataSource as IList<Ocitavanje>)!.Select(o => o.Vreme)];
             double[] ys = [.. (bsOcitavanja.DataSource as IList<Ocitavanje>)!.Select(o => (double)o.Vrednost)];
-            //double[] razlika = [.. (bsOcitavanja.DataSource as IList<Ocitavanje>)!.Select(o => (double)o.Razlika)];
             var mainScatter = pltStanje.Plot.Add.Scatter(xs, ys);
-            //double[] ys0 = Generate.Consecutive(xs.Length, ys[0], 0);
-            //var projScatter = pltStanje.Plot.Add.Scatter(xs, ys0);
 
+            // customize the scatter plot line
+            mainScatter.Color = Colors.DeepSkyBlue;
+            mainScatter.LineWidth = 2;
+            mainScatter.MarkerSize = 5;
+            mainScatter.MarkerShape = MarkerShape.FilledCircle;
+            mainScatter.LinePattern = LinePattern.Solid;
 
-            //var errorbars = pltStanje.Plot.Add.ErrorBar(xs, ys, razlika);
-            //errorbars.Color = scatter.Color;
-
-            //var fill = pltStanje.Plot.Add.FillY(mainScatter, projScatter);
-            //fill.FillColor = Colors.Blue.WithAlpha(100);
-            //fill.LineColor = Colors.Blue;
-            //fill.MarkerColor = Colors.Blue;
-            //fill.LineWidth = 2;
+            pltStanje.Plot.Axes.Bottom.TickLabelStyle.PointSize = 5;
+            //pltStanje.Plot.Axes.Axes.Bottom.TickLabelStyle
 
             // setup the bottom axis to use DateTime ticks
             var axis = pltStanje.Plot.Axes.DateTimeTicksBottom();
-            // create a custom formatter to return a string with
-            // date only when zoomed out and time only when zoomed in
-            static string CustomFormatter(DateTime dt)
-            {
-                bool isMidnight = dt is { Hour: 0, Minute: 0, Second: 0 };
-                return isMidnight
-                    ? DateOnly.FromDateTime(dt).ToString()//$"{dt:MMM} '{dt:yyyy}" 
-                    : TimeOnly.FromDateTime(dt).ToString();
-            }
+
             // apply our custom tick formatter
             var tickGen = (ScottPlot.TickGenerators.DateTimeAutomatic)axis.TickGenerator;
-            tickGen.LabelFormatter = CustomFormatter;
-
-
+            tickGen.LabelFormatter = CustomLabelsFormatter;
             pltStanje.Refresh();
 
-            pbGraph.Visible = false;
             pltStanje.Visible = true;
 
+        }
+
+        // create a custom formatter to return a string with
+        // date only when zoomed out and time only when zoomed in
+        private string CustomLabelsFormatter(DateTime dt)
+        {
+            bool isMidnight = dt is { Hour: 0, Minute: 0, Second: 0 };
+            return isMidnight
+                 ? dt.ToString("dd/MM/yy") // " DateOnly.FromDateTime(dt).ToString()//$"{dt:MMM} '{dt:yyyy}" 
+                  : TimeOnly.FromDateTime(dt).ToString();
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -221,6 +174,17 @@ namespace TSP2025
             catch (Exception ex)
             {
                 FormMessages.ShowError("Došlo je do greške");
+            }
+        }
+
+        private MernoMesto _SelectedMernoMesto = null;
+
+        private void btnIzborMernogMesta_Click(object sender, EventArgs e)
+        {
+            if (frmMernaMestaLookup.Instance().ShowDialog() == DialogResult.OK)
+            {
+                _SelectedMernoMesto = frmMernaMestaLookup.Instance().SelectedMernoMesto;
+                lblMernoMesto.Text = _SelectedMernoMesto.OznakaMernogMesta;
             }
         }
     }

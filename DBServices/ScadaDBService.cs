@@ -3,14 +3,13 @@ using System.Configuration;
 
 namespace TSP2025.DB
 {
-    public static class MernoMestoDB
+    public static class ScadaDBService
     {
-        public static void Delete(int id)
+        public static void ClearAllScadaPull()
         {
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
             {
-                var command = new SqlCommand("Delete From MernoMesto Where Id = @Id", connection);
-                command.Parameters.AddWithValue("@Id", id);
+                var command = new SqlCommand("Truncate table Ocitavanje; Truncate table Pullhistory;", connection);
                 try
                 {
                     connection.Open();

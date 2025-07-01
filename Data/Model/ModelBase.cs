@@ -44,7 +44,7 @@ namespace TSP2025.Data.Model
                 return "Id: " + Id;
             }
         }
-        public required bool ImaMernoMesto
+        public bool ImaMernoMesto
         {
             set
             {

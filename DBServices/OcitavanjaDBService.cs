@@ -6,7 +6,7 @@ using System.Configuration;
 
 namespace TSP2025.DB
 {
-    public static class OcitavanjaDB
+    public static class OcitavanjaDBService
     {
         public static IList<Ocitavanje> GetSvaOcitavanja(DataSourceMode sourceMode, int godinaUnazad, int korakUMinutama, IList<MernoMesto> SvaMernaMesta)
         {
@@ -22,10 +22,10 @@ namespace TSP2025.DB
                     {
                         {
                             svaOcitavanja.Add(new Ocitavanje() { Vreme = vreme, MernoMestoId = SvaMernaMesta[i].Id, MernoMesto = SvaMernaMesta[i].OznakaMernogMesta, Vrednost = vrednost });
+                            vrednost += (new Random()).Next(100);
                         }
-                        vreme = vreme.AddMinutes(korakUMinutama);
-                        vrednost += (new Random()).Next(100);
                     }
+                    vreme = vreme.AddMinutes(korakUMinutama);
                 }
             }
             else if (sourceMode == DataSourceMode.FromDatabase)

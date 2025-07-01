@@ -52,6 +52,7 @@ namespace TSP2025
             tbScadaTabela = new TextBox();
             label3 = new Label();
             tbIdMernogMesta = new TextBox();
+            rbKotlarnica = new RadioButton();
             ((System.ComponentModel.ISupportInitialize)bsGrupeMernihMesta).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
@@ -60,7 +61,7 @@ namespace TSP2025
             // btnCancel
             // 
             btnCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnCancel.Location = new Point(110, 404);
+            btnCancel.Location = new Point(110, 433);
             btnCancel.Margin = new Padding(2);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(94, 35);
@@ -73,7 +74,7 @@ namespace TSP2025
             // 
             btnOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnOk.DialogResult = DialogResult.OK;
-            btnOk.Location = new Point(208, 404);
+            btnOk.Location = new Point(208, 433);
             btnOk.Margin = new Padding(2);
             btnOk.Name = "btnOk";
             btnOk.Size = new Size(94, 35);
@@ -86,8 +87,9 @@ namespace TSP2025
             // 
             tbOznakaKalorimetra.BackColor = Color.White;
             tbOznakaKalorimetra.BorderStyle = BorderStyle.FixedSingle;
-            tbOznakaKalorimetra.Location = new Point(12, 164);
+            tbOznakaKalorimetra.Location = new Point(12, 187);
             tbOznakaKalorimetra.Margin = new Padding(2);
+            tbOznakaKalorimetra.MaxLength = 199;
             tbOznakaKalorimetra.Name = "tbOznakaKalorimetra";
             tbOznakaKalorimetra.Size = new Size(284, 23);
             tbOznakaKalorimetra.TabIndex = 2;
@@ -95,34 +97,32 @@ namespace TSP2025
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(15, 145);
+            label1.Location = new Point(12, 168);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(112, 15);
+            label1.Size = new Size(174, 15);
             label1.TabIndex = 3;
-            label1.Text = "Oznaka kalorimetar:";
+            label1.Text = "Jedinstvena oznaka kalorimetra:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(15, 99);
+            label2.Location = new Point(11, 118);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(129, 15);
+            label2.Size = new Size(191, 15);
             label2.TabIndex = 5;
-            label2.Text = "Oznaka mernog mesta:";
+            label2.Text = "Jedinstvena oznaka mernog mesta:";
             // 
             // rbPodstanica
             // 
             rbPodstanica.AutoSize = true;
-            rbPodstanica.Checked = true;
             rbPodstanica.Enabled = false;
-            rbPodstanica.Location = new Point(105, 10);
+            rbPodstanica.Location = new Point(103, 29);
             rbPodstanica.Margin = new Padding(2);
             rbPodstanica.Name = "rbPodstanica";
             rbPodstanica.Size = new Size(83, 19);
             rbPodstanica.TabIndex = 8;
-            rbPodstanica.TabStop = true;
             rbPodstanica.Text = "Podstanica";
             rbPodstanica.UseVisualStyleBackColor = true;
             // 
@@ -130,7 +130,7 @@ namespace TSP2025
             // 
             rbIndividualni.AutoSize = true;
             rbIndividualni.Enabled = false;
-            rbIndividualni.Location = new Point(105, 34);
+            rbIndividualni.Location = new Point(103, 53);
             rbIndividualni.Margin = new Padding(2);
             rbIndividualni.Name = "rbIndividualni";
             rbIndividualni.Size = new Size(136, 19);
@@ -144,7 +144,7 @@ namespace TSP2025
             cbGrupeMernihMesta.DisplayMember = "Naziv";
             cbGrupeMernihMesta.DropDownStyle = ComboBoxStyle.DropDownList;
             cbGrupeMernihMesta.FormattingEnabled = true;
-            cbGrupeMernihMesta.Location = new Point(12, 210);
+            cbGrupeMernihMesta.Location = new Point(12, 237);
             cbGrupeMernihMesta.Margin = new Padding(2);
             cbGrupeMernihMesta.Name = "cbGrupeMernihMesta";
             cbGrupeMernihMesta.Size = new Size(285, 23);
@@ -158,7 +158,7 @@ namespace TSP2025
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(15, 191);
+            label4.Location = new Point(10, 218);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(81, 15);
@@ -182,8 +182,9 @@ namespace TSP2025
             // 
             tbOznakaMernogMesta.BackColor = Color.White;
             tbOznakaMernogMesta.BorderStyle = BorderStyle.FixedSingle;
-            tbOznakaMernogMesta.Location = new Point(12, 118);
+            tbOznakaMernogMesta.Location = new Point(12, 137);
             tbOznakaMernogMesta.Margin = new Padding(2);
+            tbOznakaMernogMesta.MaxLength = 199;
             tbOznakaMernogMesta.Name = "tbOznakaMernogMesta";
             tbOznakaMernogMesta.Size = new Size(284, 23);
             tbOznakaMernogMesta.TabIndex = 1;
@@ -210,7 +211,7 @@ namespace TSP2025
             groupBox1.Controls.Add(tbScadaKolona);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(tbScadaTabela);
-            groupBox1.Location = new Point(8, 240);
+            groupBox1.Location = new Point(8, 270);
             groupBox1.Margin = new Padding(2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(2);
@@ -273,7 +274,7 @@ namespace TSP2025
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(105, 66);
+            label3.Location = new Point(185, 87);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(50, 15);
@@ -286,7 +287,7 @@ namespace TSP2025
             tbIdMernogMesta.BorderStyle = BorderStyle.FixedSingle;
             tbIdMernogMesta.Enabled = false;
             tbIdMernogMesta.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 238);
-            tbIdMernogMesta.Location = new Point(160, 63);
+            tbIdMernogMesta.Location = new Point(239, 83);
             tbIdMernogMesta.Margin = new Padding(2);
             tbIdMernogMesta.Name = "tbIdMernogMesta";
             tbIdMernogMesta.ReadOnly = true;
@@ -294,12 +295,27 @@ namespace TSP2025
             tbIdMernogMesta.TabIndex = 17;
             tbIdMernogMesta.TextAlign = HorizontalAlignment.Center;
             // 
+            // rbKotlarnica
+            // 
+            rbKotlarnica.AutoSize = true;
+            rbKotlarnica.Checked = true;
+            rbKotlarnica.Enabled = false;
+            rbKotlarnica.Location = new Point(103, 6);
+            rbKotlarnica.Margin = new Padding(2);
+            rbKotlarnica.Name = "rbKotlarnica";
+            rbKotlarnica.Size = new Size(78, 19);
+            rbKotlarnica.TabIndex = 18;
+            rbKotlarnica.TabStop = true;
+            rbKotlarnica.Text = "Kotlarnica";
+            rbKotlarnica.UseVisualStyleBackColor = true;
+            // 
             // frmAddUpdateMernoMesto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Gold;
-            ClientSize = new Size(311, 444);
+            BackColor = SystemColors.Control;
+            ClientSize = new Size(311, 473);
+            Controls.Add(rbKotlarnica);
             Controls.Add(tbIdMernogMesta);
             Controls.Add(label3);
             Controls.Add(groupBox1);
@@ -353,5 +369,6 @@ namespace TSP2025
         private Button btnTestConnection;
         private Label label3;
         private TextBox tbIdMernogMesta;
+        private RadioButton rbKotlarnica;
     }
 }

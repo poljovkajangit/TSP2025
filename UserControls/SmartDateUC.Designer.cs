@@ -37,9 +37,10 @@
             // 
             cbDay.DropDownStyle = ComboBoxStyle.DropDownList;
             cbDay.FormattingEnabled = true;
-            cbDay.Location = new Point(3, 3);
+            cbDay.Location = new Point(2, 2);
+            cbDay.Margin = new Padding(2);
             cbDay.Name = "cbDay";
-            cbDay.Size = new Size(75, 33);
+            cbDay.Size = new Size(54, 23);
             cbDay.TabIndex = 0;
             // 
             // cbMonth
@@ -47,9 +48,10 @@
             cbMonth.DropDownStyle = ComboBoxStyle.DropDownList;
             cbMonth.FormattingEnabled = true;
             cbMonth.Items.AddRange(new object[] { "Jan", "Feb", "Mar", "Apr", "Maj", "Jun", "Jul", "Avg", "Sep", "Okt", "Nov", "Dec" });
-            cbMonth.Location = new Point(82, 3);
+            cbMonth.Location = new Point(57, 2);
+            cbMonth.Margin = new Padding(2);
             cbMonth.Name = "cbMonth";
-            cbMonth.Size = new Size(75, 33);
+            cbMonth.Size = new Size(54, 23);
             cbMonth.TabIndex = 1;
             // 
             // cbYear
@@ -57,21 +59,22 @@
             cbYear.DropDownStyle = ComboBoxStyle.DropDownList;
             cbYear.FormattingEnabled = true;
             cbYear.Items.AddRange(new object[] { "2023", "2024", "2025", "2026" });
-            cbYear.Location = new Point(158, 3);
+            cbYear.Location = new Point(111, 2);
+            cbYear.Margin = new Padding(2);
             cbYear.Name = "cbYear";
-            cbYear.Size = new Size(90, 33);
+            cbYear.Size = new Size(64, 23);
             cbYear.TabIndex = 2;
             // 
             // SmartDateUC
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BorderStyle = BorderStyle.FixedSingle;
             Controls.Add(cbYear);
             Controls.Add(cbMonth);
             Controls.Add(cbDay);
+            Margin = new Padding(2);
             Name = "SmartDateUC";
-            Size = new Size(252, 40);
+            Size = new Size(178, 27);
             ResumeLayout(false);
         }
 

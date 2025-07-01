@@ -13,7 +13,7 @@
     <Compile Update="Forms\frmAddUpdateMernoMesto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="frmMaticniPodaci.cs">
+    <Compile Update="Forms\frmMaticniPodaci.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="frmMaticniPodaciTreeEditor.cs">
@@ -42,7 +42,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Update="frmMaticniPodaci.resx">
+    <EmbeddedResource Update="Forms\frmMaticniPodaci.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

@@ -52,16 +52,14 @@
             istorijaPreuzimanjaToolStripMenuItem = new ToolStripMenuItem();
             gbPullOperacija = new GroupBox();
             lblPullStatus = new Label();
-            label1 = new Label();
             btnClearAllPull = new Button();
             tbPullInfo = new TextBox();
             btnPull = new Button();
             bsMernaMesta = new BindingSource(components);
             label5 = new Label();
             label6 = new Label();
-            label7 = new Label();
-            btnDashboard = new Button();
             tm = new System.Windows.Forms.Timer(components);
+            btnDashboard = new Button();
             sbStatusBar.SuspendLayout();
             menuStrip1.SuspendLayout();
             gbPullOperacija.SuspendLayout();
@@ -73,10 +71,10 @@
             sbStatusBar.GripStyle = ToolStripGripStyle.Visible;
             sbStatusBar.ImageScalingSize = new Size(24, 24);
             sbStatusBar.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1 });
-            sbStatusBar.Location = new Point(1, 816);
+            sbStatusBar.Location = new Point(1, 858);
             sbStatusBar.Name = "sbStatusBar";
             sbStatusBar.Padding = new Padding(1, 0, 10, 0);
-            sbStatusBar.Size = new Size(1577, 22);
+            sbStatusBar.Size = new Size(1595, 22);
             sbStatusBar.TabIndex = 0;
             sbStatusBar.Text = "statusStrip1";
             // 
@@ -97,7 +95,7 @@
             menuStrip1.MinimumSize = new Size(0, 25);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(4, 1, 0, 1);
-            menuStrip1.Size = new Size(1577, 25);
+            menuStrip1.Size = new Size(1595, 25);
             menuStrip1.Stretch = false;
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
@@ -163,13 +161,13 @@
             toolStripMenuItem3.DropDownItems.AddRange(new ToolStripItem[] { periodičniToolStripMenuItem });
             toolStripMenuItem3.Image = (Image)resources.GetObject("toolStripMenuItem3.Image");
             toolStripMenuItem3.Name = "toolStripMenuItem3";
-            toolStripMenuItem3.Size = new Size(188, 30);
+            toolStripMenuItem3.Size = new Size(124, 22);
             toolStripMenuItem3.Text = "Stanje";
             // 
             // periodičniToolStripMenuItem
             // 
             periodičniToolStripMenuItem.Name = "periodičniToolStripMenuItem";
-            periodičniToolStripMenuItem.Size = new Size(180, 22);
+            periodičniToolStripMenuItem.Size = new Size(168, 22);
             periodičniToolStripMenuItem.Text = "Za izabrani period";
             periodičniToolStripMenuItem.Click += periodičniToolStripMenuItem_Click;
             // 
@@ -178,7 +176,7 @@
             potrošnjaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { dnevnaToolStripMenuItem, mnuMesecnaPotrosnja, godišnjaToolStripMenuItem });
             potrošnjaToolStripMenuItem.Image = (Image)resources.GetObject("potrošnjaToolStripMenuItem.Image");
             potrošnjaToolStripMenuItem.Name = "potrošnjaToolStripMenuItem";
-            potrošnjaToolStripMenuItem.Size = new Size(188, 30);
+            potrošnjaToolStripMenuItem.Size = new Size(124, 22);
             potrošnjaToolStripMenuItem.Text = "Potrošnja";
             // 
             // dnevnaToolStripMenuItem
@@ -228,40 +226,30 @@
             gbPullOperacija.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             gbPullOperacija.BackColor = Color.WhiteSmoke;
             gbPullOperacija.Controls.Add(lblPullStatus);
-            gbPullOperacija.Controls.Add(label1);
             gbPullOperacija.Controls.Add(btnClearAllPull);
             gbPullOperacija.Controls.Add(tbPullInfo);
             gbPullOperacija.Controls.Add(btnPull);
             gbPullOperacija.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
             gbPullOperacija.ForeColor = Color.Black;
-            gbPullOperacija.Location = new Point(1226, 36);
+            gbPullOperacija.Location = new Point(1244, 36);
             gbPullOperacija.Margin = new Padding(2);
             gbPullOperacija.Name = "gbPullOperacija";
             gbPullOperacija.Padding = new Padding(2);
-            gbPullOperacija.Size = new Size(341, 768);
+            gbPullOperacija.Size = new Size(341, 810);
             gbPullOperacija.TabIndex = 4;
             gbPullOperacija.TabStop = false;
-            gbPullOperacija.Text = "Prenos SCADA podataka";
+            gbPullOperacija.Text = "Sinhroni prenos ScadaDB podataka";
             // 
             // lblPullStatus
             // 
             lblPullStatus.BackColor = Color.Gainsboro;
             lblPullStatus.BorderStyle = BorderStyle.FixedSingle;
-            lblPullStatus.Location = new Point(227, 20);
+            lblPullStatus.Location = new Point(8, 28);
             lblPullStatus.Name = "lblPullStatus";
             lblPullStatus.Size = new Size(105, 19);
             lblPullStatus.TabIndex = 15;
             lblPullStatus.Text = "ZAUSTAVLJEN";
             lblPullStatus.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(180, 22);
-            label1.Name = "label1";
-            label1.Size = new Size(43, 15);
-            label1.TabIndex = 14;
-            label1.Text = "Status:";
             // 
             // btnClearAllPull
             // 
@@ -273,12 +261,12 @@
             btnClearAllPull.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
             btnClearAllPull.ForeColor = Color.Black;
             btnClearAllPull.ImageAlign = ContentAlignment.MiddleRight;
-            btnClearAllPull.Location = new Point(7, 721);
+            btnClearAllPull.Location = new Point(7, 778);
             btnClearAllPull.Margin = new Padding(2);
             btnClearAllPull.Name = "btnClearAllPull";
-            btnClearAllPull.Size = new Size(186, 41);
+            btnClearAllPull.Size = new Size(142, 28);
             btnClearAllPull.TabIndex = 13;
-            btnClearAllPull.Text = "Obriši sve postojeće SCADA prenose";
+            btnClearAllPull.Text = "Obriši postojeće u DB";
             btnClearAllPull.UseVisualStyleBackColor = false;
             btnClearAllPull.Click += btnClearAllPull_Click;
             // 
@@ -288,30 +276,30 @@
             tbPullInfo.BackColor = Color.White;
             tbPullInfo.BorderStyle = BorderStyle.FixedSingle;
             tbPullInfo.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            tbPullInfo.Location = new Point(7, 46);
+            tbPullInfo.Location = new Point(7, 56);
             tbPullInfo.Margin = new Padding(2);
             tbPullInfo.Multiline = true;
             tbPullInfo.Name = "tbPullInfo";
             tbPullInfo.ReadOnly = true;
             tbPullInfo.ScrollBars = ScrollBars.Vertical;
-            tbPullInfo.Size = new Size(328, 671);
+            tbPullInfo.Size = new Size(328, 718);
             tbPullInfo.TabIndex = 12;
             // 
             // btnPull
             // 
-            btnPull.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnPull.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnPull.BackColor = SystemColors.Control;
             btnPull.FlatAppearance.BorderColor = Color.Black;
             btnPull.FlatStyle = FlatStyle.Flat;
             btnPull.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
             btnPull.ForeColor = Color.Black;
             btnPull.ImageAlign = ContentAlignment.MiddleRight;
-            btnPull.Location = new Point(197, 721);
+            btnPull.Location = new Point(237, 20);
             btnPull.Margin = new Padding(2);
             btnPull.Name = "btnPull";
-            btnPull.Size = new Size(140, 41);
+            btnPull.Size = new Size(98, 32);
             btnPull.TabIndex = 0;
-            btnPull.Text = "Pokreni prenos";
+            btnPull.Text = "Pokreni";
             btnPull.UseVisualStyleBackColor = false;
             btnPull.Click += btnPull_Click;
             // 
@@ -324,7 +312,7 @@
             label5.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            label5.Location = new Point(13, 772);
+            label5.Location = new Point(13, 814);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
             label5.Size = new Size(260, 32);
@@ -336,35 +324,22 @@
             label6.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 22F);
-            label6.Location = new Point(13, 679);
+            label6.Location = new Point(13, 771);
             label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
             label6.Size = new Size(130, 41);
             label6.TabIndex = 8;
             label6.Text = "TSP2025";
             // 
-            // label7
-            // 
-            label7.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            label7.Location = new Point(13, 730);
-            label7.Margin = new Padding(2, 0, 2, 0);
-            label7.Name = "label7";
-            label7.Size = new Size(187, 32);
-            label7.TabIndex = 9;
-            label7.Text = "free trial version";
-            // 
             // btnDashboard
             // 
-            btnDashboard.BackgroundImage = (Image)resources.GetObject("btnDashboard.BackgroundImage");
-            btnDashboard.BackgroundImageLayout = ImageLayout.Zoom;
             btnDashboard.Location = new Point(4, 29);
             btnDashboard.Name = "btnDashboard";
-            btnDashboard.Size = new Size(64, 64);
-            btnDashboard.TabIndex = 11;
+            btnDashboard.Size = new Size(130, 27);
+            btnDashboard.TabIndex = 10;
+            btnDashboard.Text = "btnDashboard";
             btnDashboard.UseVisualStyleBackColor = true;
-            btnDashboard.Click += btnDashboard_Click;
+            btnDashboard.Visible = false;
             // 
             // frmParent
             // 
@@ -372,9 +347,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             BackgroundImageLayout = ImageLayout.Center;
-            ClientSize = new Size(1579, 839);
+            ClientSize = new Size(1597, 881);
             Controls.Add(btnDashboard);
-            Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(gbPullOperacija);
@@ -424,16 +398,15 @@
         private BindingSource bsMernaMesta;
         private Label label5;
         private Label label6;
-        private Label label7;
         private TextBox tbPullInfo;
         private ToolStripMenuItem potrošnjaToolStripMenuItem;
         private ToolStripMenuItem mnuMesecnaPotrosnja;
         private ToolStripMenuItem dnevnaToolStripMenuItem;
         private ToolStripMenuItem godišnjaToolStripMenuItem;
-        private Button btnDashboard;
         private System.Windows.Forms.Timer tm;
         private Button btnClearAllPull;
         private Label lblPullStatus;
-        private Label label1;
+        private UserControls.SmartDateUC dtOdDatuma;
+        private Button btnDashboard;
     }
 }

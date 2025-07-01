@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using TSP2025.Common;
 using TSP2025.Data;
 using TSP2025.Data.Model;
@@ -10,8 +11,9 @@ namespace TSP2025
 {
     public enum TipMernogMesta : int
     {
-        Podstanica = 1,
-        IndividualniPotrosac = 2
+        Kotlarnica = 1,
+        Podstanica = 2,
+        IndividualniPotrosac = 3
     }
 
     public partial class frmAddUpdateMernoMesto : Form
@@ -31,14 +33,18 @@ namespace TSP2025
             tbOznakaMernogMesta.Text = _oznakaMernogMesta = oznakaMernogMesta;
             tbPotrosacId.Text = potrosac.Id.ToString();
             _btnParentDodajMernoMesto = parentDodajButton;
+            rbKotlarnica.Checked = false;
+            rbPodstanica.Checked = false;
+            rbIndividualni.Checked = false;
             switch (tip)
             {
+                case TipMernogMesta.Kotlarnica:
+                    rbKotlarnica.Checked = true;
+                    break;
                 case TipMernogMesta.Podstanica:
                     rbPodstanica.Checked = true;
-                    rbIndividualni.Checked = false;
                     break;
                 case TipMernogMesta.IndividualniPotrosac:
-                    rbPodstanica.Checked = false;
                     rbIndividualni.Checked = true;
                     break;
             }
@@ -58,14 +64,18 @@ namespace TSP2025
             tbScadaTabela.Text = mernoMesto.ScadaTabela;
             tbScadaKolona.Text = mernoMesto.ScadaKolona;
             tbIdMernogMesta.Text = mernoMesto.Id.ToString();
+            rbKotlarnica.Checked = false;
+            rbPodstanica.Checked = false;
+            rbIndividualni.Checked = false;
             switch (mernoMesto.Tip)
             {
+                case (int)TipMernogMesta.Kotlarnica:
+                    rbKotlarnica.Checked = true;
+                    break;
                 case (int)TipMernogMesta.Podstanica:
                     rbPodstanica.Checked = true;
-                    rbIndividualni.Checked = false;
                     break;
                 case (int)TipMernogMesta.IndividualniPotrosac:
-                    rbPodstanica.Checked = false;
                     rbIndividualni.Checked = true;
                     break;
             }
@@ -86,7 +96,11 @@ namespace TSP2025
                             sqlQuery = "Insert into MernoMesto (OznakaMernogMesta, OznakaKalorimetra, PotrosacId, GrupaMernogMestaId, Tip, ScadaTabela, ScadaKolona) " +
                                 " Values (@OznakaMernogMesta, @OznakaKalorimetra, @PotrosacId, @GrupaMernogMestaId, @Tip, @ScadaTabela, @ScadaKolona)";
                             sqlCommand.Parameters.Add(new SqlParameter() { ParameterName = "@PotrosacId", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Input, Value = tbPotrosacId.Text });
-                            if (rbPodstanica.Checked)
+                            if (rbKotlarnica.Checked)
+                            {
+                                sqlCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Tip", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Input, Value = (int)TipMernogMesta.Kotlarnica });
+                            }
+                            else if (rbPodstanica.Checked)
                             {
                                 sqlCommand.Parameters.Add(new SqlParameter() { ParameterName = "@Tip", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Input, Value = (int)TipMernogMesta.Podstanica });
                             }
@@ -117,14 +131,6 @@ namespace TSP2025
 
                         if (_mode == FormMode.Add)
                         {
-                            if (rbPodstanica.Checked)
-                            {
-                                FormMessages.ShowInformation("Uspešno vezano novo merno mesto za podstanicu: " + _oznakaMernogMesta);
-                            }
-                            else
-                            {
-                                FormMessages.ShowInformation("Uspešno vezano novo merno mesto za individualnog potrošača: " + _oznakaMernogMesta);
-                            }
                             _btnParentDodajMernoMesto.Visible = false;
                             _potrosac.ImaMernoMesto = true;
                         }

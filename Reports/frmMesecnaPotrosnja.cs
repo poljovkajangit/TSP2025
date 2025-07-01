@@ -61,7 +61,7 @@ namespace TSP2025
             var frmDataSource = new frmDataSourceForReports();
             frmDataSource.ShowDialog();
 
-            var pristunaOcitavanja = OcitavanjaDB.GetSvaOcitavanja(frmDataSource.DataSourceMode, frmDataSource.Godina, frmDataSource.KorakMinutama, _DataSource.SvaMernaMesta);
+            var pristunaOcitavanja = OcitavanjaDBService.GetSvaOcitavanja(frmDataSource.DataSourceMode, 3, 15, _DataSource.SvaMernaMesta);
 
             var ocitavanja = pristunaOcitavanja.Where(
              o =>
