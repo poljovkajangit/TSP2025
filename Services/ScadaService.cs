@@ -7,7 +7,7 @@ using TSP2025.Data;
 using TSP2025.Data.Model;
 using TSP2025.DB;
 
-namespace TSP2025
+namespace TSP2025.Services
 {
     public enum ScadaMessageType
     {
@@ -126,7 +126,7 @@ namespace TSP2025
                             sqlCommand.Parameters.Clear();
                             sqlCommand.Parameters.Add(new SqlParameter() { ParameterName = "@lastPullDate", DbType = DbType.DateTime, Direction = ParameterDirection.Input, Value = lastPullDate });
                             sqlCommand.Connection.Open();
-                            int affected = (int)sqlCommand.ExecuteNonQuery();
+                            int affected = sqlCommand.ExecuteNonQuery();
                             sqlCommand.Connection.Close();
 
                             string insertPullHistoryQuery = @$"
@@ -166,6 +166,22 @@ namespace TSP2025
             }
 
             ScadaMessage?.Invoke(this, new ScadaMessageEventArgs($"Prenos SCADA zapisa [#{_callbackCount++}] završen u  {DateTime.Now:dd/MM/yy HH:mm:ss}.", ScadaMessageType.Exclamation));
+        }
+        public static void ClearAllScadaPull()
+        {
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
+            {
+                var command = new SqlCommand("Truncate table Ocitavanje; Truncate table Pullhistory;", connection);
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
         }
     }
 }

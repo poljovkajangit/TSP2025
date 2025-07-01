@@ -1,5 +1,6 @@
 ﻿using TSP2025.Data;
 using TSP2025.DB;
+using TSP2025.Services;
 using TSP2025.Utils;
 
 namespace TSP2025
@@ -15,7 +16,7 @@ namespace TSP2025
 
         private void btnObrisiSvePreneto_Click(object sender, EventArgs e)
         {
-            ScadaDBService.ClearAllScadaPull();
+            ScadaService.ClearAllScadaPull();
             FormMessages.ShowInformation("Svi preneti podaci iz SCADA baze su obrisani");
             bsScadaPrenosIstorija.DataSource = TSP2025DataContext.PullHistory;
         }

@@ -7,7 +7,7 @@
     <Compile Update="Forms\frmScadaPullZaMernoMesto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="frmDashboard.cs">
+    <Compile Update="Forms\frmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\frmAddUpdateMernoMesto.cs">
