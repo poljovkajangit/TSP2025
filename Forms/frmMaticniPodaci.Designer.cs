@@ -149,10 +149,11 @@
             // 
             // cbToplane
             // 
-            cbToplane.BackColor = Color.White;
+            cbToplane.BackColor = Color.LightBlue;
             cbToplane.DataSource = _BsToplane;
             cbToplane.DisplayMember = "Naziv";
             cbToplane.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbToplane.FlatStyle = FlatStyle.Flat;
             cbToplane.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 238);
             cbToplane.FormattingEnabled = true;
             cbToplane.Location = new Point(4, 46);
@@ -248,9 +249,11 @@
             // 
             // cbKotlarnice
             // 
+            cbKotlarnice.BackColor = Color.LightBlue;
             cbKotlarnice.DataSource = _BsKotlarnice;
             cbKotlarnice.DisplayMember = "Naziv";
             cbKotlarnice.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbKotlarnice.FlatStyle = FlatStyle.Flat;
             cbKotlarnice.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 238);
             cbKotlarnice.FormattingEnabled = true;
             cbKotlarnice.Location = new Point(4, 46);
@@ -308,7 +311,7 @@
             dgKotlarnice.ScrollBars = ScrollBars.Vertical;
             dgKotlarnice.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgKotlarnice.Size = new Size(420, 408);
-            dgKotlarnice.TabIndex = 7;
+            dgKotlarnice.TabIndex = 0;
             dgKotlarnice.CellDoubleClick += dgKotlarnice_CellDoubleClick;
             // 
             // nazivDataGridViewTextBoxColumn1
@@ -330,9 +333,11 @@
             // 
             // cbPodstanice
             // 
+            cbPodstanice.BackColor = Color.LightBlue;
             cbPodstanice.DataSource = _BsPodstanice;
             cbPodstanice.DisplayMember = "Naziv";
             cbPodstanice.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbPodstanice.FlatStyle = FlatStyle.Flat;
             cbPodstanice.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 238);
             cbPodstanice.FormattingEnabled = true;
             cbPodstanice.Location = new Point(4, 46);
@@ -390,7 +395,7 @@
             dgPodstanice.ScrollBars = ScrollBars.Vertical;
             dgPodstanice.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgPodstanice.Size = new Size(420, 408);
-            dgPodstanice.TabIndex = 6;
+            dgPodstanice.TabIndex = 0;
             dgPodstanice.CellDoubleClick += dgPodstanice_CellDoubleClick;
             // 
             // nazivDataGridViewTextBoxColumn2
@@ -1294,7 +1299,7 @@
             dgIndividualniPotrosaci.ScrollBars = ScrollBars.Vertical;
             dgIndividualniPotrosaci.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgIndividualniPotrosaci.Size = new Size(420, 408);
-            dgIndividualniPotrosaci.TabIndex = 7;
+            dgIndividualniPotrosaci.TabIndex = 0;
             dgIndividualniPotrosaci.CellDoubleClick += dgIndividualniPotrosaci_CellDoubleClick;
             // 
             // nazivDataGridViewTextBoxColumn3

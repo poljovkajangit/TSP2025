@@ -89,9 +89,13 @@ namespace TSP2025.Data.Model
             {
                 if (tip == 1)
                 {
+                    return "Kotlarnica";
+                }
+                if (tip == 2)
+                {
                     return "Podstanica";
                 }
-                else if (tip == 2)
+                else if (tip == 3)
                 {
                     return "Individualni potrošač";
                 }
