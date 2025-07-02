@@ -43,13 +43,18 @@ namespace TSP2025
             cbGrupeMernihMesta.SelectedIndex = 0;
 
             if (!string.IsNullOrWhiteSpace(tbOznakaPretraga.Text.Trim()))
-            {                  
+            {
                 bsMernaMesta.DataSource = ImprovedBindingListFactory<MernoMesto>.Create(MernoMestoDBService.GetAllByOznakaMernogMesta(tbOznakaPretraga.Text.Trim()).ToList());
             }
             else
             {
                 bsMernaMesta.DataSource = _SvaMernaMestaInBindingList;
             }
+        }
+
+        private void dgMernaMesta_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
         }
 
         public MernoMesto SelectedMernoMesto

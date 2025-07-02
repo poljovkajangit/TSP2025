@@ -47,6 +47,7 @@
             statusStrip1 = new StatusStrip();
             lblUkupno = new ToolStripStatusLabel();
             pnlFilter = new Panel();
+            button1 = new Button();
             panel1 = new Panel();
             dtDanOd = new TSP2025.UserControls.SmartDateUC();
             dtDanDo = new TSP2025.UserControls.SmartDateUC();
@@ -94,6 +95,7 @@
             dgOcitavanja.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgOcitavanja.Size = new Size(386, 837);
             dgOcitavanja.TabIndex = 2;
+            dgOcitavanja.SelectionChanged += dgOcitavanja_SelectionChanged;
             // 
             // vremeFormatiranoDataGridViewTextBoxColumn
             // 
@@ -213,6 +215,7 @@
             // pnlFilter
             // 
             pnlFilter.BorderStyle = BorderStyle.FixedSingle;
+            pnlFilter.Controls.Add(button1);
             pnlFilter.Controls.Add(panel1);
             pnlFilter.Controls.Add(btnIzborMernogMesta);
             pnlFilter.Controls.Add(cbProredi);
@@ -228,6 +231,16 @@
             pnlFilter.Name = "pnlFilter";
             pnlFilter.Size = new Size(1891, 71);
             pnlFilter.TabIndex = 21;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(1774, 10);
+            button1.Name = "button1";
+            button1.Size = new Size(55, 38);
+            button1.TabIndex = 28;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // panel1
             // 
@@ -264,9 +277,9 @@
             // 
             btnIzborMernogMesta.BackgroundImage = (Image)resources.GetObject("btnIzborMernogMesta.BackgroundImage");
             btnIzborMernogMesta.BackgroundImageLayout = ImageLayout.Center;
-            btnIzborMernogMesta.Location = new Point(354, 27);
+            btnIzborMernogMesta.Location = new Point(353, 29);
             btnIzborMernogMesta.Name = "btnIzborMernogMesta";
-            btnIzborMernogMesta.Size = new Size(36, 36);
+            btnIzborMernogMesta.Size = new Size(38, 32);
             btnIzborMernogMesta.TabIndex = 24;
             btnIzborMernogMesta.UseVisualStyleBackColor = true;
             btnIzborMernogMesta.Click += btnIzborMernogMesta_Click;
@@ -302,6 +315,7 @@
             lblMernoMesto.Size = new Size(344, 29);
             lblMernoMesto.TabIndex = 23;
             lblMernoMesto.TextAlign = ContentAlignment.MiddleLeft;
+            lblMernoMesto.Click += lblMernoMesto_Click;
             // 
             // frmStanje
             // 
@@ -354,5 +368,6 @@
         private Label label2;
         private Label label1;
         private Panel panel1;
+        private Button button1;
     }
 }

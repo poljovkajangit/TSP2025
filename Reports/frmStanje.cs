@@ -1,8 +1,6 @@
-﻿using ScottPlot.Plottables;
-using ScottPlot;
-using System.ComponentModel.DataAnnotations;
+﻿using ScottPlot;
+using ScottPlot.Plottables;
 using System.Data;
-using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using TSP2025.Data;
 using TSP2025.Data.Model;
@@ -15,6 +13,10 @@ namespace TSP2025
     public partial class frmStanje : Form
     {
         TSP2025DataContext _DataSource;
+        DateTime[] xs;
+        double[] ys;
+        Marker selectedDataItemPlotMarker = null;
+        MernoMesto _SelectedMernoMesto = null;
 
         List<Ocitavanje> Ocitavanja
         {
@@ -25,7 +27,6 @@ namespace TSP2025
         }
 
         private frmStanje() { }
-
         public frmStanje(MernoMesto mernoMesto = null)
         {
             InitializeComponent();
@@ -37,6 +38,7 @@ namespace TSP2025
             {
                 lblMernoMesto.Text = _SelectedMernoMesto.OznakaMernogMesta;
             }
+            cbProredi.SelectedIndex = 0;
         }
 
         private void btnPrikazi_Click(object sender, EventArgs e)
@@ -107,8 +109,8 @@ namespace TSP2025
             pltStanje.Plot.Clear();
 
             // plot data using DateTime values on the horizontal axis
-            DateTime[] xs = [.. (bsOcitavanja.DataSource as IList<Ocitavanje>)!.Select(o => o.Vreme)];
-            double[] ys = [.. (bsOcitavanja.DataSource as IList<Ocitavanje>)!.Select(o => (double)o.Vrednost)];
+            xs = [.. (bsOcitavanja.DataSource as IList<Ocitavanje>)!.Select(o => o.Vreme)];
+            ys = [.. (bsOcitavanja.DataSource as IList<Ocitavanje>)!.Select(o => (double)o.Vrednost)];
             var mainScatter = pltStanje.Plot.Add.Scatter(xs, ys);
 
             // customize the scatter plot line
@@ -127,9 +129,12 @@ namespace TSP2025
             // apply our custom tick formatter
             var tickGen = (ScottPlot.TickGenerators.DateTimeAutomatic)axis.TickGenerator;
             tickGen.LabelFormatter = CustomLabelsFormatter;
+
             pltStanje.Refresh();
 
             pltStanje.Visible = true;
+
+            dgOcitavanja.ClearSelection();
 
         }
 
@@ -177,8 +182,6 @@ namespace TSP2025
             }
         }
 
-        private MernoMesto _SelectedMernoMesto = null;
-
         private void btnIzborMernogMesta_Click(object sender, EventArgs e)
         {
             if (frmMernaMestaLookup.Instance().ShowDialog() == DialogResult.OK)
@@ -186,6 +189,38 @@ namespace TSP2025
                 _SelectedMernoMesto = frmMernaMestaLookup.Instance().SelectedMernoMesto;
                 lblMernoMesto.Text = _SelectedMernoMesto.OznakaMernogMesta;
             }
+        }
+
+        private void lblMernoMesto_Click(object sender, EventArgs e)
+        {
+            btnIzborMernogMesta_Click(this, null);
+        }
+
+        private void dgOcitavanja_SelectionChanged(object sender, EventArgs e)
+        {
+            if (xs != null && ys != null && dgOcitavanja.SelectedRows.Count > 0)
+            {
+                if (selectedDataItemPlotMarker != null)
+                {
+                    pltStanje.Plot.Remove(selectedDataItemPlotMarker);
+                }
+
+                var prikazanaOcitavanja = (bsOcitavanja.DataSource as IList<Ocitavanje>);
+
+                var selectedRowIndex = dgOcitavanja.SelectedRows[0].Index;
+
+                selectedDataItemPlotMarker = pltStanje.Plot.Add.Marker(xs[selectedRowIndex].ToOADate(), ys[selectedRowIndex], shape: MarkerShape.FilledCircle, size: 10, color: Colors.Red);
+
+                pltStanje.Plot.Axes.AutoScale();
+
+                pltStanje.Refresh();
+            }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var s = selectedDataItemPlotMarker;
         }
     }
 }
