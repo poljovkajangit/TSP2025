@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using TSP2025.Data;
 using TSP2025.Data.Model;
 using TSP2025.DB;
+using TSP2025.Reports;
 using TSP2025.Services;
 using TSP2025.Utils;
 
@@ -129,7 +130,7 @@ namespace TSP2025
 
         private void oAplikacijiTSP2025ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormMessages.ShowInformation("TSP2025 Free Trial Version ... under construction ...");
+            new frmAbout().ShowDialog();
         }
 
         private void mnuMesecnaPotrosnja_Click(object sender, EventArgs e)
@@ -171,9 +172,9 @@ namespace TSP2025
             frmDnevna.ShowDialog();
         }
 
-        private void btnClearAllPull_Click(object sender, EventArgs e)
+        private void višegodišnjaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            new frmMedjugodisnja().ShowDialog();
         }
     }
 }

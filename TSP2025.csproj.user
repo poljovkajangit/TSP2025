@@ -31,10 +31,7 @@
     <Compile Update="frmSignIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Reports\frmBarPlotReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Reports\frmScottPloting.cs">
+    <Compile Update="Reports\frmMedjugodisnja.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="UserControls\SmartDateUC.cs">

@@ -47,7 +47,6 @@
             statusStrip1 = new StatusStrip();
             lblUkupno = new ToolStripStatusLabel();
             pnlFilter = new Panel();
-            button1 = new Button();
             panel1 = new Panel();
             dtDanOd = new TSP2025.UserControls.SmartDateUC();
             dtDanDo = new TSP2025.UserControls.SmartDateUC();
@@ -215,7 +214,6 @@
             // pnlFilter
             // 
             pnlFilter.BorderStyle = BorderStyle.FixedSingle;
-            pnlFilter.Controls.Add(button1);
             pnlFilter.Controls.Add(panel1);
             pnlFilter.Controls.Add(btnIzborMernogMesta);
             pnlFilter.Controls.Add(cbProredi);
@@ -231,16 +229,6 @@
             pnlFilter.Name = "pnlFilter";
             pnlFilter.Size = new Size(1891, 71);
             pnlFilter.TabIndex = 21;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(1774, 10);
-            button1.Name = "button1";
-            button1.Size = new Size(55, 38);
-            button1.TabIndex = 28;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
             // 
             // panel1
             // 
@@ -368,6 +356,5 @@
         private Label label2;
         private Label label1;
         private Panel panel1;
-        private Button button1;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace TSP2025
 {
-    partial class frmSignIn
+    partial class frmAbout
     {
         /// <summary>
         /// Required designer variable.
@@ -28,59 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSignIn));
-            lblUsername = new Label();
-            tbUsername = new TextBox();
-            tbPassword = new TextBox();
-            lblLozinka = new Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAbout));
             btnOk = new Button();
             pbPipes = new PictureBox();
             panel1 = new Panel();
+            label3 = new Label();
             label2 = new Label();
             label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pbPipes).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // lblUsername
-            // 
-            lblUsername.AutoSize = true;
-            lblUsername.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            lblUsername.Location = new Point(76, 184);
-            lblUsername.Margin = new Padding(2, 0, 2, 0);
-            lblUsername.Name = "lblUsername";
-            lblUsername.Size = new Size(174, 32);
-            lblUsername.TabIndex = 0;
-            lblUsername.Text = "Korisničko ime:";
-            // 
-            // tbUsername
-            // 
-            tbUsername.BorderStyle = BorderStyle.FixedSingle;
-            tbUsername.Location = new Point(76, 218);
-            tbUsername.Margin = new Padding(2);
-            tbUsername.Name = "tbUsername";
-            tbUsername.Size = new Size(253, 23);
-            tbUsername.TabIndex = 0;
-            // 
-            // tbPassword
-            // 
-            tbPassword.BorderStyle = BorderStyle.FixedSingle;
-            tbPassword.Location = new Point(76, 293);
-            tbPassword.Margin = new Padding(2);
-            tbPassword.Name = "tbPassword";
-            tbPassword.Size = new Size(253, 23);
-            tbPassword.TabIndex = 1;
-            // 
-            // lblLozinka
-            // 
-            lblLozinka.AutoSize = true;
-            lblLozinka.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            lblLozinka.Location = new Point(76, 259);
-            lblLozinka.Margin = new Padding(2, 0, 2, 0);
-            lblLozinka.Name = "lblLozinka";
-            lblLozinka.Size = new Size(99, 32);
-            lblLozinka.TabIndex = 2;
-            lblLozinka.Text = "Lozinka:";
             // 
             // btnOk
             // 
@@ -112,18 +69,29 @@
             // panel1
             // 
             panel1.BackColor = Color.LightGray;
+            panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
-            panel1.Controls.Add(lblUsername);
             panel1.Controls.Add(btnOk);
-            panel1.Controls.Add(lblLozinka);
-            panel1.Controls.Add(tbPassword);
-            panel1.Controls.Add(tbUsername);
             panel1.Location = new Point(415, 0);
             panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
             panel1.Size = new Size(503, 536);
             panel1.TabIndex = 4;
+            // 
+            // label3
+            // 
+            label3.BackColor = SystemColors.ButtonFace;
+            label3.BorderStyle = BorderStyle.FixedSingle;
+            label3.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 238);
+            label3.ForeColor = Color.Gray;
+            label3.Location = new Point(100, 157);
+            label3.Margin = new Padding(2, 0, 2, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(315, 231);
+            label3.TabIndex = 7;
+            label3.Text = "Proizvedeno u Staroj Pazovi\r\nGodine 2025.\r\nAutori poznati redakciji\r\n";
+            label3.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
@@ -155,7 +123,7 @@
             label1.Text = "TSP2025 v 1.0";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // frmSignIn
+            // frmAbout
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -168,25 +136,20 @@
             Margin = new Padding(2);
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "frmSignIn";
+            Name = "frmAbout";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Dobrodošli";
+            Text = "O programu";
             ((System.ComponentModel.ISupportInitialize)pbPipes).EndInit();
             panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Label lblUsername;
-        private TextBox tbUsername;
-        private TextBox tbPassword;
-        private Label lblLozinka;
         private Button btnOk;
         private PictureBox pbPipes;
         private Panel panel1;
         private Label label1;
+        private Label label3;
         private Label label2;
     }
 }

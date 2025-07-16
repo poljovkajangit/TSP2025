@@ -211,7 +211,7 @@ namespace TSP2025
 
                 selectedDataItemPlotMarker = pltStanje.Plot.Add.Marker(xs[selectedRowIndex].ToOADate(), ys[selectedRowIndex], shape: MarkerShape.FilledCircle, size: 10, color: Colors.Red);
 
-                pltStanje.Plot.Axes.AutoScale();
+                //pltStanje.Plot.Axes.AutoScale();
 
                 pltStanje.Refresh();
             }
@@ -221,6 +221,9 @@ namespace TSP2025
         private void button1_Click(object sender, EventArgs e)
         {
             var s = selectedDataItemPlotMarker;
+            pltStanje.Plot.Axes.Pan(new PixelOffset(100, 100));
+
+            pltStanje.Refresh();
         }
     }
 }

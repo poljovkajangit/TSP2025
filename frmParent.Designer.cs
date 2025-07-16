@@ -47,6 +47,8 @@
             dnevnaToolStripMenuItem = new ToolStripMenuItem();
             mnuMesecnaPotrosnja = new ToolStripMenuItem();
             godišnjaToolStripMenuItem = new ToolStripMenuItem();
+            toolStripMenuItem4 = new ToolStripSeparator();
+            višegodišnjaToolStripMenuItem = new ToolStripMenuItem();
             pomoćToolStripMenuItem = new ToolStripMenuItem();
             preuzmiPodatkeToolStripMenuItem = new ToolStripMenuItem();
             istorijaPreuzimanjaToolStripMenuItem = new ToolStripMenuItem();
@@ -55,8 +57,6 @@
             tbPullInfo = new TextBox();
             btnPull = new Button();
             bsMernaMesta = new BindingSource(components);
-            label5 = new Label();
-            label6 = new Label();
             tm = new System.Windows.Forms.Timer(components);
             btnDashboard = new Button();
             sbStatusBar.SuspendLayout();
@@ -172,7 +172,7 @@
             // 
             // potrošnjaToolStripMenuItem
             // 
-            potrošnjaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { dnevnaToolStripMenuItem, mnuMesecnaPotrosnja, godišnjaToolStripMenuItem });
+            potrošnjaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { dnevnaToolStripMenuItem, mnuMesecnaPotrosnja, godišnjaToolStripMenuItem, toolStripMenuItem4, višegodišnjaToolStripMenuItem });
             potrošnjaToolStripMenuItem.Image = (Image)resources.GetObject("potrošnjaToolStripMenuItem.Image");
             potrošnjaToolStripMenuItem.Name = "potrošnjaToolStripMenuItem";
             potrošnjaToolStripMenuItem.Size = new Size(124, 22);
@@ -181,23 +181,35 @@
             // dnevnaToolStripMenuItem
             // 
             dnevnaToolStripMenuItem.Name = "dnevnaToolStripMenuItem";
-            dnevnaToolStripMenuItem.Size = new Size(121, 22);
+            dnevnaToolStripMenuItem.Size = new Size(140, 22);
             dnevnaToolStripMenuItem.Text = "Dnevna";
             dnevnaToolStripMenuItem.Click += dnevnaToolStripMenuItem_Click;
             // 
             // mnuMesecnaPotrosnja
             // 
             mnuMesecnaPotrosnja.Name = "mnuMesecnaPotrosnja";
-            mnuMesecnaPotrosnja.Size = new Size(121, 22);
+            mnuMesecnaPotrosnja.Size = new Size(140, 22);
             mnuMesecnaPotrosnja.Text = "Mesečna";
             mnuMesecnaPotrosnja.Click += mnuMesecnaPotrosnja_Click;
             // 
             // godišnjaToolStripMenuItem
             // 
             godišnjaToolStripMenuItem.Name = "godišnjaToolStripMenuItem";
-            godišnjaToolStripMenuItem.Size = new Size(121, 22);
+            godišnjaToolStripMenuItem.Size = new Size(140, 22);
             godišnjaToolStripMenuItem.Text = "Godišnja";
             godišnjaToolStripMenuItem.Click += godišnjaToolStripMenuItem_Click;
+            // 
+            // toolStripMenuItem4
+            // 
+            toolStripMenuItem4.Name = "toolStripMenuItem4";
+            toolStripMenuItem4.Size = new Size(137, 6);
+            // 
+            // višegodišnjaToolStripMenuItem
+            // 
+            višegodišnjaToolStripMenuItem.Name = "višegodišnjaToolStripMenuItem";
+            višegodišnjaToolStripMenuItem.Size = new Size(140, 22);
+            višegodišnjaToolStripMenuItem.Text = "Višegodišnja";
+            višegodišnjaToolStripMenuItem.Click += višegodišnjaToolStripMenuItem_Click;
             // 
             // pomoćToolStripMenuItem
             // 
@@ -286,30 +298,6 @@
             // 
             bsMernaMesta.DataMember = "SvaMernaMesta";
             // 
-            // label5
-            // 
-            label5.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            label5.Location = new Point(13, 814);
-            label5.Margin = new Padding(2, 0, 2, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(260, 32);
-            label5.TabIndex = 6;
-            label5.Text = "... under construction ...";
-            // 
-            // label6
-            // 
-            label6.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 22F);
-            label6.Location = new Point(13, 771);
-            label6.Margin = new Padding(2, 0, 2, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(130, 41);
-            label6.TabIndex = 8;
-            label6.Text = "TSP2025";
-            // 
             // btnDashboard
             // 
             btnDashboard.Location = new Point(4, 29);
@@ -328,8 +316,6 @@
             BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(1597, 881);
             Controls.Add(btnDashboard);
-            Controls.Add(label6);
-            Controls.Add(label5);
             Controls.Add(gbPullOperacija);
             Controls.Add(sbStatusBar);
             Controls.Add(menuStrip1);
@@ -340,7 +326,7 @@
             Margin = new Padding(2);
             Name = "frmParent";
             Padding = new Padding(1);
-            Text = "TSP2025 - u razvoju ...";
+            Text = "TSP2025 v 1.0";
             WindowState = FormWindowState.Maximized;
             Shown += frmParent_Shown;
             sbStatusBar.ResumeLayout(false);
@@ -375,8 +361,6 @@
         private GroupBox gbPullOperacija;
         private Button btnPull;
         private BindingSource bsMernaMesta;
-        private Label label5;
-        private Label label6;
         private TextBox tbPullInfo;
         private ToolStripMenuItem potrošnjaToolStripMenuItem;
         private ToolStripMenuItem mnuMesecnaPotrosnja;
@@ -386,5 +370,7 @@
         private Label lblPullStatus;
         private UserControls.SmartDateUC dtOdDatuma;
         private Button btnDashboard;
+        private ToolStripSeparator toolStripMenuItem4;
+        private ToolStripMenuItem višegodišnjaToolStripMenuItem;
     }
 }
