@@ -123,5 +123,15 @@ namespace TSP2025
             tbPretraga.Text = "";
             bsMernaMesta.DataSource = _SvaMernaMestaInBindingList;
         }
+
+        private void btnIzmeni_Click(object sender, EventArgs e)
+        {
+            izmeniToolStripMenuItem_Click(null, null);
+        }
+
+        private void btnObrisi_Click(object sender, EventArgs e)
+        {
+            obrišiToolStripMenuItem_Click(null, null);
+        }
     }
 }

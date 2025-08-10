@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMernaMesta));
             bsGrupeMernihMesta = new BindingSource(components);
             bsMernaMesta = new BindingSource(components);
@@ -51,11 +51,15 @@
             label2 = new Label();
             panel1 = new Panel();
             btnRefresh = new Button();
+            toolStrip1 = new ToolStrip();
+            btnIzmeni = new ToolStripButton();
+            btnObrisi = new ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)bsGrupeMernihMesta).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bsMernaMesta).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgMernaMesta).BeginInit();
             cmMernoMestoGridMenu.SuspendLayout();
             panel1.SuspendLayout();
+            toolStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // bsGrupeMernihMesta
@@ -75,27 +79,27 @@
             dgMernaMesta.AutoGenerateColumns = false;
             dgMernaMesta.BackgroundColor = Color.LightGray;
             dgMernaMesta.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Control;
-            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
-            dgMernaMesta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dgMernaMesta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgMernaMesta.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgMernaMesta.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn5, grupaMernogMestaNazivDataGridViewTextBoxColumn, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, colStanje });
             dgMernaMesta.ContextMenuStrip = cmMernoMestoGridMenu;
             dgMernaMesta.DataSource = bsMernaMesta;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgMernaMesta.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgMernaMesta.DefaultCellStyle = dataGridViewCellStyle2;
             dgMernaMesta.Dock = DockStyle.Fill;
             dgMernaMesta.EditMode = DataGridViewEditMode.EditProgrammatically;
             dgMernaMesta.EnableHeadersVisualStyles = false;
-            dgMernaMesta.Location = new Point(0, 38);
+            dgMernaMesta.Location = new Point(0, 63);
             dgMernaMesta.Margin = new Padding(2);
             dgMernaMesta.MultiSelect = false;
             dgMernaMesta.Name = "dgMernaMesta";
@@ -107,7 +111,7 @@
             dgMernaMesta.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.Black;
             dgMernaMesta.ScrollBars = ScrollBars.Vertical;
             dgMernaMesta.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgMernaMesta.Size = new Size(1291, 577);
+            dgMernaMesta.Size = new Size(1291, 552);
             dgMernaMesta.TabIndex = 0;
             dgMernaMesta.CellContentClick += dgMernaMesta_CellContentClick;
             dgMernaMesta.CellMouseDown += dgMernaMesta_CellMouseDown;
@@ -268,14 +272,44 @@
             btnRefresh.UseVisualStyleBackColor = true;
             btnRefresh.Click += btnRefresh_Click;
             // 
+            // toolStrip1
+            // 
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnIzmeni, btnObrisi });
+            toolStrip1.Location = new Point(0, 38);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new Size(1291, 25);
+            toolStrip1.TabIndex = 8;
+            toolStrip1.Text = "toolStrip1";
+            // 
+            // btnIzmeni
+            // 
+            btnIzmeni.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnIzmeni.Image = (Image)resources.GetObject("btnIzmeni.Image");
+            btnIzmeni.ImageTransparentColor = Color.Magenta;
+            btnIzmeni.Name = "btnIzmeni";
+            btnIzmeni.Size = new Size(23, 22);
+            btnIzmeni.Text = "toolStripButton1";
+            btnIzmeni.Click += btnIzmeni_Click;
+            // 
+            // btnObrisi
+            // 
+            btnObrisi.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnObrisi.Image = (Image)resources.GetObject("btnObrisi.Image");
+            btnObrisi.ImageTransparentColor = Color.Magenta;
+            btnObrisi.Name = "btnObrisi";
+            btnObrisi.Size = new Size(23, 22);
+            btnObrisi.Text = "toolStripButton2";
+            btnObrisi.Click += btnObrisi_Click;
+            // 
             // frmMernaMesta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1291, 637);
             Controls.Add(dgMernaMesta);
-            Controls.Add(panel1);
             Controls.Add(statusStrip1);
+            Controls.Add(toolStrip1);
+            Controls.Add(panel1);
             Margin = new Padding(2);
             MaximizeBox = false;
             MinimizeBox = false;
@@ -289,6 +323,8 @@
             cmMernoMestoGridMenu.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -323,5 +359,8 @@
         private Label label2;
         private Panel panel1;
         private Button btnRefresh;
+        private ToolStrip toolStrip1;
+        private ToolStripButton btnIzmeni;
+        private ToolStripButton btnObrisi;
     }
 }

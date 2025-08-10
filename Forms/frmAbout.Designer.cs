@@ -120,7 +120,7 @@
             label1.Name = "label1";
             label1.Size = new Size(503, 63);
             label1.TabIndex = 5;
-            label1.Text = "TSP2025 v 1.0";
+            label1.Text = "TSP2025 v 1.0.1";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // frmAbout
