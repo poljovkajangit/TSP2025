@@ -97,7 +97,7 @@ namespace TSP2025
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 168);
+            label1.Location = new Point(11, 168);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(174, 15);
@@ -107,7 +107,7 @@ namespace TSP2025
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(11, 118);
+            label2.Location = new Point(10, 118);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(191, 15);
@@ -158,7 +158,7 @@ namespace TSP2025
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(10, 218);
+            label4.Location = new Point(9, 220);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(81, 15);
