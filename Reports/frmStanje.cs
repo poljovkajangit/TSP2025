@@ -18,6 +18,21 @@ namespace TSP2025
         Marker selectedDataItemPlotMarker = null;
         MernoMesto _SelectedMernoMesto = null;
 
+
+
+
+        bool MouseIsDown = false;
+        private ScottPlot.Plottables.Rectangle RectanglePlot;
+        public string Title => "Select Data Points";
+        public string Description => "Demonstrates how to use mouse events " +
+            "to draw a rectangle around data points to select them";
+        private Coordinates MouseDownCoordinates;
+        private Coordinates MouseNowCoordinates;
+        CoordinateRect MouseSlectionRect => new(MouseDownCoordinates, MouseNowCoordinates);
+
+        private Coordinates[] DataPoints;
+
+
         List<Ocitavanje> Ocitavanja
         {
             get
@@ -39,6 +54,11 @@ namespace TSP2025
                 lblMernoMesto.Text = _SelectedMernoMesto.OznakaMernogMesta;
             }
             cbProredi.SelectedIndex = 0;
+
+            // add events to trigger in response to mouse actions
+            pltStanje.MouseMove += FormsPlot1_MouseMove;
+            pltStanje.MouseDown += FormsPlot1_MouseDown;
+            pltStanje.MouseUp += FormsPlot1_MouseUp;
         }
 
         private void btnPrikazi_Click(object sender, EventArgs e)
@@ -136,6 +156,13 @@ namespace TSP2025
 
             dgOcitavanja.ClearSelection();
 
+
+            // add a rectangle we can use as a selection indicator
+            RectanglePlot = pltStanje.Plot.Add.Rectangle(0, 0, 0, 0);
+            RectanglePlot.FillStyle.Color = Colors.Red.WithAlpha(.2);
+            RectanglePlot.IsVisible = true;
+            DataPoints = (pltStanje.Plot.Add!.Plot.PlottableList[0] as ScottPlot.Plottables.Scatter).Data.GetScatterPoints().ToArray();
+
         }
 
         // create a custom formatter to return a string with
@@ -223,6 +250,58 @@ namespace TSP2025
             var s = selectedDataItemPlotMarker;
             pltStanje.Plot.Axes.Pan(new PixelOffset(100, 100));
 
+            pltStanje.Refresh();
+        }
+
+
+
+        private void FormsPlot1_MouseDown(object? sender, MouseEventArgs e)
+        {
+            MouseIsDown = true;
+            RectanglePlot.IsVisible = true;
+            MouseDownCoordinates = pltStanje.Plot.GetCoordinates(e.X, e.Y);
+            pltStanje.UserInputProcessor.Disable(); // disable the default click-drag-pan behavior
+        }
+        private void FormsPlot1_MouseUp(object? sender, MouseEventArgs e)
+        {
+            MouseIsDown = false;
+            RectanglePlot.IsVisible = false;
+
+            // clear old markers
+            pltStanje.Plot.Remove<ScottPlot.Plottables.Marker>();
+
+            // identify selectedPoints
+            var selectedPoints = DataPoints.Where(x => MouseSlectionRect.Contains(x));
+
+            int indexOfSelectedPoint = -1;
+            // add markers to outline selected points
+            foreach (Coordinates selectedPoint in selectedPoints)
+            {
+                var newMarker = pltStanje.Plot.Add.Marker(selectedPoint);
+                newMarker.MarkerStyle.Shape = MarkerShape.OpenCircle;
+                newMarker.MarkerStyle.Size = 10;
+                newMarker.MarkerStyle.FillColor = Colors.Red.WithAlpha(.2);
+                newMarker.MarkerStyle.LineColor = Colors.Red;
+                newMarker.MarkerStyle.LineWidth = 1;
+                indexOfSelectedPoint = Array.IndexOf(DataPoints, selectedPoint);
+                dgOcitavanja.Rows[indexOfSelectedPoint].Selected = true;
+            }
+
+            // reset the mouse positions
+            MouseDownCoordinates = Coordinates.NaN;
+            MouseNowCoordinates = Coordinates.NaN;
+
+            // update the plot
+            pltStanje.Refresh();
+            pltStanje.UserInputProcessor.Enable(); // re-enable the default click-drag-pan behavior
+        }
+        private void FormsPlot1_MouseMove(object? sender, MouseEventArgs e)
+        {
+            if (!MouseIsDown)
+                return;
+
+            MouseNowCoordinates = pltStanje.Plot.GetCoordinates(e.X, e.Y);
+            RectanglePlot.CoordinateRect = MouseSlectionRect;
             pltStanje.Refresh();
         }
     }
