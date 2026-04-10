@@ -17,22 +17,6 @@ namespace TSP2025
         double[] ys;
         Marker selectedDataItemPlotMarker = null;
         MernoMesto _SelectedMernoMesto = null;
-
-
-
-
-        bool MouseIsDown = false;
-        private ScottPlot.Plottables.Rectangle RectanglePlot;
-        public string Title => "Select Data Points";
-        public string Description => "Demonstrates how to use mouse events " +
-            "to draw a rectangle around data points to select them";
-        private Coordinates MouseDownCoordinates;
-        private Coordinates MouseNowCoordinates;
-        CoordinateRect MouseSlectionRect => new(MouseDownCoordinates, MouseNowCoordinates);
-
-        private Coordinates[] DataPoints;
-
-
         List<Ocitavanje> Ocitavanja
         {
             get
@@ -40,6 +24,15 @@ namespace TSP2025
                 return (bsOcitavanja.List as List<Ocitavanje>)!;
             }
         }
+
+        #region Mouse selection fields
+        Coordinates[] AllDataPoints;
+        bool MouseIsDown = false;
+        ScottPlot.Plottables.Rectangle RectanglePlot;
+        ScottPlot.Coordinates MouseDownCoordinates;
+        ScottPlot.Coordinates MouseNowCoordinates;
+        ScottPlot.CoordinateRect MouseSlectionRect => new ScottPlot.CoordinateRect(MouseDownCoordinates, MouseNowCoordinates);
+        #endregion
 
         private frmStanje() { }
         public frmStanje(MernoMesto mernoMesto = null)
@@ -60,7 +53,6 @@ namespace TSP2025
             pltStanje.MouseDown += FormsPlot1_MouseDown;
             pltStanje.MouseUp += FormsPlot1_MouseUp;
         }
-
         private void btnPrikazi_Click(object sender, EventArgs e)
         {
             var frmDataSource = new frmDataSourceForReports();
@@ -161,12 +153,10 @@ namespace TSP2025
             RectanglePlot = pltStanje.Plot.Add.Rectangle(0, 0, 0, 0);
             RectanglePlot.FillStyle.Color = Colors.Red.WithAlpha(.2);
             RectanglePlot.IsVisible = true;
-            DataPoints = (pltStanje.Plot.Add!.Plot.PlottableList[0] as ScottPlot.Plottables.Scatter).Data.GetScatterPoints().ToArray();
+            AllDataPoints = (pltStanje.Plot.Add!.Plot.PlottableList[0] as ScottPlot.Plottables.Scatter).Data.GetScatterPoints().ToArray();
 
         }
-
-        // create a custom formatter to return a string with
-        // date only when zoomed out and time only when zoomed in
+        // create a custom formatter to return a string with date only when zoomed out and time only when zoomed in
         private string CustomLabelsFormatter(DateTime dt)
         {
             bool isMidnight = dt is { Hour: 0, Minute: 0, Second: 0 };
@@ -174,7 +164,6 @@ namespace TSP2025
                  ? dt.ToString("dd/MM/yy") // " DateOnly.FromDateTime(dt).ToString()//$"{dt:MMM} '{dt:yyyy}" 
                   : TimeOnly.FromDateTime(dt).ToString();
         }
-
         private void btnExport_Click(object sender, EventArgs e)
         {
             try
@@ -208,7 +197,6 @@ namespace TSP2025
                 FormMessages.ShowError("Došlo je do greške");
             }
         }
-
         private void btnIzborMernogMesta_Click(object sender, EventArgs e)
         {
             if (frmMernaMestaLookup.Instance().ShowDialog() == DialogResult.OK)
@@ -217,34 +205,26 @@ namespace TSP2025
                 lblMernoMesto.Text = _SelectedMernoMesto.OznakaMernogMesta;
             }
         }
-
         private void lblMernoMesto_Click(object sender, EventArgs e)
         {
             btnIzborMernogMesta_Click(this, null);
         }
-
         private void dgOcitavanja_SelectionChanged(object sender, EventArgs e)
         {
+            // clear old markers
+            pltStanje.Plot.Remove<ScottPlot.Plottables.Marker>();
             if (xs != null && ys != null && dgOcitavanja.SelectedRows.Count > 0)
             {
                 if (selectedDataItemPlotMarker != null)
                 {
                     pltStanje.Plot.Remove(selectedDataItemPlotMarker);
                 }
-
                 var prikazanaOcitavanja = (bsOcitavanja.DataSource as IList<Ocitavanje>);
-
                 var selectedRowIndex = dgOcitavanja.SelectedRows[0].Index;
-
                 selectedDataItemPlotMarker = pltStanje.Plot.Add.Marker(xs[selectedRowIndex].ToOADate(), ys[selectedRowIndex], shape: MarkerShape.FilledCircle, size: 10, color: Colors.Red);
-
-                //pltStanje.Plot.Axes.AutoScale();
-
                 pltStanje.Refresh();
             }
-
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             var s = selectedDataItemPlotMarker;
@@ -252,16 +232,18 @@ namespace TSP2025
 
             pltStanje.Refresh();
         }
-
-
-
         private void FormsPlot1_MouseDown(object? sender, MouseEventArgs e)
         {
             MouseIsDown = true;
             RectanglePlot.IsVisible = true;
             MouseDownCoordinates = pltStanje.Plot.GetCoordinates(e.X, e.Y);
             pltStanje.UserInputProcessor.Disable(); // disable the default click-drag-pan behavior
+            dgOcitavanja.ClearSelection();
         }
+        private DataGridViewCellStyle selectedRowStyle;
+
+
+        DataGridViewCellStyle selectedRowsCellStyle = new DataGridViewCellStyle() { BackColor = System.Drawing.Color.Teal};
         private void FormsPlot1_MouseUp(object? sender, MouseEventArgs e)
         {
             MouseIsDown = false;
@@ -271,9 +253,9 @@ namespace TSP2025
             pltStanje.Plot.Remove<ScottPlot.Plottables.Marker>();
 
             // identify selectedPoints
-            var selectedPoints = DataPoints.Where(x => MouseSlectionRect.Contains(x));
+            var selectedPoints = AllDataPoints.Where(x => MouseSlectionRect.Contains(x));
 
-            int indexOfSelectedPoint = -1;
+            int firstIndexOfSelectedPoints = -1;
             // add markers to outline selected points
             foreach (Coordinates selectedPoint in selectedPoints)
             {
@@ -283,8 +265,18 @@ namespace TSP2025
                 newMarker.MarkerStyle.FillColor = Colors.Red.WithAlpha(.2);
                 newMarker.MarkerStyle.LineColor = Colors.Red;
                 newMarker.MarkerStyle.LineWidth = 1;
-                indexOfSelectedPoint = Array.IndexOf(DataPoints, selectedPoint);
-                dgOcitavanja.Rows[indexOfSelectedPoint].Selected = true;
+                if (firstIndexOfSelectedPoints == -1)
+                {
+                    firstIndexOfSelectedPoints = Array.IndexOf(AllDataPoints, selectedPoint);
+                }
+                dgOcitavanja.Rows[Array.IndexOf(AllDataPoints, selectedPoint)].DefaultCellStyle = selectedRowsCellStyle;
+            }
+            if (firstIndexOfSelectedPoints != -1)
+            {
+                dgOcitavanja.SelectionChanged -= dgOcitavanja_SelectionChanged;
+                dgOcitavanja.Rows[firstIndexOfSelectedPoints].Selected = true;
+                dgOcitavanja.SelectionChanged += dgOcitavanja_SelectionChanged;
+                dgOcitavanja.FirstDisplayedScrollingRowIndex = firstIndexOfSelectedPoints;
             }
 
             // reset the mouse positions
